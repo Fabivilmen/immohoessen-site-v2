@@ -211,4 +211,57 @@ footer {
     font-size: 0.8rem;
   }
 }
+/* Rodapé ajustado */
+.footer-home {
+  background-color: #0f3d2e;
+  color: white;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.footer-info {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-info p {
+  margin: 0.3rem 0;
+  font-size: 0.95rem;
+}
+
+.footer-map {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  justify-content: center;
+  padding-top: 1rem;
+}
+
+.footer-map iframe {
+  border: none;
+  width: 100%;
+  max-width: 320px;
+  height: 140px;
+}
+
+.footer-legal {
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  width: 100%;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 0.85rem;
+}
+
 
