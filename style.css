@@ -1,68 +1,114 @@
-/* Container que organiza os cards lado a lado */
+/* Estilos globais (se você já tiver, mantenha-os e adicione apenas a parte dos cards) */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    line-height: 1.6;
+    color: #333;
+    background-color: #fff;
+}
+
+header {
+    background-color: #1e4e3d;
+    color: #fff;
+    padding: 15px 0;
+    text-align: center;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+/* Estilos para a seção de tipos de gestão */
+.types-section {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.intro {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+/* Container que organiza os cards - ESSA É A PARTE MAIS IMPORTANTE PARA O LAYOUT */
 .cards-container {
-  display: flex; 
-  flex-wrap: wrap; 
-  gap: 25px; 
-  justify-content: center; 
-  margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centraliza os cards no container */
+    gap: 25px; /* Adiciona espaço entre os cards */
+    margin: 40px auto; /* Adiciona margem superior e centraliza o container */
+    max-width: 1200px; /* Limita a largura para que os cards se alinhem em duas colunas */
 }
 
 /* Estilo individual de cada card */
 .card {
-  background-color: #f7f7f7;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 30px;
-  max-width: 300px;
-  flex: 1 1 45%; 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    background-color: #f7f7f7;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    flex: 1 1 45%; /* A base de 45% garante que dois cards caberão lado a lado */
+    max-width: 300px; /* Define uma largura máxima para evitar que fiquem muito grandes em telas largas */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Efeito ao passar o mouse por cima do card */
 .card:hover {
-  transform: translateY(-10px); 
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); 
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
-/* Estilo para os títulos (h3) dentro do card */
-.card h3 {
-  color: #1e4e3d;
-  margin-top: 15px;
-  font-size: 1.5rem;
-}
-
-/* Estilo para os ícones */
+/* Estilos para os ícones */
 .card i {
-  color: #1e4e3d;
-  margin-bottom: 10px;
+    color: #1e4e3d;
+    margin-bottom: 15px;
+    font-size: 3rem;
 }
 
-/* Estilo para a lista de itens */
+/* Estilos para os títulos */
+.card h3 {
+    color: #1e4e3d;
+    margin-top: 0;
+    font-size: 1.5rem;
+}
+
+/* Estilos para a lista dentro dos cards */
 .card ul {
-  list-style: none; 
-  padding: 0;
-  margin-top: 20px;
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
 }
 
-/* Estilo para cada item da lista */
 .card ul li {
-  margin-bottom: 10px;
-  font-size: 1rem;
-  color: #555;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    color: #555;
 }
 
-/* Media query para telas menores (ex: celulares) */
-@media (max-width: 768px) {
-  .cards-container {
-    flex-direction: column; 
-    align-items: center; 
-  }
+/* Rodapé */
+.footer-simple {
+    text-align: center;
+    padding: 20px;
+    background-color: #1e4e3d;
+    color: #fff;
+    margin-top: 50px;
+}
 
-  .card {
-    max-width: 90%; 
-  }
+/* Media Query para responsividade em telas menores */
+@media (max-width: 768px) {
+    .cards-container {
+        flex-direction: column; /* Coloca os cards um abaixo do outro em telas pequenas */
+        align-items: center; /* Centraliza-os na coluna */
+    }
+    
+    .card {
+        flex-basis: 90%;
+        max-width: 90%;
+    }
 }
