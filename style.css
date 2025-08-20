@@ -153,3 +153,62 @@ footer {
     margin-top: 1rem;
   }
 }
+.hero {
+  height: 75vh;
+  background-image: url('img/cover-plain2.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.footer-home {
+  background-color: #0f3d2e;
+  color: white;
+  padding: 1rem 2rem 0;
+}
+
+.footer-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.footer-info p {
+  margin: 0.2rem 0;
+  font-size: 0.9rem;
+}
+
+.footer-map iframe {
+  border: 0;
+  width: 300px;
+  height: 120px;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 0.8rem 0;
+  background-color: #0f3d2e;
+  font-size: 0.85rem;
+  border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+@media (max-width: 768px) {
+  .footer-grid {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-map {
+    margin-top: 1rem;
+  }
+
+  .footer-bottom {
+    font-size: 0.8rem;
+  }
+}
+
