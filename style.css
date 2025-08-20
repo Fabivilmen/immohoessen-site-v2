@@ -112,3 +112,84 @@ nav a {
         max-width: 90%;
     }
 }
+/* ----- Estilos para a capa (index.html) ----- */
+.hero {
+  background-image: url("img/cover-plain2.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 75vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+}
+
+.hero-content h1,
+.hero-content p {
+  color: white;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero-content p {
+  font-size: 1.3rem;
+}
+
+/* ----- Rodapé da capa ----- */
+.footer-home {
+  background-color: #0f3d2e;
+  color: white;
+  padding: 2rem 1rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1100px;
+}
+
+.footer-info {
+  flex: 1;
+}
+
+.footer-map iframe {
+  border: none;
+  width: 100%;
+  max-width: 320px;
+  height: 140px;
+}
+
+.footer-info p {
+  margin: 0.3rem 0;
+  font-size: 0.95rem;
+}
+
+.footer-legal {
+  margin-top: 2rem;
+  border-top: 1px solid rgba(255,255,255,0.2);
+  padding-top: 1rem;
+  width: 100%;
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+/* ----- Estilos de outras páginas ----- */
+.footer-simple {
+  background-color: #0f3d2e;
+  color: white;
+  text-align: center;
+  padding: 1rem 0;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+}
+
