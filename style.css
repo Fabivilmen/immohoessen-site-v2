@@ -1,116 +1,108 @@
-/* ====== Reset e fontes ====== */
-body, html {
+/* Reset básico */
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
   font-family: Arial, sans-serif;
-  background-color: #ffffff;
+  height: 100%;
+  background-color: white;
   color: #1e4e3d;
 }
 
-/* ====== Cabeçalho ====== */
+/* Navegação */
 header {
+  height: 10vh;
   background-color: #0f3d2e;
-  padding: 1rem 0;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
 nav a {
   color: white;
   text-decoration: none;
   margin: 0 1rem;
   font-weight: bold;
-  font-size: 1rem;
 }
+
 nav a:hover {
   text-decoration: underline;
 }
 
-/* ====== Seção de Tipos ====== */
-.types-section {
-  padding: 3rem 1rem;
+/* Capa (Hero) */
+.hero {
+  height: 75vh;
+  background-image: url('img/cover-plain2.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-}
-.types-section h2 {
-  color: #0f3d2e;
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-}
-.types-section p {
-  font-size: 1.1rem;
-  color: #557a68;
-  margin-bottom: 2rem;
 }
 
-.types-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-.type-card {
-  background-color: #f5f9f7;
-  border-radius: 16px;
-  padding: 2rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  text-align: center;
-  transition: transform 0.3s ease;
-}
-.type-card:hover {
-  transform: translateY(-5px);
-}
-.type-card i {
-  font-size: 2.5rem;
-  color: #0f3d2e;
-  margin-bottom: 1rem;
-}
-.type-card h3 {
-  color: #1e4e3d;
-  font-size: 1.3rem;
-  margin-bottom: 0.8rem;
-}
-.type-card ul {
-  list-style: none;
-  padding: 0;
+.hero h1 {
+  font-size: 3rem;
   margin: 0;
-}
-.type-card li {
-  font-size: 0.95rem;
-  margin-bottom: 0.5rem;
-  color: #1e4e3d;
+  color: white;
 }
 
-/* ====== Rodapé ====== */
+.hero h2 {
+  font-size: 1.5rem;
+  margin: 1rem 0 0;
+  color: white;
+}
+
+/* Rodapé */
 footer {
+  height: 20vh;
   background-color: #0f3d2e;
   color: white;
-  padding: 1.5rem 2rem;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
   justify-content: space-between;
-  align-items: flex-start;
+  padding: 1rem 2rem;
 }
+
+.footer-info {
+  max-width: 60%;
+}
+
 .footer-info p {
   margin: 0.3rem 0;
   font-size: 0.9rem;
 }
+
 .footer-map iframe {
   border: 0;
 }
+
 .footer-legal {
-  margin-top: 1rem;
   width: 100%;
   text-align: center;
-  font-size: 0.85rem;
-  color: #ccc;
+  padding-top: 0.5rem;
+  font-size: 0.8rem;
+  color: #cccccc;
 }
 
-/* ====== Responsivo ====== */
+/* Mobile */
 @media (max-width: 768px) {
-  .footer-map {
-    display: none;
-  }
   footer {
     flex-direction: column;
-    align-items: center;
+    height: auto;
+    text-align: center;
+  }
+
+  .footer-info, .footer-map {
+    max-width: 100%;
+  }
+
+  .footer-map iframe {
+    margin-top: 1rem;
   }
 }
