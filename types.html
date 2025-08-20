@@ -22,3 +22,104 @@
       text-decoration: none;
       margin: 0 1rem;
       font-weight: bold;
+    }
+    main {
+      padding: 2rem;
+    }
+    h1 {
+      text-align: center;
+      color: #0f3d2e;
+    }
+    .intro {
+      max-width: 800px;
+      margin: 1rem auto 3rem;
+      text-align: center;
+      font-size: 1.1rem;
+    }
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+    }
+    .card {
+      background-color: #f5f9f7;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      width: 250px;
+      text-align: center;
+      padding: 1.5rem;
+    }
+    .card svg {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 1rem;
+      fill: #0f3d2e;
+    }
+    .card h3 {
+      margin: 0.5rem 0;
+      color: #1e4e3d;
+    }
+    .card p {
+      font-size: 0.95rem;
+      color: #557a68;
+    }
+    footer {
+      background-color: #0f3d2e;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="types.html">Types de gestion</a>
+      <a href="gestion.html">Gestion</a>
+      <a href="contacts.html">Contact</a>
+      <a href="portail.html">Portail</a>
+      <a href="apropos.html">À propos</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Types de gestion</h1>
+    <p class="intro">
+      Nous proposons une gamme complète de services pour une gestion rigoureuse, humaine et transparente de votre copropriété.
+    </p>
+
+    <div class="cards">
+      <div class="card">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 4h18v2H3V4zm0 6h18v2H3v-2zm0 6h12v2H3v-2z"/></svg>
+        <h3>Gestion administrative</h3>
+        <p>Suivi des AG, communication avec les copropriétaires, archivage et convocations.</p>
+      </div>
+
+      <div class="card">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13h-6v-2h6V7l5 5-5 5v-4zM3 4h12v2H3V4zm0 6h8v2H3v-2zm0 6h6v2H3v-2z"/></svg>
+        <h3>Gestion technique</h3>
+        <p>Entretien, suivi des travaux, audits techniques et interventions urgentes.</p>
+      </div>
+
+      <div class="card">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm-1 15H9v-2h2zm1.07-7.75l-.9.92A1.49 1.49 0 0 0 11 12h2v.5h-2a2 2 0 1 1 2-2v.28z"/></svg>
+        <h3>Gestion financière</h3>
+        <p>Budgets, appels de fonds, comptabilité, paiement des prestataires et bilans annuels.</p>
+      </div>
+
+      <div class="card">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
+        <h3>Gestion des sinistres</h3>
+        <p>Déclaration, suivi des dossiers, interface avec les assurances et prestataires.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Immo Hoessen · <a href="mentions.html" style="color: white; text-decoration: underline;">Mentions légales</a></p>
+  </footer>
+</body>
+</html>
