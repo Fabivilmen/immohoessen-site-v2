@@ -1,197 +1,79 @@
-/* Reset básico */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Types de gestion - Syndic Laurent Hoessen</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="types.html">Types de gestion</a>
+      <a href="gestion.html">Gestion</a>
+      <a href="contacts.html">Contact</a>
+      <a href="portail.html">Portail</a>
+      <a href="apropos.html">À propos</a>
+    </nav>
+  </header>
 
-/* Tipografia padrão */
-body {
-  font-family: Arial, sans-serif;
-  color: #1e4e3d;
-  background-color: #fff;
-  line-height: 1.6;
-}
+  <section class="types-section">
+    <h1>Types de gestion</h1>
+    <p class="intro">Découvrez les principales catégories de gestion que nous proposons pour assurer un service complet, professionnel et sur mesure.</p>
 
-/* Navegação */
-nav {
-  background-color: #0f3d2e;
-  padding: 1rem;
-  text-align: center;
-}
+    <div class="cards-container">
+      <!-- Carte 1 -->
+      <div class="card">
+        <img src="img/icons/admin.svg" alt="Gestion administrative">
+        <h3>Gestion administrative</h3>
+        <ul>
+          <li>Convocations et PV</li>
+          <li>Assemblées générales</li>
+          <li>Communication copropriétaires</li>
+        </ul>
+      </div>
 
-nav a {
-  color: white;
-  margin: 0 15px;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 1rem;
-}
+      <!-- Carte 2 -->
+      <div class="card">
+        <img src="img/icons/tech.svg" alt="Gestion technique">
+        <h3>Gestion technique</h3>
+        <ul>
+          <li>Suivi des travaux</li>
+          <li>Contrôle des installations</li>
+          <li>Sécurité des bâtiments</li>
+          <li>Entretien des communs</li>
+        </ul>
+      </div>
 
-nav a:hover {
-  text-decoration: underline;
-}
+      <!-- Carte 3 -->
+      <div class="card">
+        <img src="img/icons/finance.svg" alt="Gestion financière">
+        <h3>Gestion financière</h3>
+        <ul>
+          <li>Budgets et appels de fonds</li>
+          <li>Comptabilité et bilans</li>
+          <li>Paiement des prestataires</li>
+          <li>Gestion des comptes</li>
+        </ul>
+      </div>
 
-/* HERO - Capa */
-.hero {
-  background-image: url("img/cover-plain2.jpg");
-  background-size: cover;
-  background-position: center;
-  height: 75vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
+      <!-- Carte 4 -->
+      <div class="card">
+        <img src="img/icons/sinistre.svg" alt="Gestion des sinistres">
+        <h3>Gestion des sinistres</h3>
+        <ul>
+          <li>Déclaration de sinistres</li>
+          <li>Suivi des dossiers</li>
+          <li>Interface assurance</li>
+          <li>Coordination des réparations</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-.hero-content {
-  color: white;
-}
-
-.hero-content h1 {
-  font-size: 3rem;
-  margin-bottom: 0.5rem;
-  color: white;
-}
-
-.hero-content p {
-  font-size: 1.3rem;
-  color: white;
-}
-
-/* Seções */
-section {
-  padding: 2rem;
-}
-
-h1, h2, h3 {
-  color: #0f3d2e;
-}
-
-/* Tipos de gestion */
-.types-section {
-  max-width: 1100px;
-  margin: auto;
-  padding: 2rem;
-}
-
-.types-section h1 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
-.types-section p.intro {
-  font-size: 1.1rem;
-  margin-bottom: 2rem;
-  color: #1e4e3d;
-}
-
-.cards-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: center;
-}
-
-.card {
-  background-color: #f5f5f5;
-  border-radius: 12px;
-  padding: 1.5rem;
-  width: 250px;
-  text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.card i {
-  margin-bottom: 1rem;
-  color: #1e4e3d;
-}
-
-.card h3 {
-  margin-bottom: 1rem;
-}
-
-.card ul {
-  list-style-type: disc;
-  text-align: left;
-  padding-left: 1.2rem;
-}
-
-/* Rodapé */
-.footer-home {
-  background-color: #0f3d2e;
-  color: white;
-  padding: 2rem 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.footer-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  width: 100%;
-  max-width: 1100px;
-}
-
-.footer-info {
-  flex: 1;
-  min-width: 250px;
-}
-
-.footer-info p {
-  margin: 0.3rem 0;
-  font-size: 0.95rem;
-}
-
-.footer-map {
-  flex: 1;
-  min-width: 300px;
-  display: flex;
-  justify-content: center;
-  padding-top: 1rem;
-}
-
-.footer-map iframe {
-  border: none;
-  width: 100%;
-  max-width: 320px;
-  height: 140px;
-}
-
-.footer-legal {
-  width: 100%;
-  text-align: center;
-  margin-top: 2rem;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  font-size: 0.85rem;
-}
-
-/* Responsivo */
-@media(max-width: 768px) {
-  .footer-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .footer-map {
-    padding-top: 1rem;
-  }
-
-  nav a {
-    display: inline-block;
-    margin: 10px;
-    font-size: 0.95rem;
-  }
-
-  .hero-content h1 {
-    font-size: 2.2rem;
-  }
-
-  .hero-content p {
-    font-size: 1.1rem;
-  }
-}
+  <footer>
+    © 2025 Immo Hoessen · Mentions légales
+  </footer>
+</body>
+</html>
