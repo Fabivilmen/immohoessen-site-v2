@@ -46,13 +46,15 @@ nav a {
 }
 
 footer {
-  height: 15vh;
+  height: 20vh; /* <-- aumente de 15vh para 20vh */
   background-color: #0f3d2e;
   color: white;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   padding: 1rem 2rem;
+}
+
 }
 
 .footer-info p {
