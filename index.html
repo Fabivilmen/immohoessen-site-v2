@@ -5,6 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Laurent Hoessen – Gestion immobilière · Syndic BILH – DUHO</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Capa com mais céu + jardim */
+    .hero--distance{ min-height:75dvh; }
+    .hero--distance .cover{ object-position:center 35%; }
+
+    /* Rodapé especial da home: info à esquerda + mapa à direita; mentions abaixo */
+    .footer-inner.footer-home{ align-items:stretch; gap:1.25rem; }
+    .footer-col{ flex:1 1 0; }
+    .footer-info p{ margin:.25rem 0; }
+    .footer-map iframe{
+      width:100%; height:240px; border:0; border-radius:14px;
+      box-shadow:0 2px 14px rgba(0,0,0,.07);
+    }
+    .footer-legal{
+      border-top:1px solid rgba(0,0,0,.06);
+      max-width:1100px; margin:0 auto; padding:.75rem 1rem;
+      display:flex; justify-content:flex-end;
+    }
+    @media (max-width:900px){
+      .footer-inner.footer-home{ flex-direction:column; }
+      .footer-map iframe{ height:260px; }
+    }
+  </style>
 </head>
 <body class="site">
   <header class="header">
@@ -15,7 +38,8 @@
       </div>
       <nav class="nav">
         <a class="active" href="index.html">Accueil</a>
-        <a href="gestion.html">Types de gestion</a>
+        <a href="types.html">Types de gestion</a>
+        <a href="gestion.html">Gestion</a>
         <a href="portail.html">Portail</a>
         <a href="contacts.html">Contacts</a>
         <a href="apropos.html">À propos</a>
@@ -24,7 +48,7 @@
     </div>
   </header>
 
-  <!-- CAPA: mantida, só com enquadramento para ver céu + jardim -->
+  <!-- CAPA: mantida, com enquadramento para ver céu + jardim -->
   <main>
     <section class="hero hero--distance">
       <img class="cover" src="img/cover-plain2.jpg" alt="Laurent Hoessen">
@@ -46,7 +70,6 @@
         <p><strong>Email&nbsp;:</strong> <a href="mailto:syndic@immohoessen.be">syndic@immohoessen.be</a></p>
         <p><strong>Nº d’entreprise&nbsp;:</strong> BE0462920325</p>
       </div>
-
       <div class="footer-col footer-map">
         <iframe
           title="Immo Hoessen – Carte"
@@ -55,7 +78,6 @@
         </iframe>
       </div>
     </div>
-
     <div class="footer-legal">
       <a href="mentions.html">Mentions légales</a>
     </div>
