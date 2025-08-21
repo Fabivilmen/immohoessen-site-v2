@@ -5,8 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Portail copropriétaires – Immo Hoessen</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Marca d’água forte ocupando TODA a página */
+    body.portail-page{ position:relative; }
+    body.portail-page::before{
+      content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
+      background:url("img/portail-office.png") center/cover no-repeat;
+      opacity:.6; /* mais forte */
+      filter:grayscale(15%) contrast(1.05) brightness(.98);
+    }
+
+    /* Tornar a seção transparente (sem sobreposições anteriores do CSS global) */
+    .portail-hero{ min-height:60vh; display:grid; place-items:center; padding:2rem 1rem; }
+    .portail-hero::before, .portail-hero::after{ content:none !important; }
+
+    .portail-box{ text-align:center; max-width:800px; margin-inline:auto; }
+    .portail-box h1{ margin-bottom:.5rem; }
+    .portail-box p{ font-size:1.05rem; }
+
+    /* Rodapé minimal desta página */
+    .footer-min{
+      max-width:1100px; margin:0 auto; padding:1rem;
+      display:flex; justify-content:flex-end; color:var(--muted);
+      border-top:1px solid rgba(0,0,0,.06);
+    }
+
+    /* Ajuste responsivo opcional */
+    @media (max-width:700px){
+      .portail-hero{ min-height:55vh; }
+    }
+  </style>
 </head>
-<body class="site">
+<body class="site portail-page">
   <header class="header">
     <div class="header-inner">
       <div class="brand">
@@ -15,8 +45,9 @@
       </div>
       <nav class="nav">
         <a href="index.html">Accueil</a>
-        <a href="gestion.html">Types de gestion</a>
+        <a href="types.html">Types de gestion</a>
         <a class="active" href="portail.html">Portail</a>
+        <a href="gestion.html">Gestion</a>
         <a href="contacts.html">Contacts</a>
         <a href="apropos.html">À propos</a>
         <a href="offre.html">Offre</a>
@@ -40,10 +71,10 @@
     </section>
   </main>
 
+  <!-- Rodapé minimal -->
   <footer>
-    <div class="footer-inner">
-      <div>Avenue Heydenberg 14, 1200 Bruxelles · Tél. <a href="tel:+3227725175">02 772 51 75</a> · BE0462920325</div>
-      <div>Heures: 09:00–13:00 · <a href="mentions.html">Mentions légales</a></div>
+    <div class="footer-min">
+      © 2025 Immo Hoessen · <a href="mentions.html">Mentions légales</a>
     </div>
   </footer>
 </body>
