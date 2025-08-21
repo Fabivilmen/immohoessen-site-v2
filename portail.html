@@ -7,23 +7,29 @@
   <title>Portail copropriétaires – Immo Hoessen</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    /* Marca d’água ocupando TODA a página + véu mais escuro para contraste */
+    /* Fundo em marca d’água cobrindo TODA a página (sem duplicar) */
     body.portail-page{ position:relative; }
     body.portail-page::before{
       content:""; position:fixed; inset:0; z-index:-2; pointer-events:none;
       background:url("img/portail-office.png") center/cover no-repeat;
       opacity:.6; filter:grayscale(10%) contrast(1.05) brightness(.98);
     }
+    /* véu escuro discreto para leitura (NÃO é barra) */
     body.portail-page::after{
       content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
-      background:linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.55));
+      background:rgba(0,0,0,.55);
     }
 
-    .portail-hero{ min-height:60vh; display:grid; place-items:center; padding:2rem 1rem; }
+    /* Cancela os overlays da section vindos do style.css (evita duplicação e “barra”) */
+    .portail-hero::before, .portail-hero::after{ content:none !important; }
+
+    /* Seção central */
+    .portail-hero{ min-height:60vh; display:grid; place-items:center; padding:2.5rem 1rem; }
     .portail-box{ text-align:center; max-width:800px; margin-inline:auto; color:#fff; }
     .portail-box h1{ margin-bottom:.5rem; color:#fff; text-shadow:0 2px 8px rgba(0,0,0,.35); }
     .portail-box p{ font-size:1.05rem; text-shadow:0 2px 8px rgba(0,0,0,.35); }
 
+    /* Rodapé minimal */
     .footer-min{
       max-width:1100px; margin:0 auto; padding:1rem;
       display:flex; justify-content:flex-end; color:var(--muted);
