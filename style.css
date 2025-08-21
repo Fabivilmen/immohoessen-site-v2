@@ -237,3 +237,79 @@ nav a:hover {
     text-align: center;
   }
 }
+/* ====== CONTACTS ====== */
+.contacts-section {
+  padding: 2.5rem 1rem;
+  background: #0f3d2e;            /* verde de fundo, como no print */
+}
+
+.contacts-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.contact-card {
+  background: rgba(255,255,255,0.06);
+  border-radius: 14px;
+  padding: 1.25rem 1.25rem 1rem;
+  color: #e9f2ee;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+  backdrop-filter: blur(2px);
+}
+
+.contact-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: .35rem;
+  color: #ffffff;
+}
+
+.contact-card p {
+  font-size: .95rem;
+  color: #cfe3dc;
+  margin-bottom: .5rem;
+}
+
+.contact-card a {
+  color: #cfe3dc;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.contact-card a:hover {
+  text-decoration: underline;
+}
+
+/* card largo (Factures) ocupa a largura de 2 colunas em telas grandes */
+.contact-card-wide {
+  grid-column: span 1;
+}
+@media (min-width: 992px) {
+  .contact-card-wide {
+    grid-column: span 1; /* mantenho 1 p/ seguir seu print; troque para 2 se quiser mais largo */
+  }
+}
+
+/* link do rodapé */
+.footer-legal .legal-link {
+  color: #ffffff;
+  text-decoration: none;
+}
+.footer-legal .legal-link:hover {
+  text-decoration: underline;
+}
+
+/* responsivo */
+@media (max-width: 992px) {
+  .contacts-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 600px) {
+  .contacts-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
