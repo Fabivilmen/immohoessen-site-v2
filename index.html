@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -6,26 +7,40 @@
   <title>Laurent Hoessen – Gestion immobilière · Syndic BILH – DUHO</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    /* Capa com mais céu + jardim */
-    .hero--distance{ min-height:50dvh; }
-    .hero--distance .cover{ object-position:center 45%; }
+    /* CAPA: mais alta para mostrar céu + chão; imagem mais viva */
+    .hero--distance{ min-height:80dvh; } /* mais altura = mais área visível da foto */
+    .hero--distance .cover{
+      object-position:center 40%;             /* ajusta o enquadramento (céu + jardim) */
+      filter:saturate(1.15) contrast(1.06) brightness(1.02); /* imagem viva */
+    }
+    /* overlay mais leve para não “apagar” a foto */
+    .hero--distance .overlay{
+      background:linear-gradient(to bottom, rgba(0,0,0,.10), rgba(0,0,0,.22));
+    }
+    /* legibilidade do título sobre a foto */
+    .hero--distance .hero-content h1,
+    .hero--distance .hero-content p{
+      text-shadow:0 2px 8px rgba(0,0,0,.35);
+    }
 
-    /* Rodapé especial da home: info à esquerda + mapa à direita; mentions abaixo */
-    .footer-inner.footer-home{ align-items:stretch; gap:1.25rem; }
+    /* RODAPÉ menor (menos padding e mapa mais baixo) */
+    .footer-inner.footer-home{ align-items:stretch; gap:1rem; padding:.6rem 1rem; }
     .footer-col{ flex:1 1 0; }
-    .footer-info p{ margin:.25rem 0; }
+    .footer-info p{ margin:.2rem 0; }
     .footer-map iframe{
-      width:100%; height:240px; border:0; border-radius:14px;
-      box-shadow:0 2px 14px rgba(0,0,0,.07);
+      width:100%; height:160px; border:0; border-radius:14px;
+      box-shadow:0 2px 10px rgba(0,0,0,.06);
     }
     .footer-legal{
       border-top:1px solid rgba(0,0,0,.06);
-      max-width:1100px; margin:0 auto; padding:.75rem 1rem;
+      max-width:1100px; margin:0 auto; padding:.6rem 1rem;
       display:flex; justify-content:flex-end;
     }
     @media (max-width:900px){
+      .hero--distance{ min-height:72dvh; }
+      .hero--distance .cover{ object-position:center 45%; } /* no mobile, mostra um pouco mais do jardim */
       .footer-inner.footer-home{ flex-direction:column; }
-      .footer-map iframe{ height:260px; }
+      .footer-map iframe{ height:200px; }
     }
   </style>
 </head>
@@ -48,7 +63,7 @@
     </div>
   </header>
 
-  <!-- CAPA: mantida, com enquadramento para ver céu + jardim -->
+  <!-- CAPA -->
   <main>
     <section class="hero hero--distance">
       <img class="cover" src="img/cover-plain2.jpg" alt="Laurent Hoessen">
