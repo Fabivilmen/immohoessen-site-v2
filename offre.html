@@ -3,8 +3,54 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Offre – Immo Hoessen</title>
+  <title>Demande d’offre – Immo Hoessen</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Hero / título central */
+    .offre-hero{
+      padding:1.4rem 0 .8rem 0;
+      border-bottom:1px solid rgba(0,0,0,.06);
+      background:linear-gradient(180deg, rgba(15,61,46,.06), rgba(15,61,46,0));
+      text-align:center;
+    }
+    .offre-hero p{max-width:900px;margin:.5rem auto 0 auto}
+
+    /* Formulário mais largo e com presença visual */
+    .container--wide{max-width:1200px}
+    .offre-form{
+      background:#fff; border:1px solid rgba(0,0,0,.08);
+      border-radius:18px; box-shadow:0 2px 16px rgba(0,0,0,.07);
+      padding:1.25rem;
+    }
+    .form-grid{
+      display:grid; gap:1rem;
+      grid-template-columns:repeat(12,1fr);
+    }
+    .form-field{grid-column:span 6}
+    .form-field.form-span{grid-column:1 / -1}
+    .form-field label{font-weight:600;color:var(--green-900)}
+    .form-field input,.form-field select,.form-field textarea{
+      border:1px solid rgba(0,0,0,.12);border-radius:12px;
+      padding:.75rem .95rem;font-size:1rem;background:#fff;
+    }
+    .form-field small.err{color:#b42318;display:none;font-size:.85rem}
+    .form-field.invalid input,.form-field.invalid select,.form-field.invalid textarea{border-color:#b42318;background:#fff6f6}
+    .form-field.invalid small.err{display:block}
+    .req{color:var(--blue-600);font-weight:700}
+    .form-note{color:var(--muted);font-size:.95rem}
+
+    /* Responsivo */
+    @media (max-width:900px){
+      .form-field{grid-column:1 / -1}
+    }
+
+    /* Rodapé minimal desta página */
+    .footer-min{
+      max-width:1100px;margin:0 auto;padding:1rem;
+      display:flex;justify-content:flex-end;color:var(--muted);
+      border-top:1px solid rgba(0,0,0,.06);
+    }
+  </style>
 </head>
 <body class="site">
   <header class="header">
@@ -15,7 +61,8 @@
       </div>
       <nav class="nav">
         <a href="index.html">Accueil</a>
-        <a href="gestion.html">Types de gestion</a>
+        <a href="types.html">Types de gestion</a>
+        <a href="gestion.html">Gestion</a>
         <a href="portail.html">Portail</a>
         <a href="contacts.html">Contacts</a>
         <a href="apropos.html">À propos</a>
@@ -24,81 +71,87 @@
     </div>
   </header>
 
-  <main class="container pb-6">
-    <h1>Offre</h1>
-    <p class="mt-1">Preencha o formulário abaixo para solicitar uma proposta.</p>
-
-    <form id="offreForm" class="form card mt-3" novalidate>
-      <div class="form-grid">
-        <div class="form-field">
-          <label for="nome">Nome <span class="req">*</span></label>
-          <input type="text" id="nome" name="Nome" required>
-          <small class="err">Campo obrigatório</small>
-        </div>
-
-        <div class="form-field">
-          <label for="email">Email <span class="req">*</span></label>
-          <input type="email" id="email" name="Email" required>
-          <small class="err">Informe um e-mail válido</small>
-        </div>
-
-        <div class="form-field">
-          <label for="telefone">Telefone</label>
-          <input type="tel" id="telefone" name="Telefone" placeholder="+32 ...">
-        </div>
-
-        <div class="form-field">
-          <label for="endereco">Endereço da copropriedade <span class="req">*</span></label>
-          <input type="text" id="endereco" name="Endereço da copropriedade" required>
-          <small class="err">Campo obrigatório</small>
-        </div>
-
-        <div class="form-field">
-          <label for="andares">Número de andares <span class="req">*</span></label>
-          <input type="number" id="andares" name="Número de andares" min="1" step="1" required>
-          <small class="err">Informe um número válido</small>
-        </div>
-
-        <div class="form-field">
-          <label for="garagem">Garagem / emplacement</label>
-          <select id="garagem" name="Garagem/Emplacement">
-            <option value="">Selecionar…</option>
-            <option>Sim</option>
-            <option>Não</option>
-          </select>
-        </div>
-
-        <div class="form-field">
-          <label for="temSyndic">Você já tem um syndic?</label>
-          <select id="temSyndic" name="Já possui syndic?">
-            <option value="">Selecionar…</option>
-            <option>Sim</option>
-            <option>Não</option>
-            <option>Não sei</option>
-          </select>
-        </div>
-
-        <div class="form-field form-span">
-          <label for="mensagem">Mensagem (opcional)</label>
-          <textarea id="mensagem" name="Mensagem" rows="5" placeholder="Escreva sua mensagem..."></textarea>
-        </div>
+  <main>
+    <section class="offre-hero">
+      <div class="container">
+        <h1>Demande d’offre</h1>
+        <p>Remplissez le formulaire ci-dessous pour recevoir une proposition. Nous reviendrons vers vous rapidement.</p>
       </div>
+    </section>
 
-      <div class="mt-3">
-        <button type="submit" class="btn">Enviar</button>
-        <p class="form-note mt-1">Os campos marcados com <span class="req">*</span> são obrigatórios.</p>
-      </div>
+    <section class="container container--wide pb-6">
+      <form id="offreForm" class="offre-form mt-3" novalidate>
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="nom">Nom <span class="req">*</span></label>
+            <input type="text" id="nom" name="Nom" required>
+            <small class="err">Champ obligatoire</small>
+          </div>
 
-      <div id="formSuccess" class="form-success" role="status" aria-live="polite" hidden>
-        Merci pour seu interesse — entraremos em contato o mais breve possível.
-      </div>
-    </form>
+          <div class="form-field">
+            <label for="email">Email <span class="req">*</span></label>
+            <input type="email" id="email" name="Email" required>
+            <small class="err">Indiquez une adresse e-mail valide</small>
+          </div>
+
+          <div class="form-field">
+            <label for="telephone">Téléphone</label>
+            <input type="tel" id="telephone" name="Téléphone" placeholder="+32 ...">
+          </div>
+
+          <div class="form-field">
+            <label for="adresse">Adresse de la copropriété <span class="req">*</span></label>
+            <input type="text" id="adresse" name="Adresse de la copropriété" required>
+            <small class="err">Champ obligatoire</small>
+          </div>
+
+          <div class="form-field">
+            <label for="etages">Nombre d’étages <span class="req">*</span></label>
+            <input type="number" id="etages" name="Nombre d’étages" min="1" step="1" required>
+            <small class="err">Indiquez un nombre valide</small>
+          </div>
+
+          <div class="form-field">
+            <label for="garage">Garage / emplacement</label>
+            <select id="garage" name="Garage / emplacement">
+              <option value="">Sélectionner…</option>
+              <option>Oui</option>
+              <option>Non</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label for="syndic">Avez-vous déjà un syndic&nbsp;?</label>
+            <select id="syndic" name="Avez-vous déjà un syndic ?">
+              <option value="">Sélectionner…</option>
+              <option>Oui</option>
+              <option>Non</option>
+              <option>Je ne sais pas</option>
+            </select>
+          </div>
+
+          <div class="form-field form-span">
+            <label for="message">Message (optionnel)</label>
+            <textarea id="message" name="Message" rows="5" placeholder="Votre message..."></textarea>
+          </div>
+        </div>
+
+        <div class="mt-3">
+          <button type="submit" class="btn">Envoyer</button>
+          <p class="form-note mt-1">Les champs marqués d’un <span class="req">*</span> sont obligatoires.</p>
+        </div>
+
+        <div id="formSuccess" class="form-success" role="status" aria-live="polite" hidden>
+          Merci pour votre intérêt — nous vous contacterons dans les plus brefs délais.
+        </div>
+      </form>
+    </section>
   </main>
 
+  <!-- Rodapé minimal -->
   <footer>
-    <div class="footer-inner">
-      <div>Avenue Heydenberg 14, 1200 Bruxelles · Tél. <a href="tel:+3227725175">02 772 51 75</a> · BE0462920325</div>
-      <div>Heures: 09:00–13:00 · <a href="mentions.html">Mentions légales</a></div>
+    <div class="footer-min">
+      © 2025 Immo Hoessen · <a href="mentions.html">Mentions légales</a>
     </div>
   </footer>
 
@@ -108,7 +161,7 @@
       const success = document.getElementById('formSuccess');
 
       function encodeBody(data) {
-        return Object.entries(data).map(([k,v]) => `${k}: ${v}`).join('\n');
+        return Object.entries(data).map(([k,v]) => `${k}: ${v}`).join('\\n');
       }
 
       form.addEventListener('submit', function (e) {
@@ -119,21 +172,24 @@
         form.querySelectorAll('[required]').forEach(el => {
           const wrap = el.closest('.form-field');
           const isEmail = el.type === 'email';
-          const ok = el.value.trim() && (!isEmail || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value));
+          const ok = el.value.trim() && (!isEmail || /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(el.value));
           if (!ok) { valid = false; wrap.classList.add('invalid'); }
           else { wrap.classList.remove('invalid'); }
         });
-        if (!valid) { form.querySelector('.invalid input, .invalid textarea')?.focus(); return; }
+        if (!valid) {
+          form.querySelector('.invalid input, .invalid textarea')?.focus();
+          return;
+        }
 
         const data = {
-          'Nome': form.nome.value.trim(),
+          'Nom': form.nom.value.trim(),
           'Email': form.email.value.trim(),
-          'Telefone': form.telefone.value.trim(),
-          'Endereço da copropriedade': form.endereco.value.trim(),
-          'Número de andares': form.andares.value.trim(),
-          'Garagem/Emplacement': form.garagem.value || '—',
-          'Já possui syndic?': form.temSyndic.value || '—',
-          'Mensagem': form.mensagem.value.trim() || '—'
+          'Téléphone': form.telephone.value.trim(),
+          'Adresse de la copropriété': form.adresse.value.trim(),
+          'Nombre d’étages': form.etages.value.trim(),
+          'Garage / emplacement': form.garage.value || '—',
+          'Avez-vous déjà un syndic ?': form.syndic.value || '—',
+          'Message': form.message.value.trim() || '—'
         };
 
         const subject = encodeURIComponent("Demande d'offre via site");
