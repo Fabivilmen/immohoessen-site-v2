@@ -184,3 +184,50 @@ footer{
 .mt-1{margin-top:.25rem}.mt-2{margin-top:.5rem}.mt-3{margin-top:1rem}
 .pb-6{padding-bottom:3rem}
 .center{text-align:center}
+/* ===== Formulários (Offre) ===== */
+.form{padding:1.25rem}
+.form-grid{
+  display:grid; gap:1rem;
+  grid-template-columns: repeat(12, 1fr);
+}
+.form-field{display:flex; flex-direction:column; gap:.4rem}
+.form-field label{font-weight:600; color:var(--green-900)}
+.form-field input,
+.form-field select,
+.form-field textarea{
+  border:1px solid rgba(0,0,0,.12);
+  border-radius:12px;
+  padding:.7rem .9rem; font-size:1rem;
+  background:#fff;
+}
+.form-field small.err{
+  color:#b42318; display:none; font-size:.85rem;
+}
+.form-field.invalid input,
+.form-field.invalid select,
+.form-field.invalid textarea{
+  border-color:#b42318; background:#fff6f6;
+}
+.form-field.invalid small.err{display:block}
+
+.req{color:var(--blue-600); font-weight:700}
+
+/* grid responsive */
+.form-field{grid-column: span 6}
+.form-field.form-span{grid-column: 1 / -1}
+@media (max-width: 720px){
+  .form-field{grid-column: 1 / -1}
+}
+
+.form-note{color:var(--muted); font-size:.95rem}
+
+.form-success{
+  margin-top:1rem;
+  padding:.8rem 1rem;
+  border-radius:12px;
+  background:linear-gradient(0deg, rgba(0, 170, 60, .08), rgba(0, 170, 60, .08));
+  border:1px solid rgba(0,170,60,.25);
+  color:#115e35;
+  box-shadow:var(--shadow);
+}
+
