@@ -1,65 +1,94 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Gestion - Syndic Laurent Hoessen</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="https://kit.fontawesome.com/09a5c89b1e.js" crossorigin="anonymous"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Types de gestion – Immo Hoessen</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <nav>
-    <a href="index.html">Accueil</a>
-    <a href="types.html">Types de gestion</a>
-    <a href="gestion.html">Gestion</a>
-    <a href="contacts.html">Contact</a>
-    <a href="portail.html">Portail</a>
-    <a href="apropos.html">À propos</a>
-  </nav>
-
-  <!-- Adicione a classe 'gestion-watermark' abaixo se quiser a imagem como marca d’água -->
-  <section class="gestion-section">
-    <h1>Nos services de gestion</h1>
-    <p class="intro">Notre équipe assure une gestion complète, rigoureuse et personnalisée de votre copropriété.</p>
-
-    <div class="gestion-wrap">
-      <!-- Esquerda: 4 cards (2x2) -->
-      <div class="gestion-cards">
-        <article class="gestion-card">
-          <i class="fas fa-users-cog"></i>
-          <h3>Suivi quotidien</h3>
-          <p>Réponses aux demandes des copropriétaires, gestion des prestataires et suivi réactif des incidents.</p>
-        </article>
-
-        <article class="gestion-card">
-          <i class="fas fa-balance-scale"></i>
-          <h3>Conformité légale</h3>
-          <p>Mise à jour des documents obligatoires, respect des lois et représentation lors des assemblées.</p>
-        </article>
-
-        <article class="gestion-card">
-          <i class="fas fa-chart-line"></i>
-          <h3>Optimisation</h3>
-          <p>Analyse des charges, conseils pour réduire les coûts et valoriser l’immeuble dans le temps.</p>
-        </article>
-
-        <article class="gestion-card">
-          <i class="fas fa-handshake"></i>
-          <h3>Transparence</h3>
-          <p>Accès à un portail en ligne, rapports réguliers, et communication fluide avec les copropriétaires.</p>
-        </article>
+<body class="site">
+  <header class="header">
+    <div class="header-inner">
+      <div class="brand">
+        <img src="img/logo.svg" alt="Immo Hoessen">
+        <span class="brand-name">Immo Hoessen</span>
       </div>
-
-      <!-- Direita: Imagem -->
-      <div class="gestion-image">
-        <img src="img/imggestion.jpg" alt="Équipe de gestion professionnelle">
-      </div>
+      <nav class="nav">
+        <a href="index.html">Accueil</a>
+        <a class="active" href="gestion.html">Types de gestion</a>
+        <a href="portail.html">Portail</a>
+        <a href="contacts.html">Contacts</a>
+        <a href="apropos.html">À propos</a>
+        <a href="offre.html">Offre</a>
+      </nav>
     </div>
-  </section>
+  </header>
 
-  <footer class="footer-home">
-    <div class="footer-legal">
-      © 2025 Immo Hoessen · Mentions légales
+  <main class="container pb-6">
+    <h1>Types de gestion</h1>
+    <div class="types-wrap mt-3">
+      <!-- Cards -->
+      <div class="types-cards">
+        <!-- Syndic -->
+        <article class="type-card">
+          <div class="type-icon" aria-hidden="true">
+            <!-- building -->
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-width="1.7" d="M3 21h18M6 21V4h9v17M9 8h3m-3 4h3m3 9V8h3v13"/></svg>
+          </div>
+          <div>
+            <h3>Syndic</h3>
+            <p>Gestion complète de la copropriété : AG, budget, sinistres, travaux et conformité.</p>
+          </div>
+        </article>
+
+        <!-- Comptabilité -->
+        <article class="type-card">
+          <div class="type-icon" aria-hidden="true">
+            <!-- calculator -->
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><rect x="6" y="3" width="12" height="18" rx="2" stroke-width="1.7"/><path stroke-width="1.7" d="M9 7h6M9 11h2m2 0h2m-6 4h2m2 0h2m-6 4h2m2 0h2"/></svg>
+          </div>
+          <div>
+            <h3>Comptabilité</h3>
+            <p>Appels de fonds, encodage, balances et reporting transparent pour les copropriétaires.</p>
+          </div>
+        </article>
+
+        <!-- Travaux -->
+        <article class="type-card">
+          <div class="type-icon" aria-hidden="true">
+            <!-- tools -->
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-width="1.7" d="M14 7l-1 1 3 3 1-1a3 3 0 10-3-3z"/><path stroke-width="1.7" d="M2 22l7-7 3 3-7 7H2v-3z"/></svg>
+          </div>
+          <div>
+            <h3>Travaux</h3>
+            <p>Pilotage des chantiers, cahiers des charges, devis comparatifs et suivi des garanties.</p>
+          </div>
+        </article>
+
+        <!-- Urgences -->
+        <article class="type-card">
+          <div class="type-icon" aria-hidden="true">
+            <!-- alert -->
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-width="1.7" d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3l-8.47-14.14a2 2 0 00-3.42 0z"/><path stroke-width="1.7" d="M12 9v5m0 3h.01"/></svg>
+          </div>
+          <div>
+            <h3>Urgences</h3>
+            <p>Procédures d’intervention 24/7 et coordination avec les prestataires prioritaires.</p>
+          </div>
+        </article>
+      </div>
+
+      <!-- Ilustração (mesma coluna, levemente “puxada” para baixo) -->
+      <aside class="types-illustration">
+        <img src="img/gestion-side.jpg" alt="Gestion immobilière">
+      </aside>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>Avenue Heydenberg 14, 1200 Bruxelles · Tél. <a href="tel:+3227725175">02 772 51 75</a> · BE0462920325</div>
+      <div>Heures: 09:00–13:00 · <a href="mentions.html">Mentions légales</a></div>
     </div>
   </footer>
 </body>
