@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -12,7 +11,12 @@
       padding:1.5rem 0 .5rem 0;
       border-bottom:1px solid rgba(0,0,0,.06);
       background:linear-gradient(180deg, rgba(15,61,46,.06), rgba(15,61,46,0));
+      text-align:center; /* centraliza título e texto */
     }
+    .gest-hero .container p{
+      max-width:850px; margin:.5rem auto 0 auto; /* limita largura e centraliza */
+    }
+
     .gest-wrap{
       display:grid;
       grid-template-columns:1.1fr .9fr; /* cards + imagem */
@@ -51,6 +55,13 @@
       width:100%; height:100%; object-fit:cover;
     }
 
+    /* Rodapé minimal desta página */
+    .footer-min{
+      max-width:1100px; margin:0 auto; padding:1rem;
+      display:flex; justify-content:flex-end; color:var(--muted);
+      border-top:1px solid rgba(0,0,0,.06);
+    }
+
     /* Responsivo: empilha no tablet/celular */
     @media (max-width:1024px){
       .gest-wrap{ grid-template-columns:1fr; }
@@ -85,7 +96,7 @@
     <section class="gest-hero">
       <div class="container">
         <h1>Notre approche de gestion</h1>
-        <p class="mt-1" style="max-width:850px">
+        <p>
           Une méthode structurée, centrée sur la transparence, la maîtrise technique et la réactivité.
           Nous gérons le quotidien, planifions le long terme et communiquons clairement avec les copropriétaires.
         </p>
@@ -98,7 +109,7 @@
         <div class="gest-cards">
           <article class="gest-card">
             <h3>Suivi quotidien</h3>
-            <p>Tickets, emails et appels traités par priorités. Tableaux de bord, SLA interne et retour systématique aux copropriétaires.</p>
+            <p>Emails et appels traités par priorité. Tableaux de bord, SLA interne et retour systématique aux copropriétaires.</p>
           </article>
 
           <article class="gest-card">
@@ -125,11 +136,10 @@
     </section>
   </main>
 
-  <!-- Rodapé padrão do site -->
+  <!-- Rodapé minimal -->
   <footer>
-    <div class="footer-inner">
-      <div>Avenue Heydenberg 14, 1200 Bruxelles · Tél. <a href="tel:+3227725175">02 772 51 75</a> · BE0462920325</div>
-      <div>Heures: 09:00–13:00 · <a href="mentions.html">Mentions légales</a></div>
+    <div class="footer-min">
+      © 2025 Immo Hoessen · <a href="mentions.html">Mentions légales</a>
     </div>
   </footer>
 </body>
