@@ -1,49 +1,46 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Accueil - Syndic Laurent Hoessen</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Laurent Hoessen – Gestion immobilière · Syndic BILH – DUHO</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <!-- Menu -->
-  <nav>
-    <a href="index.html">Accueil</a>
-    <a href="types.html">Types de gestion</a>
-    <a href="gestion.html">Gestion</a>
-    <a href="contacts.html">Contact</a>
-    <a href="portail.html">Portail</a>
-    <a href="apropos.html">À propos</a>
-  </nav>
-
-  <!-- Capa -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Laurent Hoessen</h1>
-      <p>Gestion immobilière – Syndic BILH – DUHO</p>
-    </div>
-  </section>
-
-  <!-- Rodapé -->
-  <footer class="footer-home">
-    <div class="footer-container">
-      <div class="footer-info">
-        <p><strong>Adresse :</strong> Avenue Heydenberg 14, 1200 Bruxelles</p>
-        <p><strong>Email :</strong> syndic@immohoessen.be</p>
-        <p><strong>Téléphone :</strong> 02 772 51 75</p>
-        <p><strong>Numéro d'entreprise :</strong> BE0462920325</p>
+<body class="site">
+  <header class="header">
+    <div class="header-inner">
+      <div class="brand">
+        <img src="img/logo.svg" alt="Immo Hoessen">
+        <span class="brand-name">Immo Hoessen</span>
       </div>
-      <div class="footer-map">
-        <iframe
-          src="https://www.google.com/maps?q=Avenue+Heydenberg+14,+1200+Bruxelles&output=embed"
-          allowfullscreen
-          loading="lazy"
-        ></iframe>
-      </div>
+      <nav class="nav">
+        <a class="active" href="index.html">Accueil</a>
+        <a href="gestion.html">Types de gestion</a>
+        <a href="portail.html">Portail</a>
+        <a href="contacts.html">Contacts</a>
+        <a href="apropos.html">À propos</a>
+      </nav>
     </div>
-    <div class="footer-legal">
-      © 2025 Immo Hoessen · Mentions légales
+  </header>
+
+  <!-- CAPA INTACTA -->
+  <main>
+    <section class="hero">
+      <img class="cover" src="img/cover-plain2.jpg" alt="Laurent Hoessen">
+      <div class="overlay"></div>
+      <div class="hero-content">
+        <h1 style="color:#fff">Laurent Hoessen</h1>
+        <p style="color:#fff">Gestion immobilière · Syndic BILH – DUHO</p>
+      </div>
+    </section>
+
+    <!-- Se quiser manter a seção original abaixo, continue exatamente como estava -->
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>Avenue Heydenberg 14, 1200 Bruxelles · Tél. <a href="tel:+3227725175">02 772 51 75</a> · BE0462920325</div>
+      <div>Heures: 09:00–13:00 · <a href="mentions.html">Mentions légales</a></div>
     </div>
   </footer>
 </body>
