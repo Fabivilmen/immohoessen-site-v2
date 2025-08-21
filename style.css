@@ -302,7 +302,8 @@ nav a:hover {
 }
 
 /* responsivo */
-@media (max-width: 992px) {
+.contact-card-wide { grid-column: span 2; }
+
   .contacts-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
