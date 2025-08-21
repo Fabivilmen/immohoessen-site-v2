@@ -1,119 +1,38 @@
-/* Estilos globais (se você já tiver, mantenha-os e adicione apenas a parte dos cards) */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    line-height: 1.6;
-    color: #333;
-    background-color: #fff;
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+body {
+  font-family: Arial, sans-serif;
+  color: #1e4e3d;
+  background-color: #fff;
+  line-height: 1.6;
+}
+
+/* NAV */
 header {
-    background-color: #1e4e3d;
-    color: #fff;
-    padding: 15px 0;
-    text-align: center;
+  background-color: #1e4e3d;
+  padding: 1rem;
+  text-align: center;
 }
 
 nav a {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 15px;
-    font-weight: bold;
+  color: #fff;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
 }
 
-/* Estilos para a seção de tipos de gestão */
-.types-section {
-    padding: 50px 20px;
-    text-align: center;
+nav a:hover {
+  text-decoration: underline;
 }
 
-.intro {
-    font-size: 1.1rem;
-    color: #666;
-    max-width: 800px;
-    margin: 20px auto;
-}
-
-/* Container que organiza os cards - ESSA É A PARTE MAIS IMPORTANTE PARA O LAYOUT */
-.cards-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center; /* Centraliza os cards no container */
-    gap: 25px; /* Adiciona espaço entre os cards */
-    margin: 40px auto; /* Adiciona margem superior e centraliza o container */
-    max-width: 1200px; /* Limita a largura para que os cards se alinhem em duas colunas */
-}
-
-/* Estilo individual de cada card */
-.card {
-    background-color: #f7f7f7;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 30px;
-    flex: 1 1 45%; /* A base de 45% garante que dois cards caberão lado a lado */
-    max-width: 300px; /* Define uma largura máxima para evitar que fiquem muito grandes em telas largas */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-}
-
-/* Estilos para os ícones */
-.card i {
-    color: #1e4e3d;
-    margin-bottom: 15px;
-    font-size: 3rem;
-}
-
-/* Estilos para os títulos */
-.card h3 {
-    color: #1e4e3d;
-    margin-top: 0;
-    font-size: 1.5rem;
-}
-
-/* Estilos para a lista dentro dos cards */
-.card ul {
-    list-style: none;
-    padding: 0;
-    margin-top: 20px;
-}
-
-.card ul li {
-    margin-bottom: 10px;
-    font-size: 1rem;
-    color: #555;
-}
-
-/* Rodapé */
-.footer-simple {
-    text-align: center;
-    padding: 20px;
-    background-color: #1e4e3d;
-    color: #fff;
-    margin-top: 50px;
-}
-
-/* Media Query para responsividade em telas menores */
-@media (max-width: 768px) {
-    .cards-container {
-        flex-direction: column; /* Coloca os cards um abaixo do outro em telas pequenas */
-        align-items: center; /* Centraliza-os na coluna */
-    }
-    
-    .card {
-        flex-basis: 90%;
-        max-width: 90%;
-    }
-}
-/* ----- Estilos para a capa (index.html) ----- */
-..hero {
+/* CAPA - HERO */
+.hero {
   background-image: url("img/cover-plain2.jpg");
   background-size: cover;
   background-position: center;
@@ -122,75 +41,138 @@ nav a {
   justify-content: center;
   align-items: center;
   text-align: center;
-}
-
-.hero-content h1,
-.hero-content p {
   color: white;
 }
 
 .hero-content h1 {
   font-size: 3rem;
   margin-bottom: 0.5rem;
+  color: white;
 }
 
 .hero-content p {
   font-size: 1.3rem;
-}
-
-.footer-home {
-  background-color: #0f3d2e;
   color: white;
-  padding: 2rem 1rem;
 }
 
-.footer-container {
+/* TYPES SECTION */
+.types-section, .gestion-section {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.intro {
+  font-size: 1.1rem;
+  color: #666;
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+.cards-container, .gestion-grid {
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
-  align-items: flex-start;
-  max-width: 1100px;
-  margin: 0 auto;
+  justify-content: center;
+  gap: 25px;
+  margin: 40px auto;
+  max-width: 1200px;
 }
 
-.footer-info p {
-  margin: 0.3rem 0;
-  font-size: 0.95rem;
+.card, .gestion-card {
+  background-color: #f7f7f7;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  flex: 1 1 250px;
+  max-width: 300px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.footer-map iframe {
-  border: none;
-  width: 100%;
-  max-width: 320px;
-  height: 140px;
+.card:hover, .gestion-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.card i, .gestion-card i {
+  color: #1e4e3d;
+  margin-bottom: 15px;
+  font-size: 3rem;
+}
+
+.card h3, .gestion-card h3 {
+  margin-top: 10px;
+  color: #1e4e3d;
+  font-size: 1.5rem;
+}
+
+.card ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.card ul li {
+  margin-bottom: 10px;
+  font-size: 1rem;
+  color: #555;
+}
+
+/* NOVO: imagem nos cards de gestion */
+.gestion-card img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.gestion-card p {
+  font-size: 1rem;
+  color: #555;
+  margin-top: 10px;
+}
+
+/* Rodapé */
+.footer-home, .footer-simple {
+  text-align: center;
+  padding: 30px 20px;
+  background-color: #1e4e3d;
+  color: #fff;
+  margin-top: 50px;
+  font-size: 0.9rem;
 }
 
 .footer-legal {
-  margin-top: 2rem;
-  padding-top: 1rem;
+  margin-top: 1rem;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
-  text-align: center;
+  padding-top: 1rem;
   font-size: 0.85rem;
+  color: #eee;
 }
 
+/* Responsivo */
 @media (max-width: 768px) {
-  .footer-container {
+  .cards-container, .gestion-grid {
     flex-direction: column;
     align-items: center;
   }
 
-  .footer-map iframe {
-    margin-top: 1rem;
+  .card, .gestion-card {
+    max-width: 90%;
+    flex: 1 1 100%;
+  }
+
+  nav a {
+    display: block;
+    margin: 10px 0;
+  }
+
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-content p {
+    font-size: 1.1rem;
   }
 }
-
-/* ----- Estilos de outras páginas ----- */
-.footer-simple {
-  background-color: #0f3d2e;
-  color: white;
-  text-align: center;
-  padding: 1rem 0;
-  margin-top: 2rem;
-  font-size: 0.9rem;
-}
-
