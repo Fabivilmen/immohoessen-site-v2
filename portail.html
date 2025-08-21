@@ -1,39 +1,49 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portail - Syndic Laurent Hoessen</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portail copropriétaires – Immo Hoessen</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <header>
-    <nav>
-      <a href="index.html">Accueil</a>
-      <a href="types.html">Types de gestion</a>
-      <a href="gestion.html">Gestion</a>
-      <a href="contacts.html">Contact</a>
-      <a href="portail.html" class="active">Portail</a>
-      <a href="apropos.html">À propos</a>
-    </nav>
+<body class="site">
+  <header class="header">
+    <div class="header-inner">
+      <div class="brand">
+        <img src="img/logo.svg" alt="Immo Hoessen">
+        <span class="brand-name">Immo Hoessen</span>
+      </div>
+      <nav class="nav">
+        <a href="index.html">Accueil</a>
+        <a href="gestion.html">Types de gestion</a>
+        <a class="active" href="portail.html">Portail</a>
+        <a href="contacts.html">Contacts</a>
+        <a href="apropos.html">À propos</a>
+      </nav>
+    </div>
   </header>
 
-  <!-- Seção com imagem de fundo -->
-  <section class="portail-section">
-    <div class="portail-overlay">
-      <h1>Portail Copropriété</h1>
-      <p>
-        Pour accéder à la plateforme avec les documents relatifs à votre copropriété, cliquez sur le lien ci-dessous.  
-        <br><br>
-        Si vous ne disposez pas d’un mot de passe ou identifiant d’accès, merci de contacter le gestionnaire de votre copropriété.
-      </p>
-      <a href="http://immohoessen.quickconnec.to" target="_blank" class="btn-portail">Accéder au Portail</a>
-    </div>
-  </section>
+  <main>
+    <section class="portail-hero">
+      <!-- Sem quadro translúcido: só fundo suave + texto centralizado -->
+      <div class="portail-box">
+        <h1>Portail des copropriétaires</h1>
+        <p>
+          Pour accéder à la plateforme avec les documents de votre copropriété,
+          cliquez sur le bouton ci-dessous. Si vous n’avez pas de mot de passe,
+          merci de contacter le gestionnaire de votre copropriété.
+        </p>
+        <p class="mt-2">
+          <a class="btn" href="http://immohoessen.quickconnec.to" target="_blank" rel="noopener">Cliquez ici</a>
+        </p>
+      </div>
+    </section>
+  </main>
 
-  <footer class="footer-home">
-    <div class="footer-legal">
-      © 2025 Immohoessen · Mentions légales
+  <footer>
+    <div class="footer-inner">
+      <div>Avenue Heydenberg 14, 1200 Bruxelles · Tél. <a href="tel:+3227725175">02 772 51 75</a> · BE0462920325</div>
+      <div>Heures: 09:00–13:00 · <a href="mentions.html">Mentions légales</a></div>
     </div>
   </footer>
 </body>
