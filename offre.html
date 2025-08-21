@@ -108,33 +108,23 @@
       const success = document.getElementById('formSuccess');
 
       function encodeBody(data) {
-        // monta corpo em texto simples
-        return Object.entries(data)
-          .map(([k,v]) => `${k}: ${v}`)
-          .join('\\n');
+        return Object.entries(data).map(([k,v]) => `${k}: ${v}`).join('\n');
       }
 
       form.addEventListener('submit', function (e) {
         e.preventDefault();
         success.hidden = true;
 
-        // validação simples
         let valid = true;
         form.querySelectorAll('[required]').forEach(el => {
-          const fieldWrap = el.closest('.form-field');
-          if (!el.value.trim() || (el.type === 'email' && !/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(el.value))) {
-            valid = false;
-            fieldWrap.classList.add('invalid');
-          } else {
-            fieldWrap.classList.remove('invalid');
-          }
+          const wrap = el.closest('.form-field');
+          const isEmail = el.type === 'email';
+          const ok = el.value.trim() && (!isEmail || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value));
+          if (!ok) { valid = false; wrap.classList.add('invalid'); }
+          else { wrap.classList.remove('invalid'); }
         });
-        if (!valid) {
-          form.querySelector('.invalid input, .invalid textarea')?.focus();
-          return;
-        }
+        if (!valid) { form.querySelector('.invalid input, .invalid textarea')?.focus(); return; }
 
-        // coleta dados
         const data = {
           'Nome': form.nome.value.trim(),
           'Email': form.email.value.trim(),
@@ -146,20 +136,15 @@
           'Mensagem': form.mensagem.value.trim() || '—'
         };
 
-        // envia via mailto (GitHub Pages não tem backend)
-        const subject = encodeURIComponent('Demande d\\'offre via site');
+        const subject = encodeURIComponent("Demande d'offre via site");
         const body = encodeURIComponent(encodeBody(data));
         const mailto = `mailto:syndic@immohoessen.be?subject=${subject}&body=${body}`;
-
-        // abre cliente de e-mail do usuário
         window.location.href = mailto;
 
-        // mostra confirmação na página
         success.hidden = false;
         form.reset();
       });
 
-      // remove marcação de erro ao digitar
       form.addEventListener('input', (e) => {
         const wrap = e.target.closest('.form-field');
         wrap && wrap.classList.remove('invalid');
