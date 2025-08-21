@@ -1,10 +1,66 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Types de gestion – Immo Hoessen</title>
+  <title>Gestion – Immo Hoessen</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* ===== Estilos específicos desta página ===== */
+    .gest-hero{
+      padding:1.5rem 0 .5rem 0;
+      border-bottom:1px solid rgba(0,0,0,.06);
+      background:linear-gradient(180deg, rgba(15,61,46,.06), rgba(15,61,46,0));
+    }
+    .gest-wrap{
+      display:grid;
+      grid-template-columns:1.1fr .9fr; /* cards + imagem */
+      gap:1.25rem;
+      align-items:stretch;
+      margin-top:1rem;
+    }
+    .gest-cards{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:1rem;
+    }
+    .gest-card{
+      background:#fff;
+      border:1px solid rgba(0,0,0,.06);
+      border-radius:var(--radius);
+      padding:1rem;
+      box-shadow:var(--shadow);
+    }
+    .gest-card h3{ margin:.2rem 0 .35rem 0; }
+    .gest-card p{ margin:0; color:var(--muted); }
+
+    /* Coluna da imagem: levemente “puxada” para baixo e com borda/sombra */
+    .gest-illustration{
+      background:var(--bg-soft);
+      border:1px solid rgba(0,0,0,.06);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      position:relative;
+      top:8px;       /* puxa a imagem um pouco para baixo */
+      min-height:100%;
+      display:flex; align-items:stretch;
+    }
+    .gest-illustration img{
+      width:100%; height:100%; object-fit:cover;
+    }
+
+    /* Responsivo: empilha no tablet/celular */
+    @media (max-width:1024px){
+      .gest-wrap{ grid-template-columns:1fr; }
+      .gest-illustration{ top:0; min-height:240px; }
+      .gest-cards{ grid-template-columns:1fr 1fr; }
+    }
+    @media (max-width:640px){
+      .gest-cards{ grid-template-columns:1fr; }
+    }
+  </style>
 </head>
 <body class="site">
   <header class="header">
@@ -15,7 +71,8 @@
       </div>
       <nav class="nav">
         <a href="index.html">Accueil</a>
-        <a class="active" href="gestion.html">Types de gestion</a>
+        <a href="types.html">Types de gestion</a>
+        <a class="active" href="gestion.html">Gestion</a>
         <a href="portail.html">Portail</a>
         <a href="contacts.html">Contacts</a>
         <a href="apropos.html">À propos</a>
@@ -24,67 +81,51 @@
     </div>
   </header>
 
-  <main class="container pb-6">
-    <h1>Types de gestion</h1>
-    <div class="types-wrap mt-3">
-      <!-- Cards -->
-      <div class="types-cards">
-        <!-- Syndic -->
-        <article class="type-card">
-          <div class="type-icon" aria-hidden="true">
-            <!-- building -->
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-width="1.7" d="M3 21h18M6 21V4h9v17M9 8h3m-3 4h3m3 9V8h3v13"/></svg>
-          </div>
-          <div>
-            <h3>Syndic</h3>
-            <p>Gestion complète de la copropriété : AG, budget, sinistres, travaux et conformité.</p>
-          </div>
-        </article>
-
-        <!-- Comptabilité -->
-        <article class="type-card">
-          <div class="type-icon" aria-hidden="true">
-            <!-- calculator -->
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><rect x="6" y="3" width="12" height="18" rx="2" stroke-width="1.7"/><path stroke-width="1.7" d="M9 7h6M9 11h2m2 0h2m-6 4h2m2 0h2m-6 4h2m2 0h2"/></svg>
-          </div>
-          <div>
-            <h3>Comptabilité</h3>
-            <p>Appels de fonds, encodage, balances et reporting transparent pour les copropriétaires.</p>
-          </div>
-        </article>
-
-        <!-- Travaux -->
-        <article class="type-card">
-          <div class="type-icon" aria-hidden="true">
-            <!-- tools -->
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-width="1.7" d="M14 7l-1 1 3 3 1-1a3 3 0 10-3-3z"/><path stroke-width="1.7" d="M2 22l7-7 3 3-7 7H2v-3z"/></svg>
-          </div>
-          <div>
-            <h3>Travaux</h3>
-            <p>Pilotage des chantiers, cahiers des charges, devis comparatifs et suivi des garanties.</p>
-          </div>
-        </article>
-
-        <!-- Urgences -->
-        <article class="type-card">
-          <div class="type-icon" aria-hidden="true">
-            <!-- alert -->
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-width="1.7" d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3l-8.47-14.14a2 2 0 00-3.42 0z"/><path stroke-width="1.7" d="M12 9v5m0 3h.01"/></svg>
-          </div>
-          <div>
-            <h3>Urgences</h3>
-            <p>Procédures d’intervention 24/7 et coordination avec les prestataires prioritaires.</p>
-          </div>
-        </article>
+  <main>
+    <section class="gest-hero">
+      <div class="container">
+        <h1>Notre approche de gestion</h1>
+        <p class="mt-1" style="max-width:850px">
+          Une méthode structurée, centrée sur la transparence, la maîtrise technique et la réactivité.
+          Nous gérons le quotidien, planifions le long terme et communiquons clairement avec les copropriétaires.
+        </p>
       </div>
+    </section>
 
-      <!-- Ilustração (mesma coluna, levemente “puxada” para baixo) -->
-      <aside class="types-illustration">
-        <img src="img/gestion-side.jpg" alt="Gestion immobilière">
-      </aside>
-    </div>
+    <section class="container pb-6">
+      <div class="gest-wrap">
+        <!-- Blocos (cards) -->
+        <div class="gest-cards">
+          <article class="gest-card">
+            <h3>Suivi quotidien</h3>
+            <p>Tickets, emails et appels traités par priorités. Tableaux de bord, SLA interne et retour systématique aux copropriétaires.</p>
+          </article>
+
+          <article class="gest-card">
+            <h3>Conformité légale</h3>
+            <p>Contrôles périodiques (ascenseurs, électricité, incendie), registres, RGPD, assurances et archives disponibles sur le portail.</p>
+          </article>
+
+          <article class="gest-card">
+            <h3>Optimisation</h3>
+            <p>Budgets réalistes, appels d’offres comparés, suivi des contrats et plan pluriannuel des travaux (réserves & priorités).</p>
+          </article>
+
+          <article class="gest-card">
+            <h3>Transparence & AG</h3>
+            <p>Préparation des AG, convocations, procès-verbaux et exécution des décisions. Reporting clair et accès aux documents.</p>
+          </article>
+        </div>
+
+        <!-- Imagem alinhada aos cards -->
+        <aside class="gest-illustration">
+          <img src="img/imggestion.jpg" alt="Gestion immobilière">
+        </aside>
+      </div>
+    </section>
   </main>
 
+  <!-- Rodapé padrão do site -->
   <footer>
     <div class="footer-inner">
       <div>Avenue Heydenberg 14, 1200 Bruxelles · Tél. <a href="tel:+3227725175">02 772 51 75</a> · BE0462920325</div>
