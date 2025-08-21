@@ -24,9 +24,9 @@
     </div>
   </header>
 
-  <!-- CAPA INTACTA -->
+  <!-- CAPA: mantida, só com enquadramento para ver céu + jardim -->
   <main>
-    <section class="hero">
+    <section class="hero hero--distance">
       <img class="cover" src="img/cover-plain2.jpg" alt="Laurent Hoessen">
       <div class="overlay"></div>
       <div class="hero-content">
@@ -36,10 +36,28 @@
     </section>
   </main>
 
+  <!-- RODAPÉ: dados à esquerda + Google Maps à direita; mentions embaixo -->
   <footer>
-    <div class="footer-inner">
-      <div>Avenue Heydenberg 14, 1200 Bruxelles · Tél. <a href="tel:+3227725175">02 772 51 75</a> · BE0462920325</div>
-      <div>Heures: 09:00–13:00 · <a href="mentions.html">Mentions légales</a></div>
+    <div class="footer-inner footer-home">
+      <div class="footer-col footer-info">
+        <p><strong>Adresse&nbsp;:</strong> Avenue Heydenberg 14, 1200 Bruxelles</p>
+        <p><strong>Téléphone&nbsp;:</strong> <a href="tel:+3227725175">02 772 51 75</a></p>
+        <p><strong>Heures&nbsp;:</strong> 09:00–13:00</p>
+        <p><strong>Email&nbsp;:</strong> <a href="mailto:syndic@immohoessen.be">syndic@immohoessen.be</a></p>
+        <p><strong>Nº d’entreprise&nbsp;:</strong> BE0462920325</p>
+      </div>
+
+      <div class="footer-col footer-map">
+        <iframe
+          title="Immo Hoessen – Carte"
+          src="https://www.google.com/maps?q=Avenue%20Heydenberg%2014,%201200%20Bruxelles&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+
+    <div class="footer-legal">
+      <a href="mentions.html">Mentions légales</a>
     </div>
   </footer>
 </body>
