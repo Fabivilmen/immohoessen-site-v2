@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -6,33 +7,27 @@
   <title>Portail copropriétaires – Immo Hoessen</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    /* Marca d’água forte ocupando TODA a página */
+    /* Marca d’água ocupando TODA a página + véu mais escuro para contraste */
     body.portail-page{ position:relative; }
     body.portail-page::before{
-      content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
+      content:""; position:fixed; inset:0; z-index:-2; pointer-events:none;
       background:url("img/portail-office.png") center/cover no-repeat;
-      opacity:.6; /* mais forte */
-      filter:grayscale(15%) contrast(1.05) brightness(.98);
+      opacity:.6; filter:grayscale(10%) contrast(1.05) brightness(.98);
+    }
+    body.portail-page::after{
+      content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
+      background:linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.55));
     }
 
-    /* Tornar a seção transparente (sem sobreposições anteriores do CSS global) */
     .portail-hero{ min-height:60vh; display:grid; place-items:center; padding:2rem 1rem; }
-    .portail-hero::before, .portail-hero::after{ content:none !important; }
+    .portail-box{ text-align:center; max-width:800px; margin-inline:auto; color:#fff; }
+    .portail-box h1{ margin-bottom:.5rem; color:#fff; text-shadow:0 2px 8px rgba(0,0,0,.35); }
+    .portail-box p{ font-size:1.05rem; text-shadow:0 2px 8px rgba(0,0,0,.35); }
 
-    .portail-box{ text-align:center; max-width:800px; margin-inline:auto; }
-    .portail-box h1{ margin-bottom:.5rem; }
-    .portail-box p{ font-size:1.05rem; }
-
-    /* Rodapé minimal desta página */
     .footer-min{
       max-width:1100px; margin:0 auto; padding:1rem;
       display:flex; justify-content:flex-end; color:var(--muted);
-      border-top:1px solid rgba(0,0,0,.06);
-    }
-
-    /* Ajuste responsivo opcional */
-    @media (max-width:700px){
-      .portail-hero{ min-height:55vh; }
+      border-top:1px solid rgba(255,255,255,.12);
     }
   </style>
 </head>
@@ -46,8 +41,8 @@
       <nav class="nav">
         <a href="index.html">Accueil</a>
         <a href="types.html">Types de gestion</a>
-        <a class="active" href="portail.html">Portail</a>
         <a href="gestion.html">Gestion</a>
+        <a class="active" href="portail.html">Portail</a>
         <a href="contacts.html">Contacts</a>
         <a href="apropos.html">À propos</a>
         <a href="offre.html">Offre</a>
@@ -65,16 +60,17 @@
           merci de contacter le gestionnaire de votre copropriété.
         </p>
         <p class="mt-2">
-          <a class="btn" href="http://immohoessen.quickconnec.to" target="_blank" rel="noopener">Cliquez ici</a>
+          <a class="btn" href="http://immohoessen.quickconnect.to" target="_blank" rel="noopener noreferrer">
+            Cliquez ici
+          </a>
         </p>
       </div>
     </section>
   </main>
 
-  <!-- Rodapé minimal -->
   <footer>
     <div class="footer-min">
-      © 2025 Immo Hoessen · <a href="mentions.html">Mentions légales</a>
+      © 2025 Immo Hoessen · <a href="mentions.html" style="color:inherit">Mentions légales</a>
     </div>
   </footer>
 </body>
