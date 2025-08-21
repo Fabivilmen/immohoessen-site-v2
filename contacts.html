@@ -1,78 +1,84 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contacts - Syndic Laurent Hoessen</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contacts – Immo Hoessen</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <!-- Menu padrão -->
-  <nav>
-    <a href="index.html">Accueil</a>
-    <a href="types.html">Types de gestion</a>
-    <a href="gestion.html">Gestion</a>
-    <a href="contacts.html">Contact</a>
-    <a href="portail.html">Portail</a>
-    <a href="apropos.html">À propos</a>
-  </nav>
+<body class="site">
+  <header class="header">
+    <div class="header-inner">
+      <div class="brand">
+        <img src="img/logo.svg" alt="Immo Hoessen">
+        <span class="brand-name">Immo Hoessen</span>
+      </div>
+      <nav class="nav">
+        <a href="index.html">Accueil</a>
+        <a href="gestion.html">Types de gestion</a>
+        <a href="portail.html">Portail</a>
+        <a class="active" href="contacts.html">Contacts</a>
+        <a href="apropos.html">À propos</a>
+      </nav>
+    </div>
+  </header>
 
-  <section class="contacts-section">
+  <main class="container pb-6">
+    <h1>Contacts</h1>
+
     <div class="contacts-grid">
-      <!-- 1 -->
       <article class="contact-card">
         <h3>Laurent Hoessen</h3>
-        <p>Gestionnaire IPI 150260 titulaire</p>
-        <a href="mailto:laurent@immohoessen.be">laurent@immohoessen.be</a>
+        <p>Gestionnaire — IPI 150260 (titulaire)</p>
+        <p><a href="mailto:laurent@immohoessen.be">laurent@immohoessen.be</a></p>
       </article>
 
-      <!-- 2 -->
       <article class="contact-card">
         <h3>André Hoessen</h3>
         <p>Gestionnaire général et RH</p>
-        <a href="mailto:andre@immohoessen.be">andre@immohoessen.be</a>
+        <p><a href="mailto:andre@immohoessen.be">andre@immohoessen.be</a></p>
       </article>
 
-      <!-- 3 -->
       <article class="contact-card">
         <h3>Patricia Boniface</h3>
         <p>Gestionnaire collaboratrice</p>
-        <a href="mailto:gestion@immohoessen.be">gestion@immohoessen.be</a>
+        <p><a href="mailto:gestion@immohoessen.be">gestion@immohoessen.be</a></p>
       </article>
 
-      <!-- 4 -->
       <article class="contact-card">
         <h3>Viviane Ledieu</h3>
         <p>Gestionnaire de sinistres</p>
-        <a href="mailto:admin@immohoessen.be">admin@immohoessen.be</a>
+        <p><a href="mailto:admin@immohoessen.be">admin@immohoessen.be</a></p>
       </article>
 
-      <!-- 5 -->
       <article class="contact-card">
         <h3>Fabiane Menezes</h3>
-        <p>Assistente de Gestion</p>
-        <a href="mailto:syndic@immohoessen.be">syndic@immohoessen.be</a>
+        <p>Assistante de gestion</p>
+        <p><a href="mailto:syndic@immohoessen.be">syndic@immohoessen.be</a></p>
       </article>
 
-      <!-- 6 -->
       <article class="contact-card">
         <h3>Mikail Uçarer</h3>
-        <p>Stagiaire (En formation IPI)</p>
-        <a href="mailto:gestionnaire@immohoessen.be">gestionnaire@immohoessen.be</a>
+        <p>Stagiaire (en formation IPI)</p        >
+        <p><a href="mailto:gestionnaire@immohoessen.be">gestionnaire@immohoessen.be</a></p>
       </article>
 
-      <!-- 7: Factures -->
-      <article class="contact-card contact-card-wide">
-        <h3>Factures</h3>
-        <a href="mailto:factures@immohoessen.be">factures@immohoessen.be</a>
+      <article class="contact-card">
+        <h3>Facturation</h3>
+        <p>Envoi et suivi des factures</p>
+        <p><a href="mailto:factures@immohoessen.be">factures@immohoessen.be</a></p>
       </article>
     </div>
-  </section>
 
-  <!-- Rodapé simples, só com menções legais e IPI -->
-  <footer class="footer-home">
-    <div class="footer-legal">
-      © 2025 Laurent Hoessen — IPI 150260 · <a class="legal-link" href="mentions-legales.html">Mentions légales</a>
+    <section class="contact-extra">
+      <p>Téléphone : <a href="tel:+3227725175">02 772 51 75</a> · Heures d’ouverture : 09:00–13:00</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>Avenue Heydenberg 14, 1200 Bruxelles · Tél. <a href="tel:+3227725175">02 772 51 75</a> · BE0462920325</div>
+      <div>Heures: 09:00–13:00 · <a href="mentions.html">Mentions légales</a></div>
     </div>
   </footer>
 </body>
