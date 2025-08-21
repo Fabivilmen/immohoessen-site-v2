@@ -6,35 +6,54 @@
   <title>Contacts – Immo Hoessen</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    /* Grade 3×2 para os 6 primeiros cards; Facturation em linha própria */
-    .contacts-grid{
-      display:grid;
-      grid-template-columns:repeat(3, minmax(240px,1fr));
-      gap:1rem;
-      margin-block:1rem 2rem;
+    /* ===== URGENCE (banner no topo) ===== */
+    .urg-box{
+      max-width:1100px; margin:1rem auto 0 auto;
+      background:#fff; border:1px solid rgba(0,0,0,.08);
+      border-radius:18px; box-shadow:0 2px 14px rgba(0,0,0,.08);
+      padding:1rem; text-align:center;
     }
-    .contact-card--solo{
-      grid-column:1 / -1;        /* ocupa a linha inteira */
-      max-width:520px;           /* largura coerente com o conteúdo */
-      justify-self:center;       /* centraliza na linha */
+    .urg-badge{
+      display:inline-block; margin-bottom:.4rem;
+      font-weight:700; letter-spacing:.3px;
+      background:#fff4f4; color:#8a1f16; border:1px solid #e7b0ac;
+      padding:.2rem .6rem; border-radius:999px; font-size:.9rem;
     }
+    .urg-hours{ color:var(--muted); margin:.3rem 0 .6rem; }
+    .urg-buttons{ display:flex; gap:.6rem; justify-content:center; flex-wrap:wrap; }
+    .btn-call{
+      display:inline-block; padding:.75rem 1.05rem; border-radius:14px; font-weight:700;
+      box-shadow:var(--shadow); text-decoration:none; line-height:1;
+    }
+    .btn-call--primary{ background:var(--blue-600); color:#fff; }
+    .btn-call--primary:hover{ background:#003b8a; }
+    .btn-call--alt{ background:#0f3d2e; color:#fff; }
+    .btn-call--alt:hover{ background:#0c3226; }
 
-    /* Aparência consistente dos cards (fallback, caso o style.css não esteja com isso) */
+    /* ===== Grid dos contatos (3×2) + Facturation solo ===== */
+    .contacts-grid{
+      display:grid; grid-template-columns:repeat(3, minmax(240px,1fr));
+      gap:1rem; margin-block:1rem 2rem;
+    }
     .contact-card{
       background:#fff; border:1px solid rgba(0,0,0,.08);
       border-radius:18px; padding:1rem; box-shadow:0 2px 14px rgba(0,0,0,.07);
     }
-    .contact-card h3{margin:.1rem 0 .3rem 0}
-    .contact-card p{margin:.2rem 0}
+    .contact-card h3{ margin:.1rem 0 .3rem; }
+    .contact-card p{ margin:.2rem 0; }
+    .contact-card--solo{
+      grid-column:1 / -1; max-width:520px; justify-self:center;
+      text-align:center;
+    }
 
-    /* Rodapé minimal desta página */
+    /* Rodapé minimal */
     .footer-min{
       max-width:1100px; margin:0 auto; padding:1rem;
       display:flex; justify-content:flex-end; color:var(--muted);
       border-top:1px solid rgba(0,0,0,.06);
     }
 
-    /* Responsivo: 2 colunas (tablet) e 1 coluna (celular) */
+    /* Responsivo */
     @media (max-width: 900px){
       .contacts-grid{ grid-template-columns:repeat(2, minmax(240px,1fr)); }
     }
@@ -59,6 +78,9 @@
         <a class="active" href="contacts.html">Contacts</a>
         <a href="apropos.html">À propos</a>
         <a href="offre.html">Offre</a>
+        <!-- Se você já adicionou “Urgence” no menu, pode manter.
+             Se preferir remover, basta tirar a linha abaixo. -->
+        <a href="urgence.html">Urgence</a>
       </nav>
     </div>
   </header>
@@ -66,6 +88,18 @@
   <main class="container pb-6">
     <h1>Contacts</h1>
 
+    <!-- URGENCE dentro da aba Contacts -->
+    <div class="urg-box" role="region" aria-labelledby="urgence-heading">
+      <div class="urg-badge">Urgence</div>
+      <h2 id="urgence-heading" style="margin:.2rem 0 .4rem 0;">En dehors des heures du bureau (9h–13h)</h2>
+      <p class="urg-hours">Pour toute urgence, contactez :</p>
+      <div class="urg-buttons">
+        <a class="btn-call btn-call--primary" href="tel:+32495261683" aria-label="Appeler 0495 26 16 83">📞 0495&nbsp;26&nbsp;16&nbsp;83</a>
+        <a class="btn-call btn-call--alt" href="tel:+32495543808" aria-label="Appeler 0495 54 38 08">📞 0495&nbsp;54&nbsp;38&nbsp;08</a>
+      </div>
+    </div>
+
+    <!-- Grade 3×2 de contatos -->
     <div class="contacts-grid">
       <!-- Linha 1 -->
       <article class="contact-card">
@@ -105,16 +139,14 @@
         <p><a href="mailto:gestionnaire@immohoessen.be">gestionnaire@immohoessen.be</a></p>
       </article>
 
-      <!-- Linha 3 (solo) -->
+      <!-- Facturation: uma única linha coerente -->
       <article class="contact-card contact-card--solo">
         <h3>Facturation</h3>
-        <p>Envoi et suivi des factures</p>
-        <p><a href="mailto:factures@immohoessen.be">factures@immohoessen.be</a></p>
+        <p>Envoi et suivi des factures — <a href="mailto:factures@immohoessen.be">factures@immohoessen.be</a></p>
       </article>
     </div>
   </main>
 
-  <!-- Rodapé minimal -->
   <footer>
     <div class="footer-min">
       © 2025 Immo Hoessen · <a href="mentions.html">Mentions légales</a>
