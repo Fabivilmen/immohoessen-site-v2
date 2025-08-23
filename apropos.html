@@ -6,35 +6,71 @@
   <title>À propos – Immo Hoessen</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    /* Acento suave no topo */
+    /* ===== TEMA QUENTE SUAVE (variáveis + toques leves) ===== */
+    :root{
+      --green-dark:#0f3d2e;
+      --green-muted:#557a68;
+      --gold:#e4b100;
+      --terracotta:#c86b4a;
+      --warm-25:#fff9f3;  /* quase creme */
+      --warm-50:#fff3e5;  /* pêssego claro */
+      --warm-100:#ffe7c7; /* damasco claro (não usamos forte aqui) */
+    }
+    /* fundo geral suave */
+    body.site{
+      background: radial-gradient(120% 120% at 50% -10%, var(--warm-25) 0%, #ffffff 45%);
+    }
+    /* sublinhado quente no menu (leve) */
+    .nav a{ position:relative; text-decoration:none; }
+    .nav a::after{
+      content:""; position:absolute; left:0; bottom:-6px; height:2px; width:0;
+      background:linear-gradient(90deg, var(--gold), var(--terracotta));
+      transition:width .2s ease;
+    }
+    .nav a:hover::after{ width:100%; }
+    /* linha decorativa discreta sob o header */
+    .header-inner{
+      border-image: linear-gradient(90deg, var(--gold), var(--terracotta)) 1;
+      border-bottom:3px solid transparent;
+    }
+
+    /* ===== Acento suave no topo ===== */
     .about-hero{
-      background:linear-gradient(180deg, rgba(15,61,46,.08), rgba(15,61,46,0));
+      background:linear-gradient(180deg, var(--warm-50), var(--warm-25));
       padding:2rem 0 1rem 0; border-bottom:1px solid rgba(0,0,0,.06);
       text-align:center;
     }
-    .about-hero p{ max-width:900px; margin:.5rem auto 0 auto; }
+    .about-hero p{ max-width:900px; margin:.5rem auto 0 auto; color:var(--green-muted); }
 
     /* Fundadores – fotos maiores e legenda */
     .founders{ display:grid; gap:1rem; grid-template-columns:1fr 1fr; }
     .founder-card{
-      display:grid; grid-template-columns:160px 1fr; gap:1rem; align-items:center;
-      background:#fff; border:1px solid rgba(0,0,0,.06); border-radius:18px; padding:1rem; box-shadow:var(--shadow);
+      display:grid; grid-template-columns:180px 1fr; gap:1rem; align-items:center;
+      background:#fff; border:1px solid rgba(0,0,0,.06);
+      border-left:6px solid var(--terracotta);
+      border-radius:18px; padding:1rem; box-shadow:var(--shadow);
+      transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
     }
-    .founder-photo{ width:160px; height:160px; border-radius:16px; overflow:hidden }
+    .founder-card:hover{
+      transform:translateY(-3px);
+      border-left-color:var(--gold);
+      box-shadow:0 10px 22px rgba(228,177,0,.18);
+    }
+    .founder-photo{ width:180px; height:180px; border-radius:16px; overflow:hidden }
     .founder-photo img{ width:100%; height:100%; object-fit:cover }
-    .founder-caption{ margin-top:.4rem; font-size:.95rem; color:var(--muted); }
+    .founder-caption{ margin-top:.4rem; font-size:.95rem; color:var(--green-muted); }
 
     /* Rodapé minimal desta página */
     .footer-min{
       max-width:1100px; margin:0 auto; padding:1rem;
-      display:flex; justify-content:flex-end; color:var(--muted);
+      display:flex; justify-content:flex-end; color:var(--green-muted);
       border-top:1px solid rgba(0,0,0,.06);
     }
 
     @media (max-width:900px){
       .founders{ grid-template-columns:1fr; }
-      .founder-card{ grid-template-columns:120px 1fr; }
-      .founder-photo{ width:120px; height:120px; }
+      .founder-card{ grid-template-columns:140px 1fr; }
+      .founder-photo{ width:140px; height:140px; }
     }
   </style>
 </head>
@@ -63,9 +99,8 @@
         <h1>À propos</h1>
         <p>
           Depuis 2001, le Syndic Laurent Hoessen, dirigé par son fondateur et gestionnaire IPI, M. Laurent Hoessen, met sa solide expérience au service de la gestion de copropriété.
-Notre force réside dans notre équipe. Composée de professionnels multiculturels, nous combinons notre expertise et notre dévouement pour offrir un service de gestion qui répond avec précision aux besoins de chaque immeuble.
-Ensemble, nous assurons une gestion sérieuse, humaine et durable. Pour nous, chaque immeuble est un patrimoine à valoriser et chaque copropriétaire, un partenaire à écouter
-
+          Notre force réside dans notre équipe. Composée de professionnels multiculturels, nous combinons notre expertise et notre dévouement pour offrir un service de gestion qui répond avec précision aux besoins de chaque immeuble.
+          Ensemble, nous assurons une gestion sérieuse, humaine et durable. Pour nous, chaque immeuble est un patrimoine à valoriser et chaque copropriétaire, un partenaire à écouter.
         </p>
       </div>
     </section>
@@ -83,8 +118,7 @@ Ensemble, nous assurons une gestion sérieuse, humaine et durable. Pour nous, ch
           </div>
           <div>
             <h3>M. Laurent Hoessen</h3>
-            <p>En tant que gestionnaire IPI agréé, Laurent Hoessen met au service des copropriétaires sa vision rigoureuse, son approche technique et, par-dessus tout, sa gestion résolument humaine.
-            </p>
+            <p>En tant que gestionnaire IPI agréé, Laurent Hoessen met au service des copropriétaires sa vision rigoureuse, son approche technique et, par-dessus tout, sa gestion résolument humaine.</p>
           </div>
         </article>
 
