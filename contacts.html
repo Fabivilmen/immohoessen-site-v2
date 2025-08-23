@@ -6,41 +6,21 @@
   <title>Contacts – Immo Hoessen</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    /* ======== TEMA QUENTE (adições seguras) ======== */
     :root{
-      --green-dark:#0f3d2e;
-      --green-muted:#557a68;
-      --gold:#e4b100;
-      --terracotta:#c86b4a;
-      --warm-25:#fff9f3;
-      --warm-50:#fff3e5;
-      --warm-100:#ffe7c7;
+      --green-dark:#0f3d2e; --green-muted:#557a68; --gold:#e4b100; --terracotta:#c86b4a;
+      --warm-25:#fff9f3; --warm-50:#fff3e5; --warm-100:#ffe7c7;
     }
-    /* banho quente de fundo geral (não altera cabeçalho/rodapé) */
-    body.site{
-      background: radial-gradient(120% 120% at 50% -10%, var(--warm-25) 0%, #ffffff 45%);
-    }
-    /* sublinhado quente no menu (só hover, sem quebrar layout) */
+    body.site{ background: radial-gradient(120% 120% at 50% -10%, var(--warm-25) 0%, #ffffff 45%); }
     .nav a{ position:relative; text-decoration:none; }
-    .nav a::after{
-      content:""; position:absolute; left:0; bottom:-6px; height:2px; width:0;
-      background:linear-gradient(90deg, var(--gold), var(--terracotta));
-      transition:width .2s ease;
-    }
+    .nav a::after{ content:""; position:absolute; left:0; bottom:-6px; height:2px; width:0; background:linear-gradient(90deg, var(--gold), var(--terracotta)); transition:width .2s ease; }
     .nav a:hover::after{ width:100%; }
-    /* barra decorativa quente sob o header */
-    .header-inner{
-      border-image: linear-gradient(90deg, var(--gold), var(--terracotta)) 1;
-      border-bottom:3px solid transparent;
-    }
+    .header-inner{ border-image: linear-gradient(90deg, var(--gold), var(--terracotta)) 1; border-bottom:3px solid transparent; }
 
-    /* ===== Estrutura das seções ===== */
     .section{ padding:2.2rem clamp(12px,2vw,32px); }
     .section .contacts-wrap{ max-width:1100px; margin:0 auto; }
-    .section.alt{ background: linear-gradient(180deg, var(--warm-50), var(--warm-25)); }     /* suave */
-    .section.alt-strong{ background: linear-gradient(180deg, var(--warm-100), var(--warm-50)); } /* vibrante */
+    .section.alt{ background: linear-gradient(180deg, var(--warm-50), var(--warm-25)); }
+    .section.alt-strong{ background: linear-gradient(180deg, var(--warm-100), var(--warm-50)); }
 
-    /* ===== URGENCE (banner) ===== */
     .urg-box{
       background:#fff; border:1px solid rgba(0,0,0,.08);
       border-radius:18px; box-shadow:0 2px 14px rgba(0,0,0,.08);
@@ -66,7 +46,6 @@
     .btn-call--alt{ background:#0f3d2e; color:#fff; }
     .btn-call--alt:hover{ background:#0c3226; transform:scale(1.05); }
 
-    /* ===== Grid de contatos ===== */
     .contacts-grid{
       display:grid; grid-template-columns:repeat(3, minmax(240px,1fr));
       gap:1rem; margin-block:1.25rem 0;
@@ -91,21 +70,25 @@
       grid-column:1 / -1; max-width:520px; justify-self:center; text-align:center;
     }
 
-    /* Rodapé minimal (mantido) */
     .footer-min{
       max-width:1100px; margin:0 auto; padding:1rem;
       display:flex; justify-content:flex-end; color:var(--green-muted);
       border-top:1px solid rgba(0,0,0,.06);
     }
-
-    /* Responsivo */
-    @media (max-width: 900px){
-      .contacts-grid{ grid-template-columns:repeat(2, minmax(240px,1fr)); }
-    }
+    @media (max-width: 900px){ .contacts-grid{ grid-template-columns:repeat(2, minmax(240px,1fr)); } }
     @media (max-width: 640px){
       .contacts-grid{ grid-template-columns:1fr; }
       .contact-card--solo{ max-width:100%; }
     }
+
+    /* CTA no menu */
+    .nav a.cta{
+      background:#1a5cff; color:#fff !important; padding:.55rem .95rem; border-radius:12px; font-weight:700; line-height:1;
+      box-shadow:0 8px 20px rgba(26,92,255,.18); transition:transform .2s ease, background .2s ease, box-shadow .2s ease; margin-left:.5rem;
+    }
+    .nav a.cta:hover{ background:#003b8a; transform: translateY(-1px); box-shadow:0 10px 24px rgba(26,92,255,.26); }
+    .nav a.active.cta{ background:#0f3d2e; box-shadow:0 8px 20px rgba(15,61,46,.18); }
+    .nav a.active.cta:hover{ background:#0c3226; }
   </style>
 </head>
 <body class="site">
@@ -115,19 +98,18 @@
         <img src="img/logo.svg" alt="Immo Hoessen">
         <span class="brand-name">Immo Hoessen</span>
       </div>
-      <nav class="nav">
+      <nav class="nav" aria-label="Navigation principale">
         <a href="index.html">Accueil</a>
         <a href="types.html">Types de gestion</a>
         <a href="gestion.html">Gestion</a>
         <a href="portail.html">Portail</a>
         <a class="active" href="contacts.html">Contacts</a>
         <a href="apropos.html">À propos</a>
-        <a href="offre.html">Offre</a>
+        <a href="offre.html" class="cta">Demander une offre</a>
       </nav>
     </div>
   </header>
 
-  <!-- Seção quente forte: título + urgência -->
   <main>
     <section class="section alt-strong">
       <div class="contacts-wrap">
@@ -145,54 +127,18 @@
       </div>
     </section>
 
-    <!-- Seção quente suave: cartões de contato -->
     <section class="section alt">
       <div class="contacts-wrap">
         <div class="contacts-grid">
-          <!-- Linha 1 -->
-          <article class="contact-card">
-            <h3>Laurent Hoessen</h3>
-            <p>Gestionnaire — IPI 150260 (titulaire)</p>
-            <p><a href="mailto:laurent@immohoessen.be">laurent@immohoessen.be</a></p>
-          </article>
-
-          <article class="contact-card">
-            <h3>André Hoessen</h3>
-            <p>Gestionnaire général et RH</p>
-            <p><a href="mailto:andre@immohoessen.be">andre@immohoessen.be</a></p>
-          </article>
-
-          <article class="contact-card">
-            <h3>Patricia Boniface</h3>
-            <p>Gestionnaire collaboratrice</p>
-            <p><a href="mailto:gestion@immohoessen.be">gestion@immohoessen.be</a></p>
-          </article>
-
-          <!-- Linha 2 -->
-          <article class="contact-card">
-            <h3>Viviane Ledieu</h3>
-            <p>Gestionnaire de sinistres</p>
-            <p><a href="mailto:admin@immohoessen.be">admin@immohoessen.be</a></p>
-          </article>
-
-          <article class="contact-card">
-            <h3>Fabiane Menezes</h3>
-            <p>Assistante de gestion</p>
-            <p><a href="mailto:syndic@immohoessen.be">syndic@immohoessen.be</a></p>
-          </article>
-
-          <article class="contact-card">
-            <h3>Mikail Uçarer</h3>
-            <p>Stagiaire (en formation IPI)</p>
-            <p><a href="mailto:gestionnaire@immohoessen.be">gestionnaire@immohoessen.be</a></p>
-          </article>
-
-          <!-- Facturation -->
+          <article class="contact-card"><h3>Laurent Hoessen</h3><p>Gestionnaire — IPI 150260 (titulaire)</p><p><a href="mailto:laurent@immohoessen.be">laurent@immohoessen.be</a></p></article>
+          <article class="contact-card"><h3>André Hoessen</h3><p>Gestionnaire général et RH</p><p><a href="mailto:andre@immohoessen.be">andre@immohoessen.be</a></p></article>
+          <article class="contact-card"><h3>Patricia Boniface</h3><p>Gestionnaire collaboratrice</p><p><a href="mailto:gestion@immohoessen.be">gestion@immohoessen.be</a></p></article>
+          <article class="contact-card"><h3>Viviane Ledieu</h3><p>Gestionnaire de sinistres</p><p><a href="mailto:admin@immohoessen.be">admin@immohoessen.be</a></p></article>
+          <article class="contact-card"><h3>Fabiane Menezes</h3><p>Assistante de gestion</p><p><a href="mailto:syndic@immohoessen.be">syndic@immohoessen.be</a></p></article>
+          <article class="contact-card"><h3>Mikail Uçarer</h3><p>Stagiaire (en formation IPI)</p><p><a href="mailto:gestionnaire@immohoessen.be">gestionnaire@immohoessen.be</a></p></article>
           <article class="contact-card contact-card--solo">
             <h3>Facturation</h3>
-            <p> Transmettez vos factures à — 
-              <a href="mailto:factures@immohoessen.be">factures@immohoessen.be</a>
-            </p>
+            <p>Envoi et suivi des factures — <a href="mailto:factures@immohoessen.be">factures@immohoessen.be</a></p>
           </article>
         </div>
       </div>
@@ -205,7 +151,6 @@
     </div>
   </footer>
 
-  <!-- JS p/ animações ao rolar -->
   <script>
     (function(){
       const els = document.querySelectorAll('.contact-card');
