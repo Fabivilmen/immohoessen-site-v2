@@ -7,23 +7,17 @@
   <link rel="stylesheet" href="style.css">
   <style>
     /* ======== (SEU CSS EXISTENTE – CAPA E RODAPÉ) ======== */
-    /* CAPA: mais alta para mostrar céu + chão; imagem mais viva */
-    .hero--distance{ min-height:80dvh; } /* mais altura = mais área visível da foto */
+    .hero--distance{ min-height:80dvh; }
     .hero--distance .cover{
-      object-position:center 40%;             /* ajusta o enquadramento (céu + jardim) */
-      filter:saturate(1.15) contrast(1.06) brightness(1.02); /* imagem viva */
+      object-position:center 40%;
+      filter:saturate(1.15) contrast(1.06) brightness(1.02);
     }
-    /* overlay mais leve para não “apagar” a foto */
     .hero--distance .overlay{
       background:linear-gradient(to bottom, rgba(0,0,0,.10), rgba(0,0,0,.22));
     }
-    /* legibilidade do título sobre a foto */
     .hero--distance .hero-content h1,
-    .hero--distance .hero-content p{
-      text-shadow:0 2px 8px rgba(0,0,0,.35);
-    }
+    .hero--distance .hero-content p{ text-shadow:0 2px 8px rgba(0,0,0,.35); }
 
-    /* RODAPÉ menor (menos padding e mapa mais baixo) */
     .footer-inner.footer-home{ align-items:stretch; gap:1rem; padding:.6rem 1rem; }
     .footer-col{ flex:1 1 0; }
     .footer-info p{ margin:.2rem 0; }
@@ -38,84 +32,25 @@
     }
     @media (max-width:900px){
       .hero--distance{ min-height:72dvh; }
-      .hero--distance .cover{ object-position:center 45%; } /* no mobile, mostra um pouco mais do jardim */
+      .hero--distance .cover{ object-position:center 45%; }
       .footer-inner.footer-home{ flex-direction:column; }
       .footer-map iframe{ height:200px; }
     }
 
     /* ======== (NOVO) PALETA E BLOCOS COM VIDA ======== */
     :root{
-      --green-dark:#0f3d2e;   /* títulos */
-      --green-muted:#557a68;  /* textos suaves/bordas */
-      --blue-action:#1a5cff;  /* botões/links de ação */
-      --blue-hover:#003b8a;   /* hover do botão */
-      --gray-bg:#f8f9f8;      /* fundo alternado */
-      --gold:#e4b100;         /* toque quente no hover */
+      --green-dark:#0f3d2e;
+      --green-muted:#557a68;
+      --blue-action:#1a5cff;
+      --blue-hover:#003b8a;
+      --gray-bg:#f8f9f8;
+      --gold:#e4b100;
+      --warm-25:#fff9f3; --warm-50:#fff3e5; --warm-100:#ffe7c7; --terracotta:#c86b4a;
     }
-
-    /* Títulos ganham presença (sem afetar capa) */
-    main h2, main h3{ color:var(--green-dark); margin:0 0 .5rem 0; }
-    main p{ margin:.45rem 0; color:#1e4e3d; }
-
-    /* Seções com respiro e alternância de cor */
-    .section{
-      padding:2.4rem clamp(12px,2vw,32px);
-    }
-    .section.alt{
-      background:var(--gray-bg);
-    }
-    .section .intro{
-      max-width:1100px; margin:0 auto;
-    }
-
-    /* Cards elegantes e animados */
-    .cards{
-      max-width:1100px; margin:1rem auto 0 auto;
-      display:grid; gap:1rem;
-      grid-template-columns:repeat(4, minmax(220px,1fr));
-    }
-    .card{
-      background:#fff; border:1px solid rgba(0,0,0,.06);
-      border-left:5px solid var(--green-muted);
-      border-radius:18px; padding:1rem;
-      box-shadow:0 2px 12px rgba(0,0,0,.06);
-      transition:.25s ease;
-    }
-    .card:hover{
-      transform:translateY(-6px);
-      border-left-color:var(--gold);
-      box-shadow:0 10px 24px rgba(0,0,0,.12);
-    }
-    .card p{ color:var(--green-muted); }
-
-    /* Botão de ação */
-    .btn{
-      display:inline-block; background:var(--blue-action); color:#fff; text-decoration:none;
-      padding:.85rem 1.2rem; border-radius:12px; font-weight:700; margin-top:1rem;
-      transition:.25s ease;
-    }
-    .btn:hover{ background:var(--blue-hover); transform:translateY(-2px); }
-
-    /* Responsivo dos cards */
-    @media (max-width:1024px){ .cards{ grid-template-columns:repeat(2,minmax(220px,1fr)); } }
-    @media (max-width:640px){ .cards{ grid-template-columns:1fr; } }
-
-    /* ======== (NOVO) TEMA QUENTE – VIBRANTE ======== */
-    :root{
-      /* tons quentes extra */
-      --warm-25:#fff9f3;   /* quase creme */
-      --warm-50:#fff3e5;   /* pêssego claro */
-      --warm-100:#ffe7c7;  /* damasco claro */
-      --warm-200:#ffdca6;  /* âmbar suave */
-      --terracotta:#c86b4a;/* terracota elegante */
-    }
-
-    /* fundo geral com banho quente (não altera a capa) */
     body.site{
       background: radial-gradient(120% 120% at 50% -10%, var(--warm-25) 0%, #ffffff 45%);
     }
-
-    /* menu com sublinhado quente no hover */
+    /* sublinhado quente no menu + barra decorativa */
     .nav a{ position:relative; text-decoration:none; }
     .nav a::after{
       content:""; position:absolute; left:0; bottom:-6px; height:2px; width:0;
@@ -123,29 +58,66 @@
       transition:width .2s ease;
     }
     .nav a:hover::after{ width:100%; }
-
-    /* barra decorativa quente sob o header */
     .header-inner{
       border-image: linear-gradient(90deg, var(--gold), var(--terracotta)) 1;
       border-bottom:3px solid transparent;
     }
 
-    /* seções quentes */
-    .section.alt{
-      background: linear-gradient(180deg, var(--warm-50), var(--warm-25)); /* suave */
-    }
-    .section.alt-strong{
-      background: linear-gradient(180deg, var(--warm-100), var(--warm-50)); /* mais vibrante */
-    }
+    main h2, main h3{ color:var(--green-dark); margin:0 0 .5rem 0; }
+    main p{ margin:.45rem 0; color:#1e4e3d; }
 
-    /* cards com acento terracota e brilho quente no hover */
+    .section{ padding:2.4rem clamp(12px,2vw,32px); }
+    .section.alt{ background: linear-gradient(180deg, var(--warm-50), var(--warm-25)); }
+    .section.alt-strong{ background: linear-gradient(180deg, var(--warm-100), var(--warm-50)); }
+    .section .intro{ max-width:1100px; margin:0 auto; }
+
+    .cards{
+      max-width:1100px; margin:1rem auto 0 auto;
+      display:grid; gap:1rem; grid-template-columns:repeat(4, minmax(220px,1fr));
+    }
     .card{
+      background:#fff; border:1px solid rgba(0,0,0,.06);
       border-left:6px solid var(--terracotta);
+      border-radius:18px; padding:1rem;
+      box-shadow:0 2px 12px rgba(0,0,0,.06);
+      transition:.25s ease;
     }
     .card:hover{
+      transform:translateY(-6px);
       border-left-color:var(--gold);
       box-shadow:0 12px 28px rgba(228,177,0,.22);
     }
+    .card p{ color:var(--green-muted); }
+    @media (max-width:1024px){ .cards{ grid-template-columns:repeat(2,minmax(220px,1fr)); } }
+    @media (max-width:640px){ .cards{ grid-template-columns:1fr; } }
+
+    /* ====== Botões gerais ====== */
+    .btn{
+      display:inline-block; background:var(--blue-action); color:#fff; text-decoration:none;
+      padding:.85rem 1.2rem; border-radius:12px; font-weight:700; margin-top:1rem;
+      transition:.25s ease; box-shadow:0 8px 20px rgba(26,92,255,.16);
+    }
+    .btn:hover{ background:var(--blue-hover); transform:translateY(-2px); }
+
+    /* ====== Botão azul no menu (CTA) ====== */
+    .nav a.cta{
+      background: var(--blue-action);
+      color:#fff !important;
+      padding:.55rem .95rem; border-radius:12px; font-weight:700; line-height:1;
+      box-shadow:0 8px 20px rgba(26,92,255,.18);
+      transition:transform .2s ease, background .2s ease, box-shadow .2s ease;
+      margin-left:.5rem;
+    }
+    .nav a.cta:hover{
+      background: var(--blue-hover);
+      transform: translateY(-1px);
+      box-shadow:0 10px 24px rgba(26,92,255,.26);
+    }
+    .nav a.active.cta{
+      background:#0f3d2e;
+      box-shadow:0 8px 20px rgba(15,61,46,.18);
+    }
+    .nav a.active.cta:hover{ background:#0c3226; }
   </style>
 </head>
 <body class="site">
@@ -155,19 +127,18 @@
         <img src="img/logo.svg" alt="Immo Hoessen">
         <span class="brand-name">Immo Hoessen</span>
       </div>
-      <nav class="nav">
+      <nav class="nav" aria-label="Navigation principale">
         <a class="active" href="index.html">Accueil</a>
         <a href="types.html">Types de gestion</a>
         <a href="gestion.html">Gestion</a>
         <a href="portail.html">Portail</a>
         <a href="contacts.html">Contacts</a>
         <a href="apropos.html">À propos</a>
-        <a href="offre.html">Offre</a>
+        <a href="offre.html" class="cta">Demander une offre</a>
       </nav>
     </div>
   </header>
 
-  <!-- CAPA (INALTERADA) -->
   <main>
     <section class="hero hero--distance">
       <img class="cover" src="img/cover-plain2.jpg" alt="Laurent Hoessen">
@@ -178,55 +149,29 @@
       </div>
     </section>
 
-    <!-- BLOCO 1 – Types de gestion (QUENTE FORTE) -->
     <section class="section alt-strong">
       <div class="intro">
         <h2>Types de gestion</h2>
         <p>Des solutions adaptées à chaque copropriété, avec transparence et rigueur.</p>
       </div>
       <div class="cards">
-        <article class="card">
-          <h3>Gestion de base</h3>
-          <p>Administration, comptabilité et obligations légales.</p>
-        </article>
-        <article class="card">
-          <h3>Gestion technique</h3>
-          <p>Suivi des travaux, ascenseurs, chauffage, sécurité.</p>
-        </article>
-        <article class="card">
-          <h3>Gestion financière</h3>
-          <p>Budgets, appels de fonds, contrôle des dépenses.</p>
-        </article>
-        <article class="card">
-          <h3>Conseil & audit</h3>
-          <p>Optimisations, contrats, conformité et PEB.</p>
-        </article>
+        <article class="card"><h3>Gestion de base</h3><p>Administration, comptabilité et obligations légales.</p></article>
+        <article class="card"><h3>Gestion technique</h3><p>Suivi des travaux, ascenseurs, chauffage, sécurité.</p></article>
+        <article class="card"><h3>Gestion financière</h3><p>Budgets, appels de fonds, contrôle des dépenses.</p></article>
+        <article class="card"><h3>Conseil & audit</h3><p>Optimisations, contrats, conformité et PEB.</p></article>
       </div>
     </section>
 
-    <!-- BLOCO 2 – Gestion (QUENTE SUAVE) -->
     <section class="section alt">
       <div class="intro">
         <h2>Gestion</h2>
         <p>Nous veillons à la bonne tenue des espaces, à la communication claire et à la réactivité en cas d’urgence.</p>
       </div>
       <div class="cards">
-        <article class="card">
-          <h3>Communication</h3>
-          <p>Informations régulières aux copropriétaires.</p>
-        </article>
-        <article class="card">
-          <h3>Entretien</h3>
-          <p>Qualité et sécurité de vos espaces communs.</p>
-        </article>
-        <article class="card">
-          <h3>AG & procès-verbaux</h3>
-          <p>Organisation, quorum, proxies et suivi des décisions.</p>
-        </article>
-        <article class="card">
-          <h3>Urgence</h3>
-          <p>Procédures claires et contacts prioritaires.</p>
-        </article>
+        <article class="card"><h3>Communication</h3><p>Informations régulières aux copropriétaires.</p></article>
+        <article class="card"><h3>Entretien</h3><p>Qualité et sécurité de vos espaces communs.</p></article>
+        <article class="card"><h3>AG & procès-verbaux</h3><p>Organisation, quorum, proxies et suivi des décisions.</p></article>
+        <article class="card"><h3>Urgence</h3><p>Procédures claires et contacts prioritaires.</p></article>
       </div>
       <div class="intro">
         <a class="btn" href="contacts.html">Nous contacter</a>
@@ -234,7 +179,6 @@
     </section>
   </main>
 
-  <!-- RODAPÉ (SEU BLOCO EXISTENTE) -->
   <footer>
     <div class="footer-inner footer-home">
       <div class="footer-col footer-info">
@@ -246,11 +190,7 @@
         <p><strong>Nº d’entreprise&nbsp;:</strong> BE0462920325</p>
       </div>
       <div class="footer-col footer-map">
-        <iframe
-          title="Immo Hoessen – Carte"
-          src="https://www.google.com/maps?q=Avenue%20Heydenberg%2014,%201200%20Bruxelles&output=embed"
-          loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
+        <iframe title="Immo Hoessen – Carte" src="https://www.google.com/maps?q=Avenue%20Heydenberg%2014,%201200%20Bruxelles&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
     <div class="footer-legal">
