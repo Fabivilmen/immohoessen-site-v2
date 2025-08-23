@@ -215,3 +215,91 @@ footer{border-top:1px solid rgba(0,0,0,.06);background:#fff}
   .footer-home{flex-direction:column}
   .footer-map iframe{height:260px}
 }
+/* ===== Responsividade segura – adicionar ao FINAL do style.css ===== */
+
+/* Base: ocupar largura total, sem cortes em telas grandes */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Imagens e mídias sempre responsivas */
+img, svg, video, canvas {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Containers centrais: usam 100% da largura, mas com limites elegantes */
+.container, .wrap, main, section, header, footer {
+  box-sizing: border-box;
+  width: 100%;
+  /* padding lateral fluido sem “apertar” em mobile ou “sobrar” em telas grandes */
+  padding-left: clamp(12px, 2vw, 32px);
+  padding-right: clamp(12px, 2vw, 32px);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Grades comuns: empilham no mobile automaticamente se você usar .grid em alguma seção */
+.grid {
+  display: grid;
+  gap: clamp(12px, 2vw, 24px);
+}
+
+/* Hero/capa: garantir que a imagem de fundo (se usada via background) cubra a tela grande */
+.hero, .cover, .home-hero {
+  min-height: 75vh;           /* mantém sua proporção 75% da tela */
+  background-position: center;
+  background-size: cover;     /* impede “faixa”/meia largura em monitores largos */
+  background-repeat: no-repeat;
+}
+
+/* Navegação: evitar quebra feia e “meia largura” em telas muito largas */
+nav ul, .nav, .menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Botões e links de ação mais fáceis no mobile */
+a.btn, button, .button {
+  line-height: 1.2;
+  text-decoration: none;
+}
+
+/* === Telas MUITO largas (ultra-wide): soltar o layout sem parecer estreito === */
+@media (min-width: 1600px) {
+  body { font-size: 18px; } /* leve ganho de tipografia */
+  .container, .wrap, main, section {
+    max-width: 1400px;      /* ocupa mais espaço e evita “metade da tela” */
+  }
+  .home-hero .container, .hero .container, .cover .container {
+    max-width: 1600px;
+  }
+}
+
+/* === Mobile: arrumar tipografia, menus e botões === */
+@media (max-width: 768px) {
+  h1 { font-size: clamp(28px, 6vw, 36px); }
+  h2 { font-size: clamp(22px, 4.8vw, 28px); }
+  nav ul, .nav, .menu { gap: 8px; }
+  .grid { grid-template-columns: 1fr; }     /* cards empilham */
+  a.btn, button, .button { display: block; width: 100%; }
+  footer .cols { display: grid; grid-template-columns: 1fr; gap: 12px; }
+}
+
+/* Portal: garantir que o fundo (se houver) cubra e o botão fique em destaque */
+.portail-hero, .portail-banner {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 55vh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+
