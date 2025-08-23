@@ -11,8 +11,10 @@
       max-width:1100px; margin:1rem auto 0 auto;
       background:#fff; border:1px solid rgba(0,0,0,.08);
       border-radius:18px; box-shadow:0 2px 14px rgba(0,0,0,.08);
-      padding:1rem; text-align:center;
+      padding:1.2rem; text-align:center;
+      transition: transform .3s ease, box-shadow .3s ease;
     }
+    .urg-box:hover{ transform: translateY(-3px); box-shadow:0 4px 18px rgba(0,0,0,.12);}
     .urg-badge{
       display:inline-block; margin-bottom:.4rem;
       font-weight:700; letter-spacing:.3px;
@@ -24,21 +26,26 @@
     .btn-call{
       display:inline-block; padding:.75rem 1.05rem; border-radius:14px; font-weight:700;
       box-shadow:var(--shadow); text-decoration:none; line-height:1;
+      transition: background .25s ease, transform .25s ease;
     }
     .btn-call--primary{ background:var(--blue-600); color:#fff; }
-    .btn-call--primary:hover{ background:#003b8a; }
+    .btn-call--primary:hover{ background:#003b8a; transform:scale(1.05);}
     .btn-call--alt{ background:#0f3d2e; color:#fff; }
-    .btn-call--alt:hover{ background:#0c3226; }
+    .btn-call--alt:hover{ background:#0c3226; transform:scale(1.05);}
 
     /* ===== Grid dos contatos (3×2) + Facturation solo ===== */
     .contacts-grid{
       display:grid; grid-template-columns:repeat(3, minmax(240px,1fr));
-      gap:1rem; margin-block:1rem 2rem;
+      gap:1rem; margin-block:1.5rem 2rem;
     }
     .contact-card{
       background:#fff; border:1px solid rgba(0,0,0,.08);
       border-radius:18px; padding:1rem; box-shadow:0 2px 14px rgba(0,0,0,.07);
+      transition: transform .25s ease, box-shadow .25s ease;
+      opacity:0; transform:translateY(15px);
     }
+    .contact-card.in{opacity:1; transform:none;}
+    .contact-card:hover{ transform: translateY(-4px); box-shadow:0 6px 20px rgba(0,0,0,.12); }
     .contact-card h3{ margin:.1rem 0 .3rem; }
     .contact-card p{ margin:.2rem 0; }
     .contact-card--solo{
@@ -78,9 +85,6 @@
         <a class="active" href="contacts.html">Contacts</a>
         <a href="apropos.html">À propos</a>
         <a href="offre.html">Offre</a>
-        <!-- Se você já adicionou “Urgence” no menu, pode manter.
-             Se preferir remover, basta tirar a linha abaixo. -->
-        <a href="urgence.html">Urgence</a>
       </nav>
     </div>
   </header>
@@ -139,10 +143,12 @@
         <p><a href="mailto:gestionnaire@immohoessen.be">gestionnaire@immohoessen.be</a></p>
       </article>
 
-      <!-- Facturation: uma única linha coerente -->
+      <!-- Facturation -->
       <article class="contact-card contact-card--solo">
         <h3>Facturation</h3>
-        <p>Envoi et suivi des factures — <a href="mailto:factures@immohoessen.be">factures@immohoessen.be</a></p>
+        <p>Envoi et suivi des factures — 
+          <a href="mailto:factures@immohoessen.be">factures@immohoessen.be</a>
+        </p>
       </article>
     </div>
   </main>
@@ -152,5 +158,21 @@
       © 2025 Immo Hoessen · <a href="mentions.html">Mentions légales</a>
     </div>
   </footer>
+
+  <!-- JS p/ animações ao rolar -->
+  <script>
+    (function(){
+      const els = document.querySelectorAll('.contact-card');
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{
+          if(e.isIntersecting){
+            e.target.classList.add('in');
+            io.unobserve(e.target);
+          }
+        });
+      }, {threshold:.12});
+      els.forEach(el=>io.observe(el));
+    })();
+  </script>
 </body>
 </html>
