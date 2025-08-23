@@ -81,7 +81,10 @@
     </section>
 
     <section class="container container--wide pb-6">
-      <form id="offreForm" class="offre-form mt-3" novalidate>
+      <form id="offreForm" class="offre-form mt-3" 
+      action="https://formspree.io/f/xblkbbpe" 
+      method="POST">
+
         <div class="form-grid">
           <div class="form-field">
             <label for="nom">Nom <span class="req">*</span></label>
@@ -156,58 +159,6 @@
     </div>
   </footer>
 
-  <script>
-    (function () {
-      const form = document.getElementById('offreForm');
-      const success = document.getElementById('formSuccess');
-
-      function encodeBody(data) {
-        return Object.entries(data).map(([k,v]) => `${k}: ${v}`).join('\n');
-      }
-
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        success.hidden = true;
-
-        let valid = true;
-        form.querySelectorAll('[required]').forEach(el => {
-          const wrap = el.closest('.form-field');
-          const isEmail = el.type === 'email';
-          // regex simplificada: apenas precisa de "@" e "."
-          const ok = el.value.trim() && (!isEmail || /.+@.+\..+/.test(el.value));
-          if (!ok) { valid = false; wrap.classList.add('invalid'); }
-          else { wrap.classList.remove('invalid'); }
-        });
-        if (!valid) {
-          form.querySelector('.invalid input, .invalid textarea')?.focus();
-          return;
-        }
-
-        const data = {
-          'Nom': form.nom.value.trim(),
-          'Email': form.email.value.trim(),
-          'Téléphone': form.telephone.value.trim(),
-          'Adresse de la copropriété': form.adresse.value.trim(),
-          'Nombre d’étages': form.etages.value.trim(),
-          'Garage / emplacement': form.garage.value || '—',
-          'Avez-vous déjà un syndic ?': form.syndic.value || '—',
-          'Message': form.message.value.trim() || '—'
-        };
-
-        const subject = encodeURIComponent("Demande d'offre via site");
-        const body = encodeURIComponent(encodeBody(data));
-        const mailto = `mailto:syndic@immohoessen.be?subject=${subject}&body=${body}`;
-        window.location.href = mailto;
-
-        success.hidden = false;
-        form.reset();
-      });
-
-      form.addEventListener('input', (e) => {
-        const wrap = e.target.closest('.form-field');
-        wrap && wrap.classList.remove('invalid');
-      });
-    })();
-  </script>
+ 
 </body>
 </html>
