@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -90,7 +91,7 @@
 
           <div class="form-field">
             <label for="email">Email <span class="req">*</span></label>
-            <input type="email" id="email" name="Email" required>
+            <input type="email" id="email" name="Email" placeholder="exemple@domaine.com" required autocomplete="email" inputmode="email" spellcheck="false">
             <small class="err">Indiquez une adresse e-mail valide</small>
           </div>
 
@@ -161,7 +162,7 @@
       const success = document.getElementById('formSuccess');
 
       function encodeBody(data) {
-        return Object.entries(data).map(([k,v]) => `${k}: ${v}`).join('\\n');
+        return Object.entries(data).map(([k,v]) => `${k}: ${v}`).join('\n');
       }
 
       form.addEventListener('submit', function (e) {
@@ -172,7 +173,8 @@
         form.querySelectorAll('[required]').forEach(el => {
           const wrap = el.closest('.form-field');
           const isEmail = el.type === 'email';
-          const ok = el.value.trim() && (!isEmail || /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(el.value));
+          // regex simplificada: apenas precisa de "@" e "."
+          const ok = el.value.trim() && (!isEmail || /.+@.+\..+/.test(el.value));
           if (!ok) { valid = false; wrap.classList.add('invalid'); }
           else { wrap.classList.remove('invalid'); }
         });
