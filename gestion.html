@@ -6,11 +6,40 @@
   <title>Gestion – Immo Hoessen</title>
   <link rel="stylesheet" href="style.css">
   <style>
+    /* ===== TEMA QUENTE SUAVE (variáveis + toques leves) ===== */
+    :root{
+      --green-dark:#0f3d2e;
+      --green-muted:#557a68;
+      --gold:#e4b100;
+      --terracotta:#c86b4a;
+      --warm-25:#fff9f3;  /* quase creme */
+      --warm-50:#fff3e5;  /* pêssego claro */
+      --warm-100:#ffe7c7; /* damasco claro (não usamos forte aqui) */
+    }
+    /* fundo geral com banho quente MUITO suave */
+    body.site{
+      background: radial-gradient(120% 120% at 50% -10%, var(--warm-25) 0%, #ffffff 45%);
+    }
+    /* sublinhado quente no menu ao hover (leve) */
+    .nav a{ position:relative; text-decoration:none; }
+    .nav a::after{
+      content:""; position:absolute; left:0; bottom:-6px; height:2px; width:0;
+      background:linear-gradient(90deg, var(--gold), var(--terracotta));
+      transition:width .2s ease;
+    }
+    .nav a:hover::after{ width:100%; }
+    /* linha decorativa discreta sob o header */
+    .header-inner{
+      border-image: linear-gradient(90deg, var(--gold), var(--terracotta)) 1;
+      border-bottom:3px solid transparent;
+    }
+
     /* ===== Estilos específicos desta página ===== */
     .gest-hero{
       padding:1.5rem 0 .5rem 0;
       border-bottom:1px solid rgba(0,0,0,.06);
-      background:linear-gradient(180deg, rgba(15,61,46,.06), rgba(15,61,46,0));
+      /* antes: verde; agora: quente SUAVE */
+      background:linear-gradient(180deg, var(--warm-50), var(--warm-25));
       text-align:center; /* centraliza título e texto */
     }
     .gest-hero .container p{
@@ -32,12 +61,19 @@
     .gest-card{
       background:#fff;
       border:1px solid rgba(0,0,0,.06);
+      border-left:6px solid var(--terracotta);   /* acento quente discreto */
       border-radius:var(--radius);
       padding:1rem;
       box-shadow:var(--shadow);
+      transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
     }
-    .gest-card h3{ margin:.2rem 0 .35rem 0; }
-    .gest-card p{ margin:0; color:var(--muted); }
+    .gest-card:hover{
+      transform:translateY(-2px);
+      border-left-color:var(--gold);             /* brilho quente no hover */
+      box-shadow:0 10px 22px rgba(228,177,0,.18);
+    }
+    .gest-card h3{ margin:.2rem 0 .35rem 0; color:var(--green-dark); }
+    .gest-card p{ margin:0; color:var(--green-muted); }
 
     /* Coluna da imagem: levemente “puxada” para baixo e com borda/sombra */
     .gest-illustration{
@@ -58,7 +94,7 @@
     /* Rodapé minimal desta página */
     .footer-min{
       max-width:1100px; margin:0 auto; padding:1rem;
-      display:flex; justify-content:flex-end; color:var(--muted);
+      display:flex; justify-content:flex-end; color:var(--green-muted);
       border-top:1px solid rgba(0,0,0,.06);
     }
 
