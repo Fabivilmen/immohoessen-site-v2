@@ -6,32 +6,16 @@
   <title>À propos – Immo Hoessen</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    /* ===== TEMA QUENTE SUAVE ===== */
     :root{
-      --green-dark:#0f3d2e;
-      --green-muted:#557a68;
-      --gold:#e4b100;
-      --terracotta:#c86b4a;
-      --warm-25:#fff9f3;
-      --warm-50:#fff3e5;
-      --warm-100:#ffe7c7;
+      --green-dark:#0f3d2e; --green-muted:#557a68; --gold:#e4b100; --terracotta:#c86b4a;
+      --warm-25:#fff9f3; --warm-50:#fff3e5;
     }
-    body.site{
-      background: radial-gradient(120% 120% at 50% -10%, var(--warm-25) 0%, #ffffff 45%);
-    }
+    body.site{ background: radial-gradient(120% 120% at 50% -10%, var(--warm-25) 0%, #ffffff 45%); }
     .nav a{ position:relative; text-decoration:none; }
-    .nav a::after{
-      content:""; position:absolute; left:0; bottom:-6px; height:2px; width:0;
-      background:linear-gradient(90deg, var(--gold), var(--terracotta));
-      transition:width .2s ease;
-    }
+    .nav a::after{ content:""; position:absolute; left:0; bottom:-6px; height:2px; width:0; background:linear-gradient(90deg, var(--gold), var(--terracotta)); transition:width .2s ease; }
     .nav a:hover::after{ width:100%; }
-    .header-inner{
-      border-image: linear-gradient(90deg, var(--gold), var(--terracotta)) 1;
-      border-bottom:3px solid transparent;
-    }
+    .header-inner{ border-image: linear-gradient(90deg, var(--gold), var(--terracotta)) 1; border-bottom:3px solid transparent; }
 
-    /* ===== Hero ===== */
     .about-hero{
       background:linear-gradient(180deg, var(--warm-50), var(--warm-25));
       padding:2rem 0 1rem 0; border-bottom:1px solid rgba(0,0,0,.06);
@@ -39,7 +23,6 @@
     }
     .about-hero p{ max-width:900px; margin:.5rem auto 0 auto; color:var(--green-muted); }
 
-    /* ===== Fundadores – fotos maiores + crop para cima ===== */
     .founders{ display:grid; gap:1rem; grid-template-columns:1fr 1fr; }
     .founder-card{
       display:grid; grid-template-columns:200px 1fr; gap:1rem; align-items:center;
@@ -48,34 +31,31 @@
       border-radius:18px; padding:1rem; box-shadow:var(--shadow);
       transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
     }
-    .founder-card:hover{
-      transform:translateY(-3px);
-      border-left-color:var(--gold);
-      box-shadow:0 10px 22px rgba(228,177,0,.18);
-    }
+    .founder-card:hover{ transform:translateY(-3px); border-left-color:var(--gold); box-shadow:0 10px 22px rgba(228,177,0,.18); }
     .founder-photo{ width:200px; height:200px; border-radius:16px; overflow:hidden }
-    .founder-photo img{
-      width:100%; height:100%; object-fit:cover;
-      /* puxa o enquadramento para cima para evitar cortar a cabeça */
-      object-position: 50% 20%;
-    }
+    .founder-photo img{ width:100%; height:100%; object-fit:cover; object-position:50% 20%; }
     .founder-caption{ margin-top:.4rem; font-size:.95rem; color:var(--green-muted); }
 
-    /* ===== Rodapé ===== */
     .footer-min{
       max-width:1100px; margin:0 auto; padding:1rem;
       display:flex; justify-content:flex-end; color:var(--green-muted);
       border-top:1px solid rgba(0,0,0,.06);
     }
-
-    /* ===== Responsivo ===== */
     @media (max-width:900px){
       .founders{ grid-template-columns:1fr; }
       .founder-card{ grid-template-columns:150px 1fr; }
       .founder-photo{ width:150px; height:150px; }
-      /* mantém o crop para cima no mobile também */
-      .founder-photo img{ object-position: 50% 20%; }
+      .founder-photo img{ object-position:50% 20%; }
     }
+
+    /* CTA no menu */
+    .nav a.cta{
+      background:#1a5cff; color:#fff !important; padding:.55rem .95rem; border-radius:12px; font-weight:700; line-height:1;
+      box-shadow:0 8px 20px rgba(26,92,255,.18); transition:transform .2s ease, background .2s ease, box-shadow .2s ease; margin-left:.5rem;
+    }
+    .nav a.cta:hover{ background:#003b8a; transform: translateY(-1px); box-shadow:0 10px 24px rgba(26,92,255,.26); }
+    .nav a.active.cta{ background:#0f3d2e; box-shadow:0 8px 20px rgba(15,61,46,.18); }
+    .nav a.active.cta:hover{ background:#0c3226; }
   </style>
 </head>
 <body class="site">
@@ -85,14 +65,14 @@
         <img src="img/logo.svg" alt="Immo Hoessen">
         <span class="brand-name">Immo Hoessen</span>
       </div>
-      <nav class="nav">
+      <nav class="nav" aria-label="Navigation principale">
         <a href="index.html">Accueil</a>
         <a href="types.html">Types de gestion</a>
         <a href="gestion.html">Gestion</a>
         <a href="portail.html">Portail</a>
         <a href="contacts.html">Contacts</a>
         <a class="active" href="apropos.html">À propos</a>
-        <a href="offre.html">Offre</a>
+        <a href="offre.html" class="cta">Demander une offre</a>
       </nav>
     </div>
   </header>
@@ -112,12 +92,9 @@
     <section class="container pb-6">
       <h2 class="mt-3">Fondateur & Cofondateur</h2>
       <div class="founders mt-2">
-        <!-- Laurent -->
         <article class="founder-card">
           <div>
-            <div class="founder-photo">
-              <img src="img/fotolaurent1.jpg" alt="M. Laurent Hoessen">
-            </div>
+            <div class="founder-photo"><img src="img/fotolaurent1.jpg" alt="M. Laurent Hoessen"></div>
             <div class="founder-caption">Fondateur</div>
           </div>
           <div>
@@ -126,12 +103,9 @@
           </div>
         </article>
 
-        <!-- André -->
         <article class="founder-card">
           <div>
-            <div class="founder-photo">
-              <img src="img/fotoandre3.jpg" alt="M. André Hoessen">
-            </div>
+            <div class="founder-photo"><img src="img/fotoandre3.jpg" alt="M. André Hoessen"></div>
             <div class="founder-caption">Cofondateur</div>
           </div>
           <div>
