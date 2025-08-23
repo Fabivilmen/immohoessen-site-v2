@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -7,85 +6,46 @@
   <title>Types de gestion – Immo Hoessen</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    /* ===== TEMA QUENTE SUAVE (variáveis + toques leves) ===== */
     :root{
-      --green-dark:#0f3d2e;
-      --green-muted:#557a68;
-      --gold:#e4b100;
-      --terracotta:#c86b4a;
-      --warm-25:#fff9f3;  /* quase creme */
-      --warm-50:#fff3e5;  /* pêssego claro */
-      --warm-100:#ffe7c7; /* damasco claro (não usamos forte aqui) */
+      --green-dark:#0f3d2e; --green-muted:#557a68; --gold:#e4b100; --terracotta:#c86b4a;
+      --warm-25:#fff9f3; --warm-50:#fff3e5;
     }
-    /* fundo geral com banho quente MUITO suave (não interfere na capa global) */
-    body.site{
-      background: radial-gradient(120% 120% at 50% -10%, var(--warm-25) 0%, #ffffff 45%);
-    }
-    /* sublinhado quente no menu ao hover (leve) */
+    body.site{ background: radial-gradient(120% 120% at 50% -10%, var(--warm-25) 0%, #ffffff 45%); }
     .nav a{ position:relative; text-decoration:none; }
-    .nav a::after{
-      content:""; position:absolute; left:0; bottom:-6px; height:2px; width:0;
-      background:linear-gradient(90deg, var(--gold), var(--terracotta));
-      transition:width .2s ease;
-    }
+    .nav a::after{ content:""; position:absolute; left:0; bottom:-6px; height:2px; width:0; background:linear-gradient(90deg, var(--gold), var(--terracotta)); transition:width .2s ease; }
     .nav a:hover::after{ width:100%; }
-    /* linha decorativa discreta sob o header */
-    .header-inner{
-      border-image: linear-gradient(90deg, var(--gold), var(--terracotta)) 1;
-      border-bottom:3px solid transparent;
-    }
+    .header-inner{ border-image: linear-gradient(90deg, var(--gold), var(--terracotta)) 1; border-bottom:3px solid transparent; }
 
-    /* ===== Estilos específicos desta página ===== */
+    /* Hero quente suave */
     .types-hero{
       padding:1.2rem 0 .5rem 0;
       border-bottom:1px solid rgba(0,0,0,.06);
-      /* antes: verde; agora: quente SUAVE */
       background:linear-gradient(180deg, var(--warm-50), var(--warm-25));
       text-align:center;
     }
     .types-hero .container p{ max-width:850px; margin:.5rem auto 0; }
 
     .types-wrap{
-      display:grid;
-      grid-template-columns:1.1fr .9fr; /* cards + imagem */
-      gap:1.25rem;
-      align-items:stretch;
-      margin-top:1rem;
+      display:grid; grid-template-columns:1.1fr .9fr; gap:1.25rem; align-items:stretch; margin-top:1rem;
     }
-    .types-cards{
-      display:grid;
-      grid-template-columns:repeat(2, minmax(280px,1fr));
-      gap:1rem;
-    }
+    .types-cards{ display:grid; grid-template-columns:repeat(2, minmax(280px,1fr)); gap:1rem; }
     .type-card{
-      background:#fff; border:1px solid rgba(0,0,0,.06);
-      border-left:6px solid var(--terracotta);           /* acento quente discreto */
-      border-radius:var(--radius); padding:1.1rem;
-      box-shadow:var(--shadow);
-      display:grid; grid-template-columns:64px 1fr; gap:.9rem;
-      min-height:160px;
+      background:#fff; border:1px solid rgba(0,0,0,.06); border-left:6px solid var(--terracotta);
+      border-radius:var(--radius); padding:1.1rem; box-shadow:var(--shadow);
+      display:grid; grid-template-columns:64px 1fr; gap:.9rem; min-height:160px;
       transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
     }
-    .type-card:hover{
-      transform:translateY(-2px);
-      border-left-color:var(--gold);                     /* brilho quente no hover */
-      box-shadow:0 10px 22px rgba(228,177,0,.18);
-    }
+    .type-card:hover{ transform:translateY(-2px); border-left-color:var(--gold); box-shadow:0 10px 22px rgba(228,177,0,.18); }
     .type-card h3{ margin:.2rem 0 .35rem 0; font-size:1.15rem; color:var(--green-dark); }
     .type-card p{ margin:0; color:var(--green-muted); font-size:1.02rem; line-height:1.45; }
 
-    /* Ícones – fundo com leve gradiente quente */
     .type-icon{
       width:56px; height:56px; border-radius:16px;
       background:linear-gradient(180deg, var(--warm-25), #fff);
-      border:1px solid rgba(0,0,0,.08);
-      display:grid; place-items:center;
+      border:1px solid rgba(0,0,0,.08); display:grid; place-items:center;
     }
-    .type-icon svg{
-      width:28px; height:28px; stroke:var(--green-900); stroke-width:1.9; stroke-linecap:round; stroke-linejoin:round;
-    }
+    .type-icon svg{ width:28px; height:28px; stroke:var(--green-900); stroke-width:1.9; stroke-linecap:round; stroke-linejoin:round; }
 
-    /* Coluna da imagem (mantém seu estilo, só harmoniza com o tom de fundo) */
     .types-illustration{
       background:var(--bg-soft); border:1px solid rgba(0,0,0,.06);
       border-radius:var(--radius); box-shadow:var(--shadow);
@@ -94,14 +54,11 @@
     }
     .types-illustration img{ width:100%; height:100%; object-fit:cover; }
 
-    /* Rodapé minimal desta página */
     .footer-min{
       max-width:1100px; margin:0 auto; padding:1rem;
       display:flex; justify-content:flex-end; color:var(--green-muted);
       border-top:1px solid rgba(0,0,0,.06);
     }
-
-    /* Responsivo */
     @media (max-width:1024px){
       .types-wrap{ grid-template-columns:1fr; }
       .types-illustration{ top:0; min-height:240px; }
@@ -111,6 +68,15 @@
       .types-cards{ grid-template-columns:1fr; }
       .type-card{ grid-template-columns:56px 1fr; }
     }
+
+    /* CTA no menu */
+    .nav a.cta{
+      background:#1a5cff; color:#fff !important; padding:.55rem .95rem; border-radius:12px; font-weight:700; line-height:1;
+      box-shadow:0 8px 20px rgba(26,92,255,.18); transition:transform .2s ease, background .2s ease, box-shadow .2s ease; margin-left:.5rem;
+    }
+    .nav a.cta:hover{ background:#003b8a; transform: translateY(-1px); box-shadow:0 10px 24px rgba(26,92,255,.26); }
+    .nav a.active.cta{ background:#0f3d2e; box-shadow:0 8px 20px rgba(15,61,46,.18); }
+    .nav a.active.cta:hover{ background:#0c3226; }
   </style>
 </head>
 <body class="site">
@@ -119,14 +85,14 @@
       <div class="brand">
         <img src="img/logo.svg" alt="Immo Hoessen"><span class="brand-name">Immo Hoessen</span>
       </div>
-      <nav class="nav">
+      <nav class="nav" aria-label="Navigation principale">
         <a href="index.html">Accueil</a>
         <a class="active" href="types.html">Types de gestion</a>
         <a href="gestion.html">Gestion</a>
         <a href="portail.html">Portail</a>
         <a href="contacts.html">Contacts</a>
         <a href="apropos.html">À propos</a>
-        <a href="offre.html">Offre</a>
+        <a href="offre.html" class="cta">Demander une offre</a>
       </nav>
     </div>
   </header>
@@ -141,15 +107,11 @@
 
     <section class="container pb-6">
       <div class="types-wrap">
-        <!-- 4 cards -->
         <div class="types-cards">
-          <!-- Syndic -->
           <article class="type-card">
             <div class="type-icon" aria-hidden="true">
-              <!-- Office building -->
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                <rect x="4" y="3" width="10" height="18" rx="1.5"/>
-                <path d="M8 7h2M12 7h2M8 11h2M12 11h2M8 15h2M12 15h2M18 9v12M16 21h4"/>
+                <rect x="4" y="3" width="10" height="18" rx="1.5"/><path d="M8 7h2M12 7h2M8 11h2M12 11h2M8 15h2M12 15h2M18 9v12M16 21h4"/>
               </svg>
             </div>
             <div>
@@ -158,13 +120,10 @@
             </div>
           </article>
 
-          <!-- Comptabilité -->
           <article class="type-card">
             <div class="type-icon" aria-hidden="true">
-              <!-- Calculator -->
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                <rect x="5" y="3" width="14" height="18" rx="2"/>
-                <path d="M8 7h8M8 12h2m3 0h2M8 16h2m3 0h2M8 20h2m3 0h2"/>
+                <rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 12h2m3 0h2M8 16h2m3 0h2M8 20h2m3 0h2"/>
               </svg>
             </div>
             <div>
@@ -173,13 +132,10 @@
             </div>
           </article>
 
-          <!-- Travaux -->
           <article class="type-card">
             <div class="type-icon" aria-hidden="true">
-              <!-- Tools -->
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                <path d="M15 7l-2 2 2 2 2-2a3 3 0 10-2-2z"/>
-                <path d="M3 21l6.5-6.5 3 3L6 24H3v-3z"/>
+                <path d="M15 7l-2 2 2 2 2-2a3 3 0 10-2-2z"/><path d="M3 21l6.5-6.5 3 3L6 24H3v-3z"/>
               </svg>
             </div>
             <div>
@@ -188,13 +144,10 @@
             </div>
           </article>
 
-          <!-- Sinistres -->
           <article class="type-card">
             <div class="type-icon" aria-hidden="true">
-              <!-- Shield check -->
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                <path d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6l7-3z"/>
-                <path d="M9.5 12.5l2 2 3.5-4"/>
+                <path d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6l7-3z"/><path d="M9.5 12.5l2 2 3.5-4"/>
               </svg>
             </div>
             <div>
@@ -204,7 +157,6 @@
           </article>
         </div>
 
-        <!-- Imagem lateral -->
         <aside class="types-illustration">
           <img src="img/tgest.png" alt="Types de gestion">
         </aside>
@@ -212,7 +164,6 @@
     </section>
   </main>
 
-  <!-- Rodapé minimal -->
   <footer>
     <div class="footer-min">
       © 2025 Immo Hoessen · <a href="mentions.html">Mentions légales</a>
