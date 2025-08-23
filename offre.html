@@ -94,7 +94,7 @@
 
           <div class="form-field">
             <label for="email">Email <span class="req">*</span></label>
-           <input type="email" id="email" name="email" placeholder="exemple@domaine.com" required autocomplete="email" inputmode="email" spellcheck="false">
+          <input type="email" id="email" name="email" placeholder="exemple@domaine.com" required autocomplete="email" inputmode="email" spellcheck="false">
 
             <small class="err">Indiquez une adresse e-mail valide</small>
           </div>
@@ -140,11 +140,17 @@
             <textarea id="message" name="Message" rows="5" placeholder="Votre message..."></textarea>
           </div>
         </div>
+<div class="mt-3">
+  <!-- Campos ocultos para assunto e (opcional) redirecionamento -->
+  <input type="hidden" name="_subject" value="Demande d’offre – Site Immo Hoessen">
+  <!-- Se quiser redirecionar para uma página de obrigado, descomente a linha abaixo:
+  <input type="hidden" name="_next" value="https://fabivilmen.github.io/immohoessen-site-v2/merci.html">
+  -->
 
-        <div class="mt-3">
-          <button type="submit" class="btn">Envoyer</button>
-          <p class="form-note mt-1">Les champs marqués d’un <span class="req">*</span> sont obligatoires.</p>
-        </div>
+  <button type="submit" class="btn">Envoyer</button>
+  <p class="form-note mt-1">Les champs marqués d’un <span class="req">*</span> sont obligatoires.</p>
+</div>
+
 
         <div id="formSuccess" class="form-success" role="status" aria-live="polite" hidden>
           Merci pour votre intérêt — nous vous contacterons dans les plus brefs délais.
