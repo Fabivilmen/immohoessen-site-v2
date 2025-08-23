@@ -6,57 +6,95 @@
   <title>Contacts – Immo Hoessen</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    /* ===== URGENCE (banner no topo) ===== */
+    /* ======== TEMA QUENTE (adições seguras) ======== */
+    :root{
+      --green-dark:#0f3d2e;
+      --green-muted:#557a68;
+      --gold:#e4b100;
+      --terracotta:#c86b4a;
+      --warm-25:#fff9f3;
+      --warm-50:#fff3e5;
+      --warm-100:#ffe7c7;
+    }
+    /* banho quente de fundo geral (não altera cabeçalho/rodapé) */
+    body.site{
+      background: radial-gradient(120% 120% at 50% -10%, var(--warm-25) 0%, #ffffff 45%);
+    }
+    /* sublinhado quente no menu (só hover, sem quebrar layout) */
+    .nav a{ position:relative; text-decoration:none; }
+    .nav a::after{
+      content:""; position:absolute; left:0; bottom:-6px; height:2px; width:0;
+      background:linear-gradient(90deg, var(--gold), var(--terracotta));
+      transition:width .2s ease;
+    }
+    .nav a:hover::after{ width:100%; }
+    /* barra decorativa quente sob o header */
+    .header-inner{
+      border-image: linear-gradient(90deg, var(--gold), var(--terracotta)) 1;
+      border-bottom:3px solid transparent;
+    }
+
+    /* ===== Estrutura das seções ===== */
+    .section{ padding:2.2rem clamp(12px,2vw,32px); }
+    .section .contacts-wrap{ max-width:1100px; margin:0 auto; }
+    .section.alt{ background: linear-gradient(180deg, var(--warm-50), var(--warm-25)); }     /* suave */
+    .section.alt-strong{ background: linear-gradient(180deg, var(--warm-100), var(--warm-50)); } /* vibrante */
+
+    /* ===== URGENCE (banner) ===== */
     .urg-box{
-      max-width:1100px; margin:1rem auto 0 auto;
       background:#fff; border:1px solid rgba(0,0,0,.08);
       border-radius:18px; box-shadow:0 2px 14px rgba(0,0,0,.08);
       padding:1.2rem; text-align:center;
       transition: transform .3s ease, box-shadow .3s ease;
+      margin-top:.75rem;
     }
-    .urg-box:hover{ transform: translateY(-3px); box-shadow:0 4px 18px rgba(0,0,0,.12);}
+    .urg-box:hover{ transform: translateY(-3px); box-shadow:0 4px 18px rgba(0,0,0,.12); }
     .urg-badge{
-      display:inline-block; margin-bottom:.4rem;
-      font-weight:700; letter-spacing:.3px;
+      display:inline-block; margin-bottom:.4rem; font-weight:700; letter-spacing:.3px;
       background:#fff4f4; color:#8a1f16; border:1px solid #e7b0ac;
       padding:.2rem .6rem; border-radius:999px; font-size:.9rem;
     }
-    .urg-hours{ color:var(--muted); margin:.3rem 0 .6rem; }
+    .urg-hours{ color:var(--green-muted); margin:.3rem 0 .6rem; }
     .urg-buttons{ display:flex; gap:.6rem; justify-content:center; flex-wrap:wrap; }
     .btn-call{
       display:inline-block; padding:.75rem 1.05rem; border-radius:14px; font-weight:700;
-      box-shadow:var(--shadow); text-decoration:none; line-height:1;
-      transition: background .25s ease, transform .25s ease;
+      text-decoration:none; line-height:1; transition: background .25s ease, transform .25s ease, box-shadow .25s ease;
+      box-shadow:0 8px 20px rgba(228,177,0,.16);
     }
-    .btn-call--primary{ background:var(--blue-600); color:#fff; }
-    .btn-call--primary:hover{ background:#003b8a; transform:scale(1.05);}
+    .btn-call--primary{ background:var(--blue-600, #1a5cff); color:#fff; }
+    .btn-call--primary:hover{ background:#003b8a; transform:scale(1.05); }
     .btn-call--alt{ background:#0f3d2e; color:#fff; }
-    .btn-call--alt:hover{ background:#0c3226; transform:scale(1.05);}
+    .btn-call--alt:hover{ background:#0c3226; transform:scale(1.05); }
 
-    /* ===== Grid dos contatos (3×2) + Facturation solo ===== */
+    /* ===== Grid de contatos ===== */
     .contacts-grid{
       display:grid; grid-template-columns:repeat(3, minmax(240px,1fr));
-      gap:1rem; margin-block:1.5rem 2rem;
+      gap:1rem; margin-block:1.25rem 0;
     }
     .contact-card{
       background:#fff; border:1px solid rgba(0,0,0,.08);
-      border-radius:18px; padding:1rem; box-shadow:0 2px 14px rgba(0,0,0,.07);
-      transition: transform .25s ease, box-shadow .25s ease;
+      border-left:6px solid var(--terracotta);
+      border-radius:18px; padding:1rem;
+      box-shadow:0 2px 14px rgba(0,0,0,.07);
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
       opacity:0; transform:translateY(15px);
     }
-    .contact-card.in{opacity:1; transform:none;}
-    .contact-card:hover{ transform: translateY(-4px); box-shadow:0 6px 20px rgba(0,0,0,.12); }
-    .contact-card h3{ margin:.1rem 0 .3rem; }
-    .contact-card p{ margin:.2rem 0; }
+    .contact-card.in{ opacity:1; transform:none; }
+    .contact-card:hover{
+      transform: translateY(-4px);
+      border-left-color: var(--gold);
+      box-shadow:0 12px 28px rgba(228,177,0,.22);
+    }
+    .contact-card h3{ margin:.1rem 0 .3rem; color:var(--green-dark); }
+    .contact-card p{ margin:.2rem 0; color:var(--green-muted); }
     .contact-card--solo{
-      grid-column:1 / -1; max-width:520px; justify-self:center;
-      text-align:center;
+      grid-column:1 / -1; max-width:520px; justify-self:center; text-align:center;
     }
 
-    /* Rodapé minimal */
+    /* Rodapé minimal (mantido) */
     .footer-min{
       max-width:1100px; margin:0 auto; padding:1rem;
-      display:flex; justify-content:flex-end; color:var(--muted);
+      display:flex; justify-content:flex-end; color:var(--green-muted);
       border-top:1px solid rgba(0,0,0,.06);
     }
 
@@ -89,68 +127,76 @@
     </div>
   </header>
 
-  <main class="container pb-6">
-    <h1>Contacts</h1>
+  <!-- Seção quente forte: título + urgência -->
+  <main>
+    <section class="section alt-strong">
+      <div class="contacts-wrap">
+        <h1>Contacts</h1>
 
-    <!-- URGENCE dentro da aba Contacts -->
-    <div class="urg-box" role="region" aria-labelledby="urgence-heading">
-      <div class="urg-badge">Urgence</div>
-      <h2 id="urgence-heading" style="margin:.2rem 0 .4rem 0;">En dehors des heures du bureau (9h–13h)</h2>
-      <p class="urg-hours">Pour toute urgence, contactez :</p>
-      <div class="urg-buttons">
-        <a class="btn-call btn-call--primary" href="tel:+32495261683" aria-label="Appeler 0495 26 16 83">📞 0495&nbsp;26&nbsp;16&nbsp;83</a>
-        <a class="btn-call btn-call--alt" href="tel:+32495543808" aria-label="Appeler 0495 54 38 08">📞 0495&nbsp;54&nbsp;38&nbsp;08</a>
+        <div class="urg-box" role="region" aria-labelledby="urgence-heading">
+          <div class="urg-badge">Urgence</div>
+          <h2 id="urgence-heading" style="margin:.2rem 0 .4rem 0;">En dehors des heures du bureau (9h–13h)</h2>
+          <p class="urg-hours">Pour toute urgence, contactez :</p>
+          <div class="urg-buttons">
+            <a class="btn-call btn-call--primary" href="tel:+32495261683" aria-label="Appeler 0495 26 16 83">📞 0495&nbsp;26&nbsp;16&nbsp;83</a>
+            <a class="btn-call btn-call--alt" href="tel:+32495543808" aria-label="Appeler 0495 54 38 08">📞 0495&nbsp;54&nbsp;38&nbsp;08</a>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <!-- Grade 3×2 de contatos -->
-    <div class="contacts-grid">
-      <!-- Linha 1 -->
-      <article class="contact-card">
-        <h3>Laurent Hoessen</h3>
-        <p>Gestionnaire — IPI 150260 (titulaire)</p>
-        <p><a href="mailto:laurent@immohoessen.be">laurent@immohoessen.be</a></p>
-      </article>
+    <!-- Seção quente suave: cartões de contato -->
+    <section class="section alt">
+      <div class="contacts-wrap">
+        <div class="contacts-grid">
+          <!-- Linha 1 -->
+          <article class="contact-card">
+            <h3>Laurent Hoessen</h3>
+            <p>Gestionnaire — IPI 150260 (titulaire)</p>
+            <p><a href="mailto:laurent@immohoessen.be">laurent@immohoessen.be</a></p>
+          </article>
 
-      <article class="contact-card">
-        <h3>André Hoessen</h3>
-        <p>Gestionnaire général et RH</p>
-        <p><a href="mailto:andre@immohoessen.be">andre@immohoessen.be</a></p>
-      </article>
+          <article class="contact-card">
+            <h3>André Hoessen</h3>
+            <p>Gestionnaire général et RH</p>
+            <p><a href="mailto:andre@immohoessen.be">andre@immohoessen.be</a></p>
+          </article>
 
-      <article class="contact-card">
-        <h3>Patricia Boniface</h3>
-        <p>Gestionnaire collaboratrice</p>
-        <p><a href="mailto:gestion@immohoessen.be">gestion@immohoessen.be</a></p>
-      </article>
+          <article class="contact-card">
+            <h3>Patricia Boniface</h3>
+            <p>Gestionnaire collaboratrice</p>
+            <p><a href="mailto:gestion@immohoessen.be">gestion@immohoessen.be</a></p>
+          </article>
 
-      <!-- Linha 2 -->
-      <article class="contact-card">
-        <h3>Viviane Ledieu</h3>
-        <p>Gestionnaire de sinistres</p>
-        <p><a href="mailto:admin@immohoessen.be">admin@immohoessen.be</a></p>
-      </article>
+          <!-- Linha 2 -->
+          <article class="contact-card">
+            <h3>Viviane Ledieu</h3>
+            <p>Gestionnaire de sinistres</p>
+            <p><a href="mailto:admin@immohoessen.be">admin@immohoessen.be</a></p>
+          </article>
 
-      <article class="contact-card">
-        <h3>Fabiane Menezes</h3>
-        <p>Assistante de gestion</p>
-        <p><a href="mailto:syndic@immohoessen.be">syndic@immohoessen.be</a></p>
-      </article>
+          <article class="contact-card">
+            <h3>Fabiane Menezes</h3>
+            <p>Assistante de gestion</p>
+            <p><a href="mailto:syndic@immohoessen.be">syndic@immohoessen.be</a></p>
+          </article>
 
-      <article class="contact-card">
-        <h3>Mikail Uçarer</h3>
-        <p>Stagiaire (en formation IPI)</p>
-        <p><a href="mailto:gestionnaire@immohoessen.be">gestionnaire@immohoessen.be</a></p>
-      </article>
+          <article class="contact-card">
+            <h3>Mikail Uçarer</h3>
+            <p>Stagiaire (en formation IPI)</p>
+            <p><a href="mailto:gestionnaire@immohoessen.be">gestionnaire@immohoessen.be</a></p>
+          </article>
 
-      <!-- Facturation -->
-      <article class="contact-card contact-card--solo">
-        <h3>Facturation</h3>
-        <p>Envoi et suivi des factures — 
-          <a href="mailto:factures@immohoessen.be">factures@immohoessen.be</a>
-        </p>
-      </article>
-    </div>
+          <!-- Facturation -->
+          <article class="contact-card contact-card--solo">
+            <h3>Facturation</h3>
+            <p>Envoi et suivi des factures — 
+              <a href="mailto:factures@immohoessen.be">factures@immohoessen.be</a>
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer>
