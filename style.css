@@ -432,5 +432,75 @@ body.site{
 /* responsivo dos cards */
 @media (max-width:1024px){ .cards{ grid-template-columns:repeat(2,minmax(220px,1fr)); } }
 @media (max-width:640px){ .cards{ grid-template-columns:1fr; } }
+/* ====== Header responsivo (fixa logo + menu no mobile) ====== */
+
+/* Base: garante flex e espaço entre logo e menu */
+.header-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:.75rem;
+  flex-wrap:wrap;            /* permite o menu ir para a linha de baixo quando faltar espaço */
+  padding:.7rem 1rem;        /* um pouco mais de respiro */
+}
+
+/* Logo e nome */
+.brand{ display:flex; align-items:center; gap:.5rem; min-width:0; }
+.brand img{ height:40px; width:auto; display:block; }
+.brand-name{ font-weight:700; font-size:1rem; white-space:nowrap; }
+
+/* Menu em linha, com quebra se precisar */
+.nav{
+  display:flex;
+  align-items:center;
+  gap:.5rem;
+  flex-wrap:wrap;            /* pode quebrar para a próxima linha */
+}
+
+/* Links do menu */
+.nav a{
+  padding:.45rem .7rem;
+  border-radius:10px;
+  line-height:1.1;
+}
+
+/* Botão azul do menu */
+.nav a.cta{
+  margin-left:.5rem;
+}
+
+/* ===== Telas pequenas ===== */
+@media (max-width: 720px){
+  /* empilha: logo em cima, menu abaixo, alinhados bonitos */
+  .header-inner{
+    flex-direction:column;
+    align-items:stretch;
+    gap:.6rem;
+  }
+
+  /* diminui um pouco o logo para caber melhor */
+  .brand img{ height:34px; }
+  .brand-name{ font-size:.95rem; }
+
+  /* menu ocupa a largura toda e os itens quebram em 2+ linhas se necessário */
+  .nav{
+    width:100%;
+    gap:.5rem .5rem;
+  }
+
+  /* deixa o botão "Demander une offre" em destaque, ocupando a linha toda */
+  .nav a.cta{
+    width:100%;
+    text-align:center;
+    margin-left:0;           /* zera a margem lateral no mobile */
+  }
+}
+
+/* ===== Acessibilidade: foco visível no teclado ===== */
+.nav a:focus-visible{
+  outline:3px solid #1a5cff;
+  outline-offset:2px;
+}
+
 
 
