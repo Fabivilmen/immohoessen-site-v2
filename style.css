@@ -228,4 +228,54 @@ body.site{
   box-shadow:0 8px 20px rgba(26,92,255,.18);
 }
 .nav a.cta:hover{ background:#003b8a; }
+/* ===== Tema quente em TODO o site ===== */
+:root{
+  --terracotta:#c86b4a;   /* acento principal */
+  --gold:#e4b100;         /* destaque no hover */
+  --warm-25:#fff9f3;      /* creme */
+}
+
+/* Fundo morno contínuo até o rodapé (um pouco mais intenso) */
+body.site{
+  background:
+    linear-gradient(180deg,
+      rgba(200,107,74,.10) 0%,
+      rgba(200,107,74,.06) 24%,
+      rgba(255,226,197,.08) 48%,
+      #ffffff 100%),
+    radial-gradient(120% 140% at 50% -15%, #fff3e5 0%, #ffffff 60%);
+}
+
+/* Seções não “tampam” o fundo quente */
+.section, .section.alt{ background: transparent !important; }
+
+/* ===== Faixa lateral nos cards + troca de cor no hover ===== */
+/* (cobre os principais tipos de cards usados no site) */
+.card, .gest-card, .type-card, .contact-card{
+  position:relative;
+  border-left:0 !important;   /* a faixa será um pseudo-elemento */
+  overflow:hidden;
+}
+
+/* faixa (terracota → dourado no hover) */
+.card::before,
+.gest-card::before,
+.type-card::before,
+.contact-card::before{
+  content:"";
+  position:absolute; inset:0 auto 0 0; /* top/right/bottom/left */
+  width:8px;
+  border-radius:var(--radius) 0 0 var(--radius);
+  background:linear-gradient(180deg, var(--terracotta), #d8896f);
+  box-shadow:0 0 0 1px rgba(0,0,0,.04) inset;
+  transition:background .25s ease, transform .25s ease;
+}
+.card:hover::before,
+.gest-card:hover::before,
+.type-card:hover::before,
+.contact-card:hover::before{
+  background:linear-gradient(180deg, var(--gold), #ffd673);
+  transform:translateY(-2px);
+}
+
 
