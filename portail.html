@@ -4,54 +4,100 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Portail copropriétaires – Immo Hoessen</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Portail – Immo Hoessen</title>
+  <link rel="stylesheet" href="style.css?v=11"><!-- cache-buster -->
+
   <style>
-    /* Fundo em marca d’água cobrindo TODA a página (sem duplicar) */
-    body.portail-page{ position:relative; }
-    body.portail-page::before{
-      content:""; position:fixed; inset:0; z-index:-2; pointer-events:none;
-      background:url("img/portail-office.png") center/cover no-repeat;
-      opacity:.6; filter:grayscale(10%) contrast(1.05) brightness(.98);
+    /* ===== Portail: hero com overlay quente ===== */
+    .portail-hero{
+      position:relative; min-height:60dvh; display:grid; place-items:center; overflow:hidden;
+      text-align:center; padding:1.5rem 0;
     }
-    /* véu escuro discreto para leitura (NÃO é barra) */
-    body.portail-page::after{
-      content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
-      background:rgba(0,0,0,.55);
+    .portail-hero::before{
+      content:""; position:absolute; inset:0;
+      background-image:url("img/portail-office.png");
+      background-size:cover; background-position:center;
+      filter:grayscale(10%) brightness(.96) contrast(1.04); opacity:.40; z-index:-2;
+    }
+    .portail-hero::after{
+      content:""; position:absolute; inset:0; z-index:-1;
+      background:
+        linear-gradient(180deg, rgba(200,107,74,.14) 0%, rgba(200,107,74,.06) 40%, rgba(0,0,0,.08) 100%);
+    }
+    .portail-box{ max-width:820px; margin-inline:auto; padding:1.2rem; }
+    .portail-box h1{ margin-bottom:.5rem; letter-spacing:.2px; }
+    .portail-box p{ font-size:1.05rem; color:#1e4e3d; }
+
+    /* Botões do hero */
+    .btn-row{ display:flex; gap:.6rem; justify-content:center; flex-wrap:wrap; margin-top:1rem; }
+    .btn-primary{
+      background:#1a5cff; color:#fff; font-weight:700; border-radius:12px; padding:.85rem 1.2rem;
+      box-shadow:0 10px 22px rgba(26,92,255,.18); transition:.2s ease; text-decoration:none; line-height:1;
+    }
+    .btn-primary:hover{ background:#003b8a; transform:translateY(-1px); }
+    .btn-secondary{
+      background:#0f3d2e; color:#fff; font-weight:700; border-radius:12px; padding:.85rem 1.2rem;
+      box-shadow:0 8px 20px rgba(15,61,46,.16); transition:.2s ease; text-decoration:none; line-height:1;
+    }
+    .btn-secondary:hover{ background:#0c3226; transform:translateY(-1px); }
+    .btn-primary:focus-visible, .btn-secondary:focus-visible{
+      outline:3px solid #ffd673; outline-offset:2px;
     }
 
-    /* Cancela os overlays da section vindos do style.css (evita duplicação e “barra”) */
-    .portail-hero::before, .portail-hero::after{ content:none !important; }
+    /* Benefícios em 3 colunas */
+    .portail-features{
+      max-width:1100px; margin:1.2rem auto 2rem; padding:0 1rem;
+      display:grid; gap:1rem; grid-template-columns:repeat(3, minmax(0, 1fr));
+    }
+    .portail-feature{
+      background:#fff; border:1px solid rgba(0,0,0,.06); border-radius:18px; padding:1rem;
+      box-shadow:0 2px 12px rgba(0,0,0,.06);
+      display:grid; grid-template-columns:56px 1fr; gap:.8rem; align-items:start;
+      position:relative; overflow:hidden;
+    }
+    /* faixa terracota lateral + hover dourado */
+    .portail-feature::before{
+      content:""; position:absolute; inset:0 auto 0 0; width:8px; border-radius:18px 0 0 18px;
+      background:linear-gradient(180deg, #c86b4a, #d8896f); transition:background .25s ease, transform .25s ease;
+    }
+    .portail-feature:hover::before{
+      background:linear-gradient(180deg, #e4b100, #ffd673); transform:translateY(-2px);
+    }
+    .portail-icon{
+      width:56px; height:56px; border-radius:14px; background:var(--bg-soft); display:grid; place-items:center;
+      border:1px solid rgba(0,0,0,.06);
+    }
+    .portail-icon svg{ width:28px; height:28px; stroke:#0f3d2e; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+    .portail-feature h3{ margin:.2rem 0 .25rem 0; color:#0f3d2e; font-size:1.1rem; }
+    .portail-feature p{ margin:0; color:#557a68; }
 
-    /* Seção central */
-    .portail-hero{ min-height:60vh; display:grid; place-items:center; padding:2.5rem 1rem; }
-    .portail-box{ text-align:center; max-width:800px; margin-inline:auto; color:#fff; }
-    .portail-box h1{ margin-bottom:.5rem; color:#fff; text-shadow:0 2px 8px rgba(0,0,0,.35); }
-    .portail-box p{ font-size:1.05rem; text-shadow:0 2px 8px rgba(0,0,0,.35); }
-
-    /* Rodapé minimal */
+    /* Rodapé minimal desta página */
     .footer-min{
       max-width:1100px; margin:0 auto; padding:1rem;
       display:flex; justify-content:flex-end; color:var(--muted);
-      border-top:1px solid rgba(255,255,255,.12);
+      border-top:1px solid rgba(0,0,0,.06);
     }
+
+    /* responsivo */
+    @media (max-width:960px){ .portail-features{ grid-template-columns:1fr 1fr; } }
+    @media (max-width:640px){ .portail-features{ grid-template-columns:1fr; } }
   </style>
 </head>
-<body class="site portail-page">
+<body class="site">
   <header class="header">
     <div class="header-inner">
       <div class="brand">
         <img src="img/logo.svg" alt="Immo Hoessen">
         <span class="brand-name">Immo Hoessen</span>
       </div>
-      <nav class="nav">
+      <nav class="nav" aria-label="Navigation principale">
         <a href="index.html">Accueil</a>
         <a href="types.html">Types de gestion</a>
         <a href="gestion.html">Gestion</a>
         <a class="active" href="portail.html">Portail</a>
         <a href="contacts.html">Contacts</a>
         <a href="apropos.html">À propos</a>
-        <a href="offre.html">Offre</a>
+        <a href="offre.html" class="cta">Demander une offre</a>
       </nav>
     </div>
   </header>
@@ -61,22 +107,71 @@
       <div class="portail-box">
         <h1>Portail des copropriétaires</h1>
         <p>
-          Pour accéder à la plateforme avec les documents de votre copropriété,
-          cliquez sur le bouton ci-dessous. Si vous n’avez pas de mot de passe,
-          merci de contacter le gestionnaire de votre copropriété.
+          Accédez à vos documents, soldes, convocations et procès-verbaux en ligne.
+          Simple, sécurisé et disponible 24h/24 pour tous les copropriétaires.
         </p>
-        <p class="mt-2">
-          <a class="btn" href="http://immohoessen.quickconnect.to" target="_blank" rel="noopener noreferrer">
-            Cliquez ici
+
+        <div class="btn-row">
+          <!-- Substitua os href pelos links reais do seu portal -->
+          <a class="btn-primary" href="https://SEU-LINK-DE-CONNEXION" target="_blank" rel="noopener" aria-label="Ouvrir le portail et se connecter">
+            Se connecter
           </a>
-        </p>
+          <a class="btn-secondary" href="https://SEU-LINK-DE-CREATION" target="_blank" rel="noopener" aria-label="Créer un compte sur le portail">
+            Créer un compte
+          </a>
+        </div>
       </div>
+    </section>
+
+    <section class="portail-features">
+      <article class="portail-feature">
+        <div class="portail-icon" aria-hidden="true">
+          <!-- Document icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/>
+            <path d="M14 3v6h6"/>
+            <path d="M8 13h8M8 17h6"/>
+          </svg>
+        </div>
+        <div>
+          <h3>Documents centralisés</h3>
+          <p>AG, PV, appels de fonds, contrats et attestations au même endroit.</p>
+        </div>
+      </article>
+
+      <article class="portail-feature">
+        <div class="portail-icon" aria-hidden="true">
+          <!-- Lock/Shield icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <path d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6l7-3z"/>
+            <path d="M9.5 12.5l2 2 3.5-4"/>
+          </svg>
+        </div>
+        <div>
+          <h3>Accès sécurisé</h3>
+          <p>Connexion chiffrée, droits par copropriété et gestion des accès.</p>
+        </div>
+      </article>
+
+      <article class="portail-feature">
+        <div class="portail-icon" aria-hidden="true">
+          <!-- Chat/info icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <path d="M21 15a4 4 0 0 1-4 4H7l-4 4V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/>
+            <path d="M8 9h8M8 13h5"/>
+          </svg>
+        </div>
+        <div>
+          <h3>Transparence</h3>
+          <p>Suivi des appels, informations partagées et communication claire.</p>
+        </div>
+      </article>
     </section>
   </main>
 
   <footer>
     <div class="footer-min">
-      © 2025 Immo Hoessen · <a href="mentions.html" style="color:inherit">Mentions légales</a>
+      © 2025 Immo Hoessen · <a href="mentions.html">Mentions légales</a>
     </div>
   </footer>
 </body>
