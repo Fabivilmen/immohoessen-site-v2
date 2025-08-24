@@ -1,16 +1,15 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Portail – Immo Hoessen</title>
-  <link rel="stylesheet" href="style.css?v=11"><!-- cache-buster -->
+  <link rel="stylesheet" href="style.css?v=13"><!-- cache-buster -->
 
   <style>
     /* ===== Portail: hero com overlay quente ===== */
     .portail-hero{
-      position:relative; min-height:60dvh; display:grid; place-items:center; overflow:hidden;
+      position:relative; min-height:56dvh; display:grid; place-items:center; overflow:hidden;
       text-align:center; padding:1.5rem 0;
     }
     .portail-hero::before{
@@ -28,23 +27,16 @@
     .portail-box h1{ margin-bottom:.5rem; letter-spacing:.2px; }
     .portail-box p{ font-size:1.05rem; color:#1e4e3d; }
 
-    /* Botões do hero */
+    /* Botão único */
     .btn-row{ display:flex; gap:.6rem; justify-content:center; flex-wrap:wrap; margin-top:1rem; }
     .btn-primary{
       background:#1a5cff; color:#fff; font-weight:700; border-radius:12px; padding:.85rem 1.2rem;
       box-shadow:0 10px 22px rgba(26,92,255,.18); transition:.2s ease; text-decoration:none; line-height:1;
     }
     .btn-primary:hover{ background:#003b8a; transform:translateY(-1px); }
-    .btn-secondary{
-      background:#0f3d2e; color:#fff; font-weight:700; border-radius:12px; padding:.85rem 1.2rem;
-      box-shadow:0 8px 20px rgba(15,61,46,.16); transition:.2s ease; text-decoration:none; line-height:1;
-    }
-    .btn-secondary:hover{ background:#0c3226; transform:translateY(-1px); }
-    .btn-primary:focus-visible, .btn-secondary:focus-visible{
-      outline:3px solid #ffd673; outline-offset:2px;
-    }
+    .btn-primary:focus-visible{ outline:3px solid #ffd673; outline-offset:2px; }
 
-    /* Benefícios em 3 colunas */
+    /* Grades de documentos */
     .portail-features{
       max-width:1100px; margin:1.2rem auto 2rem; padding:0 1rem;
       display:grid; gap:1rem; grid-template-columns:repeat(3, minmax(0, 1fr));
@@ -68,7 +60,7 @@
       border:1px solid rgba(0,0,0,.06);
     }
     .portail-icon svg{ width:28px; height:28px; stroke:#0f3d2e; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
-    .portail-feature h3{ margin:.2rem 0 .25rem 0; color:#0f3d2e; font-size:1.1rem; }
+    .portail-feature h3{ margin:.2rem 0 .25rem 0; color:#0f3d2e; font-size:1.08rem; }
     .portail-feature p{ margin:0; color:#557a68; }
 
     /* Rodapé minimal desta página */
@@ -107,26 +99,42 @@
       <div class="portail-box">
         <h1>Portail des copropriétaires</h1>
         <p>
-          Accédez à vos documents, soldes, convocations et procès-verbaux en ligne.
-          Simple, sécurisé et disponible 24h/24 pour tous les copropriétaires.
+          Accédez à vos <strong>documents comptables</strong> (factures, appels de fonds),
+          <strong>PV</strong>, <strong>ROI</strong>, <strong>acte de base</strong>,
+          <strong>fiche de chauffage</strong> et <strong>contrat d’assurance</strong>.
+          Accès sécurisé, 24h/24.
         </p>
 
         <div class="btn-row">
-          <!-- Substitua os href pelos links reais do seu portal -->
-          <a class="btn-primary" href="https://SEU-LINK-DE-CONNEXION" target="_blank" rel="noopener" aria-label="Ouvrir le portail et se connecter">
+          <!-- Substitua o href pelo link real do seu portal -->
+          <a class="btn-primary" href="https://SEU-LINK-DE-CONNEXION" target="_blank" rel="noopener"
+             aria-label="Ouvrir le portail et se connecter">
             Se connecter
-          </a>
-          <a class="btn-secondary" href="https://SEU-LINK-DE-CREATION" target="_blank" rel="noopener" aria-label="Créer un compte sur le portail">
-            Créer un compte
           </a>
         </div>
       </div>
     </section>
 
     <section class="portail-features">
+      <!-- Documents comptables -->
       <article class="portail-feature">
         <div class="portail-icon" aria-hidden="true">
-          <!-- Document icon -->
+          <!-- Receipt / accounting -->
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <path d="M6 3h12v18l-3-2-3 2-3-2-3 2V3z"/>
+            <path d="M8 7h8M8 11h8M8 15h6"/>
+          </svg>
+        </div>
+        <div>
+          <h3>Documents comptables</h3>
+          <p>Factures et appels de fonds classés par période.</p>
+        </div>
+      </article>
+
+      <!-- PV -->
+      <article class="portail-feature">
+        <div class="portail-icon" aria-hidden="true">
+          <!-- File text -->
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
             <path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/>
             <path d="M14 3v6h6"/>
@@ -134,36 +142,67 @@
           </svg>
         </div>
         <div>
-          <h3>Documents centralisés</h3>
-          <p>AG, PV, appels de fonds, contrats et attestations au même endroit.</p>
+          <h3>Procès-verbaux (PV)</h3>
+          <p>PV d’assemblée générale, archivés et téléchargeables.</p>
         </div>
       </article>
 
+      <!-- ROI -->
       <article class="portail-feature">
         <div class="portail-icon" aria-hidden="true">
-          <!-- Lock/Shield icon -->
+          <!-- Book / rules -->
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <path d="M4 4h12a3 3 0 0 1 3 3v13H7a3 3 0 0 1-3-3V4z"/>
+            <path d="M7 4v13a3 3 0 0 0 3 3"/>
+          </svg>
+        </div>
+        <div>
+          <h3>ROI – Règlement d’ordre intérieur</h3>
+          <p>Version en vigueur pour votre copropriété.</p>
+        </div>
+      </article>
+
+      <!-- Acte de base -->
+      <article class="portail-feature">
+        <div class="portail-icon" aria-hidden="true">
+          <!-- Legal / scroll -->
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <path d="M8 3h8a3 3 0 0 1 3 3v13H8a5 5 0 0 1-5-5V6a3 3 0 0 1 3-3z"/>
+            <path d="M8 7h8M8 11h6"/>
+          </svg>
+        </div>
+        <div>
+          <h3>Acte de base</h3>
+          <p>Document de référence juridique de l’immeuble.</p>
+        </div>
+      </article>
+
+      <!-- Fiche de chauffage -->
+      <article class="portail-feature">
+        <div class="portail-icon" aria-hidden="true">
+          <!-- Thermometer -->
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <path d="M14 14.76V5a2 2 0 1 0-4 0v9.76a4 4 0 1 0 4 0z"/>
+          </svg>
+        </div>
+        <div>
+          <h3>Fiche de chauffage</h3>
+          <p>Infos techniques et consignes de votre installation.</p>
+        </div>
+      </article>
+
+      <!-- Contrat d’assurance -->
+      <article class="portail-feature">
+        <div class="portail-icon" aria-hidden="true">
+          <!-- Shield -->
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
             <path d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6l7-3z"/>
             <path d="M9.5 12.5l2 2 3.5-4"/>
           </svg>
         </div>
         <div>
-          <h3>Accès sécurisé</h3>
-          <p>Connexion chiffrée, droits par copropriété et gestion des accès.</p>
-        </div>
-      </article>
-
-      <article class="portail-feature">
-        <div class="portail-icon" aria-hidden="true">
-          <!-- Chat/info icon -->
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-            <path d="M21 15a4 4 0 0 1-4 4H7l-4 4V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/>
-            <path d="M8 9h8M8 13h5"/>
-          </svg>
-        </div>
-        <div>
-          <h3>Transparence</h3>
-          <p>Suivi des appels, informations partagées et communication claire.</p>
+          <h3>Contrat d’assurance</h3>
+          <p>Police, garanties et attestations liées à l’immeuble.</p>
         </div>
       </article>
     </section>
