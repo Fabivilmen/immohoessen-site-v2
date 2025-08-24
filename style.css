@@ -316,6 +316,73 @@ body.site{
   .hero--distance{ min-height: 66dvh; }
   .hero--distance .cover{ object-position: 50% 85%; }
 }
+/* === Portail: hero mais quente e CTA forte === */
+.portail-hero{
+  position:relative; min-height:60dvh; display:grid; place-items:center; overflow:hidden;
+  text-align:center; padding:1.5rem 0;
+}
+.portail-hero::before{
+  content:""; position:absolute; inset:0;
+  background-image:url("img/portail-office.png");
+  background-size:cover; background-position:center;
+  filter:grayscale(10%) brightness(.96) contrast(1.04); opacity:.40; z-index:-2;
+}
+.portail-hero::after{
+  content:""; position:absolute; inset:0; z-index:-1;
+  /* leve banho quente + vinheta sutil p/ legibilidade */
+  background:
+    linear-gradient(180deg, rgba(200,107,74,.14) 0%, rgba(200,107,74,.06) 40%, rgba(0,0,0,.08) 100%);
+}
+
+/* Conteúdo do hero */
+.portail-box{ max-width:820px; margin-inline:auto; padding:1.2rem; }
+.portail-box h1{ margin-bottom:.5rem; letter-spacing:.2px; }
+.portail-box p{ font-size:1.05rem; color:#1e4e3d; }
+
+/* Botões do hero */
+.btn-row{ display:flex; gap:.6rem; justify-content:center; flex-wrap:wrap; margin-top:1rem; }
+.btn-primary{
+  background:#1a5cff; color:#fff; font-weight:700; border-radius:12px; padding:.85rem 1.2rem;
+  box-shadow:0 10px 22px rgba(26,92,255,.18); transition:.2s ease; text-decoration:none; line-height:1;
+}
+.btn-primary:hover{ background:#003b8a; transform:translateY(-1px); }
+.btn-secondary{
+  background:#0f3d2e; color:#fff; font-weight:700; border-radius:12px; padding:.85rem 1.2rem;
+  box-shadow:0 8px 20px rgba(15,61,46,.16); transition:.2s ease; text-decoration:none; line-height:1;
+}
+.btn-secondary:hover{ background:#0c3226; transform:translateY(-1px); }
+.btn-primary:focus-visible, .btn-secondary:focus-visible{
+  outline:3px solid #ffd673; outline-offset:2px;
+}
+
+/* Benefícios em 3 colunas (responsivo) */
+.portail-features{
+  max-width:1100px; margin:1.2rem auto 2rem; padding:0 1rem;
+  display:grid; gap:1rem; grid-template-columns:repeat(3, minmax(0, 1fr));
+}
+.portail-feature{
+  background:#fff; border:1px solid rgba(0,0,0,.06); border-radius:18px; padding:1rem;
+  box-shadow:0 2px 12px rgba(0,0,0,.06); display:grid; grid-template-columns:56px 1fr; gap:.8rem; align-items:start;
+  position:relative; overflow:hidden;
+}
+/* faixa terracota lateral + hover dourado */
+.portail-feature::before{
+  content:""; position:absolute; inset:0 auto 0 0; width:8px; border-radius:18px 0 0 18px;
+  background:linear-gradient(180deg, #c86b4a, #d8896f); transition:background .25s ease, transform .25s ease;
+}
+.portail-feature:hover::before{ background:linear-gradient(180deg, #e4b100, #ffd673); transform:translateY(-2px); }
+
+.portail-icon{
+  width:56px; height:56px; border-radius:14px; background:var(--bg-soft); display:grid; place-items:center;
+  border:1px solid rgba(0,0,0,.06);
+}
+.portail-icon svg{ width:28px; height:28px; stroke:#0f3d2e; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+.portail-feature h3{ margin:.2rem 0 .25rem 0; color:#0f3d2e; font-size:1.1rem; }
+.portail-feature p{ margin:0; color:#557a68; }
+
+/* responsivo */
+@media (max-width:960px){ .portail-features{ grid-template-columns:1fr 1fr; } }
+@media (max-width:640px){ .portail-features{ grid-template-columns:1fr; } }
 
 
 
