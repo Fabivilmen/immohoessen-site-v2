@@ -277,5 +277,18 @@ body.site{
   background:linear-gradient(180deg, var(--gold), #ffd673);
   transform:translateY(-2px);
 }
+/* Controle único para a posição vertical da foto */
+:root{ --hero-y: 37%; }  /* 35–38% fica ótimo em notebook */
+
+/* Notebook/desktop: ver um pouco mais da imagem sem cortar tanto */
+@media (min-width:1200px){
+  .hero--distance{ min-height: 68dvh; }    /* mais alto = mostra mais céu+chão */
+  .hero--distance .cover{ object-position: 50% var(--hero-y); }
+}
+@media (min-width:1600px){
+  .hero--distance{ min-height: 64dvh; }
+  .hero--distance .cover{ object-position: 50% calc(var(--hero-y) - 2%); }
+}
+
 
 
