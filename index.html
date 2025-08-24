@@ -4,36 +4,31 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Laurent Hoessen – Gestion immobilière · Syndic BILH – DUHO</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=5"><!-- cache-buster -->
   <style>
-    /* CAPA: mais alta para mostrar céu + chão; imagem mais viva */
+    /* CAPA padrão (sem mudar mobile) */
     .hero--distance{ min-height:80dvh; }
     .hero--distance .cover{
       object-position:center 40%;
       filter:saturate(1.15) contrast(1.06) brightness(1.02);
     }
-    /* overlay mais leve */
     .hero--distance .overlay{
       background:linear-gradient(to bottom, rgba(0,0,0,.10), rgba(0,0,0,.22));
     }
-    /* legibilidade do título sobre a foto */
     .hero--distance .hero-content h1,
     .hero--distance .hero-content p{ text-shadow:0 2px 8px rgba(0,0,0,.35); }
 
-    /* RODAPÉ menor */
-    .footer-inner.footer-home{ align-items:stretch; gap:1rem; padding:.6rem 1rem; }
-    .footer-col{ flex:1 1 0; }
-    .footer-info p{ margin:.2rem 0; }
-    .footer-map iframe{ width:100%; height:160px; border:0; border-radius:14px; box-shadow:0 2px 10px rgba(0,0,0,.06); }
-    .footer-legal{ border-top:1px solid rgba(0,0,0,.06); max-width:1100px; margin:0 auto; padding:.6rem 1rem; display:flex; justify-content:flex-end; }
-    @media (max-width:900px){
-      .hero--distance{ min-height:72dvh; }
-      .hero--distance .cover{ object-position:center 45%; }
-      .footer-inner.footer-home{ flex-direction:column; }
-      .footer-map iframe{ height:200px; }
+    /* Notebook/desktop: ver mais céu + chão (menos corte) */
+    @media (min-width:1200px){
+      .hero--distance{ min-height:65dvh; }
+      .hero--distance .cover{ object-position:50% 35%; }
+    }
+    @media (min-width:1600px){
+      .hero--distance{ min-height:60dvh; }
+      .hero--distance .cover{ object-position:50% 32%; }
     }
 
-    /* BLOCO “vida” – paleta quente suave */
+    /* Blocos da home */
     :root{
       --green-dark:#0f3d2e; --green-muted:#557a68; --blue-action:#1a5cff; --blue-hover:#003b8a;
       --gray-bg:#f8f9f8; --gold:#e4b100;
@@ -55,6 +50,19 @@
     .btn:hover{ background:var(--blue-hover); transform:translateY(-2px); }
     @media (max-width:1024px){ .cards{ grid-template-columns:repeat(2,minmax(220px,1fr)); } }
     @media (max-width:640px){ .cards{ grid-template-columns:1fr; } }
+
+    /* Rodapé enxuto */
+    .footer-inner.footer-home{ align-items:stretch; gap:1rem; padding:.6rem 1rem; }
+    .footer-col{ flex:1 1 0; }
+    .footer-info p{ margin:.2rem 0; }
+    .footer-map iframe{ width:100%; height:160px; border:0; border-radius:14px; box-shadow:0 2px 10px rgba(0,0,0,.06); }
+    .footer-legal{ border-top:1px solid rgba(0,0,0,.06); max-width:1100px; margin:0 auto; padding:.6rem 1rem; display:flex; justify-content:flex-end; }
+    @media (max-width:900px){
+      .hero--distance{ min-height:72dvh; }
+      .hero--distance .cover{ object-position:center 45%; }
+      .footer-inner.footer-home{ flex-direction:column; }
+      .footer-map iframe{ height:200px; }
+    }
   </style>
 </head>
 <body class="site">
@@ -64,20 +72,22 @@
         <img src="img/logo.svg" alt="Immo Hoessen">
         <span class="brand-name">Immo Hoessen</span>
       </div>
-      <nav class="nav">
+
+      <!-- CTA visível também na HOME -->
+      <nav class="nav" aria-label="Navigation principale">
         <a class="active" href="index.html">Accueil</a>
         <a href="types.html">Types de gestion</a>
         <a href="gestion.html">Gestion</a>
         <a href="portail.html">Portail</a>
         <a href="contacts.html">Contacts</a>
         <a href="apropos.html">À propos</a>
-        <a href="offre.html">Offre</a>
+        <a href="offre.html" class="cta">Demander une offre</a>
       </nav>
     </div>
   </header>
 
-  <!-- CAPA -->
   <main>
+    <!-- CAPA -->
     <section class="hero hero--distance">
       <img class="cover" src="img/cover-plain2.jpg" alt="Laurent Hoessen">
       <div class="overlay"></div>
@@ -119,7 +129,6 @@
     </section>
   </main>
 
-  <!-- RODAPÉ -->
   <footer>
     <div class="footer-inner footer-home">
       <div class="footer-col footer-info">
@@ -131,11 +140,9 @@
         <p><strong>Nº d’entreprise&nbsp;:</strong> BE0462920325</p>
       </div>
       <div class="footer-col footer-map">
-        <iframe
-          title="Immo Hoessen – Carte"
+        <iframe title="Immo Hoessen – Carte"
           src="https://www.google.com/maps?q=Avenue%20Heydenberg%2014,%201200%20Bruxelles&output=embed"
-          loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
     <div class="footer-legal">
