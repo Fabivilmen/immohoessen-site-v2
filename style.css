@@ -303,6 +303,19 @@ body.site{
   .hero--distance{ min-height: 64dvh; }
   .hero--distance .cover{ object-position: 50% calc(var(--hero-ground-y) + 5%); }
 }
+/* Capa: enfatizar o gramado no desktop/notebook */
+@media (min-width: 1024px){
+  .hero--distance{ min-height: 74dvh; }          /* mais área visível */
+  .hero--distance .cover{ object-position: 50% 78%; } /* desce o foco */
+}
+@media (min-width: 1400px){
+  .hero--distance{ min-height: 70dvh; }
+  .hero--distance .cover{ object-position: 50% 82%; }
+}
+@media (min-width: 1800px){
+  .hero--distance{ min-height: 66dvh; }
+  .hero--distance .cover{ object-position: 50% 85%; }
+}
 
 
 
