@@ -4,31 +4,23 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Laurent Hoessen – Gestion immobilière · Syndic BILH – DUHO</title>
-  <link rel="stylesheet" href="style.css?v=5"><!-- cache-buster -->
+  <link rel="stylesheet" href="style.css?v=6"><!-- força recarregar CSS -->
 
   <style>
-    /* ====== Capa com degradê terracota ====== */
-    .hero--distance{ min-height:80dvh; } /* padrão (mobile/tablet) */
+    /* ====== CAPA (não altera a foto) ====== */
+    .hero--distance{ min-height:80dvh; }
     .hero--distance .cover{
       object-position:center 40%;
-      filter:saturate(1.15) contrast(1.06) brightness(1.02);
+      filter:none; /* sem alterar a imagem */
     }
-    /* overlay com terracota + dourado e vinheta leve para legibilidade */
     .hero--distance .overlay{
-      background:
-        linear-gradient(
-          to bottom,
-          rgba(200,107,74,.28) 0%,    /* terracotta */
-          rgba(200,107,74,.18) 28%,
-          rgba(228,177,0,.12) 58%,    /* gold suave */
-          rgba(0,0,0,.18) 100%        /* vinheta leve no final */
-        );
+      /* overlay neutro só p/ legibilidade do texto */
+      background:linear-gradient(to bottom, rgba(0,0,0,.10), rgba(0,0,0,.22));
     }
-    /* legibilidade do título sobre a foto */
     .hero--distance .hero-content h1,
     .hero--distance .hero-content p{ text-shadow:0 2px 8px rgba(0,0,0,.35); }
 
-    /* Notebook/desktop: ver mais céu + chão (menos corte) */
+    /* Notebook/desktop: mostra mais céu/chão (menos corte) */
     @media (min-width:1200px){
       .hero--distance{ min-height:65dvh; }
       .hero--distance .cover{ object-position:50% 35%; }
@@ -38,30 +30,50 @@
       .hero--distance .cover{ object-position:50% 32%; }
     }
 
-    /* ====== Blocos da home (mantidos) ====== */
+    /* ====== Paleta local p/ blocos quentes ====== */
     :root{
-      --green-dark:#0f3d2e; --green-muted:#557a68; --blue-action:#1a5cff; --blue-hover:#003b8a;
-      --gray-bg:#f8f9f8; --gold:#e4b100;
+      --green-dark:#0f3d2e; --green-muted:#557a68;
+      --blue-action:#1a5cff; --blue-hover:#003b8a;
+      --gold:#e4b100;
+      --warm-25:#fff9f3;       /* creme quente */
+      --terracotta: #c86b4a;   /* terracota de acento */
     }
+
+    /* ====== Blocos da home ====== */
     main h2, main h3{ color:var(--green-dark); margin:0 0 .5rem 0; }
     main p{ margin:.45rem 0; color:#1e4e3d; }
-    .section{ padding:2.4rem clamp(12px,2vw,32px); }
-    .section.alt{ background:var(--gray-bg); }
+
+    /* Section com fundo quente suave (onde fica “Types de gestion”) */
+    .section{ padding:2.4rem clamp(12px,2vw,32px); background:#fff; }
+    .section.alt{
+      /* fundo morno sutil + leve gradiente terracota */
+      background:
+        linear-gradient(180deg, rgba(200,107,74,.06) 0%, rgba(200,107,74,0) 60%),
+        var(--warm-25);
+    }
     .section .intro{ max-width:1100px; margin:0 auto; }
+
+    /* Cards: sem faixa colorida, só sombra suave */
     .cards{ max-width:1100px; margin:1rem auto 0 auto; display:grid; gap:1rem; grid-template-columns:repeat(4, minmax(220px,1fr)); }
     .card{
       background:#fff; border:1px solid rgba(0,0,0,.06);
-      border-left:5px solid var(--green-muted); border-radius:18px; padding:1rem; box-shadow:0 2px 12px rgba(0,0,0,.06);
+      border-left:0; /* remove a faixa */
+      border-radius:18px; padding:1rem; box-shadow:0 2px 12px rgba(0,0,0,.06);
       transition:.25s ease;
     }
-    .card:hover{ transform:translateY(-6px); border-left-color:var(--gold); box-shadow:0 10px 24px rgba(0,0,0,.12); }
+    .card:hover{ transform:translateY(-6px); box-shadow:0 10px 24px rgba(0,0,0,.12); }
     .card p{ color:var(--green-muted); }
-    .btn{ display:inline-block; background:var(--blue-action); color:#fff; text-decoration:none; padding:.85rem 1.2rem; border-radius:12px; font-weight:700; margin-top:1rem; transition:.25s ease; }
+
+    .btn{
+      display:inline-block; background:var(--blue-action); color:#fff; text-decoration:none;
+      padding:.85rem 1.2rem; border-radius:12px; font-weight:700; margin-top:1rem; transition:.25s ease;
+    }
     .btn:hover{ background:var(--blue-hover); transform:translateY(-2px); }
+
     @media (max-width:1024px){ .cards{ grid-template-columns:repeat(2,minmax(220px,1fr)); } }
     @media (max-width:640px){ .cards{ grid-template-columns:1fr; } }
 
-    /* ====== CTA no menu (garante estilo mesmo se style.css estiver sem o bloco) ====== */
+    /* ====== Garante estilo do CTA no menu ====== */
     .nav a.cta{
       background:#1a5cff; color:#fff !important; padding:.55rem .95rem;
       border-radius:12px; font-weight:700; line-height:1;
@@ -70,7 +82,7 @@
     }
     .nav a.cta:hover{ background:#003b8a; transform:translateY(-1px); }
 
-    /* ====== Rodapé enxuto ====== */
+    /* Rodapé enxuto */
     .footer-inner.footer-home{ align-items:stretch; gap:1rem; padding:.6rem 1rem; }
     .footer-col{ flex:1 1 0; }
     .footer-info p{ margin:.2rem 0; }
@@ -93,7 +105,7 @@
         <span class="brand-name">Immo Hoessen</span>
       </div>
 
-      <!-- CTA visível também na HOME -->
+      <!-- CTA também na HOME -->
       <nav class="nav" aria-label="Navigation principale">
         <a class="active" href="index.html">Accueil</a>
         <a href="types.html">Types de gestion</a>
@@ -107,7 +119,7 @@
   </header>
 
   <main>
-    <!-- CAPA -->
+    <!-- CAPA (foto intacta) -->
     <section class="hero hero--distance">
       <img class="cover" src="img/cover-plain2.jpg" alt="Laurent Hoessen">
       <div class="overlay"></div>
@@ -117,7 +129,7 @@
       </div>
     </section>
 
-    <!-- BLOCO 1 – Types de gestion -->
+    <!-- BLOCO 1 – Types de gestion (fundo quente) -->
     <section class="section alt">
       <div class="intro">
         <h2>Types de gestion</h2>
@@ -131,7 +143,7 @@
       </div>
     </section>
 
-    <!-- BLOCO 2 – Gestion -->
+    <!-- BLOCO 2 – Gestion (branco, limpo) -->
     <section class="section">
       <div class="intro">
         <h2>Gestion</h2>
