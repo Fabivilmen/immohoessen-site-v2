@@ -1,19 +1,94 @@
-/* === Capa (desktop) — mostrar mais da foto, com menos corte === */
-@media (min-width: 1200px){
-  .hero--distance{
-    min-height: 65dvh;              /* antes 75–80dvh; reduz um pouco a altura */
-  }
-  .hero--distance .cover{
-    object-position: 50% 35%;       /* sobe levemente o enquadramento */
-  }
+
+/* ===== Paleta ===== */
+:root{
+  --green-900:#0f3d2e; --green-600:#1e4e3d; --green-400:#557a68;
+  --blue-600:#004aad;  --blue-700:#003b8a;
+  --text:#333; --muted:#666; --bg:#fff; --bg-soft:#f6f7f7;
+  --card:#fff; --shadow:0 2px 14px rgba(0,0,0,.07); --radius:18px;
 }
 
-/* (opcional) monitores MUITO largos: mostra ainda mais da foto */
-@media (min-width: 1600px){
-  .hero--distance{
-    min-height: 60dvh;
-  }
-  .hero--distance .cover{
-    object-position: 50% 32%;
-  }
+/* ===== Reset + Base ===== */
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;
+  color:var(--text); background:var(--bg);
+  min-height:100dvh; display:flex; flex-direction:column;
 }
+img{max-width:100%;display:block}
+a{color:var(--blue-600);text-decoration:none}
+a:hover{color:var(--green-900)}
+h1,h2,h3,h4{color:var(--green-900);margin:0 0 .5rem 0;line-height:1.2}
+p{margin:.5rem 0 1rem 0}
+.container{max-width:1100px;margin:0 auto;padding:1rem}
+
+/* ===== App Shell ===== */
+.site{min-height:100dvh;display:flex;flex-direction:column}
+.site main{flex:1 0 auto}
+.site footer{flex:0 0 auto}
+
+/* ===== Header + Nav ===== */
+.header{
+  position:sticky;top:0;z-index:50;
+  background:#fff;border-bottom:1px solid rgba(0,0,0,.06);
+  backdrop-filter:saturate(120%) blur(4px);
+}
+.header-inner{
+  max-width:1100px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:.75rem;flex-wrap:wrap;padding:.7rem 1rem;
+}
+.brand{display:flex;align-items:center;gap:.5rem;min-width:0}
+.brand img{height:40px;width:auto}
+.brand-name{font-weight:700;color:var(--green-900);font-size:1rem;white-space:nowrap}
+.nav{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+.nav a{padding:.45rem .7rem;border-radius:10px;line-height:1.1;color:#333}
+.nav a.active,.nav a:hover{background:var(--bg-soft);color:var(--green-900)}
+/* Botão azul opcional no menu (se existir) */
+.nav a.cta{background:#1a5cff;color:#fff;padding:.55rem .95rem;border-radius:12px;font-weight:700;box-shadow:0 8px 20px rgba(26,92,255,.18)}
+.nav a.cta:hover{background:#003b8a}
+
+/* Mobile do header */
+@media (max-width:720px){
+  .header-inner{flex-direction:column;align-items:stretch;gap:.6rem}
+  .brand img{height:34px}
+  .brand-name{font-size:.95rem}
+  .nav{width:100%}
+  .nav a.cta{width:100%;text-align:center;margin-left:0}
+}
+
+/* ===== Footer ===== */
+footer{border-top:1px solid rgba(0,0,0,.06);background:#fff}
+.footer-inner{
+  max-width:1100px;margin:0 auto;padding:1rem;
+  display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between;
+  color:var(--muted);font-size:.95rem;
+}
+.footer-legal{
+  border-top:1px solid rgba(0,0,0,.06);
+  max-width:1100px;margin:0 auto;padding:.6rem 1rem;display:flex;justify-content:flex-end;
+}
+
+/* ===== Botões ===== */
+.btn{
+  display:inline-block;padding:.8rem 1.1rem;border-radius:14px;
+  background:var(--blue-600);color:#fff;font-weight:600;box-shadow:var(--shadow);
+  transition:.2s transform,.2s background;
+}
+.btn:hover{background:var(--blue-700);transform:translateY(-1px)}
+.btn:active{transform:translateY(0)}
+
+/* ===== Utilitários ===== */
+.mt-1{margin-top:.25rem}.mt-2{margin-top:.5rem}.mt-3{margin-top:1rem}.pb-6{padding-bottom:3rem}
+.center{text-align:center}
+
+/* ===== Hero (capa genérica) ===== */
+.hero{position:relative;isolation:isolate;min-height:70dvh;display:grid;place-items:center;background:#000}
+.hero img.cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-1}
+.hero .overlay{position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,.25), rgba(0,0,0,.45));z-index:-1}
+.hero .hero-content{color:#fff;text-align:center;padding:2rem}
+.hero h1{color:#fff;font-size:clamp(28px,4.5vw,54px)}
+.hero p{color:#fff;opacity:.95}
+
+/* ===== (deixe os estilos específicos de cada página dentro do próprio HTML) ===== */
