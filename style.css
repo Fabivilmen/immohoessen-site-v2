@@ -289,6 +289,20 @@ body.site{
   .hero--distance{ min-height: 64dvh; }
   .hero--distance .cover{ object-position: 50% calc(var(--hero-y) - 2%); }
 }
+:root{ --hero-ground-y: 70%; }  /* aumente p/ ver ainda mais chão (ex.: 75%) */
+
+@media (min-width: 1024px){
+  .hero--distance{ min-height: 72dvh; }
+  .hero--distance .cover{ object-position: 50% var(--hero-ground-y); }
+}
+@media (min-width: 1400px){
+  .hero--distance{ min-height: 68dvh; }
+  .hero--distance .cover{ object-position: 50% calc(var(--hero-ground-y) + 2%); }
+}
+@media (min-width: 1800px){
+  .hero--distance{ min-height: 64dvh; }
+  .hero--distance .cover{ object-position: 50% calc(var(--hero-ground-y) + 5%); }
+}
 
 
 
