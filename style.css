@@ -1,4 +1,3 @@
-
 /* ===== Paleta ===== */
 :root{
   --green-900:#0f3d2e; --green-600:#1e4e3d; --green-400:#557a68;
@@ -45,7 +44,7 @@ p{margin:.5rem 0 1rem 0}
 .nav{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
 .nav a{padding:.45rem .7rem;border-radius:10px;line-height:1.1;color:#333}
 .nav a.active,.nav a:hover{background:var(--bg-soft);color:var(--green-900)}
-/* Botão azul opcional no menu (se existir) */
+/* Botão azul opcional no menu */
 .nav a.cta{background:#1a5cff;color:#fff;padding:.55rem .95rem;border-radius:12px;font-weight:700;box-shadow:0 8px 20px rgba(26,92,255,.18)}
 .nav a.cta:hover{background:#003b8a}
 
@@ -83,7 +82,7 @@ footer{border-top:1px solid rgba(0,0,0,.06);background:#fff}
 .mt-1{margin-top:.25rem}.mt-2{margin-top:.5rem}.mt-3{margin-top:1rem}.pb-6{padding-bottom:3rem}
 .center{text-align:center}
 
-/* ===== Hero (capa genérica) ===== */
+/* ===== Hero genérica ===== */
 .hero{position:relative;isolation:isolate;min-height:70dvh;display:grid;place-items:center;background:#000}
 .hero img.cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-1}
 .hero .overlay{position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,.25), rgba(0,0,0,.45));z-index:-1}
@@ -91,4 +90,106 @@ footer{border-top:1px solid rgba(0,0,0,.06);background:#fff}
 .hero h1{color:#fff;font-size:clamp(28px,4.5vw,54px)}
 .hero p{color:#fff;opacity:.95}
 
-/* ===== (deixe os estilos específicos de cada página dentro do próprio HTML) ===== */
+/* ===== Types (grid + card) ===== */
+.types-wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:1.25rem;align-items:stretch}
+.types-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+.type-card{
+  padding:1rem;border-radius:var(--radius);
+  border:1px solid rgba(0,0,0,.06);background:#fff;box-shadow:var(--shadow);
+  display:flex;gap:.75rem;align-items:flex-start
+}
+.type-icon{
+  width:42px;height:42px;border-radius:12px;background:var(--bg-soft);
+  display:grid;place-items:center;flex:0 0 42px
+}
+.type-icon svg{width:22px;height:22px;stroke:var(--green-900)}
+.type-card h3{margin:.2rem 0 .25rem 0}
+.type-card p{margin:0;color:var(--muted);font-size:.95rem}
+.types-illustration{
+  background:var(--bg-soft);border:1px solid rgba(0,0,0,.06);border-radius:var(--radius);
+  box-shadow:var(--shadow);overflow:hidden;display:flex;align-items:stretch;
+  position:relative;top:8px;min-height:100%;
+}
+.types-illustration img{object-fit:cover;width:100%}
+
+/* ===== Portail ===== */
+.portail-hero{position:relative;min-height:60dvh;display:grid;place-items:center;overflow:hidden}
+.portail-hero::before{
+  content:"";position:absolute;inset:0;background-image:url("img/portail-office.png");
+  background-size:cover;background-position:center;filter:grayscale(20%) brightness(.92) contrast(1.05);opacity:.35;z-index:-2
+}
+.portail-hero::after{
+  content:"";position:absolute;inset:0;background:linear-gradient(to bottom, rgba(255,255,255,.35), rgba(255,255,255,.85));z-index:-1
+}
+.portail-box{text-align:center;max-width:800px;margin-inline:auto;padding:1.25rem}
+.portail-box h1{margin-bottom:.5rem}
+.portail-box p{font-size:1.05rem}
+
+/* ===== Contacts ===== */
+.contacts-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:1rem;margin-block:1rem 2rem
+}
+.contact-card{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:var(--radius);padding:1rem;box-shadow:var(--shadow)}
+.contact-card h3{margin:.1rem 0 .3rem 0}
+.contact-card p{margin:.2rem 0}
+
+/* ===== À propos ===== */
+.about-hero{
+  background:linear-gradient(180deg, rgba(15,61,46,.08), rgba(15,61,46,0));
+  padding:2rem 0 1rem 0;border-bottom:1px solid rgba(0,0,0,.06);
+}
+.founders{display:grid;gap:1rem;grid-template-columns:1fr 1fr}
+.founder-card{
+  display:grid;grid-template-columns:120px 1fr;gap:1rem;align-items:center;
+  background:#fff;border:1px solid rgba(0,0,0,.06);border-radius:var(--radius);padding:1rem;box-shadow:var(--shadow)
+}
+.founder-photo{width:120px;height:120px;border-radius:14px;overflow:hidden}
+.founder-photo img{width:100%;height:100%;object-fit:cover}
+
+/* ===== Formulários (Offre) ===== */
+.form{padding:1.25rem}
+.form-grid{display:grid;gap:1rem;grid-template-columns:repeat(12,1fr)}
+.form-field{display:flex;flex-direction:column;gap:.4rem}
+.form-field label{font-weight:600;color:var(--green-900)}
+.form-field input,.form-field select,.form-field textarea{
+  border:1px solid rgba(0,0,0,.12);border-radius:12px;padding:.7rem .9rem;font-size:1rem;background:#fff
+}
+.form-field small.err{color:#b42318;display:none;font-size:.85rem}
+.form-field.invalid input,.form-field.invalid select,.form-field.invalid textarea{border-color:#b42318;background:#fff6f6}
+.form-field.invalid small.err{display:block}
+.req{color:var(--blue-600);font-weight:700}
+.form-field{grid-column:span 6}
+.form-field.form-span{grid-column:1/-1}
+@media (max-width:720px){.form-field{grid-column:1/-1}}
+.form-note{color:var(--muted);font-size:.95rem}
+.form-success{
+  margin-top:1rem;padding:.8rem 1rem;border-radius:12px;
+  background:linear-gradient(0deg, rgba(0,170,60,.08), rgba(0,170,60,.08));
+  border:1px solid rgba(0,170,60,.25);color:#115e35;box-shadow:var(--shadow)
+}
+
+/* ===== Responsivo ===== */
+@media (max-width:1024px){
+  .types-wrap{grid-template-columns:1fr;align-items:start}
+  .types-illustration{top:0;min-height:240px}
+}
+@media (max-width:640px){
+  .nav{gap:.25rem}
+  .nav a{padding:.4rem .6rem}
+  .types-cards{grid-template-columns:1fr}
+  .founders{grid-template-columns:1fr}
+  .founder-card{grid-template-columns:90px 1fr}
+  .founder-photo{width:90px;height:90px}
+}
+
+/* ===== Footer Home (mapa) ===== */
+.footer-home{align-items:stretch;gap:1.25rem}
+.footer-col{flex:1 1 0}
+.footer-info p{margin:.25rem 0}
+.footer-map iframe{width:100%;height:220px;border:0;border-radius:14px;box-shadow:var(--shadow)}
+
+@media (max-width:900px){
+  .footer-home{flex-direction:column}
+  .footer-map iframe{height:260px}
+}
