@@ -1,14 +1,20 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Gestion – Immo Hoessen</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css?v=20250825" />
+  <style>
+    .page-wrap{width:min(92vw,1600px);margin-inline:auto}
+    .gestion-cards{display:grid;gap:clamp(16px,2vw,28px);grid-template-columns:1fr 1fr}
+    @media(min-width:1200px){.gestion-cards{grid-template-columns:repeat(3,1fr)}}
+    @media(min-width:1600px){.gestion-cards{grid-template-columns:repeat(4,1fr)}}
+    body.gestion-page{min-height:100dvh;display:flex;flex-direction:column}
+    body.gestion-page main{flex:1}
+  </style>
 </head>
 <body class="gestion-page">
-  <!-- Header -->
   <header class="site-header">
     <nav class="site-nav">
       <ul class="menu">
@@ -22,35 +28,18 @@
     </nav>
   </header>
 
-  <!-- Conteúdo -->
   <main class="page-wrap">
     <h1>Notre gestion</h1>
-    <p class="measure-wide">
-      Nous assurons une gestion rigoureuse, transparente et humaine pour garantir
-      la pérennité de votre patrimoine immobilier.
-    </p>
+    <p class="measure-wide">Nous assurons une gestion rigoureuse, transparente et humaine pour garantir la pérennité de votre patrimoine immobilier.</p>
 
     <section class="gestion-cards">
-      <article class="card">
-        <h2>Assemblées Générales</h2>
-        <p>Organisation et suivi complet des AG et conseils de copropriété.</p>
-      </article>
-      <article class="card">
-        <h2>Comptabilité</h2>
-        <p>Gestion des comptes, budgets et appels de fonds.</p>
-      </article>
-      <article class="card">
-        <h2>Suivi technique</h2>
-        <p>Contrats d’entretien, réparations et coordination des travaux.</p>
-      </article>
-      <article class="card">
-        <h2>Communication</h2>
-        <p>Disponibilité et clarté dans les échanges avec les copropriétaires.</p>
-      </article>
+      <article class="card"><h2>Assemblées Générales</h2><p>Organisation et suivi complet des AG et conseils de copropriété.</p></article>
+      <article class="card"><h2>Comptabilité</h2><p>Gestion des comptes, budgets et appels de fonds.</p></article>
+      <article class="card"><h2>Suivi technique</h2><p>Contrats d’entretien, réparations et coordination des travaux.</p></article>
+      <article class="card"><h2>Communication</h2><p>Disponibilité et clarté dans les échanges avec les copropriétaires.</p></article>
     </section>
   </main>
 
-  <!-- Footer -->
   <footer class="site-footer">
     <p>© 2025 Immo Hoessen – Syndic BILH &amp; DUHO Gestion Immobilière</p>
   </footer>
