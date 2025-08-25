@@ -1,180 +1,36 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Laurent Hoessen – Gestion immobilière · Syndic BILH – DUHO</title>
-
-  <!-- CSS com cache-buster (não muda visual) -->
-  <link rel="stylesheet" href="style.css?v=12">
-
-  <!-- SEO/Compartilhamento (não muda visual) -->
-  <meta name="description" content="Syndic de copropriété à Bruxelles. Gestion sérieuse et humaine : AG, budgets, travaux, sinistres, documents en ligne.">
-  <meta property="og:title" content="Immo Hoessen – Syndic & gestion immobilière à Bruxelles">
-  <meta property="og:description" content="Gestion transparente, technique et réactive. Portail 24h/24 pour vos documents.">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="https://fabivilmen.github.io/immohoessen-site-v2/img/cover-plain2.jpg">
-  <link rel="icon" href="img/favicon.png">
-
-  <style>
-    /* CAPA: mais alta para mostrar céu + chão */
-    .hero--distance{ min-height:80dvh; }
-    .hero--distance .cover{
-      object-position:center 40%;
-      filter:saturate(1.15) contrast(1.06) brightness(1.02);
-    }
-    /* overlay mais leve */
-    .hero--distance .overlay{
-      background:linear-gradient(to bottom, rgba(0,0,0,.10), rgba(0,0,0,.22));
-    }
-    /* legibilidade do título sobre a foto */
-    .hero--distance .hero-content h1,
-    .hero--distance .hero-content p{ text-shadow:0 2px 8px rgba(0,0,0,.35); }
-
-    /* RODAPÉ menor */
-    .footer-inner.footer-home{ align-items:stretch; gap:1rem; padding:.6rem 1rem; }
-    .footer-col{ flex:1 1 0; }
-    .footer-info p{ margin:.2rem 0; }
-    .footer-map iframe{ width:100%; height:160px; border:0; border-radius:14px; box-shadow:0 2px 10px rgba(0,0,0,.06); }
-    .footer-legal{ border-top:1px solid rgba(0,0,0,.06); max-width:1100px; margin:0 auto; padding:.6rem 1rem; display:flex; justify-content:flex-end; }
-    @media (max-width:900px){
-      .hero--distance{ min-height:72dvh; }
-      .hero--distance .cover{ object-position:center 45%; }
-      .footer-inner.footer-home{ flex-direction:column; }
-      .footer-map iframe{ height:200px; }
-    }
-
-    /* BLOCO “vida” – paleta quente suave */
-    :root{
-      --green-dark:#0f3d2e; --green-muted:#557a68; --blue-action:#1a5cff; --blue-hover:#003b8a;
-      --gray-bg:#f8f9f8; --gold:#e4b100;
-    }
-    main h2, main h3{ color:var(--green-dark); margin:0 0 .5rem 0; }
-    main p{ margin:.45rem 0; color:#1e4e3d; }
-    .section{ padding:2.4rem clamp(12px,2vw,32px); }
-    .section.alt{ background:var(--gray-bg); }
-    .section .intro{ max-width:1100px; margin:0 auto; }
-    .cards{ max-width:1100px; margin:1rem auto 0 auto; display:grid; gap:1rem; grid-template-columns:repeat(4, minmax(220px,1fr)); }
-    .card{
-      background:#fff; border:1px solid rgba(0,0,0,.06);
-      border-left:5px solid var(--green-muted); border-radius:18px; padding:1rem; box-shadow:0 2px 12px rgba(0,0,0,.06);
-      transition:.25s ease;
-    }
-    .card:hover{ transform:translateY(-6px); border-left-color:var(--gold); box-shadow:0 10px 24px rgba(0,0,0,.12); }
-    .card p{ color:var(--green-muted); }
-    .btn{ display:inline-block; background:var(--blue-action); color:#fff; text-decoration:none; padding:.85rem 1.2rem; border-radius:12px; font-weight:700; margin-top:1rem; transition:.25s ease; }
-    .btn:hover{ background:var(--blue-hover); transform:translateY(-2px); }
-    @media (max-width:1024px){ .cards{ grid-template-columns:repeat(2,minmax(220px,1fr)); } }
-    @media (max-width:640px){ .cards{ grid-template-columns:1fr; } }
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Immo Hoessen – Accueil</title>
+  <link rel="stylesheet" href="style.css?v=20250825b" />
 </head>
-<body class="site">
-  <header class="header">
-    <div class="header-inner">
-      <div class="brand">
-        <img src="img/logo.svg" alt="Immo Hoessen">
-        <span class="brand-name">Immo Hoessen</span>
-      </div>
-      <nav class="nav">
-        <a class="active" href="index.html">Accueil</a>
-        <a href="types.html">Types de gestion</a>
-        <a href="gestion.html">Gestion</a>
-        <a href="portail.html">Portail</a>
-        <a href="contacts.html">Contacts</a>
-        <a href="apropos.html">À propos</a>
-        <a href="offre.html">Offre</a>
-      </nav>
-    </div>
+<body class="home-page">
+  <header class="site-header">
+    <nav class="site-nav">
+      <ul class="menu">
+        <li><a href="index.html" class="active">Accueil</a></li>
+        <li><a href="types.html">Types</a></li>
+        <li><a href="gestion.html">Gestion</a></li>
+        <li><a href="apropos.html">À propos</a></li>
+        <li><a href="contacts.html">Contacts</a></li>
+        <li><a class="cta" href="offre.html">Demander une offre</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <!-- CAPA -->
-  <main id="main">
-    <section class="hero hero--distance">
-      <!-- MOSTRAR MAIS GRAMADO NO DESKTOP/NOTEBOOK -->
-      <img class="cover" src="img/cover-plain2.jpg" alt="Laurent Hoessen"
-           style="object-position:50% 90% !important;"
-           fetchpriority="high" loading="eager" decoding="async">
-      <div class="overlay"></div>
-      <div class="hero-content">
-        <h1 style="color:#fff">Laurent Hoessen</h1>
-        <p style="color:#fff">Gestion immobilière · Syndic BILH – DUHO</p>
-      </div>
-    </section>
-
-    <!-- BLOCO 1 – Types de gestion -->
-    <section class="section alt">
-      <div class="intro">
-        <h2>Types de gestion</h2>
-        <p>Des solutions adaptées à chaque copropriété, avec transparence et rigueur.</p>
-      </div>
-      <div class="cards">
-        <article class="card"><h3>Gestion de base</h3><p>Administration, comptabilité et obligations légales.</p></article>
-        <article class="card"><h3>Gestion technique</h3><p>Suivi des travaux, ascenseurs, chauffage, sécurité.</p></article>
-        <article class="card"><h3>Gestion financière</h3><p>Budgets, appels de fonds, contrôle des dépenses.</p></article>
-        <article class="card"><h3>Conseil & audit</h3><p>Optimisations, contrats, conformité et PEB.</p></article>
-      </div>
-    </section>
-
-    <!-- BLOCO 2 – Gestion -->
-    <section class="section">
-      <div class="intro">
-        <h2>Gestion</h2>
-        <p>Nous veillons à la bonne tenue des espaces, à la communication claire et à la réactivité en cas d’urgence.</p>
-      </div>
-      <div class="cards">
-        <article class="card"><h3>Communication</h3><p>Informations régulières aux copropriétaires.</p></article>
-        <article class="card"><h3>Entretien</h3><p>Qualité et sécurité de vos espaces communs.</p></article>
-        <article class="card"><h3>AG & procès-verbaux</h3><p>Organisation, quorum, proxies et suivi des décisions.</p></article>
-        <article class="card"><h3>Urgence</h3><p>Procédures claires et contacts prioritaires.</p></article>
-      </div>
-      <div class="intro">
-        <a class="btn" href="contacts.html">Nous contacter</a>
-      </div>
+  <!-- capa mantida como você pediu -->
+  <main>
+    <section class="hero">
+      <img src="image/cover-plain2.jpg" alt="Laurent Hoessen">
+      <h1>Laurent Hoessen</h1>
+      <p>Gestion immobilière · Syndic BILH – DUHO</p>
     </section>
   </main>
 
-  <!-- RODAPÉ -->
-  <footer>
-    <div class="footer-inner footer-home">
-      <div class="footer-col footer-info">
-        <p><strong>Adresse&nbsp;:</strong> Avenue Heydenberg 14, 1200 Bruxelles</p>
-        <p><strong>Téléphone&nbsp;:</strong> <a href="tel:+3227725175">02 772 51 75</a></p>
-        <p><strong>URGENCE&nbsp;:</strong> <a href="tel:0495261683">0495 26 16 83</a> · <a href="tel:0495543808">0495 54 38 08</a></p>
-        <p><strong>Heures&nbsp;:</strong> 09:00–13:00</p>
-        <p><strong>Email&nbsp;:</strong> <a href="mailto:syndic@immohoessen.be">syndic@immohoessen.be</a></p>
-        <p><strong>Nº d’entreprise&nbsp;:</strong> BE0462920325</p>
-      </div>
-      <div class="footer-col footer-map">
-        <iframe
-          title="Immo Hoessen – Carte"
-          src="https://www.google.com/maps?q=Avenue%20Heydenberg%2014,%201200%20Bruxelles&output=embed"
-          loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-      </div>
-    </div>
-    <div class="footer-legal">
-      <a href="mentions.html">Mentions légales</a>
-    </div>
+  <footer class="site-footer">
+    <p>© 2025 Immo Hoessen – BE0462920325 – Tél: 02 772 51 75</p>
   </footer>
-
-  <!-- SEO LocalBusiness (não muda visual) -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"LocalBusiness",
-    "name":"Immo Hoessen",
-    "image":"https://fabivilmen.github.io/immohoessen-site-v2/img/logo.svg",
-    "url":"https://fabivilmen.github.io/immohoessen-site-v2/",
-    "telephone":"+32 2 772 51 75",
-    "address":{
-      "@type":"PostalAddress",
-      "streetAddress":"Avenue Heydenberg 14",
-      "addressLocality":"Bruxelles",
-      "postalCode":"1200",
-      "addressCountry":"BE"
-    },
-    "openingHours":"Mo-Fr 09:00-13:00"
-  }
-  </script>
 </body>
 </html>
