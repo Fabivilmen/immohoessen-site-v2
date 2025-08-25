@@ -1,31 +1,32 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>À propos – Immo Hoessen</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body class="apropos-page">
-
-  <header>
-    <nav>
-      <ul>
+  <!-- Header / Menu unificado -->
+  <header class="site-header">
+    <nav class="site-nav">
+      <ul class="menu">
         <li><a href="index.html">Accueil</a></li>
         <li><a href="types.html">Types</a></li>
         <li><a href="gestion.html">Gestion</a></li>
         <li><a href="apropos.html" class="active">À propos</a></li>
         <li><a href="contacts.html">Contacts</a></li>
-        <li><a href="offre.html" class="cta">Demander une offre</a></li>
+        <li><a class="cta" href="offre.html">Demander une offre</a></li>
       </ul>
     </nav>
   </header>
 
+  <!-- Conteúdo principal -->
   <main class="page-wrap">
     <h1>À propos de nous</h1>
 
     <section class="apropos-wrap">
+      <!-- Coluna de texto -->
       <div class="measure-wide">
         <p>
           Immo Hoessen est une entreprise familiale active depuis plusieurs décennies
@@ -35,17 +36,23 @@
           Fondée par Laurent Hoessen, puis rejointe par André Hoessen, notre société
           combine expérience intergénérationnelle, rigueur, transparence et une approche humaine.
         </p>
+        <p>
+          Nous accompagnons les copropriétés avec un suivi administratif et technique
+          complet, une communication claire et des processus conformes aux exigences légales.
+        </p>
       </div>
 
+      <!-- Coluna de fotos -->
       <aside class="apropos-photos">
-        <img src="img/fotolaurent1.jpg" alt="Laurent Hoessen">
-        <img src="img/fotoandre.jpg" alt="André Hoessen">
+        <img src="img/fotolaurent1.jpg" alt="Laurent Hoessen" loading="lazy" />
+        <img src="img/fotoandre.jpg" alt="André Hoessen" loading="lazy" />
       </aside>
     </section>
   </main>
 
-  <footer>
-    <p>© 2025 Immo Hoessen – Syndic BILH & DUHO Gestion Immobilière</p>
+  <!-- Rodapé padrão -->
+  <footer class="site-footer">
+    <p>© 2025 Immo Hoessen – Syndic BILH &amp; DUHO Gestion Immobilière</p>
   </footer>
 </body>
 </html>
