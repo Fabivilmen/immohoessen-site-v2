@@ -1,49 +1,138 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>À propos – Immo Hoessen</title>
-  <link rel="stylesheet" href="style.css?v=20250825b" />
+  <link rel="stylesheet" href="style.css">
   <style>
-    .page-wrap{width:min(92vw,1600px);margin-inline:auto}
-    .apropos-wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(24px,3vw,56px);align-items:start}
-    @media(max-width:1024px){.apropos-wrap{grid-template-columns:1fr}}
-    @media(min-width:1600px){.measure-wide{max-width:85ch}}
-    body.apropos-page{min-height:100dvh;display:flex;flex-direction:column}
-    body.apropos-page main{flex:1}
+    :root{
+      --green-dark:#0f3d2e; --green-muted:#557a68; --gold:#e4b100; --terracotta:#c86b4a;
+      --warm-25:#fff9f3; --warm-50:#fff3e5;
+    }
+    body.site{ background: radial-gradient(120% 120% at 50% -10%, var(--warm-25) 0%, #ffffff 45%); }
+    .nav a{ position:relative; text-decoration:none; }
+    .nav a::after{ content:""; position:absolute; left:0; bottom:-6px; height:2px; width:0; background:linear-gradient(90deg, var(--gold), var(--terracotta)); transition:width .2s ease; }
+    .nav a:hover::after{ width:100%; }
+    .header-inner{ border-image: linear-gradient(90deg, var(--gold), var(--terracotta)) 1; border-bottom:3px solid transparent; }
+
+    .about-hero{
+      background:linear-gradient(180deg, var(--warm-50), var(--warm-25));
+      padding:2rem 0 1rem 0; border-bottom:1px solid rgba(0,0,0,.06);
+      text-align:center;
+    }
+    /* JUSTIFICAR texto de introdução */
+    .about-hero p{
+      max-width:900px; margin:.5rem auto 0 auto; color:var(--green-muted);
+      text-align:justify; text-justify:inter-word;
+      hyphens:auto; -webkit-hyphens:auto; -ms-hyphens:auto;
+    }
+
+    .founders{ display:grid; gap:1rem; grid-template-columns:1fr 1fr; }
+    .founder-card{
+      display:grid; grid-template-columns:200px 1fr; gap:1rem; align-items:center;
+      background:#fff; border:1px solid rgba(0,0,0,.06);
+      border-left:6px solid var(--terracotta);
+      border-radius:18px; padding:1rem; box-shadow:var(--shadow);
+      transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    .founder-card:hover{ transform:translateY(-3px); border-left-color:var(--gold); box-shadow:0 10px 22px rgba(228,177,0,.18); }
+    .founder-photo{ width:200px; height:200px; border-radius:16px; overflow:hidden }
+    .founder-photo img{ width:100%; height:100%; object-fit:cover; object-position:50% 20%; }
+    .founder-caption{ margin-top:.4rem; font-size:.95rem; color:var(--green-muted); }
+    /* JUSTIFICAR textos dos cartões */
+    .founder-card p{
+      color:var(--green-muted);
+      text-align:justify; text-justify:inter-word;
+      hyphens:auto; -webkit-hyphens:auto; -ms-hyphens:auto;
+    }
+
+    .footer-min{
+      max-width:1100px; margin:0 auto; padding:1rem;
+      display:flex; justify-content:flex-end; color:var(--green-muted);
+      border-top:1px solid rgba(0,0,0,.06);
+    }
+    @media (max-width:900px){
+      .founders{ grid-template-columns:1fr; }
+      .founder-card{ grid-template-columns:150px 1fr; }
+      .founder-photo{ width:150px; height:150px; }
+      .founder-photo img{ object-position:50% 20%; }
+    }
+
+    /* CTA no menu */
+    .nav a.cta{
+      background:#1a5cff; color:#fff !important; padding:.55rem .95rem; border-radius:12px; font-weight:700; line-height:1;
+      box-shadow:0 8px 20px rgba(26,92,255,.18); transition:transform .2s ease, background .2s ease, box-shadow .2s ease; margin-left:.5rem;
+    }
+    .nav a.cta:hover{ background:#003b8a; transform: translateY(-1px); box-shadow:0 10px 24px rgba(26,92,255,.26); }
+    .nav a.active.cta{ background:#0f3d2e; box-shadow:0 8px 20px rgba(15,61,46,.18); }
+    .nav a.active.cta:hover{ background:#0c3226; }
   </style>
 </head>
-<body class="apropos-page">
-  <header class="site-header">
-    <nav class="site-nav">
-      <ul class="menu">
-        <li><a href="index.html">Accueil</a></li>
-        <li><a href="types.html">Types</a></li>
-        <li><a href="gestion.html">Gestion</a></li>
-        <li><a href="apropos.html" class="active">À propos</a></li>
-        <li><a href="contacts.html">Contacts</a></li>
-        <li><a class="cta" href="offre.html">Demander une offre</a></li>
-      </ul>
-    </nav>
+<body class="site">
+  <header class="header">
+    <div class="header-inner">
+      <div class="brand">
+        <img src="img/logo.svg" alt="Immo Hoessen">
+        <span class="brand-name">Immo Hoessen</span>
+      </div>
+      <nav class="nav" aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a href="types.html">Types de gestion</a>
+        <a href="gestion.html">Gestion</a>
+        <a href="portail.html">Portail</a>
+        <a href="contacts.html">Contacts</a>
+        <a class="active" href="apropos.html">À propos</a>
+        <a href="offre.html" class="cta">Demander une offre</a>
+      </nav>
+    </div>
   </header>
 
-  <main class="page-wrap">
-    <h1>À propos de nous</h1>
-    <section class="apropos-wrap">
-      <div class="measure-wide">
-        <p>Immo Hoessen est une entreprise familiale active depuis plusieurs décennies à Bruxelles.</p>
-        <p>Fondée par Laurent Hoessen, puis rejointe par André Hoessen, notre société combine rigueur, transparence et une approche humaine.</p>
+  <main>
+    <section class="about-hero">
+      <div class="container">
+        <h1>À propos</h1>
+        <p>
+          Depuis 2001, le Syndic Laurent Hoessen, dirigé par son fondateur et gestionnaire IPI, M. Laurent Hoessen, met sa solide expérience au service de la gestion de copropriété.
+          Notre force réside dans notre équipe. Composée de professionnels multiculturels, nous combinons notre expertise et notre dévouement pour offrir un service de gestion qui répond avec précision aux besoins de chaque immeuble.
+          Ensemble, nous assurons une gestion sérieuse, humaine et durable. Pour nous, chaque immeuble est un patrimoine à valoriser et chaque copropriétaire, un partenaire à écouter.
+        </p>
       </div>
-      <aside class="apropos-photos">
-        <img src="image/fotolaurent1.jpg" alt="Laurent Hoessen" loading="lazy" />
-        <img src="image/fotoandre.jpg" alt="André Hoessen" loading="lazy" />
-      </aside>
+    </section>
+
+    <section class="container pb-6">
+      <h2 class="mt-3">Fondateur & Cofondateur</h2>
+      <div class="founders mt-2">
+        <article class="founder-card">
+          <div>
+            <div class="founder-photo"><img src="img/fotolaurent1.jpg" alt="M. Laurent Hoessen"></div>
+            <div class="founder-caption">Fondateur</div>
+          </div>
+          <div>
+            <h3>M. Laurent Hoessen</h3>
+            <p>En tant que gestionnaire IPI agréé, Laurent Hoessen met au service des copropriétaires sa vision rigoureuse, son approche technique et, par-dessus tout, sa gestion résolument humaine.</p>
+          </div>
+        </article>
+
+        <article class="founder-card">
+          <div>
+            <div class="founder-photo"><img src="img/fotoandre3.jpg" alt="M. André Hoessen"></div>
+            <div class="founder-caption">Cofondateur</div>
+          </div>
+          <div>
+            <h3>M. André Hoessen</h3>
+            <p>Contribution stratégique, coordination des équipes et appui technique à la gestion quotidienne.</p>
+          </div>
+        </article>
+      </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <p>© 2025 Immo Hoessen</p>
+  <footer>
+    <div class="footer-min">
+      © 2025 Immo Hoessen · <a href="mentions.html">Mentions légales</a>
+    </div>
   </footer>
 </body>
 </html>
