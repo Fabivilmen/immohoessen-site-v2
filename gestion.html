@@ -4,17 +4,61 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Gestion – Immo Hoessen</title>
-  <link rel="stylesheet" href="style.css?v=20250825" />
+
+  <!-- mantém seu CSS; o querystring ajuda a “furar” cache -->
+  <link rel="stylesheet" href="style.css?v=20250825a" />
+
+  <!-- FAIL-SAFE: força layout largo nesta página, mesmo se houver estilos antigos -->
   <style>
-    .page-wrap{width:min(92vw,1600px);margin-inline:auto}
-    .gestion-cards{display:grid;gap:clamp(16px,2vw,28px);grid-template-columns:1fr 1fr}
-    @media(min-width:1200px){.gestion-cards{grid-template-columns:repeat(3,1fr)}}
-    @media(min-width:1600px){.gestion-cards{grid-template-columns:repeat(4,1fr)}}
-    body.gestion-page{min-height:100dvh;display:flex;flex-direction:column}
-    body.gestion-page main{flex:1}
+    /* ocupa toda a altura e evita rodapé subir */
+    html, body { height: 100%; }
+    body.gestion-page { min-height: 100dvh; display: flex; flex-direction: column; }
+
+    /* zera limites herdados de wrappers comuns que possam encolher o conteúdo */
+    body.gestion-page :where(.container, .wrapper, .content, .site-wrap, .inner, main, section) {
+      max-width: none !important;
+    }
+
+    /* Wrapper principal desta página */
+    body.gestion-page .page-wrap {
+      width: min(92vw, 1600px) !important;
+      margin-inline: auto !important;
+      max-width: none !important;
+    }
+
+    /* Conteúdo expande para ocupar espaço disponível */
+    body.gestion-page main { flex: 1; }
+
+    /* Grid dos cards com escala para telas grandes */
+    body.gestion-page .gestion-cards {
+      display: grid !important;
+      gap: clamp(16px, 2vw, 28px) !important;
+      grid-template-columns: 1fr 1fr !important;
+      align-items: stretch;
+    }
+    @media (min-width: 1200px) {
+      body.gestion-page .gestion-cards { grid-template-columns: repeat(3, 1fr) !important; }
+    }
+    @media (min-width: 1600px) {
+      body.gestion-page .gestion-cards { grid-template-columns: repeat(4, 1fr) !important; }
+    }
+
+    /* Título com presença em telas grandes */
+    @media (min-width: 1440px) {
+      body.gestion-page h1 {
+        font-size: clamp(1.8rem, 1.4rem + 1.2vw, 3rem) !important;
+        line-height: 1.15 !important;
+      }
+    }
+
+    /* Cards respirando melhor */
+    body.gestion-page .gestion-cards .card {
+      padding: clamp(14px, 1.4vw, 22px) !important;
+    }
   </style>
 </head>
 <body class="gestion-page">
+  <!-- Header -->
   <header class="site-header">
     <nav class="site-nav">
       <ul class="menu">
@@ -28,18 +72,35 @@
     </nav>
   </header>
 
+  <!-- Conteúdo -->
   <main class="page-wrap">
     <h1>Notre gestion</h1>
-    <p class="measure-wide">Nous assurons une gestion rigoureuse, transparente et humaine pour garantir la pérennité de votre patrimoine immobilier.</p>
+    <p class="measure-wide">
+      Nous assurons une gestion rigoureuse, transparente et humaine pour garantir
+      la pérennité de votre patrimoine immobilier.
+    </p>
 
     <section class="gestion-cards">
-      <article class="card"><h2>Assemblées Générales</h2><p>Organisation et suivi complet des AG et conseils de copropriété.</p></article>
-      <article class="card"><h2>Comptabilité</h2><p>Gestion des comptes, budgets et appels de fonds.</p></article>
-      <article class="card"><h2>Suivi technique</h2><p>Contrats d’entretien, réparations et coordination des travaux.</p></article>
-      <article class="card"><h2>Communication</h2><p>Disponibilité et clarté dans les échanges avec les copropriétaires.</p></article>
+      <article class="card">
+        <h2>Assemblées Générales</h2>
+        <p>Organisation et suivi complet des AG et conseils de copropriété.</p>
+      </article>
+      <article class="card">
+        <h2>Comptabilité</h2>
+        <p>Gestion des comptes, budgets et appels de fonds.</p>
+      </article>
+      <article class="card">
+        <h2>Suivi technique</h2>
+        <p>Contrats d’entretien, réparations et coordination des travaux.</p>
+      </article>
+      <article class="card">
+        <h2>Communication</h2>
+        <p>Disponibilité et clarté dans les échanges avec les copropriétaires.</p>
+      </article>
     </section>
   </main>
 
+  <!-- Footer -->
   <footer class="site-footer">
     <p>© 2025 Immo Hoessen – Syndic BILH &amp; DUHO Gestion Immobilière</p>
   </footer>
