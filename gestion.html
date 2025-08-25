@@ -5,122 +5,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Gestion – Immo Hoessen</title>
   <link rel="stylesheet" href="style.css">
-  <style>
-    :root{
-      --green-dark:#0f3d2e; --green-muted:#557a68; --gold:#e4b100; --terracotta:#c86b4a;
-      --warm-25:#fff9f3; --warm-50:#fff3e5;
-    }
-    body.site{ background: radial-gradient(120% 120% at 50% -10%, var(--warm-25) 0%, #ffffff 45%); }
-    .nav a{ position:relative; text-decoration:none; }
-    .nav a::after{ content:""; position:absolute; left:0; bottom:-6px; height:2px; width:0; background:linear-gradient(90deg, var(--gold), var(--terracotta)); transition:width .2s ease; }
-    .nav a:hover::after{ width:100%; }
-    .header-inner{ border-image: linear-gradient(90deg, var(--gold), var(--terracotta)) 1; border-bottom:3px solid transparent; }
-
-    .gest-hero{
-      padding:1.5rem 0 .5rem 0;
-      border-bottom:1px solid rgba(0,0,0,.06);
-      background:linear-gradient(180deg, var(--warm-50), var(--warm-25));
-      text-align:center;
-    }
-    .gest-hero .container p{ max-width:850px; margin:.5rem auto 0 auto; }
-
-    .gest-wrap{
-      display:grid; grid-template-columns:1.1fr .9fr; gap:1.25rem; align-items:stretch; margin-top:1rem;
-    }
-    .gest-cards{ display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; }
-    .gest-card{
-      background:#fff; border:1px solid rgba(0,0,0,.06); border-left:6px solid var(--terracotta);
-      border-radius:var(--radius); padding:1rem; box-shadow:var(--shadow);
-      transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
-    }
-    .gest-card:hover{ transform:translateY(-2px); border-left-color:var(--gold); box-shadow:0 10px 22px rgba(228,177,0,.18); }
-    .gest-card h3{ margin:.2rem 0 .35rem 0; color:var(--green-dark); }
-    .gest-card p{ margin:0; color:var(--green-muted); }
-
-    .gest-illustration{
-      background:var(--bg-soft); border:1px solid rgba(0,0,0,.06);
-      border-radius:var(--radius); box-shadow:var(--shadow);
-      overflow:hidden; position:relative; top:8px; min-height:100%;
-      display:flex; align-items:stretch;
-    }
-    .gest-illustration img{ width:100%; height:100%; object-fit:cover; }
-
-    .footer-min{
-      max-width:1100px; margin:0 auto; padding:1rem;
-      display:flex; justify-content:flex-end; color:var(--green-muted);
-      border-top:1px solid rgba(0,0,0,.06);
-    }
-    @media (max-width:1024px){
-      .gest-wrap{ grid-template-columns:1fr; }
-      .gest-illustration{ top:0; min-height:240px; }
-      .gest-cards{ grid-template-columns:1fr 1fr; }
-    }
-    @media (max-width:640px){ .gest-cards{ grid-template-columns:1fr; } }
-
-    /* CTA no menu */
-    .nav a.cta{
-      background:#1a5cff; color:#fff !important; padding:.55rem .95rem; border-radius:12px; font-weight:700; line-height:1;
-      box-shadow:0 8px 20px rgba(26,92,255,.18); transition:transform .2s ease, background .2s ease, box-shadow .2s ease; margin-left:.5rem;
-    }
-    .nav a.cta:hover{ background:#003b8a; transform: translateY(-1px); box-shadow:0 10px 24px rgba(26,92,255,.26); }
-    .nav a.active.cta{ background:#0f3d2e; box-shadow:0 8px 20px rgba(15,61,46,.18); }
-    .nav a.active.cta:hover{ background:#0c3226; }
-  </style>
 </head>
-<body class="site">
-  <header class="header">
-    <div class="header-inner">
-      <div class="brand">
-        <img src="img/logo.svg" alt="Immo Hoessen">
-        <span class="brand-name">Immo Hoessen</span>
-      </div>
-      <nav class="nav" aria-label="Navigation principale">
-        <a href="index.html">Accueil</a>
-        <a href="types.html">Types de gestion</a>
-        <a class="active" href="gestion.html">Gestion</a>
-        <a href="portail.html">Portail</a>
-        <a href="contacts.html">Contacts</a>
-        <a href="apropos.html">À propos</a>
-        <a href="offre.html" class="cta">Demander une offre</a>
-      </nav>
-    </div>
+<body class="gestion-page">
+
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="types.html">Types</a></li>
+        <li><a href="gestion.html" class="active">Gestion</a></li>
+        <li><a href="apropos.html">À propos</a></li>
+        <li><a href="contacts.html">Contacts</a></li>
+        <li><a href="offre.html" class="cta">Demander une offre</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <main>
-    <section class="gest-hero">
-      <div class="container">
-        <h1>Notre approche de gestion</h1>
-        <p>
-          Une méthode structurée, centrée sur la transparence, la maîtrise technique et la réactivité.
-          Nous gérons le quotidien, planifions le long terme et communiquons clairement avec les copropriétaires.
-        </p>
-      </div>
-    </section>
+  <main class="page-wrap">
+    <h1>Notre gestion</h1>
+    <p class="measure-wide">
+      Nous assurons une gestion rigoureuse, transparente et humaine pour garantir
+      la pérennité de votre patrimoine immobilier.
+    </p>
 
-    <section class="container pb-6">
-      <div class="gest-wrap">
-        <div class="gest-cards">
-          <article class="gest-card"><h3>Suivi quotidien</h3><p>Emails et appels traités par priorité. Tableaux de bord, SLA interne et retour systématique aux copropriétaires.</p></article>
-          <article class="gest-card"><h3>Conformité légale</h3><p>Contrôles périodiques (ascenseurs, électricité, incendie), registres, RGPD, assurances et archives disponibles sur le portail.</p></article>
-          <article class="gest-card"><h3>Optimisation</h3><p>Budgets réalistes, appels d’offres comparés, suivi des contrats et plan pluriannuel des travaux (réserves & priorités).</p></article>
-          <article class="gest-card"><h3>Transparence & AG</h3><p>Préparation des AG, convocations, procès-verbaux et exécution des décisions. Reporting clair et accès aux documents.</p></article>
-        </div>
-        <aside class="gest-illustration">
-          <!-- IMG atualizada com dimensões + lazy + decoding + estilo inline -->
-          <img src="img/imggestion.jpg"
-               alt="Gestion immobilière"
-               width="1200" height="800"
-               loading="lazy" decoding="async"
-               style="display:block; width:100%; height:100%; object-fit:cover;">
-        </aside>
-      </div>
+    <section class="gestion-cards">
+      <article class="card">
+        <h2>Assemblées Générales</h2>
+        <p>Organisation et suivi complet des AG et conseils de copropriété.</p>
+      </article>
+      <article class="card">
+        <h2>Comptabilité</h2>
+        <p>Gestion des comptes, budgets et appels de fonds.</p>
+      </article>
+      <article class="card">
+        <h2>Suivi technique</h2>
+        <p>Contrats d’entretien, réparations et coordination des travaux.</p>
+      </article>
+      <article class="card">
+        <h2>Communication</h2>
+        <p>Disponibilité et clarté dans les échanges avec les copropriétaires.</p>
+      </article>
     </section>
   </main>
 
   <footer>
-    <div class="footer-min">
-      © 2025 Immo Hoessen · <a href="mentions.html">Mentions légales</a>
-    </div>
+    <p>© 2025 Immo Hoessen – Syndic BILH & DUHO Gestion Immobilière</p>
   </footer>
 </body>
 </html>
