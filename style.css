@@ -38,3 +38,14 @@
   </footer>
 </body>
 </html>
+/* CAPA: foto viva, sem overlay/película */
+.hero--distance .overlay{
+  display:none !important;            /* remove a película */
+  background:none !important;
+}
+
+.hero--distance .cover{
+  /* deixe a foto mais vibrante, sem exagerar */
+  filter: saturate(1.22) contrast(1.07) brightness(1.02);
+  /* mantenho seu object-position existente */
+}
