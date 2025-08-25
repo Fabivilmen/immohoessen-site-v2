@@ -11,16 +11,29 @@
       --warm-25:#fff9f3; --warm-50:#fff3e5; --warm-100:#ffe7c7;
     }
     body.site{ background: radial-gradient(120% 120% at 50% -10%, var(--warm-25) 0%, #ffffff 45%); }
-    .nav a{ position:relative; text-decoration:none; }
+
+    /* ===== Menu padronizado + CTA azul ===== */
+    .header{position:sticky; top:0; z-index:50; background:#fff; border-bottom:1px solid #eee;}
+    .header-inner{ border-image: linear-gradient(90deg, var(--gold), var(--terracotta)) 1; border-bottom:3px solid transparent;
+      max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:.8rem 1rem; }
+    .brand{display:flex; align-items:center; gap:.6rem}
+    .brand img{height:32px}
+    .brand-name{font-weight:800; color:var(--green-dark)}
+    .nav{display:flex; gap:.4rem; flex-wrap:wrap; align-items:center}
+    .nav a{ position:relative; text-decoration:none; display:inline-block; padding:.55rem .8rem; border-radius:.6rem; color:#1e4e3d; font-weight:600; }
     .nav a::after{ content:""; position:absolute; left:0; bottom:-6px; height:2px; width:0; background:linear-gradient(90deg, var(--gold), var(--terracotta)); transition:width .2s ease; }
     .nav a:hover::after{ width:100%; }
-    .header-inner{ border-image: linear-gradient(90deg, var(--gold), var(--terracotta)) 1; border-bottom:3px solid transparent; }
+    .nav a.active{ color:#fff; background:#0f3d2e; }
+    .nav .cta-offre{ background:#1a5cff; color:#fff; border:1px solid transparent; padding:.6rem 1rem; border-radius:999px; font-weight:800; }
+    .nav .cta-offre:hover{ background:#003b8a; }
 
+    /* ===== Seções ===== */
     .section{ padding:2.2rem clamp(12px,2vw,32px); }
     .section .contacts-wrap{ max-width:1100px; margin:0 auto; }
     .section.alt{ background: linear-gradient(180deg, var(--warm-50), var(--warm-25)); }
     .section.alt-strong{ background: linear-gradient(180deg, var(--warm-100), var(--warm-50)); }
 
+    /* ===== Bloco Urgência + Telefone do escritório ===== */
     .urg-box{
       background:#fff; border:1px solid rgba(0,0,0,.08);
       border-radius:18px; box-shadow:0 2px 14px rgba(0,0,0,.08);
@@ -41,11 +54,14 @@
       text-decoration:none; line-height:1; transition: background .25s ease, transform .25s ease, box-shadow .25s ease;
       box-shadow:0 8px 20px rgba(228,177,0,.16);
     }
-    .btn-call--primary{ background:var(--blue-600, #1a5cff); color:#fff; }
+    .btn-call--primary{ background:#1a5cff; color:#fff; }
     .btn-call--primary:hover{ background:#003b8a; transform:scale(1.05); }
     .btn-call--alt{ background:#0f3d2e; color:#fff; }
     .btn-call--alt:hover{ background:#0c3226; transform:scale(1.05); }
 
+    .divider{ height:0; border-top:1px dashed rgba(0,0,0,.15); margin:1rem auto; max-width:520px; }
+
+    /* ===== Cards equipe ===== */
     .contacts-grid{
       display:grid; grid-template-columns:repeat(3, minmax(240px,1fr));
       gap:1rem; margin-block:1.25rem 0;
@@ -66,32 +82,22 @@
     }
     .contact-card h3{ margin:.1rem 0 .3rem; color:var(--green-dark); }
     .contact-card p{ margin:.2rem 0; color:var(--green-muted); }
-    .contact-card--solo{
-      grid-column:1 / -1; max-width:520px; justify-self:center; text-align:center;
-    }
+    .contact-card--solo{ grid-column:1 / -1; max-width:520px; justify-self:center; text-align:center; }
 
-    .footer-min{
-      max-width:1100px; margin:0 auto; padding:1rem;
-      display:flex; justify-content:flex-end; color:var(--green-muted);
-      border-top:1px solid rgba(0,0,0,.06);
-    }
+    /* ===== Rodapé minimal ===== */
+    footer{background:#f7f7f7; color:var(--green-muted); font-size:.9rem; margin-top:2rem}
+    .footer-min{max-width:1100px; margin:0 auto; padding:1rem; display:flex; justify-content:flex-end; border-top:1px solid rgba(0,0,0,.06);}
+    .footer-min a{color:var(--green-muted); text-decoration:underline}
+
     @media (max-width: 900px){ .contacts-grid{ grid-template-columns:repeat(2, minmax(240px,1fr)); } }
     @media (max-width: 640px){
       .contacts-grid{ grid-template-columns:1fr; }
       .contact-card--solo{ max-width:100%; }
     }
-
-    /* CTA no menu */
-    .nav a.cta{
-      background:#1a5cff; color:#fff !important; padding:.55rem .95rem; border-radius:12px; font-weight:700; line-height:1;
-      box-shadow:0 8px 20px rgba(26,92,255,.18); transition:transform .2s ease, background .2s ease, box-shadow .2s ease; margin-left:.5rem;
-    }
-    .nav a.cta:hover{ background:#003b8a; transform: translateY(-1px); box-shadow:0 10px 24px rgba(26,92,255,.26); }
-    .nav a.active.cta{ background:#0f3d2e; box-shadow:0 8px 20px rgba(15,61,46,.18); }
-    .nav a.active.cta:hover{ background:#0c3226; }
   </style>
 </head>
 <body class="site">
+  <!-- Header -->
   <header class="header">
     <div class="header-inner">
       <div class="brand">
@@ -105,28 +111,41 @@
         <a href="portail.html">Portail</a>
         <a class="active" href="contacts.html">Contacts</a>
         <a href="apropos.html">À propos</a>
-        <a href="offre.html" class="cta">Demander une offre</a>
+        <a href="offre.html" class="cta-offre">Demander une offre</a>
       </nav>
     </div>
   </header>
 
   <main>
+    <!-- Bloco de telefones (inclui escritório 9h–13h e urgências) -->
     <section class="section alt-strong">
       <div class="contacts-wrap">
         <h1>Contacts</h1>
 
-        <div class="urg-box" role="region" aria-labelledby="urgence-heading">
-          <div class="urg-badge">Urgence</div>
-          <h2 id="urgence-heading" style="margin:.2rem 0 .4rem 0;">En dehors des heures du bureau (9h–13h)</h2>
-          <p class="urg-hours">Pour toute urgence, contactez :</p>
+        <div class="urg-box" role="region" aria-labelledby="tel-heading">
+          <div class="urg-badge">Téléphones</div>
+
+          <!-- Linha do escritório -->
+          <h2 id="tel-heading" style="margin:.2rem 0 .2rem 0;">Heures du bureau (9h–13h)</h2>
+          <p class="urg-hours">Téléphone&nbsp;: <strong>02 772 51 75</strong></p>
+          <div class="urg-buttons" style="margin-bottom:.4rem">
+            <a class="btn-call btn-call--primary" href="tel:+3227725175" aria-label="Appeler 02 772 51 75">📞 02&nbsp;772&nbsp;51&nbsp;75</a>
+          </div>
+
+          <div class="divider" aria-hidden="true"></div>
+
+          <!-- Urgências -->
+          <h2 style="margin:.2rem 0 .4rem 0;">Urgence – en dehors des heures du bureau</h2>
+          <p class="urg-hours">En cas d’urgence, contactez :</p>
           <div class="urg-buttons">
-            <a class="btn-call btn-call--primary" href="tel:+32495261683" aria-label="Appeler 0495 26 16 83">📞 0495&nbsp;26&nbsp;16&nbsp;83</a>
+            <a class="btn-call btn-call--alt" href="tel:+32495261683" aria-label="Appeler 0495 26 16 83">📞 0495&nbsp;26&nbsp;16&nbsp;83</a>
             <a class="btn-call btn-call--alt" href="tel:+32495543808" aria-label="Appeler 0495 54 38 08">📞 0495&nbsp;54&nbsp;38&nbsp;08</a>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Equipe -->
     <section class="section alt">
       <div class="contacts-wrap">
         <div class="contacts-grid">
@@ -138,13 +157,14 @@
           <article class="contact-card"><h3>Mikail Uçarer</h3><p>Stagiaire (en formation IPI)</p><p><a href="mailto:gestionnaire@immohoessen.be">gestionnaire@immohoessen.be</a></p></article>
           <article class="contact-card contact-card--solo">
             <h3>Facturation</h3>
-            <p> Transmettez vos factures à — <a href="mailto:factures@immohoessen.be">factures@immohoessen.be</a></p>
+            <p>Transmettez vos factures à — <a href="mailto:factures@immohoessen.be">factures@immohoessen.be</a></p>
           </article>
         </div>
       </div>
     </section>
   </main>
 
+  <!-- Rodapé minimal -->
   <footer>
     <div class="footer-min">
       © 2025 Immo Hoessen · <a href="mentions.html">Mentions légales</a>
@@ -152,6 +172,7 @@
   </footer>
 
   <script>
+    // Efeito de entrada dos cards
     (function(){
       const els = document.querySelectorAll('.contact-card');
       const io = new IntersectionObserver((entries)=>{
