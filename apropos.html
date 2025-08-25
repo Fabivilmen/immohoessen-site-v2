@@ -12,22 +12,39 @@
       --warm-25:#fff9f3; --warm-50:#fff3e5;
     }
     body.site{ background: radial-gradient(120% 120% at 50% -10%, var(--warm-25) 0%, #ffffff 45%); }
-    .nav a{ position:relative; text-decoration:none; }
+
+    /* MENU padronizado + CTA azul */
+    .header{position:sticky; top:0; z-index:50; background:#fff; border-bottom:1px solid #eee;}
+    .header-inner{
+      border-image: linear-gradient(90deg, var(--gold), var(--terracotta)) 1; border-bottom:3px solid transparent;
+      max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:.8rem 1rem;
+    }
+    .brand{display:flex; align-items:center; gap:.6rem}
+    .brand img{height:32px}
+    .brand-name{font-weight:800; color:var(--green-dark)}
+    .nav{display:flex; gap:.4rem; flex-wrap:wrap; align-items:center}
+    .nav a{ position:relative; text-decoration:none; display:inline-block; padding:.55rem .8rem; border-radius:.6rem; color:#1e4e3d; font-weight:600; }
     .nav a::after{ content:""; position:absolute; left:0; bottom:-6px; height:2px; width:0; background:linear-gradient(90deg, var(--gold), var(--terracotta)); transition:width .2s ease; }
     .nav a:hover::after{ width:100%; }
-    .header-inner{ border-image: linear-gradient(90deg, var(--gold), var(--terracotta)) 1; border-bottom:3px solid transparent; }
+    .nav a.active{ color:#fff; background:#0f3d2e; }
+    .nav .cta-offre{ background:#1a5cff; color:#fff; border:1px solid transparent; padding:.6rem 1rem; border-radius:999px; font-weight:800; }
+    .nav .cta-offre:hover{ background:#003b8a; }
 
+    /* HERO */
     .about-hero{
       background:linear-gradient(180deg, var(--warm-50), var(--warm-25));
       padding:2rem 0 1rem 0; border-bottom:1px solid rgba(0,0,0,.06);
       text-align:center;
     }
-    /* JUSTIFICAR texto de introdução */
+    /* AUMENTO da altura do texto */
     .about-hero p{
       max-width:900px; margin:.5rem auto 0 auto; color:var(--green-muted);
       text-align:justify; text-justify:inter-word;
       hyphens:auto; -webkit-hyphens:auto; -ms-hyphens:auto;
+      line-height:1.75;
     }
+
+    .container{max-width:1200px; margin:0 auto; padding:0 16px}
 
     .founders{ display:grid; gap:1rem; grid-template-columns:1fr 1fr; }
     .founder-card{
@@ -41,33 +58,27 @@
     .founder-photo{ width:200px; height:200px; border-radius:16px; overflow:hidden }
     .founder-photo img{ width:100%; height:100%; object-fit:cover; object-position:50% 20%; }
     .founder-caption{ margin-top:.4rem; font-size:.95rem; color:var(--green-muted); }
-    /* JUSTIFICAR textos dos cartões */
+    /* AUMENTO da altura do texto nos cartões */
     .founder-card p{
       color:var(--green-muted);
       text-align:justify; text-justify:inter-word;
       hyphens:auto; -webkit-hyphens:auto; -ms-hyphens:auto;
+      line-height:1.7;
     }
 
+    /* Rodapé minimal */
     .footer-min{
       max-width:1100px; margin:0 auto; padding:1rem;
       display:flex; justify-content:flex-end; color:var(--green-muted);
       border-top:1px solid rgba(0,0,0,.06);
     }
+
     @media (max-width:900px){
       .founders{ grid-template-columns:1fr; }
       .founder-card{ grid-template-columns:150px 1fr; }
       .founder-photo{ width:150px; height:150px; }
       .founder-photo img{ object-position:50% 20%; }
     }
-
-    /* CTA no menu */
-    .nav a.cta{
-      background:#1a5cff; color:#fff !important; padding:.55rem .95rem; border-radius:12px; font-weight:700; line-height:1;
-      box-shadow:0 8px 20px rgba(26,92,255,.18); transition:transform .2s ease, background .2s ease, box-shadow .2s ease; margin-left:.5rem;
-    }
-    .nav a.cta:hover{ background:#003b8a; transform: translateY(-1px); box-shadow:0 10px 24px rgba(26,92,255,.26); }
-    .nav a.active.cta{ background:#0f3d2e; box-shadow:0 8px 20px rgba(15,61,46,.18); }
-    .nav a.active.cta:hover{ background:#0c3226; }
   </style>
 </head>
 <body class="site">
@@ -84,7 +95,7 @@
         <a href="portail.html">Portail</a>
         <a href="contacts.html">Contacts</a>
         <a class="active" href="apropos.html">À propos</a>
-        <a href="offre.html" class="cta">Demander une offre</a>
+        <a href="offre.html" class="cta-offre">Demander une offre</a>
       </nav>
     </div>
   </header>
