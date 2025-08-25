@@ -3,37 +3,141 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mentions légales – Immo Hoessen</title>
+  <title>Types de gestion – Immo Hoessen</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    :root{
+      --green:#0f3d2e; --text:#1e4e3d; --muted:#557a68;
+      --brand:#1a5cff; --brand-hover:#003b8a;
+      --terracotta:#c77045;
+      --card-shadow:0 2px 12px rgba(0,0,0,.06);
+      --card-shadow-hover:0 12px 28px rgba(0,0,0,.14);
+    }
+    /* Header/Nav */
+    .header{position:sticky; top:0; z-index:50; background:#fff; border-bottom:1px solid #eee;}
+    .header-inner{max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:.8rem 1rem;}
+    .brand{display:flex; align-items:center; gap:.6rem}
+    .brand img{height:32px}
+    .brand-name{font-weight:800; color:var(--text)}
+    .nav{display:flex; gap:.4rem; flex-wrap:wrap; align-items:center}
+    .nav a{display:inline-block; padding:.55rem .8rem; border-radius:.6rem; text-decoration:none; color:var(--text); font-weight:600}
+    .nav a:hover{background:#f3f6f5}
+    .nav a.active{color:#fff; background:var(--green)}
+    .nav .cta-offre{background:var(--brand); color:#fff; border:1px solid transparent; padding:.6rem 1rem; border-radius:999px; font-weight:800}
+    .nav .cta-offre:hover{background:var(--brand-hover)}
+
+    /* Layout */
+    main{padding:2.4rem clamp(12px,2vw,32px)}
+    .intro{max-width:1100px; margin:0 auto}
+    h1{color:var(--green); margin:0 0 .4rem}
+    .intro p{color:var(--text)}
+
+    /* Cards */
+    .cards{max-width:1100px; margin:1rem auto 0; display:grid; gap:1rem; grid-template-columns:repeat(4,minmax(220px,1fr))}
+    .card{
+      background:#fff; border:1px solid rgba(0,0,0,.08);
+      border-left:12px solid var(--terracotta);
+      border-radius:14px; padding:1rem 1.25rem;
+      box-shadow:var(--card-shadow);
+      transition:transform .25s ease, box-shadow .25s ease, border-left-color .25s ease;
+    }
+    .card h3{color:var(--green); margin:0 0 .4rem}
+    .card p{color:var(--muted); margin:0}
+    .card:hover{transform:translateY(-6px); box-shadow:var(--card-shadow-hover); border-left-color:#d98258}
+    @media (max-width:1024px){.cards{grid-template-columns:repeat(2,minmax(220px,1fr))}}
+    @media (max-width:640px){.cards{grid-template-columns:1fr}}
+
+    /* Botões */
+    .btn-blue{display:inline-block; background:var(--brand); color:#fff; text-decoration:none; padding:.9rem 1.2rem; border-radius:12px; font-weight:800}
+    .btn-blue:hover{background:var(--brand-hover)}
+    .cta-row{max-width:1100px; margin:1.2rem auto 0}
+
+    /* Footer terracota */
+    footer{background:var(--terracotta); color:#fff}
+    .footer-inner{max-width:1200px; margin:0 auto; display:flex; gap:1rem; align-items:stretch; padding:1rem}
+    .footer-col{flex:1 1 0}
+    .footer-info a{color:#fff; text-decoration:underline}
+    .footer-info p{margin:.25rem 0}
+    .footer-map iframe{width:100%; height:190px; border:0; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,.25)}
+    .footer-legal{max-width:1200px; margin:0 auto; padding:.7rem 1rem; display:flex; justify-content:flex-end; border-top:1px solid rgba(255,255,255,.25)}
+    .footer-legal a{color:#fff; text-decoration:underline}
+    @media (max-width:900px){.footer-inner{flex-direction:column}.footer-map iframe{height:220px}}
+  </style>
 </head>
 <body class="site">
+  <!-- Header -->
   <header class="header">
     <div class="header-inner">
       <div class="brand">
-        <img src="img/logo.svg" alt="Immo Hoessen">
+        <img src="img/logo.svg" alt="Immo Hoessen" onerror="this.style.display='none'">
         <span class="brand-name">Immo Hoessen</span>
       </div>
       <nav class="nav">
         <a href="index.html">Accueil</a>
-        <a href="gestion.html">Types de gestion</a>
+        <a class="active" href="types.html">Types de gestion</a>
+        <a href="gestion.html">Gestion</a>
         <a href="portail.html">Portail</a>
         <a href="contacts.html">Contacts</a>
         <a href="apropos.html">À propos</a>
-        <a href="offre.html">Offre</a>
+        <a class="cta-offre" href="offre.html">Demander une offre</a>
       </nav>
     </div>
   </header>
 
-  <main class="container pb-6">
-    <h1>Mentions légales</h1>
-    <p>Immo Hoessen – Avenue Heydenberg 14, 1200 Bruxelles – BE0462920325.</p>
-    <p>Responsable de la publication : Laurent Hoessen.</p>
+  <!-- Main -->
+  <main>
+    <div class="intro">
+      <h1>Types de gestion</h1>
+      <p>Des formules adaptées à votre copropriété, avec transparence, rigueur et un accompagnement technique complet.</p>
+    </div>
+
+    <section class="cards">
+      <article class="card">
+        <h3>Gestion de base</h3>
+        <p>Administration, comptabilité, obligations légales, convocations, PV d’AG et suivi des décisions.</p>
+      </article>
+      <article class="card">
+        <h3>Gestion technique</h3>
+        <p>Suivi des travaux, contrats d’entretien, ascenseurs, incendie, électricité, chauffage et sécurité.</p>
+      </article>
+      <article class="card">
+        <h3>Gestion financière</h3>
+        <p>Budgets prévisionnels, appels de fonds, contrôle des dépenses, sinistres et assurances.</p>
+      </article>
+      <article class="card">
+        <h3>Conseil & audit</h3>
+        <p>Optimisation des charges, contrôle de conformité, aide aux marchés publics et audit documentaire.</p>
+      </article>
+    </section>
+
+    <div class="cta-row">
+      <a class="btn-blue" href="offre.html">Demander une offre</a>
+      &nbsp; ou &nbsp;
+      <a class="btn-blue" href="contacts.html" style="background:#1e4e3d">Nous contacter</a>
+    </div>
   </main>
 
+  <!-- Footer -->
   <footer>
     <div class="footer-inner">
-      <div>Avenue Heydenberg 14, 1200 Bruxelles · Tél. <a href="tel:+3227725175">02 772 51 75</a> · BE0462920325</div>
-      <div>Heures: 09:00–13:00 · <a href="mentions.html">Mentions légales</a></div>
+      <div class="footer-col footer-info">
+        <p><strong>Adresse&nbsp;:</strong> Avenue Heydenberg 14, 1200 Bruxelles</p>
+        <p><strong>Téléphone&nbsp;:</strong> <a href="tel:+3227725175">02 772 51 75</a></p>
+        <p><strong>URGENCE&nbsp;:</strong> <a href="tel:0495261683">0495 26 16 83</a> · <a href="tel:0495543808">0495 54 38 08</a></p>
+        <p><strong>Heures&nbsp;:</strong> 09:00–13:00</p>
+        <p><strong>Email&nbsp;:</strong> <a href="mailto:syndic@immohoessen.be">syndic@immohoessen.be</a></p>
+        <p><strong>Nº d’entreprise&nbsp;:</strong> BE0462920325</p>
+      </div>
+      <div class="footer-col footer-map">
+        <iframe
+          title="Immo Hoessen – Carte"
+          src="https://www.google.com/maps?q=Avenue%20Heydenberg%2014,%201200%20Bruxelles&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <a href="mentions.html">Mentions légales</a>
     </div>
   </footer>
 </body>
