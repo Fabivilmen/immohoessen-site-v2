@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -5,10 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Laurent Hoessen – Gestion immobilière · Syndic BILH – DUHO</title>
 
-  <!-- CSS com cache-buster (não muda visual) -->
+  <!-- CSS com cache-buster (mantido) -->
   <link rel="stylesheet" href="style.css?v=12">
 
-  <!-- SEO/Compartilhamento (não muda visual) -->
+  <!-- SEO/Compartilhamento (mantido) -->
   <meta name="description" content="Syndic de copropriété à Bruxelles. Gestion sérieuse et humaine : AG, budgets, travaux, sinistres, documents en ligne.">
   <meta property="og:title" content="Immo Hoessen – Syndic & gestion immobilière à Bruxelles">
   <meta property="og:description" content="Gestion transparente, technique et réactive. Portail 24h/24 pour vos documents.">
@@ -17,62 +18,66 @@
   <link rel="icon" href="img/favicon.png">
 
   <style>
-    /* CAPA: mais alta para mostrar céu + chão */
-    .hero--distance{ min-height:80dvh; }
-    .hero--distance .cover{
-      object-position:center 40%;
-      filter:saturate(1.15) contrast(1.06) brightness(1.02);
-    }
-    /* overlay mais leve */
-    .hero--distance .overlay{
-      background:linear-gradient(to bottom, rgba(0,0,0,.10), rgba(0,0,0,.22));
-    }
-    /* legibilidade do título sobre a foto */
-    .hero--distance .hero-content h1,
-    .hero--distance .hero-content p{ text-shadow:0 2px 8px rgba(0,0,0,.35); }
-
-    /* RODAPÉ menor */
-    .footer-inner.footer-home{ align-items:stretch; gap:1rem; padding:.6rem 1rem; }
-    .footer-col{ flex:1 1 0; }
-    .footer-info p{ margin:.2rem 0; }
-    .footer-map iframe{ width:100%; height:160px; border:0; border-radius:14px; box-shadow:0 2px 10px rgba(0,0,0,.06); }
-    .footer-legal{ border-top:1px solid rgba(0,0,0,.06); max-width:1100px; margin:0 auto; padding:.6rem 1rem; display:flex; justify-content:flex-end; }
-    @media (max-width:900px){
-      .hero--distance{ min-height:72dvh; }
-      .hero--distance .cover{ object-position:center 45%; }
-      .footer-inner.footer-home{ flex-direction:column; }
-      .footer-map iframe{ height:200px; }
-    }
-
-    /* BLOCO “vida” – paleta quente suave */
+    /* ======= AJUSTES DE MENU (com CTA azul) ======= */
     :root{
-      --green-dark:#0f3d2e; --green-muted:#557a68; --blue-action:#1a5cff; --blue-hover:#003b8a;
-      --gray-bg:#f8f9f8; --gold:#e4b100;
+      --green:#0f3d2e;
+      --text:#1e4e3d;
+      --muted:#557a68;
+      --brand:#1a5cff;          /* azul do CTA */
+      --brand-hover:#003b8a;
     }
-    main h2, main h3{ color:var(--green-dark); margin:0 0 .5rem 0; }
-    main p{ margin:.45rem 0; color:#1e4e3d; }
-    .section{ padding:2.4rem clamp(12px,2vw,32px); }
-    .section.alt{ background:var(--gray-bg); }
-    .section .intro{ max-width:1100px; margin:0 auto; }
-    .cards{ max-width:1100px; margin:1rem auto 0 auto; display:grid; gap:1rem; grid-template-columns:repeat(4, minmax(220px,1fr)); }
-    .card{
-      background:#fff; border:1px solid rgba(0,0,0,.06);
-      border-left:5px solid var(--green-muted); border-radius:18px; padding:1rem; box-shadow:0 2px 12px rgba(0,0,0,.06);
-      transition:.25s ease;
+    .header{position:sticky; top:0; z-index:50; background:#fff; border-bottom:1px solid #eee;}
+    .header-inner{max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:.8rem 1rem;}
+    .brand{display:flex; align-items:center; gap:.6rem}
+    .brand img{height:32px; width:auto}
+    .brand-name{font-weight:800; color:var(--text)}
+    .nav{display:flex; gap:.4rem; flex-wrap:wrap; align-items:center}
+    .nav a{display:inline-block; padding:.55rem .8rem; border-radius:.6rem; text-decoration:none; color:var(--text); font-weight:600}
+    .nav a:hover{background:#f3f6f5}
+    .nav a.active{color:#fff; background:var(--green)}
+    .nav .cta-offre{background:var(--brand); color:#fff; border:1px solid transparent; padding:.6rem 1rem; border-radius:999px; font-weight:800}
+    .nav .cta-offre:hover{background:var(--brand-hover)}
+
+    /* ======= CAPA: centralizar título/subtítulo + degradê terracota ======= */
+    .hero{position:relative; min-height:80dvh; display:flex; align-items:center; justify-content:center; overflow:hidden}
+    .hero .cover{
+      position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+      object-position:center 90%; /* manter “mais gramado” */
+      filter:saturate(1.12) contrast(1.05) brightness(1.02);
     }
-    .card:hover{ transform:translateY(-6px); border-left-color:var(--gold); box-shadow:0 10px 24px rgba(0,0,0,.12); }
-    .card p{ color:var(--green-muted); }
-    .btn{ display:inline-block; background:var(--blue-action); color:#fff; text-decoration:none; padding:.85rem 1.2rem; border-radius:12px; font-weight:700; margin-top:1rem; transition:.25s ease; }
-    .btn:hover{ background:var(--blue-hover); transform:translateY(-2px); }
-    @media (max-width:1024px){ .cards{ grid-template-columns:repeat(2,minmax(220px,1fr)); } }
-    @media (max-width:640px){ .cards{ grid-template-columns:1fr; } }
+    /* camada 1: leve escurecida geral */
+    .hero .overlay-dark{position:absolute; inset:0; background:linear-gradient(to bottom, rgba(0,0,0,.10), rgba(0,0,0,.20));}
+    /* camada 2: degradê quente (terracotta -> transparente) */
+    .hero .overlay-warm{
+      position:absolute; inset:0;
+      background:linear-gradient(135deg, rgba(199,112,69,.55) 0%, rgba(199,112,69,.25) 30%, rgba(15,61,46,.15) 60%, rgba(0,0,0,0) 100%);
+      mix-blend-mode:normal;
+    }
+    .hero-content{
+      position:relative; z-index:2; text-align:center; padding:1rem;
+      text-shadow:0 2px 10px rgba(0,0,0,.35);
+    }
+    .hero-content h1{color:#fff; font-size:clamp(28px,5vw,48px); margin-bottom:.25rem}
+    .hero-content p{color:#fff; font-size:clamp(16px,2.5vw,22px)}
+
+    /* ======= RODAPÉ HOME (mantido, só pequenos ajustes responsivos) ======= */
+    .footer-inner.footer-home{max-width:1200px; margin:0 auto; display:flex; gap:1rem; align-items:stretch; padding:.6rem 1rem}
+    .footer-col{flex:1 1 0}
+    .footer-info p{margin:.2rem 0}
+    .footer-map iframe{width:100%; height:180px; border:0; border-radius:14px; box-shadow:0 2px 10px rgba(0,0,0,.06)}
+    .footer-legal{border-top:1px solid rgba(0,0,0,.06); max-width:1200px; margin:0 auto; padding:.6rem 1rem; display:flex; justify-content:flex-end}
+    @media (max-width:900px){
+      .footer-inner.footer-home{flex-direction:column}
+      .footer-map iframe{height:200px}
+    }
   </style>
 </head>
 <body class="site">
+  <!-- ===== HEADER ===== -->
   <header class="header">
     <div class="header-inner">
       <div class="brand">
-        <img src="img/logo.svg" alt="Immo Hoessen">
+        <img src="img/logo.svg" alt="Immo Hoessen" onerror="this.style.display='none'">
         <span class="brand-name">Immo Hoessen</span>
       </div>
       <nav class="nav">
@@ -82,26 +87,24 @@
         <a href="portail.html">Portail</a>
         <a href="contacts.html">Contacts</a>
         <a href="apropos.html">À propos</a>
-        <a href="offre.html">Offre</a>
+        <a class="cta-offre" href="offre.html">Demander une offre</a>
       </nav>
     </div>
   </header>
 
-  <!-- CAPA -->
+  <!-- ===== CAPA ===== -->
   <main id="main">
-    <section class="hero hero--distance">
-      <!-- MOSTRAR MAIS GRAMADO NO DESKTOP/NOTEBOOK -->
-      <img class="cover" src="img/cover-plain2.jpg" alt="Laurent Hoessen"
-           style="object-position:50% 90% !important;"
-           fetchpriority="high" loading="eager" decoding="async">
-      <div class="overlay"></div>
+    <section class="hero">
+      <img class="cover" src="img/cover-plain2.jpg" alt="Laurent Hoessen" fetchpriority="high" loading="eager" decoding="async">
+      <div class="overlay-dark"></div>
+      <div class="overlay-warm"></div>
       <div class="hero-content">
-        <h1 style="color:#fff">Laurent Hoessen</h1>
-        <p style="color:#fff">Gestion immobilière · Syndic BILH – DUHO</p>
+        <h1>Laurent Hoessen</h1>
+        <p>Gestion immobilière · Syndic BILH – DUHO</p>
       </div>
     </section>
 
-    <!-- BLOCO 1 – Types de gestion -->
+    <!-- ===== BLOCO 1 – Types de gestion (mantido) ===== -->
     <section class="section alt">
       <div class="intro">
         <h2>Types de gestion</h2>
@@ -115,7 +118,7 @@
       </div>
     </section>
 
-    <!-- BLOCO 2 – Gestion -->
+    <!-- ===== BLOCO 2 – Gestion (mantido) ===== -->
     <section class="section">
       <div class="intro">
         <h2>Gestion</h2>
@@ -128,12 +131,12 @@
         <article class="card"><h3>Urgence</h3><p>Procédures claires et contacts prioritaires.</p></article>
       </div>
       <div class="intro">
-        <a class="btn" href="contacts.html">Nous contacter</a>
+        <a class="nav cta-offre" href="contacts.html" style="display:inline-block">Nous contacter</a>
       </div>
     </section>
   </main>
 
-  <!-- RODAPÉ -->
+  <!-- ===== RODAPÉ ===== -->
   <footer>
     <div class="footer-inner footer-home">
       <div class="footer-col footer-info">
@@ -157,7 +160,7 @@
     </div>
   </footer>
 
-  <!-- SEO LocalBusiness (não muda visual) -->
+  <!-- SEO LocalBusiness (mantido) -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
