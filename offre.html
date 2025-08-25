@@ -1,170 +1,37 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Demande d’offre – Immo Hoessen</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    :root{
-      --green-dark:#0f3d2e; --green-muted:#557a68; --gold:#e4b100; --terracotta:#c86b4a;
-      --warm-25:#fff9f3; --warm-50:#fff3e5;
-    }
-    body.site{ background: radial-gradient(120% 120% at 50% -10%, var(--warm-25) 0%, #ffffff 45%); }
-    .nav a{ position:relative; text-decoration:none; }
-    .nav a::after{ content:""; position:absolute; left:0; bottom:-6px; height:2px; width:0; background:linear-gradient(90deg, var(--gold), var(--terracotta)); transition:width .2s ease; }
-    .nav a:hover::after{ width:100%; }
-    .header-inner{ border-image: linear-gradient(90deg, var(--gold), var(--terracotta)) 1; border-bottom:3px solid transparent; }
-
-    .offre-hero{
-      padding:1.4rem 0 .8rem 0;
-      border-bottom:1px solid rgba(0,0,0,.06);
-      background:linear-gradient(180deg, var(--warm-50), var(--warm-25));
-      text-align:center;
-    }
-    .offre-hero p{max-width:900px;margin:.5rem auto 0 auto}
-
-    .container--wide{max-width:1200px}
-    .offre-form{
-      background:#fff; border:1px solid rgba(0,0,0,.08);
-      border-radius:18px; box-shadow:0 2px 16px rgba(0,0,0,.07);
-      padding:1.25rem;
-    }
-    .form-grid{ display:grid; gap:1rem; grid-template-columns:repeat(12,1fr); }
-    .form-field{grid-column:span 6}
-    .form-field.form-span{grid-column:1 / -1}
-    .form-field label{font-weight:600;color:var(--green-dark)}
-    .form-field input,.form-field select,.form-field textarea{
-      border:1px solid rgba(0,0,0,.12);border-radius:12px;
-      padding:.75rem .95rem;font-size:1rem;background:#fff;
-    }
-    .form-field small.err{color:#b42318;display:none;font-size:.85rem}
-    .form-field.invalid input,.form-field.invalid select,.form-field.invalid textarea{border-color:#b42318;background:#fff6f6}
-    .form-field.invalid small.err{display:block}
-    .req{color:#1a5cff;font-weight:700}
-    .form-note{color:var(--green-muted);font-size:.95rem}
-
-    @media (max-width:900px){ .form-field{grid-column:1 / -1} }
-
-    .footer-min{
-      max-width:1100px;margin:0 auto;padding:1rem;
-      display:flex;justify-content:flex-end;color:var(--green-muted);
-      border-top:1px solid rgba(0,0,0,.06);
-    }
-
-    /* CTA no menu */
-    .nav a.cta{
-      background:#1a5cff; color:#fff !important; padding:.55rem .95rem; border-radius:12px; font-weight:700; line-height:1;
-      box-shadow:0 8px 20px rgba(26,92,255,.18); transition:transform .2s ease, background .2s ease, box-shadow .2s ease; margin-left:.5rem;
-    }
-    .nav a.cta:hover{ background:#003b8a; transform: translateY(-1px); box-shadow:0 10px 24px rgba(26,92,255,.26); }
-    .nav a.active.cta{ background:#0f3d2e; box-shadow:0 8px 20px rgba(15,61,46,.18); }
-    .nav a.active.cta:hover{ background:#0c3226; }
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Demander une offre – Immo Hoessen</title>
+  <link rel="stylesheet" href="style.css?v=20250825b" />
 </head>
-<body class="site">
-  <header class="header">
-    <div class="header-inner">
-      <div class="brand">
-        <img src="img/logo.svg" alt="Immo Hoessen">
-        <span class="brand-name">Immo Hoessen</span>
-      </div>
-      <nav class="nav" aria-label="Navigation principale">
-        <a href="index.html">Accueil</a>
-        <a href="types.html">Types de gestion</a>
-        <a href="gestion.html">Gestion</a>
-        <a href="portail.html">Portail</a>
-        <a href="contacts.html">Contacts</a>
-        <a href="apropos.html">À propos</a>
-        <a class="active cta" href="offre.html">Demander une offre</a>
-      </nav>
-    </div>
+<body class="offre-page">
+  <header class="site-header">
+    <nav class="site-nav">
+      <ul class="menu">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="types.html">Types</a></li>
+        <li><a href="gestion.html">Gestion</a></li>
+        <li><a href="apropos.html">À propos</a></li>
+        <li><a href="contacts.html">Contacts</a></li>
+        <li><a class="cta active" href="offre.html">Demander une offre</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <main>
-    <section class="offre-hero">
-      <div class="container">
-        <h1>Demande d’offre</h1>
-        <p>Remplissez le formulaire ci-dessous pour recevoir une proposition. Nous reviendrons vers vous rapidement.</p>
-      </div>
-    </section>
-
-    <section class="container container--wide pb-6">
-      <form id="offreForm" class="offre-form mt-3" action="https://formspree.io/f/xblkbbpe" method="POST">
-        <div class="form-grid">
-          <div class="form-field">
-            <label for="nom">Nom <span class="req">*</span></label>
-            <input type="text" id="nom" name="Nom" required>
-            <small class="err">Champ obligatoire</small>
-          </div>
-
-          <div class="form-field">
-            <label for="email">Email <span class="req">*</span></label>
-            <input type="email" id="email" name="email" placeholder="exemple@domaine.com" required autocomplete="email" inputmode="email" spellcheck="false">
-            <small class="err">Indiquez une adresse e-mail valide</small>
-          </div>
-
-          <div class="form-field">
-            <label for="telephone">Téléphone</label>
-            <input type="tel" id="telephone" name="Téléphone" placeholder="+32 ...">
-          </div>
-
-          <div class="form-field">
-            <label for="adresse">Adresse de la copropriété <span class="req">*</span></label>
-            <input type="text" id="adresse" name="Adresse de la copropriété" required>
-            <small class="err">Champ obligatoire</small>
-          </div>
-
-          <div class="form-field">
-            <label for="etages">Nombre d’étages <span class="req">*</span></label>
-            <input type="number" id="etages" name="Nombre d’étages" min="1" step="1" required>
-            <small class="err">Indiquez un nombre valide</small>
-          </div>
-
-          <div class="form-field">
-            <label for="garage">Garage / emplacement</label>
-            <select id="garage" name="Garage / emplacement">
-              <option value="">Sélectionner…</option>
-              <option>Oui</option>
-              <option>Non</option>
-            </select>
-          </div>
-
-          <div class="form-field">
-            <label for="syndic">Avez-vous déjà un syndic&nbsp;?</label>
-            <select id="syndic" name="Avez-vous déjà un syndic ?">
-              <option value="">Sélectionner…</option>
-              <option>Oui</option>
-              <option>Non</option>
-              <option>Je ne sais pas</option>
-            </select>
-          </div>
-
-          <div class="form-field form-span">
-            <label for="message">Message (optionnel)</label>
-            <textarea id="message" name="Message" rows="5" placeholder="Votre message..."></textarea>
-          </div>
-        </div>
-
-        <div class="mt-3">
-          <!-- assunto opcional -->
-          <input type="hidden" name="_subject" value="Demande d’offre – Site Immo Hoessen">
-          <!-- redirecionamento opcional: <input type="hidden" name="_next" value="https://fabivilmen.github.io/immohoessen-site-v2/merci.html"> -->
-          <button type="submit" class="btn">Envoyer</button>
-          <p class="form-note mt-1">Les champs marqués d’un <span class="req">*</span> sont obligatoires.</p>
-        </div>
-
-        <div id="formSuccess" class="form-success" role="status" aria-live="polite" hidden>
-          Merci pour votre intérêt — nous vous contacterons dans les plus brefs délais.
-        </div>
-      </form>
-    </section>
+  <main class="page-wrap">
+    <h1>Demander une offre</h1>
+    <form action="https://formspree.io/f/xxxxxx" method="POST">
+      <label>Nom: <input type="text" name="nom" required></label>
+      <label>Email: <input type="email" name="email" required></label>
+      <label>Message: <textarea name="message" required></textarea></label>
+      <button type="submit">Envoyer</button>
+    </form>
   </main>
 
-  <footer>
-    <div class="footer-min">
-      © 2025 Immo Hoessen · <a href="mentions.html">Mentions légales</a>
-    </div>
+  <footer class="site-footer">
+    <p>© 2025 Immo Hoessen</p>
   </footer>
 </body>
 </html>
