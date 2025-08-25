@@ -383,6 +383,98 @@ body.site{
 /* responsivo */
 @media (max-width:960px){ .portail-features{ grid-template-columns:1fr 1fr; } }
 @media (max-width:640px){ .portail-features{ grid-template-columns:1fr; } }
+/* ===== Wide screen fixes (Types / Gestion / À propos) ===== */
+
+/* Wrapper comum das páginas internas (não afeta a capa!) */
+.page-wrap {
+  width: min(92vw, 1600px);
+  margin-inline: auto;
+}
+
+/* Aumentar respiro nas páginas internas */
+body.types-page main,
+body.gestion-page main,
+body.apropos-page main {
+  padding-block: clamp(24px, 4vw, 56px);
+}
+
+/* Títulos mais presentes em tela grande (escopo por página) */
+@media (min-width: 1440px) {
+  body.types-page h1,
+  body.gestion-page h1,
+  body.apropos-page h1 {
+    font-size: clamp(1.8rem, 1.4rem + 1.2vw, 3rem);
+    line-height: 1.15;
+  }
+}
+
+/* ====== GRID – TYPES ====== */
+.types-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(16px, 2vw, 28px);
+}
+@media (min-width: 1200px) {
+  .types-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (min-width: 1600px) {
+  .types-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* ====== GRID – GESTION ====== */
+.gestion-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(16px, 2vw, 28px);
+}
+@media (min-width: 1200px) {
+  .gestion-cards { grid-template-columns: repeat(3, 1fr); }
+}
+@media (min-width: 1600px) {
+  .gestion-cards { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* Cards respirando melhor em telas grandes */
+.types-grid .card,
+.gestion-cards .card {
+  padding: clamp(14px, 1.4vw, 22px);
+}
+
+/* ====== LAYOUT – À PROPOS ====== */
+.apropos-wrap {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr; /* texto | fotos */
+  gap: clamp(24px, 3vw, 56px);
+  align-items: start;
+}
+@media (max-width: 1024px) {
+  .apropos-wrap { grid-template-columns: 1fr; }
+}
+
+.apropos-photos img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 14px;
+}
+
+/* Limite de largura para blocos de texto em telas enormes (melhor leitura) */
+@media (min-width: 1600px) {
+  .measure-wide { max-width: 85ch; }
+}
+
+/* Rodapé das páginas internas colado ao fundo quando pouco conteúdo */
+body.types-page,
+body.gestion-page,
+body.apropos-page {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+body.types-page main,
+body.gestion-page main,
+body.apropos-page main { flex: 1; }
+
 
 
 
