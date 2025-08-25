@@ -34,7 +34,7 @@
 
     /* Hero */
     .offer-hero{ text-align:center; background:linear-gradient(180deg, var(--warm-50), var(--warm-25)); border-bottom:1px solid rgba(0,0,0,.06); padding:1.6rem 0 .9rem; }
-    .offer-hero h1{ color:var(--green); margin:0; }
+    .offer-hero h1{ color:var(--brand); margin:0; } /* título em AZUL */
     .offer-hero p{ color:var(--text); max-width:900px; margin:.5rem auto 0; }
 
     /* Formulário */
@@ -44,27 +44,26 @@
       border-radius:18px; padding:1.2rem; box-shadow:var(--shadow); margin:1.2rem auto; max-width:900px;
     }
     .grid{display:grid; gap:12px; grid-template-columns:repeat(2,minmax(0,1fr))}
-    .grid-1{display:grid; gap:12px}
     .grid-3{display:grid; gap:12px; grid-template-columns:repeat(3,minmax(0,1fr))}
+    .grid-1{display:grid; gap:12px}
     label{font-weight:700; color:var(--green); font-size:.95rem}
+    .req{color:#c0392b; margin-left:.25rem}
     input, textarea, select{
       width:100%; padding:.75rem .85rem; border:1px solid rgba(0,0,0,.12); border-radius:12px; font:inherit; color:var(--text);
       background:#fff;
     }
     textarea{min-height:120px; resize:vertical}
-    .hint{color:var(--muted); font-size:.9rem}
     .actions{display:flex; gap:.6rem; justify-content:flex-end; margin-top:.6rem}
     .btn-primary{background:var(--brand); color:#fff; border:0; padding:.9rem 1.2rem; border-radius:12px; font-weight:800; cursor:pointer}
     .btn-primary:hover{background:var(--brand-hover)}
-    .btn-secondary{background:#0f3d2e; color:#fff; border:0; padding:.9rem 1.2rem; border-radius:12px; font-weight:800; text-decoration:none; display:inline-block}
-    .btn-secondary:hover{filter:brightness(.95)}
+    .hint{color:var(--muted); font-size:.9rem; margin-top:.2rem}
 
     /* Footer minimal */
     footer{background:#f7f7f7; color:var(--muted); font-size:.9rem; margin-top:2rem}
     .footer-min{max-width:1100px; margin:0 auto; padding:1rem; display:flex; justify-content:flex-end; border-top:1px solid rgba(0,0,0,.06);}
     .footer-min a{color:var(--muted); text-decoration:underline}
 
-    @media (max-width:800px){
+    @media (max-width:900px){
       .grid, .grid-3{grid-template-columns:1fr}
     }
   </style>
@@ -93,73 +92,97 @@
   <section class="offer-hero">
     <div class="container">
       <h1>Demander une offre</h1>
-      <p>Décrivez brièvement votre copropriété et vos besoins. Nous revenons vers vous avec une proposition claire et adaptée.</p>
+      <p>Remplissez les informations ci-dessous. Les champs marqués d’une <span class="req">*</span> sont obligatoires.</p>
     </div>
   </section>
 
   <!-- Form -->
   <main class="container">
-    <form id="offerForm" class="offer-card">
+    <form id="offerForm" class="offer-card" novalidate>
+      <!-- 1) Nom*, 2) Email* -->
       <div class="grid">
         <div>
-          <label for="nom">Nom / Société</label>
+          <label for="nom">Nom / Société<span class="req">*</span></label>
           <input id="nom" name="Nom" type="text" required>
         </div>
         <div>
-          <label for="email">Email</label>
+          <label for="email">Email<span class="req">*</span></label>
           <input id="email" name="Email" type="email" required>
         </div>
       </div>
 
+      <!-- 3) Téléphone, 4) Adresse* -->
       <div class="grid">
         <div>
           <label for="tel">Téléphone</label>
-          <input id="tel" name="Téléphone" type="tel">
+          <input id="tel" name="Téléphone" type="tel" placeholder="ex. 02 772 51 75">
         </div>
         <div>
-          <label for="units">Nombre d’unités (appartements)</label>
-          <input id="units" name="Unités" type="number" min="1" step="1" required>
+          <label for="addr">Adresse de la copropriété<span class="req">*</span></label>
+          <input id="addr" name="Adresse de la copropriété" type="text" required>
         </div>
       </div>
 
+      <!-- 5) Code postal, 6) Nombre d’étages* -->
       <div class="grid">
         <div>
-          <label for="addr">Adresse de l’immeuble</label>
-          <input id="addr" name="Adresse" type="text" placeholder="Rue, nº">
+          <label for="cp">Code postal</label>
+          <input id="cp" name="Code postal" type="text" inputmode="numeric" pattern="\\d{4,5}" placeholder="ex. 1200">
+          <div class="hint">4–5 chiffres</div>
         </div>
         <div>
-          <label for="city">Code postal / Ville</label>
-          <input id="city" name="Ville" type="text" placeholder="1200 Bruxelles">
+          <label for="etages">Nombre d’étages<span class="req">*</span></label>
+          <input id="etages" name="Nombre d’étages" type="number" min="0" step="1" required>
         </div>
       </div>
 
+      <!-- 7) Chauffage collectif, 8) Garage, 9) Ascenseur*, 10) Syndic en place ? -->
       <div class="grid-3">
         <div>
-          <label for="asc">Ascenseur</label>
-          <select id="asc" name="Ascenseur"><option>Oui</option><option>Non</option></select>
-        </div>
-        <div>
           <label for="chauff">Chauffage collectif</label>
-          <select id="chauff" name="Chauffage collectif"><option>Oui</option><option>Non</option></select>
+          <select id="chauff" name="Chauffage collectif">
+            <option>Oui</option><option>Non</option><option>Je ne sais pas</option>
+          </select>
         </div>
         <div>
-          <label for="syn">Syndic actuel</label>
-          <input id="syn" name="Syndic actuel" type="text" placeholder="(facultatif)">
+          <label for="garage">Garage</label>
+          <select id="garage" name="Garage">
+            <option>Oui</option><option>Non</option><option>Je ne sais pas</option>
+          </select>
+        </div>
+        <div>
+          <label for="asc">Ascenseur<span class="req">*</span></label>
+          <select id="asc" name="Ascenseur" required>
+            <option>Oui</option><option>Non</option>
+          </select>
         </div>
       </div>
 
       <div class="grid">
         <div>
-          <label for="msg">Votre demande</label>
-          <textarea id="msg" name="Message" placeholder="Expliquez vos besoins, échéances, particularités..."></textarea>
-          <div class="hint">Aucun envoi automatique : le bouton “Envoyer” ouvre votre messagerie avec toutes les infos préremplies.</div>
+          <label for="syn">Syndic en place ?</label>
+          <select id="syn" name="Syndic en place">
+            <option>Oui</option><option>Non</option><option>Je ne sais pas</option>
+          </select>
+        </div>
+        <div>
+          <label for="apts">Nombre d’appartements</label>
+          <input id="apts" name="Nombre d’appartements" type="number" min="0" step="1" placeholder="ex. 24">
+        </div>
+      </div>
+
+      <!-- 12) Message -->
+      <div class="grid-1">
+        <div>
+          <label for="msg">Message</label>
+          <textarea id="msg" name="Message" placeholder="Votre demande, échéances, particularités..."></textarea>
         </div>
       </div>
 
       <div class="actions">
         <button class="btn-primary" type="submit">Envoyer</button>
-        <a class="btn-secondary" href="mailto:syndic@immohoessen.be?subject=Demande%20d%27offre">Écrire directement</a>
       </div>
+      <div class="hint">Le bouton “Envoyer” ouvrira votre messagerie avec toutes les informations préremplies, à l’adresse <strong>syndic@immohoessen.be</strong>.</div>
     </form>
   </main>
 
@@ -171,15 +194,31 @@
   </footer>
 
   <script>
-    // Constrói um mailto com os campos do formulário (funciona no GitHub Pages)
+    // Validação simples + envio via mailto para syndic@immohoessen.be
     document.getElementById('offerForm').addEventListener('submit', function(e){
       e.preventDefault();
+
+      // valida obrigatórios
+      const requiredIds = ['nom','email','addr','etages','asc'];
+      let ok = true;
+      requiredIds.forEach(id=>{
+        const el = document.getElementById(id);
+        if(!el.checkValidity() || !el.value.trim()){
+          el.reportValidity();
+          ok = false;
+        }
+      });
+      if(!ok) return;
+
       const data = new FormData(this);
       const lines = [];
       for (const [k, v] of data.entries()) {
-        if (String(v).trim() !== "") lines.push(`${k}: ${v}`);
+        const val = String(v).trim();
+        if (val !== '') lines.push(k + ': ' + val);
       }
-      const subject = encodeURIComponent("Demande d'offre – Immo Hoessen");
+
+      const nom = (document.getElementById('nom').value || '').trim();
+      const subject = encodeURIComponent("Demande d'offre – " + nom);
       const body = encodeURIComponent(lines.join('\n'));
       const mailto = `mailto:syndic@immohoessen.be?subject=${subject}&body=${body}`;
       window.location.href = mailto;
