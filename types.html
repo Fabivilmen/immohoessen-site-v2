@@ -1,47 +1,40 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Types de gestion – Immo Hoessen</title>
-  <link rel="stylesheet" href="style.css?v=20250825b" />
-  <style>
-    .page-wrap{width:min(92vw,1600px);margin-inline:auto}
-    .types-grid{display:grid;gap:clamp(16px,2vw,28px);grid-template-columns:1fr 1fr}
-    @media(min-width:1200px){.types-grid{grid-template-columns:repeat(3,1fr)}}
-    @media(min-width:1600px){.types-grid{grid-template-columns:repeat(4,1fr)}}
-    body.types-page{min-height:100dvh;display:flex;flex-direction:column}
-    body.types-page main{flex:1}
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mentions légales – Immo Hoessen</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="types-page">
-  <header class="site-header">
-    <nav class="site-nav">
-      <ul class="menu">
-        <li><a href="index.html">Accueil</a></li>
-        <li><a href="types.html" class="active">Types</a></li>
-        <li><a href="gestion.html">Gestion</a></li>
-        <li><a href="apropos.html">À propos</a></li>
-        <li><a href="contacts.html">Contacts</a></li>
-        <li><a class="cta" href="offre.html">Demander une offre</a></li>
-      </ul>
-    </nav>
+<body class="site">
+  <header class="header">
+    <div class="header-inner">
+      <div class="brand">
+        <img src="img/logo.svg" alt="Immo Hoessen">
+        <span class="brand-name">Immo Hoessen</span>
+      </div>
+      <nav class="nav">
+        <a href="index.html">Accueil</a>
+        <a href="gestion.html">Types de gestion</a>
+        <a href="portail.html">Portail</a>
+        <a href="contacts.html">Contacts</a>
+        <a href="apropos.html">À propos</a>
+        <a href="offre.html">Offre</a>
+      </nav>
+    </div>
   </header>
 
-  <main class="page-wrap">
-    <h1>Types de gestion</h1>
-    <p class="measure-wide">Découvrez nos différents types de gestion adaptés à chaque copropriété.</p>
-
-    <section class="types-grid">
-      <article class="card"><h2>Gestion complète</h2><p>Un suivi global de votre immeuble.</p></article>
-      <article class="card"><h2>Gestion administrative</h2><p>AG, comptabilité, obligations légales.</p></article>
-      <article class="card"><h2>Gestion technique</h2><p>Travaux, entretiens, contrôles.</p></article>
-      <article class="card"><h2>Gestion personnalisée</h2><p>Adaptée à vos besoins spécifiques.</p></article>
-    </section>
+  <main class="container pb-6">
+    <h1>Mentions légales</h1>
+    <p>Immo Hoessen – Avenue Heydenberg 14, 1200 Bruxelles – BE0462920325.</p>
+    <p>Responsable de la publication : Laurent Hoessen.</p>
   </main>
 
-  <footer class="site-footer">
-    <p>© 2025 Immo Hoessen</p>
+  <footer>
+    <div class="footer-inner">
+      <div>Avenue Heydenberg 14, 1200 Bruxelles · Tél. <a href="tel:+3227725175">02 772 51 75</a> · BE0462920325</div>
+      <div>Heures: 09:00–13:00 · <a href="mentions.html">Mentions légales</a></div>
+    </div>
   </footer>
 </body>
 </html>
