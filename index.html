@@ -1,10 +1,21 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Immo Hoessen – Accueil</title>
-  <link rel="stylesheet" href="style.css?v=20250825b" />
+  <!-- mantém teu CSS; querystring ajuda a furar cache -->
+  <link rel="stylesheet" href="style.css?v=20250825c" />
+  <!-- FAIL-SAFE mínimo (não muda teu design; só garante que a capa aparece) -->
+  <style>
+    /* não altera tua paleta; só garante ocupação e alinhamento */
+    .hero{position:relative;min-height:75vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+    .hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .hero .hero-text{position:relative;text-align:center;padding:2rem}
+    .hero h1{margin:0 0 .5rem 0}
+    .hero p{margin:0}
+  </style>
 </head>
 <body class="home-page">
   <header class="site-header">
@@ -20,17 +31,20 @@
     </nav>
   </header>
 
-  <!-- capa mantida como você pediu -->
+  <!-- CAPA: preservada como combinamos (sem mudar visual) -->
   <main>
     <section class="hero">
+      <!-- usa a pasta 'image/' que está no teu repo -->
       <img src="image/cover-plain2.jpg" alt="Laurent Hoessen">
-      <h1>Laurent Hoessen</h1>
-      <p>Gestion immobilière · Syndic BILH – DUHO</p>
+      <div class="hero-text">
+        <h1>Laurent Hoessen</h1>
+        <p>Gestion immobilière · Syndic BILH – DUHO</p>
+      </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <p>© 2025 Immo Hoessen – BE0462920325 – Tél: 02 772 51 75</p>
+    <p>© 2025 Immo Hoessen – BE0462920325 – Tél: 02 772 51 75 – Avenue Heydenberg 14, 1200 Bruxelles</p>
   </footer>
 </body>
 </html>
