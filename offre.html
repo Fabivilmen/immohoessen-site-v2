@@ -3,38 +3,187 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mentions légales – Immo Hoessen</title>
+  <title>Demander une offre – Immo Hoessen</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    :root{
+      --green:#0f3d2e; --text:#1e4e3d; --muted:#557a68;
+      --gold:#e4b100; --terracotta:#c86b4a;
+      --warm-25:#fff9f3; --warm-50:#fff3e5;
+      --radius:16px; --shadow:0 2px 12px rgba(0,0,0,.06);
+      --brand:#1a5cff; --brand-hover:#003b8a;
+    }
+
+    body.site{ background: radial-gradient(120% 120% at 50% -10%, var(--warm-25) 0%, #ffffff 45%); }
+
+    /* Header + menu (padrão) */
+    .header{position:sticky; top:0; z-index:50; background:#fff; border-bottom:1px solid #eee;}
+    .header-inner{
+      border-image: linear-gradient(90deg, var(--gold), var(--terracotta)) 1; border-bottom:3px solid transparent;
+      max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:.8rem 1rem;
+    }
+    .brand{display:flex; align-items:center; gap:.6rem}
+    .brand img{height:32px}
+    .brand-name{font-weight:800; color:var(--text)}
+    .nav{display:flex; gap:.4rem; flex-wrap:wrap; align-items:center}
+    .nav a{position:relative; display:inline-block; padding:.55rem .8rem; border-radius:.6rem; text-decoration:none; color:var(--text); font-weight:600}
+    .nav a:hover{background:#f3f6f5}
+    .nav a.active{color:#fff; background:var(--green)}
+    .nav .cta-offre{background:var(--brand); color:#fff; border:1px solid transparent; padding:.6rem 1rem; border-radius:999px; font-weight:800}
+    .nav .cta-offre:hover{background:var(--brand-hover)}
+
+    /* Hero */
+    .offer-hero{ text-align:center; background:linear-gradient(180deg, var(--warm-50), var(--warm-25)); border-bottom:1px solid rgba(0,0,0,.06); padding:1.6rem 0 .9rem; }
+    .offer-hero h1{ color:var(--green); margin:0; }
+    .offer-hero p{ color:var(--text); max-width:900px; margin:.5rem auto 0; }
+
+    /* Formulário */
+    .container{max-width:1200px; margin:0 auto; padding:0 16px}
+    .offer-card{
+      background:#fff; border:1px solid rgba(0,0,0,.08); border-left:12px solid var(--terracotta);
+      border-radius:18px; padding:1.2rem; box-shadow:var(--shadow); margin:1.2rem auto; max-width:900px;
+    }
+    .grid{display:grid; gap:12px; grid-template-columns:repeat(2,minmax(0,1fr))}
+    .grid-1{display:grid; gap:12px}
+    .grid-3{display:grid; gap:12px; grid-template-columns:repeat(3,minmax(0,1fr))}
+    label{font-weight:700; color:var(--green); font-size:.95rem}
+    input, textarea, select{
+      width:100%; padding:.75rem .85rem; border:1px solid rgba(0,0,0,.12); border-radius:12px; font:inherit; color:var(--text);
+      background:#fff;
+    }
+    textarea{min-height:120px; resize:vertical}
+    .hint{color:var(--muted); font-size:.9rem}
+    .actions{display:flex; gap:.6rem; justify-content:flex-end; margin-top:.6rem}
+    .btn-primary{background:var(--brand); color:#fff; border:0; padding:.9rem 1.2rem; border-radius:12px; font-weight:800; cursor:pointer}
+    .btn-primary:hover{background:var(--brand-hover)}
+    .btn-secondary{background:#0f3d2e; color:#fff; border:0; padding:.9rem 1.2rem; border-radius:12px; font-weight:800; text-decoration:none; display:inline-block}
+    .btn-secondary:hover{filter:brightness(.95)}
+
+    /* Footer minimal */
+    footer{background:#f7f7f7; color:var(--muted); font-size:.9rem; margin-top:2rem}
+    .footer-min{max-width:1100px; margin:0 auto; padding:1rem; display:flex; justify-content:flex-end; border-top:1px solid rgba(0,0,0,.06);}
+    .footer-min a{color:var(--muted); text-decoration:underline}
+
+    @media (max-width:800px){
+      .grid, .grid-3{grid-template-columns:1fr}
+    }
+  </style>
 </head>
 <body class="site">
+  <!-- Header -->
   <header class="header">
     <div class="header-inner">
       <div class="brand">
-        <img src="img/logo.svg" alt="Immo Hoessen">
+        <img src="img/logo.svg" alt="Immo Hoessen" onerror="this.style.display='none'">
         <span class="brand-name">Immo Hoessen</span>
       </div>
       <nav class="nav">
         <a href="index.html">Accueil</a>
-        <a href="gestion.html">Types de gestion</a>
+        <a href="types.html">Types de gestion</a>
+        <a href="gestion.html">Gestion</a>
         <a href="portail.html">Portail</a>
         <a href="contacts.html">Contacts</a>
         <a href="apropos.html">À propos</a>
-        <a href="offre.html">Offre</a>
+        <a class="active cta-offre" href="offre.html">Demander une offre</a>
       </nav>
     </div>
   </header>
 
-  <main class="container pb-6">
-    <h1>Mentions légales</h1>
-    <p>Immo Hoessen – Avenue Heydenberg 14, 1200 Bruxelles – BE0462920325.</p>
-    <p>Responsable de la publication : Laurent Hoessen.</p>
+  <!-- Hero -->
+  <section class="offer-hero">
+    <div class="container">
+      <h1>Demander une offre</h1>
+      <p>Décrivez brièvement votre copropriété et vos besoins. Nous revenons vers vous avec une proposition claire et adaptée.</p>
+    </div>
+  </section>
+
+  <!-- Form -->
+  <main class="container">
+    <form id="offerForm" class="offer-card">
+      <div class="grid">
+        <div>
+          <label for="nom">Nom / Société</label>
+          <input id="nom" name="Nom" type="text" required>
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input id="email" name="Email" type="email" required>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div>
+          <label for="tel">Téléphone</label>
+          <input id="tel" name="Téléphone" type="tel">
+        </div>
+        <div>
+          <label for="units">Nombre d’unités (appartements)</label>
+          <input id="units" name="Unités" type="number" min="1" step="1" required>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div>
+          <label for="addr">Adresse de l’immeuble</label>
+          <input id="addr" name="Adresse" type="text" placeholder="Rue, nº">
+        </div>
+        <div>
+          <label for="city">Code postal / Ville</label>
+          <input id="city" name="Ville" type="text" placeholder="1200 Bruxelles">
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div>
+          <label for="asc">Ascenseur</label>
+          <select id="asc" name="Ascenseur"><option>Oui</option><option>Non</option></select>
+        </div>
+        <div>
+          <label for="chauff">Chauffage collectif</label>
+          <select id="chauff" name="Chauffage collectif"><option>Oui</option><option>Non</option></select>
+        </div>
+        <div>
+          <label for="syn">Syndic actuel</label>
+          <input id="syn" name="Syndic actuel" type="text" placeholder="(facultatif)">
+        </div>
+      </div>
+
+      <div class="grid">
+        <div>
+          <label for="msg">Votre demande</label>
+          <textarea id="msg" name="Message" placeholder="Expliquez vos besoins, échéances, particularités..."></textarea>
+          <div class="hint">Aucun envoi automatique : le bouton “Envoyer” ouvre votre messagerie avec toutes les infos préremplies.</div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn-primary" type="submit">Envoyer</button>
+        <a class="btn-secondary" href="mailto:syndic@immohoessen.be?subject=Demande%20d%27offre">Écrire directement</a>
+      </div>
+    </form>
   </main>
 
+  <!-- Footer minimal -->
   <footer>
-    <div class="footer-inner">
-      <div>Avenue Heydenberg 14, 1200 Bruxelles · Tél. <a href="tel:+3227725175">02 772 51 75</a> · BE0462920325</div>
-      <div>Heures: 09:00–13:00 · <a href="mentions.html">Mentions légales</a></div>
+    <div class="footer-min">
+      © 2025 Immo Hoessen · <a href="mentions.html">Mentions légales</a>
     </div>
   </footer>
+
+  <script>
+    // Constrói um mailto com os campos do formulário (funciona no GitHub Pages)
+    document.getElementById('offerForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const data = new FormData(this);
+      const lines = [];
+      for (const [k, v] of data.entries()) {
+        if (String(v).trim() !== "") lines.push(`${k}: ${v}`);
+      }
+      const subject = encodeURIComponent("Demande d'offre – Immo Hoessen");
+      const body = encodeURIComponent(lines.join('\n'));
+      const mailto = `mailto:syndic@immohoessen.be?subject=${subject}&body=${body}`;
+      window.location.href = mailto;
+    });
+  </script>
 </body>
 </html>
