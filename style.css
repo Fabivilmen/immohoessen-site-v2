@@ -91,4 +91,60 @@ a.btn-blue:active, .nav .cta-offre:active, .btn-primary:active, .btn-call:active
 :where(a,button,[role="button"], input, select, textarea):focus-visible{
   outline:3px solid #ffd673; outline-offset:2px; border-radius:12px;
 }
+/* ====== RESPONSIVE PATCH (colar no fim do style.css) ====== */
+
+/* 1) Largura útil aumenta em telas grandes (sem “encolher”) */
+:root{ --wrap: 1180px; }                 /* base */
+@media (min-width: 1400px){ :root{ --wrap: 1320px; } }
+@media (min-width: 1680px){ :root{ --wrap: 1440px; } }
+@media (min-width: 1920px){ :root{ --wrap: 1560px; } }
+
+/* 2) Unificar containers em todas as páginas */
+.header-inner,
+.footer-inner,
+.footer-inner.footer-home,
+.footer-legal,
+.section .intro,
+.container{
+  max-width: var(--wrap) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+/* 3) Hero: altura por breakpoint (sem película, você já removeu) */
+.hero{ min-height: 70dvh; }
+@media (min-width: 900px){ .hero{ min-height: 78dvh; } }
+@media (min-width: 1600px){ .hero{ min-height: 86vh; } }
+
+/* 4) Hero: posicionamento da imagem por tamanho */
+.hero .cover{ object-position: 50% 85%; }
+@media (max-width: 640px){ .hero .cover{ object-position: 50% 60%; } }
+
+/* 5) Grids: não “apertar” no desktop grande */
+.cards,
+.types-cards,
+.gest-cards,
+.portail-features{
+  max-width: var(--wrap) !important;
+  margin-left:auto; margin-right:auto;
+}
+
+/* opção: em telas muito grandes, dê um pouco mais de fôlego nas colunas */
+@media (min-width: 1600px){
+  .cards{ grid-template-columns: repeat(4, minmax(260px, 1fr)); gap: 1.2rem; }
+}
+
+/* 6) Mobile: nav quebra bonito, spacing consistente */
+.nav{ flex-wrap: wrap; row-gap: .3rem; }
+@media (max-width: 640px){
+  .header .nav a{ padding:.5rem .7rem; }
+  .section{ padding: 1.8rem 14px; }
+  .btn-blue{ width:100%; text-align:center; }
+}
+
+/* 7) Rodapé: mapa um pouco maior em telas grandes */
+.footer-map iframe{ height: 200px; }
+@media (min-width: 1400px){ .footer-map iframe{ height: 240px; } }
 
