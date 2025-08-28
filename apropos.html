@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -8,84 +7,126 @@
   <link rel="stylesheet" href="style.css">
   <style>
     :root{
-      --green-dark:#0f3d2e; --green-muted:#557a68; --gold:#e4b100; --terracotta:#c86b4a;
+      --green-dark:#0f3d2e; --text:#1e4e3d; --green-muted:#557a68;
+      --gold:#e4b100; --terracotta:#c86b4a;
       --warm-25:#fff9f3; --warm-50:#fff3e5;
+      --radius:18px; --shadow:0 2px 12px rgba(0,0,0,.06);
     }
-    body.site{ background: radial-gradient(120% 120% at 50% -10%, var(--warm-25) 0%, #ffffff 45%); }
 
-    /* MENU padronizado + CTA azul */
+    /* ===== Base: página cheia com footer no fim ===== */
+    html, body { height:100%; }
+    body.site{
+      min-height:100%;
+      display:flex;
+      flex-direction:column;
+      background: radial-gradient(120% 120% at 50% -10%, var(--warm-25) 0%, #ffffff 45%);
+    }
+    main{ flex:1; display:block; }
+
+    /* ===== Header + Nav (padrão) ===== */
     .header{position:sticky; top:0; z-index:50; background:#fff; border-bottom:1px solid #eee;}
     .header-inner{
-      border-image: linear-gradient(90deg, var(--gold), var(--terracotta)) 1; border-bottom:3px solid transparent;
+      border-image: linear-gradient(90deg, var(--gold), var(--terracotta)) 1;
+      border-bottom:3px solid transparent;
       max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:.8rem 1rem;
     }
     .brand{display:flex; align-items:center; gap:.6rem}
     .brand img{height:32px}
-    .brand-name{font-weight:800; color:var(--green-dark)}
+    .brand-name{font-weight:800; color:var(--text)}
     .nav{display:flex; gap:.4rem; flex-wrap:wrap; align-items:center}
-    .nav a{ position:relative; text-decoration:none; display:inline-block; padding:.55rem .8rem; border-radius:.6rem; color:#1e4e3d; font-weight:600; }
+    .nav a{ position:relative; text-decoration:none; display:inline-block; padding:.55rem .8rem; border-radius:.6rem; color:var(--text); font-weight:600; }
     .nav a::after{ content:""; position:absolute; left:0; bottom:-6px; height:2px; width:0; background:linear-gradient(90deg, var(--gold), var(--terracotta)); transition:width .2s ease; }
     .nav a:hover::after{ width:100%; }
-    .nav a.active{ color:#fff; background:#0f3d2e; }
+    .nav a.active{ color:#fff; background:var(--green-dark); }
     .nav .cta-offre{ background:#1a5cff; color:#fff; border:1px solid transparent; padding:.6rem 1rem; border-radius:999px; font-weight:800; }
     .nav .cta-offre:hover{ background:#003b8a; }
 
-    /* HERO */
+    /* ===== Hero ===== */
     .about-hero{
       background:linear-gradient(180deg, var(--warm-50), var(--warm-25));
-      padding:2rem 0 1rem 0; border-bottom:1px solid rgba(0,0,0,.06);
+      /* título mais para baixo */
+      padding:3rem 0 1.25rem 0;
+      border-bottom:1px solid rgba(0,0,0,.06);
       text-align:center;
     }
-    /* AUMENTO da altura do texto */
-    .about-hero p{
+    .about-hero h1{
+      color:var(--green-dark);
+      margin:0 0 1rem 0;
+    }
+    .about-hero .container p{
       max-width:900px; margin:.5rem auto 0 auto; color:var(--green-muted);
       text-align:justify; text-justify:inter-word;
       hyphens:auto; -webkit-hyphens:auto; -ms-hyphens:auto;
       line-height:1.75;
     }
 
+    /* ===== Conteúdo ===== */
     .container{max-width:1200px; margin:0 auto; padding:0 16px}
+    .section-wrap{ padding:1.25rem 0 1.5rem 0; } /* reduz espaços verticais para “encher” melhor */
 
-    .founders{ display:grid; gap:1rem; grid-template-columns:1fr 1fr; }
+    .section-wrap h2{
+      margin:1rem 0 .75rem 0;
+      color:var(--green-dark);
+    }
+
+    .founders{
+      display:grid; gap:1rem; grid-template-columns:1fr 1fr;
+      align-items:stretch;
+    }
     .founder-card{
       display:grid; grid-template-columns:200px 1fr; gap:1rem; align-items:center;
       background:#fff; border:1px solid rgba(0,0,0,.06);
-      border-left:6px solid var(--terracotta);
-      border-radius:18px; padding:1rem; box-shadow:var(--shadow);
+      border-left:8px solid var(--terracotta);
+      border-radius:var(--radius); padding:1rem; box-shadow:var(--shadow);
       transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+      min-height:240px; /* dá corpo ao cartão */
     }
     .founder-card:hover{ transform:translateY(-3px); border-left-color:var(--gold); box-shadow:0 10px 22px rgba(228,177,0,.18); }
+
     .founder-photo{ width:200px; height:200px; border-radius:16px; overflow:hidden }
     .founder-photo img{ width:100%; height:100%; object-fit:cover; object-position:50% 20%; }
     .founder-caption{ margin-top:.4rem; font-size:.95rem; color:var(--green-muted); }
-    /* AUMENTO da altura do texto nos cartões */
+
+    .founder-card h3{
+      margin:.25rem 0 .5rem 0; color:var(--green-dark);
+    }
     .founder-card p{
       color:var(--green-muted);
       text-align:justify; text-justify:inter-word;
       hyphens:auto; -webkit-hyphens:auto; -ms-hyphens:auto;
       line-height:1.7;
+      margin:0;
     }
 
-    /* Rodapé minimal */
+    /* ===== Footer menor ===== */
+    footer{ background:#f7f7f7; margin-top:1rem; }
     .footer-min{
-      max-width:1100px; margin:0 auto; padding:1rem;
+      max-width:1100px; margin:0 auto; padding:.7rem 1rem;  /* menor */
       display:flex; justify-content:flex-end; color:var(--green-muted);
       border-top:1px solid rgba(0,0,0,.06);
     }
+    .footer-min a{ color:var(--green-muted); text-decoration:underline; }
 
-    @media (max-width:900px){
+    /* ===== Responsivo ===== */
+    @media (max-width:1024px){
       .founders{ grid-template-columns:1fr; }
-      .founder-card{ grid-template-columns:150px 1fr; }
-      .founder-photo{ width:150px; height:150px; }
-      .founder-photo img{ object-position:50% 20%; }
+      .founder-card{ grid-template-columns:180px 1fr; min-height:220px; }
+      .founder-photo{ width:180px; height:180px; }
+    }
+    @media (max-width:640px){
+      .about-hero{ padding:2.5rem 0 1rem 0; }
+      .founder-card{ grid-template-columns:120px 1fr; padding:.9rem; }
+      .founder-photo{ width:120px; height:120px; }
+      .section-wrap{ padding:1rem 0 1.25rem 0; }
     }
   </style>
 </head>
 <body class="site">
+  <!-- Header -->
   <header class="header">
     <div class="header-inner">
       <div class="brand">
-        <img src="img/logo.svg" alt="Immo Hoessen">
+        <img src="img/logo.svg" alt="Immo Hoessen" onerror="this.style.display='none'">
         <span class="brand-name">Immo Hoessen</span>
       </div>
       <nav class="nav" aria-label="Navigation principale">
@@ -100,21 +141,27 @@
     </div>
   </header>
 
+  <!-- Main -->
   <main>
+    <!-- Hero -->
     <section class="about-hero">
       <div class="container">
         <h1>À propos</h1>
         <p>
-          Depuis 1998, le Syndic Laurent Hoessen, dirigé par son fondateur et gestionnaire IPI, M. Laurent Hoessen, met sa solide expérience au service de la gestion de copropriété.
-          Notre force réside dans notre équipe. Composée de professionnels multiculturels, nous combinons notre expertise et notre dévouement pour offrir un service de gestion qui répond avec précision aux besoins de chaque immeuble.
-          Ensemble, nous assurons une gestion sérieuse, humaine et durable. Pour nous, chaque immeuble est un patrimoine à valoriser et chaque copropriétaire, un partenaire à écouter.
+          Depuis 1998, le Syndic Laurent Hoessen, dirigé par son fondateur et gestionnaire IPI, M. Laurent Hoessen,
+          met sa solide expérience au service de la gestion de copropriété. Notre force réside dans notre équipe.
+          Composée de professionnels multiculturels, nous combinons notre expertise et notre dévouement pour offrir un
+          service de gestion qui répond avec précision aux besoins de chaque immeuble. Ensemble, nous assurons une
+          gestion sérieuse, humaine et durable. Pour nous, chaque immeuble est un patrimoine à valoriser et chaque
+          copropriétaire, un partenaire à écouter.
         </p>
       </div>
     </section>
 
-    <section class="container pb-6">
-      <h2 class="mt-3">Fondateur & Cofondateur</h2>
-      <div class="founders mt-2">
+    <!-- Founders -->
+    <section class="container section-wrap">
+      <h2>Fondateur & Cofondateur</h2>
+      <div class="founders">
         <article class="founder-card">
           <div>
             <div class="founder-photo"><img src="img/fotolaurent1.jpg" alt="M. Laurent Hoessen"></div>
@@ -122,7 +169,8 @@
           </div>
           <div>
             <h3>M. Laurent Hoessen</h3>
-            <p>En tant que gestionnaire IPI agréé, Laurent Hoessen met au service des copropriétaires sa vision rigoureuse, son approche technique et, par-dessus tout, sa gestion résolument humaine.</p>
+            <p>En tant que gestionnaire IPI agréé, Laurent Hoessen met au service des copropriétaires sa vision rigoureuse,
+              son approche technique et, par-dessus tout, sa gestion résolument humaine.</p>
           </div>
         </article>
 
@@ -140,6 +188,7 @@
     </section>
   </main>
 
+  <!-- Footer -->
   <footer>
     <div class="footer-min">
       © 2025 Immo Hoessen · <a href="mentions.html">Mentions légales</a>
