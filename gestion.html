@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -15,7 +16,12 @@
 
     /* ===== Header + Nav ===== */
     .header{position:sticky; top:0; z-index:50; background:#fff; border-bottom:1px solid #eee;}
-    .header-inner{max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:.8rem 1rem; border-image: linear-gradient(90deg, var(--gold), var(--terracotta)) 1; border-bottom:3px solid transparent;}
+    .header-inner{
+      max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between;
+      padding:.8rem 1rem;
+      border-image: linear-gradient(90deg, var(--gold), var(--terracotta)) 1;
+      border-bottom:3px solid transparent;
+    }
     .brand{display:flex; align-items:center; gap:.6rem}
     .brand img{height:32px}
     .brand-name{font-weight:800; color:var(--text)}
@@ -28,35 +34,68 @@
     .nav .cta-offre{background:#1a5cff; color:#fff; border:1px solid transparent; padding:.6rem 1rem; border-radius:999px; font-weight:800}
     .nav .cta-offre:hover{background:#003b8a}
 
-    /* ===== Hero ===== */
-    body.site{ background: radial-gradient(120% 120% at 50% -10%, var(--warm-25) 0%, #ffffff 45%); }
-    .gest-hero{padding:1.5rem 0 .5rem 0; border-bottom:1px solid rgba(0,0,0,.06); background:linear-gradient(180deg, var(--warm-50), var(--warm-25)); text-align:center;}
+    /* ===== Base + Hero ===== */
+    html, body { height:100%; }
+    body.site{
+      min-height:100%;
+      display:flex;
+      flex-direction:column;
+      background: radial-gradient(120% 120% at 50% -10%, var(--warm-25) 0%, #ffffff 45%);
+    }
+
+    .gest-hero{
+      padding:1.5rem 0 .5rem 0; border-bottom:1px solid rgba(0,0,0,.06);
+      background:linear-gradient(180deg, var(--warm-50), var(--warm-25)); text-align:center;
+    }
     .gest-hero .container p{max-width:850px; margin:.5rem auto 0 auto; color:var(--text);}
     .gest-hero h1{color:var(--green); margin:0;}
 
-    /* ===== Cards + Imagem ===== */
+    /* ===== Cards + Illustration ===== */
     .container{max-width:1200px; margin:0 auto; padding:0 16px}
-    .gest-wrap{display:grid; grid-template-columns:1.1fr .9fr; gap:1.25rem; align-items:stretch; margin-top:1rem;}
+    main.container{ flex:1; } /* empurra o footer para o fim */
+
+    .gest-wrap{
+      display:grid; grid-template-columns:1.1fr .9fr; gap:1.25rem; align-items:stretch; margin-top:1rem;
+    }
     .gest-cards{display:grid; grid-template-columns:repeat(2,1fr); gap:1rem;}
-    .gest-card{background:#fff; border:1px solid rgba(0,0,0,.08); border-left:12px solid var(--terracotta); border-radius:var(--radius); padding:1rem 1.25rem; box-shadow:var(--shadow); transition:transform .25s ease, box-shadow .25s ease, border-left-color .25s ease;}
+
+    .gest-card{
+      background:#fff; border:1px solid rgba(0,0,0,.08); border-left:12px solid var(--terracotta);
+      border-radius:var(--radius); padding:1rem 1.25rem; box-shadow:var(--shadow);
+      transition:transform .25s ease, box-shadow .25s ease, border-left-color .25s ease;
+
+      /* centralização vertical e alturas consistentes */
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      min-height:170px;
+    }
     .gest-card:hover{transform:translateY(-6px); border-left-color:#d98258; box-shadow:0 12px 28px rgba(0,0,0,.14);}
     .gest-card h3{margin:.2rem 0 .35rem 0; color:var(--green);}
     .gest-card p{margin:0; color:var(--muted);}
-    .gest-illustration{background:#fafafa; border:1px solid rgba(0,0,0,.06); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden; position:relative; top:8px; min-height:100%; display:flex; align-items:stretch;}
+
+    .gest-illustration{
+      background:#fafafa; border:1px solid rgba(0,0,0,.06); border-radius:var(--radius);
+      box-shadow:var(--shadow); overflow:hidden; position:relative;
+      top:0;                /* removido deslocamento para baixo */
+      min-height:520px;     /* imagem com presença no desktop */
+      display:flex; align-items:stretch;
+    }
     .gest-illustration img{width:100%; height:100%; object-fit:cover; display:block;}
 
     /* ===== Footer minimal ===== */
-    footer{background:#f7f7f7; color:var(--muted); font-size:.9rem; margin-top:2rem}
-    .footer-min{max-width:1100px; margin:0 auto; padding:1rem; display:flex; justify-content:flex-end; border-top:1px solid rgba(0,0,0,.06);}
+    footer{background:#f7f7f7; color:var(--muted); font-size:.9rem; margin-top:1rem;}
+    .footer-min{max-width:1100px; margin:0 auto; padding:.8rem 1rem; display:flex; justify-content:flex-end; border-top:1px solid rgba(0,0,0,.06);}
     .footer-min a{color:var(--muted); text-decoration:underline}
 
     @media (max-width:1024px){
       .gest-wrap{grid-template-columns:1fr;}
-      .gest-illustration{top:0; min-height:260px;}
+      .gest-illustration{min-height:300px;}
       .gest-cards{grid-template-columns:1fr 1fr;}
     }
     @media (max-width:640px){
       .gest-cards{grid-template-columns:1fr;}
+      .gest-illustration{min-height:220px;}
     }
   </style>
 </head>
@@ -95,12 +134,24 @@
   <main class="container">
     <div class="gest-wrap">
       <div class="gest-cards">
-        <article class="gest-card"><h3>Suivi quotidien</h3><p>Emails et appels traités par priorité. Tableaux de bord, SLA interne et retour systématique aux copropriétaires.</p></article>
-        <article class="gest-card"><h3>Conformité légale</h3><p>Contrôles périodiques (ascenseurs, électricité, incendie), registres, RGPD, assurances et archives disponibles sur le portail.</p></article>
-        <article class="gest-card"><h3>Optimisation</h3><p>Budgets réalistes, appels d’offres comparés, suivi des contrats et plan pluriannuel des travaux (réserves & priorités).</p></article>
-        <article class="gest-card"><h3>Transparence & AG</h3><p>Préparation des AG, convocations, procès-verbaux et exécution des décisions. Reporting clair et accès aux documents.</p></article>
+        <article class="gest-card">
+          <h3>Suivi quotidien</h3>
+          <p>Emails et appels traités par priorité. Tableaux de bord, SLA interne et retour systématique aux copropriétaires.</p>
+        </article>
+        <article class="gest-card">
+          <h3>Conformité légale</h3>
+          <p>Contrôles périodiques (ascenseurs, électricité, incendie), registres, RGPD, assurances et archives disponibles sur le portail.</p>
+        </article>
+        <article class="gest-card">
+          <h3>Optimisation</h3>
+          <p>Budgets réalistes, appels d’offres comparés, suivi des contrats et plan pluriannuel des travaux (réserves &amp; priorités).</p>
+        </article>
+        <article class="gest-card">
+          <h3>Transparence &amp; AG</h3>
+          <p>Préparation des AG, convocations, procès-verbaux et exécution des décisions. Reporting clair et accès aux documents.</p>
+        </article>
       </div>
-      <aside class="gest-illustration">
+      <aside class="gest-illustration" aria-label="Illustration de la gestion immobilière">
         <img src="img/imggestion.jpg" alt="Gestion immobilière" width="1200" height="800" loading="lazy" decoding="async">
       </aside>
     </div>
