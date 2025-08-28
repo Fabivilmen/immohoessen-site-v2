@@ -13,7 +13,15 @@
       --radius:16px; --shadow:0 2px 12px rgba(0,0,0,.06);
     }
 
-    /* ===== Header + Nav ===== */
+    html, body { height:100%; }
+    body.site{
+      min-height:100%;
+      display:flex;
+      flex-direction:column;
+      background: radial-gradient(120% 120% at 50% -10%, var(--warm-25) 0%, #ffffff 45%);
+    }
+
+    /* Header + Nav */
     .header{position:sticky; top:0; z-index:50; background:#fff; border-bottom:1px solid #eee;}
     .header-inner{
       max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between;
@@ -33,15 +41,7 @@
     .nav .cta-offre{background:#1a5cff; color:#fff; border:1px solid transparent; padding:.6rem 1rem; border-radius:999px; font-weight:800}
     .nav .cta-offre:hover{background:#003b8a}
 
-    /* ===== Base + Hero ===== */
-    html, body { height:100%; }
-    body.site{
-      min-height:100%;
-      display:flex;
-      flex-direction:column;
-      background: radial-gradient(120% 120% at 50% -10%, var(--warm-25) 0%, #ffffff 45%);
-    }
-
+    /* Hero */
     .gest-hero{
       padding:1.5rem 0 .5rem 0; border-bottom:1px solid rgba(0,0,0,.06);
       background:linear-gradient(180deg, var(--warm-50), var(--warm-25)); text-align:center;
@@ -49,9 +49,9 @@
     .gest-hero .container p{max-width:850px; margin:.5rem auto 0 auto; color:var(--text);}
     .gest-hero h1{color:var(--green); margin:0;}
 
-    /* ===== Cards + Illustration ===== */
+    /* Cards + Illustration */
     .container{max-width:1200px; margin:0 auto; padding:0 16px}
-    main.container{ flex:1; } /* empurra o footer para o fim */
+    main.container{ flex:1; }
 
     .gest-wrap{
       display:grid; grid-template-columns:1.1fr .9fr; gap:1.25rem; align-items:stretch; margin-top:1rem;
@@ -63,31 +63,31 @@
       border-radius:var(--radius); padding:1rem 1.25rem; box-shadow:var(--shadow);
       transition:transform .25s ease, box-shadow .25s ease, border-left-color .25s ease;
 
-      /* centralização vertical e horizontal */
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      align-items:center;
-      text-align:center;
+      display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;
       min-height:170px;
     }
     .gest-card:hover{transform:translateY(-6px); border-left-color:#d98258; box-shadow:0 12px 28px rgba(0,0,0,.14);}
-    .gest-card h3{margin:.2rem 0 .35rem 0; color:var(--green); word-break:break-word;}
+    .gest-card h3{margin:.2rem 0 .35rem 0; color:var(--green);}
     .gest-card p{margin:0; color:var(--muted);}
 
     .gest-illustration{
       background:#fafafa; border:1px solid rgba(0,0,0,.06); border-radius:var(--radius);
       box-shadow:var(--shadow); overflow:hidden; position:relative;
-      top:0;
-      min-height:520px;
-      display:flex; align-items:stretch;
+      min-height:520px; display:flex; align-items:stretch;
     }
     .gest-illustration img{width:100%; height:100%; object-fit:cover; display:block;}
 
-    /* ===== Footer minimal ===== */
-    footer{background:#f7f7f7; color:var(--muted); font-size:.9rem; margin-top:1rem;}
-    .footer-min{max-width:1100px; margin:0 auto; padding:.8rem 1rem; display:flex; justify-content:flex-end; border-top:1px solid rgba(0,0,0,.06);}
-    .footer-min a{color:var(--muted); text-decoration:underline}
+    /* Footer com frase */
+    footer{
+      margin-top:1rem;
+      background:linear-gradient(180deg, var(--warm-50), var(--warm-25));
+      text-align:center; padding:1.2rem 1rem;
+      border-top:1px solid rgba(0,0,0,.06);
+      color:var(--text);
+    }
+    .footer-quote{font-style:italic; margin:0 0 .4rem 0;}
+    .footer-copy{font-size:.9rem; color:var(--muted);}
+    .footer-copy a{color:var(--muted); text-decoration:underline;}
 
     @media (max-width:1024px){
       .gest-wrap{grid-template-columns:1fr;}
@@ -161,7 +161,8 @@
 
   <!-- Footer -->
   <footer>
-    <div class="footer-min">
+    <p class="footer-quote">« Immo Hoessen – Une méthode structurée, une équipe proche de vous. »</p>
+    <div class="footer-copy">
       © 2025 Immo Hoessen · <a href="mentions.html">Mentions légales</a>
     </div>
   </footer>
