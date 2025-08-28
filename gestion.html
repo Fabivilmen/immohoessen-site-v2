@@ -21,101 +21,70 @@
       background: radial-gradient(120% 120% at 50% -10%, var(--warm-25) 0%, #ffffff 45%);
     }
 
-    /* Header + Nav */
+    /* Header */
     .header{position:sticky; top:0; z-index:50; background:#fff; border-bottom:1px solid #eee;}
-    .header-inner{
-      max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between;
-      padding:.8rem 1rem;
-      border-image: linear-gradient(90deg, var(--gold), var(--terracotta)) 1;
-      border-bottom:3px solid transparent;
-    }
+    .header-inner{max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between;
+      padding:.8rem 1rem; border-image: linear-gradient(90deg, var(--gold), var(--terracotta)) 1; border-bottom:3px solid transparent;}
     .brand{display:flex; align-items:center; gap:.6rem}
     .brand img{height:32px}
     .brand-name{font-weight:800; color:var(--text)}
     .nav{display:flex; gap:.4rem; flex-wrap:wrap; align-items:center}
-    .nav a{position:relative; display:inline-block; padding:.55rem .8rem; border-radius:.6rem; text-decoration:none; color:var(--text); font-weight:600}
+    .nav a{position:relative; padding:.55rem .8rem; border-radius:.6rem; text-decoration:none; color:var(--text); font-weight:600}
     .nav a:hover{background:#f3f6f5}
     .nav a::after{content:""; position:absolute; left:0; bottom:-6px; height:2px; width:0; background:linear-gradient(90deg, var(--gold), var(--terracotta)); transition:width .2s ease;}
     .nav a:hover::after{width:100%}
     .nav a.active{color:#fff; background:var(--green)}
-    .nav .cta-offre{background:#1a5cff; color:#fff; border:1px solid transparent; padding:.6rem 1rem; border-radius:999px; font-weight:800}
+    .nav .cta-offre{background:#1a5cff; color:#fff; padding:.6rem 1rem; border-radius:999px; font-weight:800}
     .nav .cta-offre:hover{background:#003b8a}
 
     /* Hero */
     .gest-hero{
-      padding:1.5rem 0 .5rem 0; border-bottom:1px solid rgba(0,0,0,.06);
-      background:linear-gradient(180deg, var(--warm-50), var(--warm-25)); text-align:center;
+      padding:3rem 0 1.5rem 0;  /* espaço maior no topo */
+      border-bottom:1px solid rgba(0,0,0,.06);
+      background:linear-gradient(180deg, var(--warm-50), var(--warm-25));
+      text-align:center;
     }
-    .gest-hero .container p{max-width:850px; margin:.5rem auto 0 auto; color:var(--text);}
     .gest-hero h1{color:var(--green); margin:0;}
+    .gest-hero .container p{max-width:850px; margin:.8rem auto 0; color:var(--text);}
 
-    /* Cards + Illustration */
-    .container{max-width:1200px; margin:0 auto; padding:0 16px}
-    main.container{ flex:1; }
-
-    .gest-wrap{
-      display:grid; grid-template-columns:1.1fr .9fr; gap:1.25rem; align-items:stretch; margin-top:1rem;
+    /* Conteúdo centralizado */
+    main.container{
+      flex:1;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:2rem 1rem;
     }
-    .gest-cards{display:grid; grid-template-columns:repeat(2,1fr); gap:1rem;}
+    .gest-wrap{width:100%; max-width:1200px; display:grid; grid-template-columns:1.1fr .9fr; gap:1.25rem; align-items:stretch;}
 
+    .gest-cards{display:grid; grid-template-columns:repeat(2,1fr); gap:1rem;}
     .gest-card{
       background:#fff; border:1px solid rgba(0,0,0,.08); border-left:12px solid var(--terracotta);
       border-radius:var(--radius); padding:1rem 1.25rem; box-shadow:var(--shadow);
-      transition:transform .25s ease, box-shadow .25s ease, border-left-color .25s ease;
-
-      display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;
-      min-height:170px;
+      display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; min-height:170px;
     }
-    .gest-card:hover{transform:translateY(-6px); border-left-color:#d98258; box-shadow:0 12px 28px rgba(0,0,0,.14);}
     .gest-card h3{margin:.2rem 0 .35rem 0; color:var(--green);}
     .gest-card p{margin:0; color:var(--muted);}
 
-    .gest-illustration{
-      background:#fafafa; border:1px solid rgba(0,0,0,.06); border-radius:var(--radius);
-      box-shadow:var(--shadow); overflow:hidden; position:relative;
-      min-height:520px; display:flex; align-items:stretch;
-    }
-    .gest-illustration img{width:100%; height:100%; object-fit:cover; display:block;}
+    .gest-illustration{background:#fafafa; border:1px solid rgba(0,0,0,.06); border-radius:var(--radius); box-shadow:var(--shadow);
+      overflow:hidden; min-height:520px; display:flex; align-items:stretch;}
+    .gest-illustration img{width:100%; height:100%; object-fit:cover;}
 
-    /* Footer com frase */
-    footer{
-      margin-top:1rem;
-      background:linear-gradient(180deg, var(--warm-50), var(--warm-25));
-      text-align:center; padding:1.2rem 1rem;
-      border-top:1px solid rgba(0,0,0,.06);
-      color:var(--text);
-    }
+    /* Footer */
+    footer{margin-top:1rem; background:linear-gradient(180deg, var(--warm-50), var(--warm-25)); text-align:center; padding:1.2rem 1rem; border-top:1px solid rgba(0,0,0,.06);}
     .footer-quote{font-style:italic; margin:0 0 .4rem 0;}
     .footer-copy{font-size:.9rem; color:var(--muted);}
     .footer-copy a{color:var(--muted); text-decoration:underline;}
-
-    @media (max-width:1024px){
-      .gest-wrap{grid-template-columns:1fr;}
-      .gest-illustration{min-height:300px;}
-      .gest-cards{grid-template-columns:1fr 1fr;}
-    }
-    @media (max-width:640px){
-      .gest-cards{grid-template-columns:1fr;}
-      .gest-illustration{min-height:220px;}
-      .gest-card h3{font-size:1.1rem; line-height:1.3; max-width:90%;}
-    }
   </style>
 </head>
 <body class="site">
   <!-- Header -->
   <header class="header">
     <div class="header-inner">
-      <div class="brand">
-        <img src="img/logo.svg" alt="Immo Hoessen" onerror="this.style.display='none'">
-        <span class="brand-name">Immo Hoessen</span>
-      </div>
-      <nav class="nav" aria-label="Navigation principale">
-        <a href="index.html">Accueil</a>
-        <a href="types.html">Types de gestion</a>
-        <a class="active" href="gestion.html">Gestion</a>
-        <a href="portail.html">Portail</a>
-        <a href="contacts.html">Contacts</a>
-        <a href="apropos.html">À propos</a>
+      <div class="brand"><img src="img/logo.svg" alt="Immo Hoessen" onerror="this.style.display='none'"><span class="brand-name">Immo Hoessen</span></div>
+      <nav class="nav">
+        <a href="index.html">Accueil</a><a href="types.html">Types de gestion</a><a class="active" href="gestion.html">Gestion</a>
+        <a href="portail.html">Portail</a><a href="contacts.html">Contacts</a><a href="apropos.html">À propos</a>
         <a href="offre.html" class="cta-offre">Demander une offre</a>
       </nav>
     </div>
@@ -125,46 +94,27 @@
   <section class="gest-hero">
     <div class="container">
       <h1>Notre approche de gestion</h1>
-      <p>
-        Une méthode structurée, centrée sur la transparence, la maîtrise technique et la réactivité.
-        Nous gérons le quotidien, planifions le long terme et communiquons clairement avec les copropriétaires.
-      </p>
+      <p>Une méthode structurée, centrée sur la transparence, la maîtrise technique et la réactivité. Nous gérons le quotidien, planifions le long terme et communiquons clairement avec les copropriétaires.</p>
     </div>
   </section>
 
-  <!-- Cards + Illustration -->
+  <!-- Conteúdo -->
   <main class="container">
     <div class="gest-wrap">
       <div class="gest-cards">
-        <article class="gest-card">
-          <h3>Suivi quotidien</h3>
-          <p>Emails et appels traités par priorité. Tableaux de bord, SLA interne et retour systématique aux copropriétaires.</p>
-        </article>
-        <article class="gest-card">
-          <h3>Conformité légale</h3>
-          <p>Contrôles périodiques (ascenseurs, électricité, incendie), registres, RGPD, assurances et archives disponibles sur le portail.</p>
-        </article>
-        <article class="gest-card">
-          <h3>Optimisation</h3>
-          <p>Budgets réalistes, appels d’offres comparés, suivi des contrats et plan pluriannuel des travaux (réserves &amp; priorités).</p>
-        </article>
-        <article class="gest-card">
-          <h3>Transparence &amp; AG</h3>
-          <p>Préparation des AG, convocations, procès-verbaux et exécution des décisions. Reporting clair et accès aux documents.</p>
-        </article>
+        <article class="gest-card"><h3>Suivi quotidien</h3><p>Emails et appels traités par priorité. Tableaux de bord, SLA interne et retour systématique aux copropriétaires.</p></article>
+        <article class="gest-card"><h3>Conformité légale</h3><p>Contrôles périodiques (ascenseurs, électricité, incendie), registres, RGPD, assurances et archives disponibles sur le portail.</p></article>
+        <article class="gest-card"><h3>Optimisation</h3><p>Budgets réalistes, appels d’offres comparés, suivi des contrats et plan pluriannuel des travaux (réserves &amp; priorités).</p></article>
+        <article class="gest-card"><h3>Transparence &amp; AG</h3><p>Préparation des AG, convocations, procès-verbaux et exécution des décisions. Reporting clair et accès aux documents.</p></article>
       </div>
-      <aside class="gest-illustration" aria-label="Illustration de la gestion immobilière">
-        <img src="img/imggestion.jpg" alt="Gestion immobilière" width="1200" height="800" loading="lazy" decoding="async">
-      </aside>
+      <aside class="gest-illustration"><img src="img/imggestion.jpg" alt="Gestion immobilière" width="1200" height="800" loading="lazy"></aside>
     </div>
   </main>
 
   <!-- Footer -->
   <footer>
     <p class="footer-quote">« Immo Hoessen – Une méthode structurée, une équipe proche de vous. »</p>
-    <div class="footer-copy">
-      © 2025 Immo Hoessen · <a href="mentions.html">Mentions légales</a>
-    </div>
+    <div class="footer-copy">© 2025 Immo Hoessen · <a href="mentions.html">Mentions légales</a></div>
   </footer>
 </body>
 </html>
