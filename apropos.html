@@ -13,17 +13,18 @@
       --radius:18px; --shadow:0 2px 12px rgba(0,0,0,.06);
     }
 
-    /* ===== Base: página cheia com footer no fim ===== */
+    /* ===== Base ===== */
     html, body { height:100%; }
     body.site{
       min-height:100%;
       display:flex;
       flex-direction:column;
       background: radial-gradient(120% 120% at 50% -10%, var(--warm-25) 0%, #ffffff 45%);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
     }
-    main{ flex:1; display:block; }
+    main{ flex:1; }
 
-    /* ===== Header + Nav (padrão) ===== */
+    /* ===== Header ===== */
     .header{position:sticky; top:0; z-index:50; background:#fff; border-bottom:1px solid #eee;}
     .header-inner{
       border-image: linear-gradient(90deg, var(--gold), var(--terracotta)) 1;
@@ -44,34 +45,22 @@
     /* ===== Hero ===== */
     .about-hero{
       background:linear-gradient(180deg, var(--warm-50), var(--warm-25));
-      /* título mais para baixo */
-      padding:3rem 0 1.25rem 0;
+      padding:3rem 0 1.5rem 0;
       border-bottom:1px solid rgba(0,0,0,.06);
       text-align:center;
     }
-    .about-hero h1{
-      color:var(--green-dark);
-      margin:0 0 1rem 0;
-    }
+    .about-hero h1{ color:var(--green-dark); margin:0 0 1rem 0; }
     .about-hero .container p{
       max-width:900px; margin:.5rem auto 0 auto; color:var(--green-muted);
-      text-align:justify; text-justify:inter-word;
-      hyphens:auto; -webkit-hyphens:auto; -ms-hyphens:auto;
-      line-height:1.75;
+      text-align:justify; line-height:1.75;
     }
 
-    /* ===== Conteúdo ===== */
+    /* ===== Content ===== */
     .container{max-width:1200px; margin:0 auto; padding:0 16px}
-    .section-wrap{ padding:1.25rem 0 1.5rem 0; } /* reduz espaços verticais para “encher” melhor */
-
-    .section-wrap h2{
-      margin:1rem 0 .75rem 0;
-      color:var(--green-dark);
-    }
+    .section-wrap{ padding:1.25rem 0 2rem 0; }
 
     .founders{
-      display:grid; gap:1rem; grid-template-columns:1fr 1fr;
-      align-items:stretch;
+      display:grid; gap:1rem; grid-template-columns:1fr 1fr; align-items:stretch;
     }
     .founder-card{
       display:grid; grid-template-columns:200px 1fr; gap:1rem; align-items:center;
@@ -79,45 +68,58 @@
       border-left:8px solid var(--terracotta);
       border-radius:var(--radius); padding:1rem; box-shadow:var(--shadow);
       transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
-      min-height:240px; /* dá corpo ao cartão */
+      min-height:240px;
     }
     .founder-card:hover{ transform:translateY(-3px); border-left-color:var(--gold); box-shadow:0 10px 22px rgba(228,177,0,.18); }
-
     .founder-photo{ width:200px; height:200px; border-radius:16px; overflow:hidden }
     .founder-photo img{ width:100%; height:100%; object-fit:cover; object-position:50% 20%; }
     .founder-caption{ margin-top:.4rem; font-size:.95rem; color:var(--green-muted); }
+    .founder-card h3{ margin:.25rem 0 .5rem 0; color:var(--green-dark); }
+    .founder-card p{ color:var(--green-muted); text-align:justify; line-height:1.7; margin:0; }
 
-    .founder-card h3{
-      margin:.25rem 0 .5rem 0; color:var(--green-dark);
+    /* ===== Footer (mesmo fundo warm do site) ===== */
+    footer{
+      margin-top:2rem;
+      background:linear-gradient(180deg, var(--warm-50), var(--warm-25));
+      border-top:3px solid transparent;
+      border-image: linear-gradient(90deg, var(--gold), var(--terracotta)) 1;
+      color:var(--text);
     }
-    .founder-card p{
-      color:var(--green-muted);
-      text-align:justify; text-justify:inter-word;
-      hyphens:auto; -webkit-hyphens:auto; -ms-hyphens:auto;
-      line-height:1.7;
-      margin:0;
+    .footer-pro{
+      max-width:1100px; margin:0 auto; padding:2rem 1.5rem;
+      display:flex; flex-wrap:wrap; justify-content:space-between; gap:2rem;
+    }
+    .footer-mission{ flex:1; min-width:280px; }
+    .footer-mission h4{ margin:0 0 .5rem 0; font-size:1.1rem; color:var(--green-dark); }
+    .footer-mission p{ margin:.2rem 0 .6rem 0; line-height:1.5; color:var(--text); }
+    .footer-mission ul{ list-style:none; padding:0; margin:0; }
+    .footer-mission li{ margin:.3rem 0; color:var(--text); }
+    .footer-mission li::before{
+      content:"✔ "; color:var(--gold); font-weight:700;
     }
 
-    /* ===== Footer menor ===== */
-    footer{ background:#f7f7f7; margin-top:1rem; }
-    .footer-min{
-      max-width:1100px; margin:0 auto; padding:.7rem 1rem;  /* menor */
-      display:flex; justify-content:flex-end; color:var(--green-muted);
-      border-top:1px solid rgba(0,0,0,.06);
-    }
-    .footer-min a{ color:var(--green-muted); text-decoration:underline; }
+    .footer-quote{ flex:1; min-width:280px; text-align:center; align-self:flex-end; }
+    .footer-quote .citation{ font-style:italic; margin:0 0 .4rem 0; line-height:1.6; color:var(--green-dark); }
+    .footer-quote .slogan{ font-weight:800; color:var(--gold); margin:0; }
 
-    /* ===== Responsivo ===== */
-    @media (max-width:1024px){
+    .footer-copy{
+      text-align:center; padding:.8rem; font-size:.85rem;
+      color:var(--green-muted); border-top:1px solid rgba(0,0,0,.06);
+      background: radial-gradient(120% 120% at 50% -60%, var(--warm-25) 0%, #ffffff 60%);
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width:900px){
       .founders{ grid-template-columns:1fr; }
-      .founder-card{ grid-template-columns:180px 1fr; min-height:220px; }
-      .founder-photo{ width:180px; height:180px; }
+      .founder-card{ grid-template-columns:150px 1fr; min-height:220px; }
+      .founder-photo{ width:150px; height:150px; }
     }
     @media (max-width:640px){
       .about-hero{ padding:2.5rem 0 1rem 0; }
       .founder-card{ grid-template-columns:120px 1fr; padding:.9rem; }
       .founder-photo{ width:120px; height:120px; }
-      .section-wrap{ padding:1rem 0 1.25rem 0; }
+      .footer-pro{ flex-direction:column; text-align:center; }
+      .footer-quote{ align-self:center; }
     }
   </style>
 </head>
@@ -188,9 +190,24 @@
     </section>
   </main>
 
-  <!-- Footer -->
+  <!-- Footer (warm) -->
   <footer>
-    <div class="footer-min">
+    <div class="footer-pro">
+      <div class="footer-mission">
+        <h4>Notre mission</h4>
+        <p>Offrir une gestion immobilière rigoureuse et humaine, basée sur :</p>
+        <ul>
+          <li>Transparence</li>
+          <li>Proximité</li>
+          <li>Responsabilité</li>
+        </ul>
+      </div>
+      <div class="footer-quote">
+        <p class="citation">« Un immeuble, c’est bien plus que des murs : c’est une communauté. »</p>
+        <p class="slogan">Immo Hoessen – Votre patrimoine, notre priorité.</p>
+      </div>
+    </div>
+    <div class="footer-copy">
       © 2025 Immo Hoessen · <a href="mentions.html">Mentions légales</a>
     </div>
   </footer>
