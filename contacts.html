@@ -75,10 +75,30 @@
     .contact-card p{ margin:.2rem 0; color:var(--green-muted); }
     .contact-card--solo{ grid-column:1 / -1; max-width:520px; justify-self:center; text-align:center; }
 
-    /* Rodapé minimal */
-    footer{background:#f7f7f7; color:var(--green-muted); font-size:.9rem; margin-top:2rem}
-    .footer-min{max-width:1100px; margin:0 auto; padding:1rem; display:flex; justify-content:flex-end; border-top:1px solid rgba(0,0,0,.06);}
-    .footer-min a{color:var(--green-muted); text-decoration:underline}
+    /* ==== Footer padronizado ==== */
+    .site-footer {
+      background: #fff6ee;
+      color: #1e4e3d;
+      text-align: center;
+      padding: 18px 12px 22px;
+      margin-top: clamp(32px, 6vh, 80px);
+      font-size: 0.95rem;
+      line-height: 1.5;
+      border-top: 1px solid rgba(0,0,0,.08);
+    }
+    .site-footer__slogan {
+      margin: 0 0 6px 0;
+      font-style: italic;
+    }
+    .site-footer__legal {
+      margin: 0;
+    }
+    .site-footer a {
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .site-footer a:hover { opacity:.8; }
 
     @media (max-width: 900px){ .contacts-grid{ grid-template-columns:repeat(2, minmax(240px,1fr)); } }
     @media (max-width: 640px){
@@ -116,7 +136,7 @@
         <div class="urg-box" role="region" aria-labelledby="tel-heading">
           <div class="urg-badge">Téléphones</div>
 
-          <!-- Escritório 9h–13h (sem linha “Téléphone: …”) -->
+          <!-- Escritório 9h–13h -->
           <h2 id="tel-heading" style="margin:.2rem 0 .2rem 0;">Heures du bureau (9h–13h)</h2>
           <div class="urg-buttons" style="margin-bottom:.4rem">
             <a class="btn-call" href="tel:+3227725175" aria-label="Appeler 02 772 51 75">📞 02&nbsp;772&nbsp;51&nbsp;75</a>
@@ -124,7 +144,7 @@
 
           <div class="divider" aria-hidden="true"></div>
 
-          <!-- Urgências – botões azuis -->
+          <!-- Urgências -->
           <h2 style="margin:.2rem 0 .4rem 0;">Urgence – en dehors des heures du bureau</h2>
           <p class="urg-hours">En cas d’urgence, contactez :</p>
           <div class="urg-buttons">
@@ -154,11 +174,10 @@
     </section>
   </main>
 
-  <!-- Rodapé minimal -->
-  <footer>
-    <div class="footer-min">
-      © 2025 Immo Hoessen · <a href="mentions.html">Mentions légales</a>
-    </div>
+  <!-- Footer padronizado -->
+  <footer class="site-footer">
+    <p class="site-footer__slogan">« Immo Hoessen – Une gestion complète, de la comptabilité aux travaux. »</p>
+    <p class="site-footer__legal">© 2025 Immo Hoessen · <a href="mentions-legales.html">Mentions légales</a></p>
   </footer>
 
   <script>
