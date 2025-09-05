@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -15,6 +14,7 @@
       --card-shadow-hover:0 12px 28px rgba(0,0,0,.14);
       --radius:16px; --shadow:0 2px 12px rgba(0,0,0,.06);
       --bg-soft:#fafafa;
+      --e1: cubic-bezier(.22,.61,.36,1);
     }
 
     html, body { height:100%; }
@@ -59,26 +59,77 @@
     }
     .types-wrap{width:100%; max-width:1200px; display:grid; grid-template-columns:1.1fr .9fr; gap:1.25rem; align-items:stretch;}
 
-    .types-cards{display:grid; grid-template-columns:repeat(2, minmax(280px,1fr)); gap:1rem;}
+    .types-cards{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(280px,1fr));
+      gap:1rem;
+    }
+
+    /* ====== CARDS (com movimento) ====== */
     .type-card{
       background:#fff; border:1px solid rgba(0,0,0,.08); border-left:12px solid var(--terracotta);
       border-radius:var(--radius); padding:1.1rem 1.25rem; box-shadow:var(--card-shadow);
       display:grid; grid-template-columns:64px 1fr; gap:.9rem; align-items:center; min-height:170px;
+
+      transform: translateZ(0);
+      transition:
+        transform .28s var(--e1),
+        box-shadow .28s var(--e1),
+        border-color .28s var(--e1);
+      will-change: transform, box-shadow;
     }
     .type-card h3{margin:.2rem 0 .35rem 0; font-size:1.15rem; color:var(--green);}
     .type-card p{margin:0; color:var(--muted);}
-    .type-icon{width:56px; height:56px; border-radius:16px; background:linear-gradient(180deg, var(--warm-25), #fff); border:1px solid rgba(0,0,0,.08); display:grid; place-items:center;}
-    .type-icon svg{width:28px; height:28px; stroke:var(--green); stroke-width:1.8; fill:none;}
+    .type-icon{width:56px; height:56px; border-radius:16px; background:linear-gradient(180deg, var(--warm-25), #fff); border:1px solid rgba(0,0,0,.08); display:grid; place-items:center;
+      transition: transform .45s var(--e1), box-shadow .28s var(--e1);}
+    .type-icon svg{width:28px; height:28px; stroke:var(--green); stroke-width:1.8; fill:none; transition: transform .45s var(--e1);}
 
+    /* Hover/Focus: flutua, sombra, ícone ganha vida */
+    .type-card:hover,
+    .type-card:focus-within{
+      transform: translateY(-6px);
+      box-shadow: var(--card-shadow-hover);
+      border-left-color: var(--gold);
+    }
+    .type-card:hover .type-icon,
+    .type-card:focus-within .type-icon{ transform: translateY(-2px); box-shadow: 0 8px 18px rgba(0,0,0,.10); }
+    .type-card:hover .type-icon svg,
+    .type-card:focus-within .type-icon svg{ transform: scale(1.06); }
+
+    /* Entrada suave ao rolar */
+    .type-card.reveal{opacity:0; transform: translateY(14px);}
+    .type-card.reveal.in{opacity:1; transform:none; transition: opacity .6s var(--e1), transform .6s var(--e1);}
+    .type-card.reveal.slow{transition-duration:.9s;}
+
+    /* Coluna da imagem */
     .types-illustration{background:var(--bg-soft); border:1px solid rgba(0,0,0,.06); border-radius:var(--radius); box-shadow:var(--shadow);
       overflow:hidden; min-height:520px; display:flex; align-items:stretch;}
-    .types-illustration img{width:100%; height:100%; object-fit:cover;}
+    .types-illustration img{width:100%; height:100%; object-fit:cover; transform: translateZ(0); transition: transform .45s var(--e1);}
+    .types-illustration:hover img{ transform: scale(1.03); }
+
+    /* Responsivo */
+    @media (max-width: 960px){
+      .types-wrap{ grid-template-columns: 1fr; }
+      .types-illustration{ order:-1; min-height:360px; }
+    }
 
     /* Footer */
     footer{margin-top:1rem; background:linear-gradient(180deg, var(--warm-50), var(--warm-25)); text-align:center; padding:1.2rem 1rem; border-top:1px solid rgba(0,0,0,.06);}
     .footer-quote{font-style:italic; margin:0 0 .4rem 0;}
     .footer-copy{font-size:.9rem; color:var(--muted);}
     .footer-copy a{color:var(--muted); text-decoration:underline;}
+
+    /* Acessibilidade: reduzir movimento se preferido pelo usuário */
+    @media (prefers-reduced-motion: reduce){
+      .type-card,
+      .type-card.reveal.in,
+      .type-icon,
+      .types-illustration img{
+        transition: none !important;
+        transform: none !important;
+      }
+      .type-card.reveal{ opacity:1 !important; }
+    }
   </style>
 </head>
 <body class="site">
@@ -106,12 +157,51 @@
   <main class="container">
     <div class="types-wrap">
       <div class="types-cards">
-        <article class="type-card"><div class="type-icon"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="10" height="18" rx="1.5"/><path d="M8 7h2M12 7h2M8 11h2M12 11h2M8 15h2M12 15h2M18 9v12M16 21h4"/></svg></div><div><h3>Syndic</h3><p>Gestion complète de la copropriété : AG, budget, contrats, conformité et communication aux copropriétaires.</p></div></article>
-        <article class="type-card"><div class="type-icon"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 12h2m3 0h2M8 16h2m3 0h2M8 20h2m3 0h2"/></svg></div><div><h3>Comptabilité</h3><p>Appels de fonds, encodage, balances, contrôle des charges et reporting clair, prêt pour l’audit.</p></div></article>
-        <article class="type-card"><div class="type-icon"><svg viewBox="0 0 24 24"><path d="M15 7l-2 2 2 2 2-2a3 3 0 10-2-2z"/><path d="M3 21l6.5-6.5 3 3L6 24H3v-3z"/></svg></div><div><h3>Travaux</h3><p>Pilotage des chantiers : cahier des charges, appels d’offres, suivi technique et garanties.</p></div></article>
-        <article class="type-card"><div class="type-icon"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6l7-3z"/><path d="M9.5 12.5l2 2 3.5-4"/></svg></div><div><h3>Sinistres</h3><p>Prise en charge complète : déclaration, coordination des intervenants et suivi jusqu’à l’indemnisation.</p></div></article>
+        <!-- adicionei .reveal para animação de entrada -->
+        <article class="type-card reveal">
+          <div class="type-icon">
+            <svg viewBox="0 0 24 24"><rect x="4" y="3" width="10" height="18" rx="1.5"/><path d="M8 7h2M12 7h2M8 11h2M12 11h2M8 15h2M12 15h2M18 9v12M16 21h4"/></svg>
+          </div>
+          <div>
+            <h3>Syndic</h3>
+            <p>Gestion complète de la copropriété : AG, budget, contrats, conformité et communication aux copropriétaires.</p>
+          </div>
+        </article>
+
+        <article class="type-card reveal">
+          <div class="type-icon">
+            <svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 12h2m3 0h2M8 16h2m3 0h2M8 20h2m3 0h2"/></svg>
+          </div>
+          <div>
+            <h3>Comptabilité</h3>
+            <p>Appels de fonds, encodage, balances, contrôle des charges et reporting clair, prêt pour l’audit.</p>
+          </div>
+        </article>
+
+        <article class="type-card reveal">
+          <div class="type-icon">
+            <svg viewBox="0 0 24 24"><path d="M15 7l-2 2 2 2 2-2a3 3 0 10-2-2z"/><path d="M3 21l6.5-6.5 3 3L6 24H3v-3z"/></svg>
+          </div>
+          <div>
+            <h3>Travaux</h3>
+            <p>Pilotage des chantiers : cahier des charges, appels d’offres, suivi technique et garanties.</p>
+          </div>
+        </article>
+
+        <article class="type-card reveal">
+          <div class="type-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6l7-3z"/><path d="M9.5 12.5 l2 2 3.5-4"/></svg>
+          </div>
+          <div>
+            <h3>Sinistres</h3>
+            <p>Prise en charge complète : déclaration, coordination des intervenants et suivi jusqu’à l’indemnisation.</p>
+          </div>
+        </article>
       </div>
-      <aside class="types-illustration"><img src="img/tgest.png" alt="Types de gestion" width="1200" height="800" loading="lazy"></aside>
+
+      <aside class="types-illustration">
+        <img src="img/tgest.png" alt="Types de gestion" width="1200" height="800" loading="lazy">
+      </aside>
     </div>
   </main>
 
@@ -120,5 +210,29 @@
     <p class="footer-quote">« Immo Hoessen – Une gestion complète, de la comptabilité aux travaux. »</p>
     <div class="footer-copy">© 2025 Immo Hoessen · <a href="mentions.html">Mentions légales</a></div>
   </footer>
+
+  <!-- JS: revelar cards ao rolar -->
+  <script>
+    (function(){
+      var cards = document.querySelectorAll('.type-card.reveal');
+      if(!cards.length){ return; }
+
+      if(!('IntersectionObserver' in window)){
+        cards.forEach(function(el){ el.classList.add('in'); });
+        return;
+      }
+
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){
+            entry.target.classList.add('in');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: .12 });
+
+      cards.forEach(function(el){ io.observe(el); });
+    })();
+  </script>
 </body>
 </html>
