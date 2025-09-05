@@ -1,150 +1,41 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mentions légales – Immo Hoessen</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body class="site">
-  <header class="header">
-    <div class="header-inner">
-      <div class="brand">
-        <img src="img/logo.svg" alt="Immo Hoessen">
-        <span class="brand-name">Immo Hoessen</span>
-      </div>
-      <nav class="nav">
-        <a href="index.html">Accueil</a>
-        <a href="gestion.html">Types de gestion</a>
-        <a href="portail.html">Portail</a>
-        <a href="contacts.html">Contacts</a>
-        <a href="apropos.html">À propos</a>
-        <a href="offre.html">Offre</a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="container pb-6">
-    <h1>Mentions légales</h1>
-    <p>Immo Hoessen – Avenue Heydenberg 14, 1200 Bruxelles – BE0462920325.</p>
-    <p>Responsable de la publication : Laurent Hoessen.</p>
-  </main>
-
-  <footer>
-    <div class="footer-inner">
-      <div>Avenue Heydenberg 14, 1200 Bruxelles · Tél. <a href="tel:+3227725175">02 772 51 75</a> · BE0462920325</div>
-      <div>Heures: 09:00–13:00 · <a href="mentions.html">Mentions légales</a></div>
-    </div>
-  </footer>
-</body>
-</html>
-/* CAPA: foto viva, sem overlay/película */
-.hero--distance .overlay{
-  display:none !important;            /* remove a película */
-  background:none !important;
+/* ===== HERO — foto viva, sem overlay/película ===== */
+.hero .overlay{
+  display: none !important;          /* garante que nada escureça sua foto */
+  background: none !important;
 }
 
-.hero--distance .cover{
-  /* deixe a foto mais vibrante, sem exagerar */
-  filter: saturate(1.3) contrast(1.07) brightness(1.02);
-  /* mantenho seu object-position existente */
-}
-/* ===== Micro-motion – base ===== */
-:root{
-  --e1: cubic-bezier(.22,.61,.36,1);  /* ease bonita */
+.hero .cover{
+  /* realces sutis — versão aprovada por você */
+  filter: brightness(1.2) contrast(1.1) saturate(1.2);
+  transition: filter .35s var(--e1);
+  will-change: filter;
+  object-fit: cover;
 }
 
-html { scroll-behavior:smooth; }
+/* efeito leve ao passar o mouse (só desktop com hover) */
+@media (hover: hover){
+  .hero:hover .cover{
+    filter: brightness(1.23) contrast(1.12) saturate(1.25);
+  }
+}
 
-.reveal{opacity:0; transform:translateY(14px); transition:opacity .6s var(--e1), transform .6s var(--e1); will-change:opacity,transform;}
-.reveal.in{opacity:1; transform:none;}
-.reveal.slow{transition-duration:.9s;}
-
+/* acessibilidade: usuários que preferem menos animação não verão transição */
 @media (prefers-reduced-motion: reduce){
-  .reveal, .reveal.in { opacity:1; transform:none; transition:none; }
+  .hero .cover{ transition: none; }
 }
 
-/* ===== Header que “encolhe” ao rolar ===== */
-.header { transition: background .3s var(--e1), box-shadow .3s var(--e1), padding .25s var(--e1); }
-.header.shrink { background:#fff; box-shadow:0 6px 18px rgba(0,0,0,.08); }
-.header.shrink .header-inner{ padding:.55rem 1rem; }
-.header.shrink .brand img{ height:28px; }
-
-/* ===== Hero – parallax MUITO leve, sem overlay ===== */
-.hero .cover{ transform:translateY(var(--parallax,0)); transition:transform .12s linear; }
-@media (prefers-reduced-motion: reduce){
-  .hero .cover{ transform:none !important; transition:none !important; }
+/* ===== HERO — fallback se usar background direto =====
+   (apenas se sua hero não tiver <img class="cover">) */
+.hero{
+  min-height: 70dvh;
 }
-
-/* ===== Botões e CTAs – microinterações ===== */
-a.btn-blue, .nav .cta-offre, .btn-primary, .btn-call{
-  transition: transform .15s var(--e1), box-shadow .25s var(--e1), background .25s var(--e1);
-}
-a.btn-blue:active, .nav .cta-offre:active, .btn-primary:active, .btn-call:active{
-  transform:translateY(1px) scale(.99);
-}
-
-/* ===== Cards – leve “float” no hover (você já tinha, só lapidei) ===== */
-.card:hover{ transform:translateY(-6px); box-shadow:0 14px 30px rgba(0,0,0,.12); }
-
-/* ===== Focus bonito e acessível ===== */
-:where(a,button,[role="button"], input, select, textarea):focus-visible{
-  outline:3px solid #ffd673; outline-offset:2px; border-radius:12px;
-}
-/* ====== RESPONSIVE PATCH (colar no fim do style.css) ====== */
-
-/* 1) Largura útil aumenta em telas grandes (sem “encolher”) */
-:root{ --wrap: 1180px; }                 /* base */
-@media (min-width: 1400px){ :root{ --wrap: 1320px; } }
-@media (min-width: 1680px){ :root{ --wrap: 1440px; } }
-@media (min-width: 1920px){ :root{ --wrap: 1560px; } }
-
-/* 2) Unificar containers em todas as páginas */
-.header-inner,
-.footer-inner,
-.footer-inner.footer-home,
-.footer-legal,
-.section .intro,
-.container{
-  max-width: var(--wrap) !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  padding-left: 16px;
-  padding-right: 16px;
-}
-
-/* 3) Hero: altura por breakpoint (sem película, você já removeu) */
-.hero{ min-height: 70dvh; }
 @media (min-width: 900px){ .hero{ min-height: 78dvh; } }
 @media (min-width: 1600px){ .hero{ min-height: 86vh; } }
 
-/* 4) Hero: posicionamento da imagem por tamanho */
-.hero .cover{ object-position: 50% 85%; }
-@media (max-width: 640px){ .hero .cover{ object-position: 50% 60%; } }
-
-/* 5) Grids: não “apertar” no desktop grande */
-.cards,
-.types-cards,
-.gest-cards,
-.portail-features{
-  max-width: var(--wrap) !important;
-  margin-left:auto; margin-right:auto;
+.hero{
+  background-position: center;
+  background-size: cover;
 }
-
-/* opção: em telas muito grandes, dê um pouco mais de fôlego nas colunas */
-@media (min-width: 1600px){
-  .cards{ grid-template-columns: repeat(4, minmax(260px, 1fr)); gap: 1.2rem; }
+.hero.bg-cover{
+  filter: brightness(1.2) contrast(1.1) saturate(1.2);
 }
-
-/* 6) Mobile: nav quebra bonito, spacing consistente */
-.nav{ flex-wrap: wrap; row-gap: .3rem; }
-@media (max-width: 640px){
-  .header .nav a{ padding:.5rem .7rem; }
-  .section{ padding: 1.8rem 14px; }
-  .btn-blue{ width:100%; text-align:center; }
-}
-
-/* 7) Rodapé: mapa um pouco maior em telas grandes */
-.footer-map iframe{ height: 200px; }
-@media (min-width: 1400px){ .footer-map iframe{ height: 240px; } }
-
