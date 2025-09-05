@@ -1,74 +1,114 @@
-<!-- ===== BLOCO: Types de gestion ===== -->
-<section class="types-hero">
-  <div class="container">
-    <h1>Types de gestion</h1>
-    <p>Nos prestations couvrent l’ensemble des besoins d’une copropriété, de la gestion courante aux dossiers techniques.</p>
-  </div>
-</section>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Laurent Hoessen – Gestion immobilière · Syndic BILH – DUHO</title>
 
-<main class="container">
-  <div class="types-wrap">
-    <div class="types-cards" role="list">
-      <!-- CARD 1 -->
-      <article class="type-card reveal" role="listitem">
-        <div class="type-icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <rect x="4" y="3" width="10" height="18" rx="1.5"/>
-            <path d="M8 7h2M12 7h2M8 11h2M12 11h2M8 15h2M12 15h2M18 9v12M16 21h4"/>
-          </svg>
-        </div>
-        <div>
-          <h3>Syndic</h3>
-          <p>Gestion complète de la copropriété : AG, budget, contrats, conformité et communication aux copropriétaires.</p>
-        </div>
-      </article>
+  <link rel="stylesheet" href="style.css?v=12">
 
-      <!-- CARD 2 -->
-      <article class="type-card reveal" role="listitem">
-        <div class="type-icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <rect x="5" y="3" width="14" height="18" rx="2"/>
-            <path d="M8 7h8M8 12h2m3 0h2M8 16h2m3 0h2M8 20h2m3 0h2"/>
-          </svg>
-        </div>
-        <div>
-          <h3>Comptabilité</h3>
-          <p>Appels de fonds, encodage, balances, contrôle des charges et reporting clair, prêt pour l’audit.</p>
-        </div>
-      </article>
-
-      <!-- CARD 3 -->
-      <article class="type-card reveal" role="listitem">
-        <div class="type-icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M15 7l-2 2 2 2 2-2a3 3 0 10-2-2z"/>
-            <path d="M3 21l6.5-6.5 3 3L6 24H3v-3z"/>
-          </svg>
-        </div>
-        <div>
-          <h3>Travaux</h3>
-          <p>Pilotage des chantiers : cahier des charges, appels d’offres, suivi technique et garanties.</p>
-        </div>
-      </article>
-
-      <!-- CARD 4 -->
-      <article class="type-card reveal" role="listitem">
-        <div class="type-icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6l7-3z"/>
-            <path d="M9.5 12.5l2 2 3.5-4"/>
-          </svg>
-        </div>
-        <div>
-          <h3>Sinistres</h3>
-          <p>Prise en charge complète : déclaration, coordination des intervenants et suivi jusqu’à l’indemnisation.</p>
-        </div>
-      </article>
+  <meta name="description" content="Syndic de copropriété à Bruxelles. Gestion sérieuse et humaine : AG, budgets, travaux, sinistres, documents en ligne.">
+  <meta property="og:title" content="Immo Hoessen – Syndic & gestion immobilière à Bruxelles">
+  <meta property="og:description" content="Gestion transparente, technique et réactive. Portail 24h/24 pour vos documents.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://fabivilmen.github.io/immohoessen-site-v2/img/cover-plain2.jpg">
+  <link rel="icon" href="img/favicon.png">
+</head>
+<body class="site">
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="brand">
+        <img src="img/logo.svg" alt="Immo Hoessen" onerror="this.style.display='none'">
+        <span class="brand-name">Immo Hoessen</span>
+      </div>
+      <nav class="nav" aria-label="Navigation principale">
+        <a class="active" href="index.html">Accueil</a>
+        <a href="types.html">Types de gestion</a>
+        <a href="gestion.html">Gestion</a>
+        <a href="portail.html">Portail</a>
+        <a href="contacts.html">Contacts</a>
+        <a href="apropos.html">À propos</a>
+        <a class="cta-offre" href="offre.html">Demander une offre</a>
+      </nav>
     </div>
+  </header>
 
-    <!-- Imagem lateral (opcional) -->
-    <aside class="types-illustration" aria-hidden="true">
-      <img src="img/tgest.png" alt="Types de gestion" width="1200" height="800" loading="lazy">
-    </aside>
-  </div>
-</main>
+  <!-- Hero -->
+  <main id="main">
+    <section class="hero">
+      <img class="cover" src="img/cover-plain2.jpg" alt="Laurent Hoessen" fetchpriority="high" loading="eager" decoding="async">
+      <div class="overlay-dark"></div>
+      <div class="hero-content">
+        <h1>Laurent Hoessen</h1>
+        <p>Gestion immobilière · Syndic BILH – DUHO</p>
+      </div>
+    </section>
+
+    <!-- Section 1 -->
+    <section class="section alt">
+      <div class="intro">
+        <h2>Types de gestion</h2>
+        <p>Des solutions adaptées à chaque copropriété, avec transparence et rigueur.</p>
+      </div>
+      <div class="cards">
+        <article class="card"><h3>Gestion de base</h3><p>Administration, comptabilité et obligations légales.</p></article>
+        <article class="card"><h3>Gestion technique</h3><p>Suivi des travaux, ascenseurs, chauffage, sécurité.</p></article>
+        <article class="card"><h3>Gestion financière</h3><p>Budgets, appels de fonds, contrôle des dépenses.</p></article>
+        <article class="card"><h3>Conseil & audit</h3><p>Optimisations, contrats, conformité et PEB.</p></article>
+      </div>
+    </section>
+
+    <!-- Section 2 -->
+    <section class="section">
+      <div class="intro">
+        <h2>Gestion</h2>
+        <p>Nous veillons à la bonne tenue des espaces, à la communication claire et à la réactivité en cas d’urgence.</p>
+      </div>
+      <div class="cards">
+        <article class="card"><h3>Suivi quotidien</h3><p>Emails et appels traités par priorité. Tableaux de bord, SLA interne et retour systématique aux copropriétaires.</p></article>
+        <article class="card"><h3>Conformité légale</h3><p>Contrôles périodiques (ascenseurs, électricité, incendie), registres, RGPD, assurances et archives disponibles sur le portail.</p></article>
+        <article class="card"><h3>AG & procès-verbaux</h3><p>Organisation, quorum, proxies et suivi des décisions.</p></article>
+        <article class="card"><h3>Urgence</h3><p>Procédures claires et contacts prioritaires.</p></article>
+      </div>
+      <div class="intro" style="margin-top:1rem">
+        <a class="btn-blue" href="contacts.html">Nous contacter</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner footer-home">
+      <div class="footer-col footer-info">
+        <p><strong>Adresse&nbsp;:</strong> Avenue Heydenberg 14, 1200 Bruxelles</p>
+        <p><strong>Téléphone&nbsp;:</strong> <a href="tel:+3227725175">02 772 51 75</a></p>
+        <p><strong>URGENCE&nbsp;:</strong> <a href="tel:0495261683">0495 26 16 83</a> · <a href="tel:0495543808">0495 54 38 08</a></p>
+        <p><strong>Heures&nbsp;:</strong> 09:00–13:00</p>
+        <p><strong>Email&nbsp;:</strong> <a href="mailto:syndic@immohoessen.be">syndic@immohoessen.be</a></p>
+        <p><strong>Nº d’entreprise&nbsp;:</strong> BE0462920325</p>
+      </div>
+      <div class="footer-col footer-map">
+        <iframe title="Immo Hoessen – Carte" src="https://www.google.com/maps?q=Avenue%20Heydenberg%2014,%201200%20Bruxelles&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <a href="mentions.html">Mentions légales</a>
+    </div>
+  </footer>
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"LocalBusiness",
+    "name":"Immo Hoessen",
+    "image":"https://fabivilmen.github.io/immohoessen-site-v2/img/logo.svg",
+    "url":"https://fabivilmen.github.io/immohoessen-site-v2/",
+    "telephone":"+32 2 772 51 75",
+    "address":{"@type":"PostalAddress","streetAddress":"Avenue Heydenberg 14","addressLocality":"Bruxelles","postalCode":"1200","addressCountry":"BE"},
+    "openingHours":"Mo-Fr 09:00-13:00"
+  }
+  </script>
+</body>
+</html>
