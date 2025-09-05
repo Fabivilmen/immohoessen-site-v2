@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -7,7 +6,7 @@
   <title>Laurent Hoessen – Gestion immobilière · Syndic BILH – DUHO</title>
 
   <!-- CSS externo -->
-  <link rel="stylesheet" href="style.css?v=12">
+  <link rel="stylesheet" href="style.css?v=13">
 
   <!-- SEO -->
   <meta name="description" content="Syndic de copropriété à Bruxelles. Gestion sérieuse et humaine : AG, budgets, travaux, sinistres, documents en ligne.">
@@ -24,13 +23,13 @@
       --muted:#557a68;
       --brand:#1a5cff; --brand-hover:#003b8a;
       --terracotta:#c77045;
-      --terracotta-soft:#f3ece7;     /* rodapé clarinho */
-      --warm-25:#fff9f3; --warm-50:#fff3e5; /* fundo suave das internas */
+      --terracotta-soft:#f3ece7;
+      --warm-25:#fff9f3; --warm-50:#fff3e5;
       --card-shadow:0 2px 12px rgba(0,0,0,.06);
       --card-shadow-hover:0 12px 28px rgba(0,0,0,.14);
     }
 
-    /* ===== HEADER + MENU ===== */
+    /* ===== HEADER ===== */
     .header{position:sticky; top:0; z-index:50; background:#fff; border-bottom:1px solid #eee;}
     .header-inner{max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:.8rem 1rem;}
     .brand{display:flex; align-items:center; gap:.6rem}
@@ -43,13 +42,26 @@
     .nav .cta-offre{background:var(--brand); color:#fff; border:1px solid transparent; padding:.6rem 1rem; border-radius:999px; font-weight:800}
     .nav .cta-offre:hover{background:var(--brand-hover)}
 
-    /* ===== CAPA (foto viva, sem película) ===== */
+    /* ===== CAPA ===== */
     .hero{position:relative; min-height:80dvh; display:flex; align-items:center; justify-content:center; overflow:hidden}
     .hero .cover{
-      position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
-      object-position:center 90%;
+      position:absolute; inset:0; width:100%; height:100%;
+      object-fit:cover; object-position:center 72%;
+      filter: brightness(1.18) contrast(1.12) saturate(1.18);
+      transform: translateZ(0);
+      transition: filter .35s cubic-bezier(.22,.61,.36,1), transform .6s ease;
     }
-    .hero .overlay-dark{display:none !important;} /* remove película */
+    .hero::after{
+      content:""; position:absolute; inset:0;
+      background:linear-gradient(to top, rgba(0,0,0,.36) 0%, rgba(0,0,0,.18) 38%, rgba(0,0,0,0) 68%);
+      pointer-events:none;
+    }
+    @media (hover:hover){
+      .hero:hover .cover{
+        filter: brightness(1.22) contrast(1.14) saturate(1.22);
+        transform: scale(1.012);
+      }
+    }
     .hero-content{
       position:relative; z-index:2; text-align:center; padding:1rem;
       text-shadow:0 2px 10px rgba(0,0,0,.35);
@@ -59,11 +71,10 @@
 
     /* ===== SEÇÕES ===== */
     .section{ padding:2.4rem clamp(12px,2vw,32px); }
-    .section.alt{ background:linear-gradient(180deg, var(--warm-50), var(--warm-25)); } /* igual às internas */
+    .section.alt{ background:linear-gradient(180deg, var(--warm-50), var(--warm-25)); }
     .section .intro{ max-width:1100px; margin:0 auto; }
     .section .intro h2{ color:var(--green); margin:0 0 .5rem 0; }
     .section .intro p{ color:var(--text); margin:.4rem 0; }
-    /* garante respiro entre a foto e os cards */
     .hero + .section{ padding-top:2.6rem; }
 
     /* ===== CARDS ===== */
@@ -81,11 +92,11 @@
     @media (max-width:1024px){ .cards{ grid-template-columns:repeat(2,minmax(220px,1fr)); } }
     @media (max-width:640px){ .cards{ grid-template-columns:1fr; } }
 
-    /* ===== BOTÃO AZUL ===== */
+    /* ===== BOTÃO ===== */
     .btn-blue{ display:inline-block; background:var(--brand); color:#fff; text-decoration:none; padding:.9rem 1.2rem; border-radius:12px; font-weight:800; }
     .btn-blue:hover{ background:var(--brand-hover); }
 
-    /* ===== RODAPÉ (suave) ===== */
+    /* ===== RODAPÉ ===== */
     footer{ background:var(--terracotta-soft); color:#1e4e3d; }
     .footer-inner.footer-home{max-width:1200px; margin:0 auto; display:flex; gap:1rem; align-items:stretch; padding:1rem;}
     .footer-col{flex:1 1 0}
@@ -101,7 +112,7 @@
   </style>
 </head>
 <body class="site">
-  <!-- ===== HEADER ===== -->
+  <!-- HEADER -->
   <header class="header">
     <div class="header-inner">
       <div class="brand">
@@ -120,18 +131,37 @@
     </div>
   </header>
 
-  <!-- ===== CAPA ===== -->
+  <!-- CAPA -->
   <main id="main">
     <section class="hero">
-      <img class="cover" src="img/cover-plain2.jpg" alt="Laurent Hoessen" fetchpriority="high" loading="eager" decoding="async">
-      <!-- overlay removido -->
+      <picture>
+        <source type="image/avif"
+          srcset="img/cover-plain2-768.avif 768w,
+                  img/cover-plain2-1280.avif 1280w,
+                  img/cover-plain2-1920.avif 1920w,
+                  img/cover-plain2-2560.avif 2560w" sizes="100vw">
+        <source type="image/webp"
+          srcset="img/cover-plain2-768.webp 768w,
+                  img/cover-plain2-1280.webp 1280w,
+                  img/cover-plain2-1920.webp 1920w,
+                  img/cover-plain2-2560.webp 2560w" sizes="100vw">
+        <img class="cover"
+          src="img/cover-plain2.jpg"
+          srcset="img/cover-plain2-768.jpg 768w,
+                  img/cover-plain2-1280.jpg 1280w,
+                  img/cover-plain2-1920.jpg 1920w,
+                  img/cover-plain2-2560.jpg 2560w"
+          sizes="100vw"
+          alt="Laurent Hoessen"
+          fetchpriority="high" loading="eager" decoding="async">
+      </picture>
       <div class="hero-content">
         <h1>Laurent Hoessen</h1>
         <p>Gestion immobilière · Syndic BILH – DUHO</p>
       </div>
     </section>
 
-    <!-- ===== BLOCO 1 – Types de gestion (fundo suave) ===== -->
+    <!-- BLOCO 1 -->
     <section class="section alt">
       <div class="intro">
         <h2>Types de gestion</h2>
@@ -145,7 +175,7 @@
       </div>
     </section>
 
-    <!-- ===== BLOCO 2 – Gestion ===== -->
+    <!-- BLOCO 2 -->
     <section class="section">
       <div class="intro">
         <h2>Gestion</h2>
@@ -163,7 +193,7 @@
     </section>
   </main>
 
-  <!-- ===== RODAPÉ (home) ===== -->
+  <!-- RODAPÉ -->
   <footer>
     <div class="footer-inner footer-home">
       <div class="footer-col footer-info">
@@ -175,36 +205,12 @@
         <p><strong>Nº d’entreprise&nbsp;:</strong> BE0462920325</p>
       </div>
       <div class="footer-col footer-map">
-        <iframe
-          title="Immo Hoessen – Carte"
-          src="https://www.google.com/maps?q=Avenue%20Heydenberg%2014,%201200%20Bruxelles&output=embed"
-          loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
+        <iframe title="Immo Hoessen – Carte" src="https://www.google.com/maps?q=Avenue%20Heydenberg%2014,%201200%20Bruxelles&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
     <div class="footer-legal">
       <a href="mentions.html">Mentions légales</a>
     </div>
   </footer>
-
-  <!-- SEO LocalBusiness -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"LocalBusiness",
-    "name":"Immo Hoessen",
-    "image":"https://fabivilmen.github.io/immohoessen-site-v2/img/logo.svg",
-    "url":"https://fabivilmen.github.io/immohoessen-site-v2/",
-    "telephone":"+32 2 772 51 75",
-    "address":{
-      "@type":"PostalAddress",
-      "streetAddress":"Avenue Heydenberg 14",
-      "addressLocality":"Bruxelles",
-      "postalCode":"1200",
-      "addressCountry":"BE"
-    },
-    "openingHours":"Mo-Fr 09:00-13:00"
-  }
-  </script>
 </body>
 </html>
