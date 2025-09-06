@@ -188,4 +188,66 @@ body.site{ background: var(--bg) !important; color:var(--text); }
 }
 .site-footer a{ color:#fff; text-decoration:underline; text-underline-offset:2px; }
 .site-footer a:hover{ opacity:.85; }
+/* ====== CAPA: tirar dourado/overlay e deixar a foto viva ====== */
+/* Remove qualquer película/gradiente na capa */
+.hero, .cover, .hero-header, .cover-hero, .site-hero{
+  position: relative;
+  background-blend-mode: normal !important;
+  background-image: var(--hero-bg, none) !important; /* mantém tua imagem, sem camada por cima */
+  filter: none !important;
+}
+
+/* mata overlays em ::before/::after */
+.hero::before, .cover::before, .hero-header::before, .cover-hero::before, .site-hero::before,
+.hero::after,  .cover::after,  .hero-header::after,  .cover-hero::after,  .site-hero::after{
+  content: none !important;
+  background: none !important;
+  opacity: 0 !important;
+  mix-blend-mode: normal !important;
+}
+
+/* ====== Enquadramento: mostrar o prédio completo e o chão ====== */
+/* Se tua capa usa background-image em CSS */
+.hero, .cover, .hero-header, .cover-hero, .site-hero{
+  /* mostra 100% da foto (sem cortar) e ancora no chão */
+  background-repeat: no-repeat !important;
+  background-size: contain !important;      /* mostra o prédio inteiro */
+  background-position: center bottom !important; /* deixa o chão visível */
+  background-color: #fff;                   /* cor atrás das “bordas” se sobrar espaço */
+  min-height: min(88vh, 820px);             /* altura confortável */
+  padding-top: 6vh; padding-bottom: 6vh;    /* respiro para o título */
+}
+
+/* Se tua capa usa <img> dentro (cobrimos os dois casos) */
+.hero img, .cover img, .hero-header img, .cover-hero img, .site-hero img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit: contain;               /* mostra a foto inteira */
+  object-position: center bottom;    /* ancora no chão */
+  filter: saturate(1.08) contrast(1.06); /* deixa a imagem mais “viva”, sem exagero */
+  mix-blend-mode: normal !important;
+}
+
+/* Texto da capa legível, sem tinta dourada */
+.hero h1, .cover h1, .hero h2, .cover h2{
+  text-shadow: 0 2px 6px rgba(0,0,0,.28);
+  color: #0f3d2e;      /* verde institucional */
+}
+@media (max-width: 768px){
+  .hero, .cover, .hero-header, .cover-hero, .site-hero{
+    min-height: 72vh;
+    padding-top: 5vh; padding-bottom: 5vh;
+  }
+}
+
+/* ====== (opcional) usar uma capa específica sem editar HTML ======
+   Se quiser trocar a imagem da capa por uma versão sem dourado,
+   basta definir a variável --hero-bg na página, por exemplo:
+
+   :root { --hero-bg: url("img/cover-sem-dourado.jpg"); }
+
+   Se já usa background-image diretamente na classe, não precisa disso.
+*/
+
 
