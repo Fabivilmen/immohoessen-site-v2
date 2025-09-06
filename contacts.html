@@ -1,178 +1,79 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Contacts – Immo Hoessen</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    /* ===== URGENCE (banner no topo) ===== */
-    .urg-box{
-      max-width:1100px; margin:1rem auto 0 auto;
-      background:#fff; border:1px solid rgba(0,0,0,.08);
-      border-radius:18px; box-shadow:0 2px 14px rgba(0,0,0,.08);
-      padding:1.2rem; text-align:center;
-      transition: transform .3s ease, box-shadow .3s ease;
-    }
-    .urg-box:hover{ transform: translateY(-3px); box-shadow:0 4px 18px rgba(0,0,0,.12);}
-    .urg-badge{
-      display:inline-block; margin-bottom:.4rem;
-      font-weight:700; letter-spacing:.3px;
-      background:#fff4f4; color:#8a1f16; border:1px solid #e7b0ac;
-      padding:.2rem .6rem; border-radius:999px; font-size:.9rem;
-    }
-    .urg-hours{ color:var(--muted); margin:.3rem 0 .6rem; }
-    .urg-buttons{ display:flex; gap:.6rem; justify-content:center; flex-wrap:wrap; }
-    .btn-call{
-      display:inline-block; padding:.75rem 1.05rem; border-radius:14px; font-weight:700;
-      box-shadow:var(--shadow); text-decoration:none; line-height:1;
-      transition: background .25s ease, transform .25s ease;
-    }
-    .btn-call--primary{ background:var(--blue-600); color:#fff; }
-    .btn-call--primary:hover{ background:#003b8a; transform:scale(1.05);}
-    .btn-call--alt{ background:#0f3d2e; color:#fff; }
-    .btn-call--alt:hover{ background:#0c3226; transform:scale(1.05);}
-
-    /* ===== Grid dos contatos (3×2) + Facturation solo ===== */
-    .contacts-grid{
-      display:grid; grid-template-columns:repeat(3, minmax(240px,1fr));
-      gap:1rem; margin-block:1.5rem 2rem;
-    }
-    .contact-card{
-      background:#fff; border:1px solid rgba(0,0,0,.08);
-      border-radius:18px; padding:1rem; box-shadow:0 2px 14px rgba(0,0,0,.07);
-      transition: transform .25s ease, box-shadow .25s ease;
-      opacity:0; transform:translateY(15px);
-    }
-    .contact-card.in{opacity:1; transform:none;}
-    .contact-card:hover{ transform: translateY(-4px); box-shadow:0 6px 20px rgba(0,0,0,.12); }
-    .contact-card h3{ margin:.1rem 0 .3rem; }
-    .contact-card p{ margin:.2rem 0; }
-    .contact-card--solo{
-      grid-column:1 / -1; max-width:520px; justify-self:center;
-      text-align:center;
-    }
-
-    /* Rodapé minimal */
-    .footer-min{
-      max-width:1100px; margin:0 auto; padding:1rem;
-      display:flex; justify-content:flex-end; color:var(--muted);
-      border-top:1px solid rgba(0,0,0,.06);
-    }
-
-    /* Responsivo */
-    @media (max-width: 900px){
-      .contacts-grid{ grid-template-columns:repeat(2, minmax(240px,1fr)); }
-    }
-    @media (max-width: 640px){
-      .contacts-grid{ grid-template-columns:1fr; }
-      .contact-card--solo{ max-width:100%; }
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contacts - Syndic Laurent Hoessen</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body class="site">
-  <header class="header">
-    <div class="header-inner">
-      <div class="brand">
-        <img src="img/logo.svg" alt="Immo Hoessen">
-        <span class="brand-name">Immo Hoessen</span>
-      </div>
-      <nav class="nav">
-        <a href="index.html">Accueil</a>
-        <a href="types.html">Types de gestion</a>
-        <a href="gestion.html">Gestion</a>
-        <a href="portail.html">Portail</a>
-        <a class="active" href="contacts.html">Contacts</a>
-        <a href="apropos.html">À propos</a>
-        <a href="offre.html">Offre</a>
-      </nav>
-    </div>
-  </header>
+<body>
+  <!-- Menu padrão -->
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="types.html">Types de gestion</a>
+    <a href="gestion.html">Gestion</a>
+    <a href="contacts.html">Contact</a>
+    <a href="portail.html">Portail</a>
+    <a href="apropos.html">À propos</a>
+  </nav>
 
-  <main class="container pb-6">
-    <h1>Contacts</h1>
-
-    <!-- URGENCE dentro da aba Contacts -->
-    <div class="urg-box" role="region" aria-labelledby="urgence-heading">
-      <div class="urg-badge">Urgence</div>
-      <h2 id="urgence-heading" style="margin:.2rem 0 .4rem 0;">En dehors des heures du bureau (9h–13h)</h2>
-      <p class="urg-hours">Pour toute urgence, contactez :</p>
-      <div class="urg-buttons">
-        <a class="btn-call btn-call--primary" href="tel:+32495261683" aria-label="Appeler 0495 26 16 83">📞 0495&nbsp;26&nbsp;16&nbsp;83</a>
-        <a class="btn-call btn-call--alt" href="tel:+32495543808" aria-label="Appeler 0495 54 38 08">📞 0495&nbsp;54&nbsp;38&nbsp;08</a>
-      </div>
-    </div>
-
-    <!-- Grade 3×2 de contatos -->
+  <section class="contacts-section">
     <div class="contacts-grid">
-      <!-- Linha 1 -->
+      <!-- 1 -->
       <article class="contact-card">
         <h3>Laurent Hoessen</h3>
-        <p>Gestionnaire — IPI 150260 (titulaire)</p>
-        <p><a href="mailto:laurent@immohoessen.be">laurent@immohoessen.be</a></p>
+        <p>Gestionnaire IPI 150260 titulaire</p>
+        <a href="mailto:laurent@immohoessen.be">laurent@immohoessen.be</a>
       </article>
 
+      <!-- 2 -->
       <article class="contact-card">
         <h3>André Hoessen</h3>
         <p>Gestionnaire général et RH</p>
-        <p><a href="mailto:andre@immohoessen.be">andre@immohoessen.be</a></p>
+        <a href="mailto:andre@immohoessen.be">andre@immohoessen.be</a>
       </article>
 
+      <!-- 3 -->
       <article class="contact-card">
         <h3>Patricia Boniface</h3>
         <p>Gestionnaire collaboratrice</p>
-        <p><a href="mailto:gestion@immohoessen.be">gestion@immohoessen.be</a></p>
+        <a href="mailto:gestion@immohoessen.be">gestion@immohoessen.be</a>
       </article>
 
-      <!-- Linha 2 -->
+      <!-- 4 -->
       <article class="contact-card">
         <h3>Viviane Ledieu</h3>
         <p>Gestionnaire de sinistres</p>
-        <p><a href="mailto:admin@immohoessen.be">admin@immohoessen.be</a></p>
+        <a href="mailto:admin@immohoessen.be">admin@immohoessen.be</a>
       </article>
 
+      <!-- 5 -->
       <article class="contact-card">
         <h3>Fabiane Menezes</h3>
-        <p>Assistante de gestion</p>
-        <p><a href="mailto:syndic@immohoessen.be">syndic@immohoessen.be</a></p>
+        <p>Assistente de Gestion</p>
+        <a href="mailto:syndic@immohoessen.be">syndic@immohoessen.be</a>
       </article>
 
+      <!-- 6 -->
       <article class="contact-card">
         <h3>Mikail Uçarer</h3>
-        <p>Stagiaire (en formation IPI)</p>
-        <p><a href="mailto:gestionnaire@immohoessen.be">gestionnaire@immohoessen.be</a></p>
+        <p>Stagiaire (En formation IPI)</p>
+        <a href="mailto:gestionnaire@immohoessen.be">gestionnaire@immohoessen.be</a>
       </article>
 
-      <!-- Facturation -->
-      <article class="contact-card contact-card--solo">
-        <h3>Facturation</h3>
-        <p>Envoi et suivi des factures — 
-          <a href="mailto:factures@immohoessen.be">factures@immohoessen.be</a>
-        </p>
+      <!-- 7: Factures -->
+      <article class="contact-card contact-card-wide">
+        <h3>Factures</h3>
+        <a href="mailto:factures@immohoessen.be">factures@immohoessen.be</a>
       </article>
     </div>
-  </main>
+  </section>
 
-  <footer>
-    <div class="footer-min">
-      © 2025 Immo Hoessen · <a href="mentions.html">Mentions légales</a>
+  <!-- Rodapé simples, só com menções legais e IPI -->
+  <footer class="footer-home">
+    <div class="footer-legal">
+      © 2025 Laurent Hoessen — IPI 150260 · <a class="legal-link" href="mentions-legales.html">Mentions légales</a>
     </div>
   </footer>
-
-  <!-- JS p/ animações ao rolar -->
-  <script>
-    (function(){
-      const els = document.querySelectorAll('.contact-card');
-      const io = new IntersectionObserver((entries)=>{
-        entries.forEach(e=>{
-          if(e.isIntersecting){
-            e.target.classList.add('in');
-            io.unobserve(e.target);
-          }
-        });
-      }, {threshold:.12});
-      els.forEach(el=>io.observe(el));
-    })();
-  </script>
 </body>
 </html>
