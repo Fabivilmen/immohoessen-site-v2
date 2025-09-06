@@ -1,74 +1,185 @@
+/* --------------------------
+   RESET BÁSICO
+--------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  line-height: 1.6;
+  background: var(--muted);
+  color: var(--text);
+}
+
+/* --------------------------
+   VARIÁVEIS DE CORES
+--------------------------- */
 :root {
-  --primary: #0f3d2e;       /* títulos, menu */
-  --secondary: #1e4e3d;     /* texto normal */
-  --muted: #f5f5f5;         /* fundos leves */
-  --accent: #1e6f5c;        /* links, botões */
-  --highlight: #c9a227;     /* hover, detalhes */
+  --primary: #0f3d2e;   /* verde institucional */
+  --text:    #253530;   /* texto principal */
+  --muted:   #f7f8f8;   /* fundo claro */
+  --link:    #1e6f5c;   /* botões / links */
+  --link-h:  #145245;   /* hover de botões/links */
+  --border:  #e2e6e4;   /* linhas discretas */
 }
 
-body {
-  color: var(--secondary);
-  background-color: var(--muted);
-}
-
+/* --------------------------
+   TIPOGRAFIA
+--------------------------- */
 h1, h2, h3, h4, h5 {
   color: var(--primary);
+  font-weight: 600;
+  margin-bottom: .75rem;
 }
 
-a, .btn {
-  color: #fff;
-  background-color: var(--accent);
+p {
+  margin-bottom: 1rem;
+  color: var(--text);
+}
+
+/* --------------------------
+   LINKS E BOTÕES
+--------------------------- */
+a {
+  color: var(--link);
   text-decoration: none;
-  transition: background 0.3s ease;
+  transition: color 0.2s ease;
 }
 
-a:hover, .btn:hover {
-  background-color: var(--highlight);
+a:hover {
+  color: var(--link-h);
 }
 
-footer {
-  background-color: var(--primary);
+.btn, .button, button {
+  background: var(--link);
+  color: #fff;
+  border: 1px solid var(--link);
+  padding: .75rem 1.25rem;
+  border-radius: .5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: transform .06s ease, background .2s ease;
+}
+
+.btn:hover, .button:hover, button:hover {
+  background: var(--link-h);
+  transform: translateY(-1px);
+}
+
+/* --------------------------
+   HEADER & MENU
+--------------------------- */
+header, .site-header {
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  padding: .75rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.25rem;
+}
+
+nav a {
+  font-weight: 500;
+}
+
+/* --------------------------
+   HERO / CAPA
+--------------------------- */
+.hero, .cover, .cover-hero, .site-hero {
+  background: url("img/cover-plain2.jpg") center/cover no-repeat !important;
+  min-height: 75vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  position: relative;
+}
+
+/* Remover overlays/películas */
+.hero::before,
+.cover::before,
+.hero-header::before,
+.cover-hero::before,
+.site-hero::before {
+  content: none !important;
+  background: none !important;
+  opacity: 0 !important;
+}
+
+/* Texto da capa */
+.hero h1, .cover h1 {
+  font-size: 2.5rem;
+  margin-bottom: .5rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+}
+
+.hero h2, .cover h2 {
+  font-size: 1.25rem;
+  font-weight: 400;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* --------------------------
+   SEÇÕES / CARDS
+--------------------------- */
+.section, .card, .bloc {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: .75rem;
+  padding: 1.5rem;
+  margin: 1rem auto;
+  max-width: 1200px;
+}
+
+.card h3 {
+  margin-bottom: .5rem;
+}
+
+/* --------------------------
+   FOOTER
+--------------------------- */
+footer, .site-footer {
+  background: var(--primary);
+  color: #fff;
+  padding: 1.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+footer a {
   color: #fff;
 }
 
-/* ===== HERO — foto viva, sem overlay/película ===== */
-.hero .overlay{
-  display: none !important;          /* garante que nada escureça sua foto */
-  background: none !important;
+footer a:hover {
+  text-decoration: underline;
 }
 
-.hero .cover{
-  /* realces sutis — versão aprovada por você */
-  filter: brightness(1.2) contrast(1.1) saturate(1.2);
-  transition: filter .35s var(--e1);
-  will-change: filter;
-  object-fit: cover;
-}
-
-/* efeito leve ao passar o mouse (só desktop com hover) */
-@media (hover: hover){
-  .hero:hover .cover{
-    filter: brightness(1.23) contrast(1.12) saturate(1.25);
+/* --------------------------
+   RESPONSIVIDADE
+--------------------------- */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    gap: .75rem;
   }
-}
 
-/* acessibilidade: usuários que preferem menos animação não verão transição */
-@media (prefers-reduced-motion: reduce){
-  .hero .cover{ transition: none; }
-}
+  .hero h1 {
+    font-size: 2rem;
+  }
 
-/* ===== HERO — fallback se usar background direto =====
-   (apenas se sua hero não tiver <img class="cover">) */
-.hero{
-  min-height: 70dvh;
-}
-@media (min-width: 900px){ .hero{ min-height: 78dvh; } }
-@media (min-width: 1600px){ .hero{ min-height: 86vh; } }
-
-.hero{
-  background-position: center;
-  background-size: cover;
-}
-.hero.bg-cover{
-  filter: brightness(1.2) contrast(1.1) saturate(1.2);
+  .hero h2 {
+    font-size: 1rem;
+  }
 }
