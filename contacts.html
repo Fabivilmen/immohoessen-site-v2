@@ -6,99 +6,119 @@
   <title>Contacts – Immo Hoessen</title>
   <link rel="stylesheet" href="style.css">
   <style>
+    /* ===== Paleta unificada (igual às demais abas) ===== */
     :root{
-      --green-dark:#0f3d2e; --green-muted:#557a68; --gold:#e4b100; --terracotta:#c86b4a;
-      --warm-25:#fff9f3; --warm-50:#fff3e5; --warm-100:#ffe7c7;
+      --primary:#0f3d2e;      /* verde institucional */
+      --text:#253530;         /* texto principal */
+      --muted:#557a68;        /* texto secundário */
+      --bg:#ffffff;           /* fundo geral */
+      --surface:#ffffff;      /* cartões/seções */
+      --line:#e6ebe9;         /* divisórias */
+      --cta:#1a5cff;          /* azul CTA */
+      --cta-h:#003b8a;        /* hover CTA */
+      --badge-bg:#eef6f3;     /* selo suave verde-claro */
+      --badge-border:#d3e6de;
+      --shadow:0 8px 22px rgba(0,0,0,.06);
+      --radius:18px;
     }
-    body.site{ background: radial-gradient(120% 120% at 50% -10%, var(--warm-25) 0%, #ffffff 45%); }
 
-    /* Menu padronizado + CTA azul */
-    .header{position:sticky; top:0; z-index:50; background:#fff; border-bottom:1px solid #eee;}
-    .header-inner{ border-image: linear-gradient(90deg, var(--gold), var(--terracotta)) 1; border-bottom:3px solid transparent;
-      max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:.8rem 1rem; }
+    /* Fundo limpo (remove radial quente) */
+    body.site{ background: var(--bg); color: var(--text); }
+
+    /* ===== Header padronizado (sem gradiente) ===== */
+    .header{position:sticky; top:0; z-index:50; background:#fff; border-bottom:1px solid var(--line);}
+    .header-inner{
+      /* removido border-image gradiente */
+      border:none;
+      max-width:1200px; margin:0 auto;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:.8rem 1rem;
+    }
     .brand{display:flex; align-items:center; gap:.6rem}
     .brand img{height:32px}
-    .brand-name{font-weight:800; color:var(--green-dark)}
+    .brand-name{font-weight:800; color:var(--primary)}
     .nav{display:flex; gap:.4rem; flex-wrap:wrap; align-items:center}
-    .nav a{ position:relative; text-decoration:none; display:inline-block; padding:.55rem .8rem; border-radius:.6rem; color:#1e4e3d; font-weight:600; }
-    .nav a::after{ content:""; position:absolute; left:0; bottom:-6px; height:2px; width:0; background:linear-gradient(90deg, var(--gold), var(--terracotta)); transition:width .2s ease; }
+    .nav a{
+      position:relative; text-decoration:none; display:inline-block;
+      padding:.55rem .8rem; border-radius:.6rem; color:var(--primary); font-weight:600;
+    }
+    /* sublinhado coerente (sem gradiente) */
+    .nav a::after{
+      content:""; position:absolute; left:0; bottom:-6px; height:2px; width:0;
+      background:var(--primary); transition:width .2s ease;
+    }
     .nav a:hover::after{ width:100%; }
-    .nav a.active{ color:#fff; background:#0f3d2e; }
-    .nav .cta-offre{ background:#1a5cff; color:#fff; border:1px solid transparent; padding:.6rem 1rem; border-radius:999px; font-weight:800; }
-    .nav .cta-offre:hover{ background:#003b8a; }
+    .nav a.active{ color:#fff; background:var(--primary); }
+    .nav .cta-offre{ background:var(--cta); color:#fff; border:1px solid transparent; padding:.6rem 1rem; border-radius:999px; font-weight:800; }
+    .nav .cta-offre:hover{ background:var(--cta-h); }
 
-    /* Seções */
+    /* ===== Seções (remove gradientes quentes) ===== */
     .section{ padding:2.2rem clamp(12px,2vw,32px); }
     .section .contacts-wrap{ max-width:1100px; margin:0 auto; }
-    .section.alt{ background: linear-gradient(180deg, var(--warm-50), var(--warm-25)); }
-    .section.alt-strong{ background: linear-gradient(180deg, var(--warm-100), var(--warm-50)); }
+    .section.alt{ background: var(--surface); }
+    .section.alt-strong{ background: var(--surface); }
 
-    /* Bloco Telefones */
+    /* ===== Bloco Telefones ===== */
     .urg-box{
-      background:#fff; border:1px solid rgba(0,0,0,.08);
-      border-radius:18px; box-shadow:0 2px 14px rgba(0,0,0,.08);
+      background:#fff; border:1px solid var(--line);
+      border-radius:var(--radius); box-shadow:var(--shadow);
       padding:1.2rem; text-align:center;
       transition: transform .3s ease, box-shadow .3s ease;
       margin-top:.75rem;
     }
-    .urg-box:hover{ transform: translateY(-3px); box-shadow:0 4px 18px rgba(0,0,0,.12); }
+    .urg-box:hover{ transform: translateY(-3px); box-shadow:0 10px 26px rgba(0,0,0,.10); }
     .urg-badge{
       display:inline-block; margin-bottom:.4rem; font-weight:700; letter-spacing:.3px;
-      background:#fff4f4; color:#8a1f16; border:1px solid #e7b0ac;
+      background:var(--badge-bg); color:var(--primary); border:1px solid var(--badge-border);
       padding:.2rem .6rem; border-radius:999px; font-size:.9rem;
     }
-    .urg-hours{ color:var(--green-muted); margin:.3rem 0 .6rem; }
+    .urg-hours{ color:var(--muted); margin:.3rem 0 .6rem; }
     .urg-buttons{ display:flex; gap:.6rem; justify-content:center; flex-wrap:wrap; }
     .btn-call{
       display:inline-block; padding:.75rem 1.05rem; border-radius:14px; font-weight:700;
       text-decoration:none; line-height:1; transition: background .25s ease, transform .25s ease, box-shadow .25s ease;
       box-shadow:0 8px 20px rgba(26,92,255,.18);
-      background:#1a5cff; color:#fff;    /* todos AZUIS */
+      background:var(--cta); color:#fff;    /* azul consistente */
     }
-    .btn-call:hover{ background:#003b8a; transform:scale(1.05); }
+    .btn-call:hover{ background:var(--cta-h); transform:scale(1.05); }
 
-    .divider{ height:0; border-top:1px dashed rgba(0,0,0,.15); margin:1rem auto; max-width:520px; }
+    .divider{ height:0; border-top:1px dashed var(--line); margin:1rem auto; max-width:520px; }
 
-    /* Cards equipe */
+    /* ===== Cards equipe (sem terracota/dourado) ===== */
     .contacts-grid{ display:grid; grid-template-columns:repeat(3, minmax(240px,1fr)); gap:1rem; margin-block:1.25rem 0; }
     .contact-card{
-      background:#fff; border:1px solid rgba(0,0,0,.08);
-      border-left:6px solid var(--terracotta);
-      border-radius:18px; padding:1rem;
+      background:#fff; border:1px solid var(--line);
+      border-left:6px solid var(--primary);  /* verde institucional */
+      border-radius:var(--radius); padding:1rem;
       box-shadow:0 2px 14px rgba(0,0,0,.07);
       transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
       opacity:0; transform:translateY(15px);
     }
     .contact-card.in{ opacity:1; transform:none; }
-    .contact-card:hover{ transform: translateY(-4px); border-left-color: var(--gold); box-shadow:0 12px 28px rgba(228,177,0,.22); }
-    .contact-card h3{ margin:.1rem 0 .3rem; color:var(--green-dark); }
-    .contact-card p{ margin:.2rem 0; color:var(--green-muted); }
+    .contact-card:hover{
+      transform: translateY(-4px);
+      border-left-color:#0c3125; /* variação do primary */
+      box-shadow:0 12px 28px rgba(0,0,0,.12);
+    }
+    .contact-card h3{ margin:.1rem 0 .3rem; color:var(--primary); }
+    .contact-card p{ margin:.2rem 0; color:var(--muted); }
     .contact-card--solo{ grid-column:1 / -1; max-width:520px; justify-self:center; text-align:center; }
 
-    /* ==== Footer padronizado ==== */
+    /* ===== Footer padronizado (verde institucional) ===== */
     .site-footer {
-      background: #fff6ee;
-      color: #1e4e3d;
+      background: var(--primary);
+      color: #fff;
       text-align: center;
       padding: 18px 12px 22px;
       margin-top: clamp(32px, 6vh, 80px);
       font-size: 0.95rem;
       line-height: 1.5;
-      border-top: 1px solid rgba(0,0,0,.08);
+      border-top: 1px solid transparent;
     }
-    .site-footer__slogan {
-      margin: 0 0 6px 0;
-      font-style: italic;
-    }
-    .site-footer__legal {
-      margin: 0;
-    }
-    .site-footer a {
-      color: inherit;
-      text-decoration: underline;
-      text-underline-offset: 2px;
-    }
-    .site-footer a:hover { opacity:.8; }
+    .site-footer__slogan { margin: 0 0 6px 0; font-style: italic; opacity:.95; }
+    .site-footer__legal { margin: 0; }
+    .site-footer a { color: #fff; text-decoration: underline; text-underline-offset: 2px; }
+    .site-footer a:hover { opacity:.85; }
 
     @media (max-width: 900px){ .contacts-grid{ grid-template-columns:repeat(2, minmax(240px,1fr)); } }
     @media (max-width: 640px){
