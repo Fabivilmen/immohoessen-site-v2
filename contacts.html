@@ -11,23 +11,27 @@
       --primary:#0f3d2e;      /* verde institucional */
       --text:#253530;         /* texto principal */
       --muted:#557a68;        /* texto secundário */
-      --bg:#ffffff;           /* fundo geral */
+      --bg:#fff7f2;           /* salmão claro */
       --surface:#ffffff;      /* cartões/seções */
       --line:#e6ebe9;         /* divisórias */
       --cta:#1a5cff;          /* azul CTA */
       --cta-h:#003b8a;        /* hover CTA */
-      --badge-bg:#eef6f3;     /* selo verde claro */
-      --badge-border:#d3e6de;
+      --badge-bg:#ffeede;     /* selo suave salmão */
+      --badge-border:#f8d8c2;
       --shadow:0 8px 22px rgba(0,0,0,.06);
       --radius:18px;
     }
 
-    body.site{ background:var(--bg); color:var(--text); }
+    /* Fundo salmão (igual às outras abas) */
+    body.site{
+      background: radial-gradient(120% 120% at 50% -10%, var(--bg) 0%, #ffffff 60%);
+      color: var(--text);
+    }
 
     /* ===== Header ===== */
     .header{position:sticky; top:0; z-index:50; background:#fff; border-bottom:1px solid var(--line);}
     .header-inner{
-      border:none; /* remove gradiente */
+      border:none;
       max-width:1200px; margin:0 auto;
       display:flex; align-items:center; justify-content:space-between;
       padding:.8rem 1rem;
@@ -52,7 +56,7 @@
     /* ===== Seções ===== */
     .section{ padding:2.2rem clamp(12px,2vw,32px); }
     .section .contacts-wrap{ max-width:1100px; margin:0 auto; }
-    .section.alt, .section.alt-strong{ background: var(--surface); }
+    .section.alt, .section.alt-strong{ background: transparent; }
 
     /* ===== Bloco Telefones ===== */
     .urg-box{
