@@ -6,101 +6,64 @@
   <title>Contacts – Immo Hoessen</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    :root{
-      --green-dark:#0f3d2e; --green-muted:#557a68; --gold:#e4b100; --terracotta:#c86b4a;
-      --warm-25:#fff9f3; --warm-50:#fff3e5; --warm-100:#ffe7c7;
-    }
-    body.site{ background: radial-gradient(120% 120% at 50% -10%, var(--warm-25) 0%, #ffffff 45%); }
-
-    /* Menu padronizado + CTA azul */
-    .header{position:sticky; top:0; z-index:50; background:#fff; border-bottom:1px solid #eee;}
-    .header-inner{ border-image: linear-gradient(90deg, var(--gold), var(--terracotta)) 1; border-bottom:3px solid transparent;
-      max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:.8rem 1rem; }
-    .brand{display:flex; align-items:center; gap:.6rem}
-    .brand img{height:32px}
-    .brand-name{font-weight:800; color:var(--green-dark)}
-    .nav{display:flex; gap:.4rem; flex-wrap:wrap; align-items:center}
-    .nav a{ position:relative; text-decoration:none; display:inline-block; padding:.55rem .8rem; border-radius:.6rem; color:#1e4e3d; font-weight:600; }
-    .nav a::after{ content:""; position:absolute; left:0; bottom:-6px; height:2px; width:0; background:linear-gradient(90deg, var(--gold), var(--terracotta)); transition:width .2s ease; }
-    .nav a:hover::after{ width:100%; }
-    .nav a.active{ color:#fff; background:#0f3d2e; }
-    .nav .cta-offre{ background:#1a5cff; color:#fff; border:1px solid transparent; padding:.6rem 1rem; border-radius:999px; font-weight:800; }
-    .nav .cta-offre:hover{ background:#003b8a; }
-
-    /* Seções */
-    .section{ padding:2.2rem clamp(12px,2vw,32px); }
-    .section .contacts-wrap{ max-width:1100px; margin:0 auto; }
-    .section.alt{ background: linear-gradient(180deg, var(--warm-50), var(--warm-25)); }
-    .section.alt-strong{ background: linear-gradient(180deg, var(--warm-100), var(--warm-50)); }
-
-    /* Bloco Telefones */
+    /* ===== URGENCE (banner no topo) ===== */
     .urg-box{
+      max-width:1100px; margin:1rem auto 0 auto;
       background:#fff; border:1px solid rgba(0,0,0,.08);
       border-radius:18px; box-shadow:0 2px 14px rgba(0,0,0,.08);
       padding:1.2rem; text-align:center;
       transition: transform .3s ease, box-shadow .3s ease;
-      margin-top:.75rem;
     }
-    .urg-box:hover{ transform: translateY(-3px); box-shadow:0 4px 18px rgba(0,0,0,.12); }
+    .urg-box:hover{ transform: translateY(-3px); box-shadow:0 4px 18px rgba(0,0,0,.12);}
     .urg-badge{
-      display:inline-block; margin-bottom:.4rem; font-weight:700; letter-spacing:.3px;
+      display:inline-block; margin-bottom:.4rem;
+      font-weight:700; letter-spacing:.3px;
       background:#fff4f4; color:#8a1f16; border:1px solid #e7b0ac;
       padding:.2rem .6rem; border-radius:999px; font-size:.9rem;
     }
-    .urg-hours{ color:var(--green-muted); margin:.3rem 0 .6rem; }
+    .urg-hours{ color:var(--muted); margin:.3rem 0 .6rem; }
     .urg-buttons{ display:flex; gap:.6rem; justify-content:center; flex-wrap:wrap; }
     .btn-call{
       display:inline-block; padding:.75rem 1.05rem; border-radius:14px; font-weight:700;
-      text-decoration:none; line-height:1; transition: background .25s ease, transform .25s ease, box-shadow .25s ease;
-      box-shadow:0 8px 20px rgba(26,92,255,.18);
-      background:#1a5cff; color:#fff;    /* todos AZUIS */
+      box-shadow:var(--shadow); text-decoration:none; line-height:1;
+      transition: background .25s ease, transform .25s ease;
     }
-    .btn-call:hover{ background:#003b8a; transform:scale(1.05); }
+    .btn-call--primary{ background:var(--blue-600); color:#fff; }
+    .btn-call--primary:hover{ background:#003b8a; transform:scale(1.05);}
+    .btn-call--alt{ background:#0f3d2e; color:#fff; }
+    .btn-call--alt:hover{ background:#0c3226; transform:scale(1.05);}
 
-    .divider{ height:0; border-top:1px dashed rgba(0,0,0,.15); margin:1rem auto; max-width:520px; }
-
-    /* Cards equipe */
-    .contacts-grid{ display:grid; grid-template-columns:repeat(3, minmax(240px,1fr)); gap:1rem; margin-block:1.25rem 0; }
+    /* ===== Grid dos contatos (3×2) + Facturation solo ===== */
+    .contacts-grid{
+      display:grid; grid-template-columns:repeat(3, minmax(240px,1fr));
+      gap:1rem; margin-block:1.5rem 2rem;
+    }
     .contact-card{
       background:#fff; border:1px solid rgba(0,0,0,.08);
-      border-left:6px solid var(--terracotta);
-      border-radius:18px; padding:1rem;
-      box-shadow:0 2px 14px rgba(0,0,0,.07);
-      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+      border-radius:18px; padding:1rem; box-shadow:0 2px 14px rgba(0,0,0,.07);
+      transition: transform .25s ease, box-shadow .25s ease;
       opacity:0; transform:translateY(15px);
     }
-    .contact-card.in{ opacity:1; transform:none; }
-    .contact-card:hover{ transform: translateY(-4px); border-left-color: var(--gold); box-shadow:0 12px 28px rgba(228,177,0,.22); }
-    .contact-card h3{ margin:.1rem 0 .3rem; color:var(--green-dark); }
-    .contact-card p{ margin:.2rem 0; color:var(--green-muted); }
-    .contact-card--solo{ grid-column:1 / -1; max-width:520px; justify-self:center; text-align:center; }
+    .contact-card.in{opacity:1; transform:none;}
+    .contact-card:hover{ transform: translateY(-4px); box-shadow:0 6px 20px rgba(0,0,0,.12); }
+    .contact-card h3{ margin:.1rem 0 .3rem; }
+    .contact-card p{ margin:.2rem 0; }
+    .contact-card--solo{
+      grid-column:1 / -1; max-width:520px; justify-self:center;
+      text-align:center;
+    }
 
-    /* ==== Footer padronizado ==== */
-    .site-footer {
-      background: #fff6ee;
-      color: #1e4e3d;
-      text-align: center;
-      padding: 18px 12px 22px;
-      margin-top: clamp(32px, 6vh, 80px);
-      font-size: 0.95rem;
-      line-height: 1.5;
-      border-top: 1px solid rgba(0,0,0,.08);
+    /* Rodapé minimal */
+    .footer-min{
+      max-width:1100px; margin:0 auto; padding:1rem;
+      display:flex; justify-content:flex-end; color:var(--muted);
+      border-top:1px solid rgba(0,0,0,.06);
     }
-    .site-footer__slogan {
-      margin: 0 0 6px 0;
-      font-style: italic;
-    }
-    .site-footer__legal {
-      margin: 0;
-    }
-    .site-footer a {
-      color: inherit;
-      text-decoration: underline;
-      text-underline-offset: 2px;
-    }
-    .site-footer a:hover { opacity:.8; }
 
-    @media (max-width: 900px){ .contacts-grid{ grid-template-columns:repeat(2, minmax(240px,1fr)); } }
+    /* Responsivo */
+    @media (max-width: 900px){
+      .contacts-grid{ grid-template-columns:repeat(2, minmax(240px,1fr)); }
+    }
     @media (max-width: 640px){
       .contacts-grid{ grid-template-columns:1fr; }
       .contact-card--solo{ max-width:100%; }
@@ -108,80 +71,96 @@
   </style>
 </head>
 <body class="site">
-  <!-- Header -->
   <header class="header">
     <div class="header-inner">
       <div class="brand">
         <img src="img/logo.svg" alt="Immo Hoessen">
         <span class="brand-name">Immo Hoessen</span>
       </div>
-      <nav class="nav" aria-label="Navigation principale">
+      <nav class="nav">
         <a href="index.html">Accueil</a>
         <a href="types.html">Types de gestion</a>
         <a href="gestion.html">Gestion</a>
         <a href="portail.html">Portail</a>
         <a class="active" href="contacts.html">Contacts</a>
         <a href="apropos.html">À propos</a>
-        <a href="offre.html" class="cta-offre">Demander une offre</a>
+        <a href="offre.html">Offre</a>
       </nav>
     </div>
   </header>
 
-  <main>
-    <!-- Telefones -->
-    <section class="section alt-strong">
-      <div class="contacts-wrap">
-        <h1>Contacts</h1>
+  <main class="container pb-6">
+    <h1>Contacts</h1>
 
-        <div class="urg-box" role="region" aria-labelledby="tel-heading">
-          <div class="urg-badge">Téléphones</div>
-
-          <!-- Escritório 9h–13h -->
-          <h2 id="tel-heading" style="margin:.2rem 0 .2rem 0;">Heures du bureau (9h–13h)</h2>
-          <div class="urg-buttons" style="margin-bottom:.4rem">
-            <a class="btn-call" href="tel:+3227725175" aria-label="Appeler 02 772 51 75">📞 02&nbsp;772&nbsp;51&nbsp;75</a>
-          </div>
-
-          <div class="divider" aria-hidden="true"></div>
-
-          <!-- Urgências -->
-          <h2 style="margin:.2rem 0 .4rem 0;">Urgence – en dehors des heures du bureau</h2>
-          <p class="urg-hours">En cas d’urgence, contactez :</p>
-          <div class="urg-buttons">
-            <a class="btn-call" href="tel:+32495261683" aria-label="Appeler 0495 26 16 83">📞 0495&nbsp;26&nbsp;16&nbsp;83</a>
-            <a class="btn-call" href="tel:+32495543808" aria-label="Appeler 0495 54 38 08">📞 0495&nbsp;54&nbsp;38&nbsp;08</a>
-          </div>
-        </div>
+    <!-- URGENCE dentro da aba Contacts -->
+    <div class="urg-box" role="region" aria-labelledby="urgence-heading">
+      <div class="urg-badge">Urgence</div>
+      <h2 id="urgence-heading" style="margin:.2rem 0 .4rem 0;">En dehors des heures du bureau (9h–13h)</h2>
+      <p class="urg-hours">Pour toute urgence, contactez :</p>
+      <div class="urg-buttons">
+        <a class="btn-call btn-call--primary" href="tel:+32495261683" aria-label="Appeler 0495 26 16 83">📞 0495&nbsp;26&nbsp;16&nbsp;83</a>
+        <a class="btn-call btn-call--alt" href="tel:+32495543808" aria-label="Appeler 0495 54 38 08">📞 0495&nbsp;54&nbsp;38&nbsp;08</a>
       </div>
-    </section>
+    </div>
 
-    <!-- Equipe -->
-    <section class="section alt">
-      <div class="contacts-wrap">
-        <div class="contacts-grid">
-          <article class="contact-card"><h3>Laurent Hoessen</h3><p>Gestionnaire — IPI 150260 (titulaire)</p><p><a href="mailto:laurent@immohoessen.be">laurent@immohoessen.be</a></p></article>
-          <article class="contact-card"><h3>André Hoessen</h3><p>Gestionnaire général et RH</p><p><a href="mailto:andre@immohoessen.be">andre@immohoessen.be</a></p></article>
-          <article class="contact-card"><h3>Patricia Boniface</h3><p>Gestionnaire de copropriété</p><p><a href="mailto:gestion@immohoessen.be">gestion@immohoessen.be</a></p></article>
-          <article class="contact-card"><h3>Viviane Ledieu</h3><p>Gestionnaire de sinistres</p><p><a href="mailto:admin@immohoessen.be">admin@immohoessen.be</a></p></article>
-          <article class="contact-card"><h3>Fabiane Menezes</h3><p>Assistante de gestion</p><p><a href="mailto:syndic@immohoessen.be">syndic@immohoessen.be</a></p></article>
-          <article class="contact-card"><h3>Mikail Uçarer</h3><p>Stagiaire (en formation IPI)</p><p><a href="mailto:gestionnaire@immohoessen.be">gestionnaire@immohoessen.be</a></p></article>
-          <article class="contact-card contact-card--solo">
-            <h3>Facturation</h3>
-            <p>Transmettez vos factures à — <a href="mailto:factures@immohoessen.be">factures@immohoessen.be</a></p>
-          </article>
-        </div>
-      </div>
-    </section>
+    <!-- Grade 3×2 de contatos -->
+    <div class="contacts-grid">
+      <!-- Linha 1 -->
+      <article class="contact-card">
+        <h3>Laurent Hoessen</h3>
+        <p>Gestionnaire — IPI 150260 (titulaire)</p>
+        <p><a href="mailto:laurent@immohoessen.be">laurent@immohoessen.be</a></p>
+      </article>
+
+      <article class="contact-card">
+        <h3>André Hoessen</h3>
+        <p>Gestionnaire général et RH</p>
+        <p><a href="mailto:andre@immohoessen.be">andre@immohoessen.be</a></p>
+      </article>
+
+      <article class="contact-card">
+        <h3>Patricia Boniface</h3>
+        <p>Gestionnaire collaboratrice</p>
+        <p><a href="mailto:gestion@immohoessen.be">gestion@immohoessen.be</a></p>
+      </article>
+
+      <!-- Linha 2 -->
+      <article class="contact-card">
+        <h3>Viviane Ledieu</h3>
+        <p>Gestionnaire de sinistres</p>
+        <p><a href="mailto:admin@immohoessen.be">admin@immohoessen.be</a></p>
+      </article>
+
+      <article class="contact-card">
+        <h3>Fabiane Menezes</h3>
+        <p>Assistante de gestion</p>
+        <p><a href="mailto:syndic@immohoessen.be">syndic@immohoessen.be</a></p>
+      </article>
+
+      <article class="contact-card">
+        <h3>Mikail Uçarer</h3>
+        <p>Stagiaire (en formation IPI)</p>
+        <p><a href="mailto:gestionnaire@immohoessen.be">gestionnaire@immohoessen.be</a></p>
+      </article>
+
+      <!-- Facturation -->
+      <article class="contact-card contact-card--solo">
+        <h3>Facturation</h3>
+        <p>Envoi et suivi des factures — 
+          <a href="mailto:factures@immohoessen.be">factures@immohoessen.be</a>
+        </p>
+      </article>
+    </div>
   </main>
 
-  <!-- Footer padronizado -->
-  <footer class="site-footer">
-    <p class="site-footer__slogan">« Immo Hoessen – Une gestion complète, de la comptabilité aux travaux. »</p>
-    <p class="site-footer__legal">© 2025 Immo Hoessen · <a href="mentions-legales.html">Mentions légales</a></p>
+  <footer>
+    <div class="footer-min">
+      © 2025 Immo Hoessen · <a href="mentions.html">Mentions légales</a>
+    </div>
   </footer>
 
+  <!-- JS p/ animações ao rolar -->
   <script>
-    // Efeito de entrada dos cards
     (function(){
       const els = document.querySelectorAll('.contact-card');
       const io = new IntersectionObserver((entries)=>{
