@@ -1,25 +1,27 @@
-/* ====== PALETA E BASE UNIFORME ====== */
+/* ====== PALETA E BASE ELEGANTE ====== */
 :root {
   --primary: #0f3d2e;
-  --text: #2a2f2e;
-  --bg: #f9fafb;
+  --text: #2c2f2e;
+  --bg: #f5f7f6;
   --surface: #ffffff;
-  --line: #dfe5e3;
+  --line: #d8e0dd;
   --cta: #1d5fd1;
   --cta-h: #184fae;
   --radius: 12px;
-  --shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-  --font-title: 'Montserrat', sans-serif;
-  --font-body: 'Open Sans', sans-serif;
+  --shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+  --font-title: 'Poppins', sans-serif;
+  --font-body: 'Inter', sans-serif;
 }
 
-/* ====== TIPOGRAFIA ====== */
+/* ====== BASE TIPOGRÁFICA ====== */
 body {
   font-family: var(--font-body);
   background: var(--bg);
   color: var(--text);
-  line-height: 1.6;
-  font-size: 1rem;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin: 0;
+  padding: 0;
 }
 
 h1, h2, h3, h4 {
@@ -27,86 +29,120 @@ h1, h2, h3, h4 {
   color: var(--primary);
   font-weight: 600;
   line-height: 1.3;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.8rem;
 }
 
 p {
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
   font-size: 1.05rem;
 }
 
-/* ====== HEADER ====== */
-header, .site-header {
+/* ====== HEADER MODERNO ====== */
+header {
   background: var(--surface);
   border-bottom: 1px solid var(--line);
-  padding: 16px 32px;
+  padding: 20px 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-header img, .site-header img {
-  max-height: 56px;
-  width: auto;
-  display: block;
-  margin: 4px 0;
+header img {
+  max-height: 52px;
+  margin: 0;
 }
 
 header nav ul {
   list-style: none;
   display: flex;
-  gap: 24px;
-  padding: 0;
+  gap: 28px;
   margin: 0;
+  padding: 0;
 }
 
 header nav a {
   color: var(--primary);
-  text-decoration: none;
   font-weight: 500;
+  text-decoration: none;
+  position: relative;
   transition: color 0.2s ease;
+}
+
+header nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--cta);
+  transition: width 0.3s ease;
 }
 
 header nav a:hover {
   color: var(--cta);
 }
 
-/* ====== CAPA ====== */
-.hero, .cover {
+header nav a:hover::after {
+  width: 100%;
+}
+
+/* ====== CAPA COM IMPACTO ====== */
+.hero {
   background: url("img/cover-plain2.jpg") center/cover no-repeat;
-  min-height: 75vh;
+  min-height: 80vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   text-align: center;
   color: #fff;
-  position: relative;
+  padding: 0 20px;
 }
 
-.hero h1, .cover h1 {
-  font-size: clamp(2rem, 4vw, 3rem);
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+.hero h1 {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  text-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
 }
 
-.hero h2, .cover h2 {
-  font-size: clamp(1rem, 2vw, 1.5rem);
+.hero h2 {
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
   font-weight: 400;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  margin-top: 0.5rem;
 }
 
-/* ====== SEÇÕES ====== */
-section, .section, .card {
+/* ====== SEÇÕES FLUIDAS ====== */
+section {
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  padding: 32px;
-  margin: 40px auto;
-  max-width: 1200px;
+  padding: 40px;
+  margin: 48px auto;
+  max-width: 1100px;
 }
 
-/* ====== LINKS E BOTÕES ====== */
+/* ====== BOTÕES COM MICROINTERAÇÃO ====== */
+button, .btn, .button {
+  background: var(--cta);
+  color: #fff;
+  border: none;
+  padding: 0.8rem 1.6rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+button:hover, .btn:hover {
+  background: var(--cta-h);
+  transform: translateY(-2px);
+}
+
+/* ====== LINKS ====== */
 a {
   color: var(--cta);
   text-decoration: none;
@@ -117,29 +153,13 @@ a:hover {
   color: var(--cta-h);
 }
 
-.btn, .button, button, [role="button"] {
-  background: var(--cta);
-  color: #fff;
-  border: none;
-  padding: 0.75rem 1.4rem;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.2s ease, transform 0.1s ease;
-}
-
-.btn:hover, .button:hover, button:hover {
-  background: var(--cta-h);
-  transform: translateY(-2px);
-}
-
-/* ====== FOOTER ====== */
-footer, .site-footer {
+/* ====== FOOTER SÓBRIO ====== */
+footer {
   background: var(--primary);
   color: #fff;
-  padding: 32px 24px;
-  margin-top: 60px;
+  padding: 40px 24px;
   text-align: center;
+  margin-top: 60px;
 }
 
 footer a {
@@ -147,40 +167,27 @@ footer a {
   text-decoration: underline;
 }
 
-/* ====== DETALHES ====== */
-hr {
-  border: none;
-  border-top: 1px solid var(--line);
-  margin: 32px 0;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 6px;
-}
-
 /* ====== RESPONSIVO ====== */
 @media (max-width: 900px) {
   header {
-    padding: 12px 16px;
     flex-direction: column;
     align-items: flex-start;
-  }
-
-  main, .main {
-    padding-inline: 16px;
-  }
-
-  .card, .section {
-    padding: 24px;
-    margin: 24px auto;
+    padding: 16px;
   }
 
   header nav ul {
     flex-direction: column;
     gap: 12px;
     margin-top: 12px;
+  }
+
+  section {
+    padding: 28px;
+    margin: 32px auto;
+  }
+
+  .hero {
+    padding: 0 16px;
+    text-align: center;
   }
 }
