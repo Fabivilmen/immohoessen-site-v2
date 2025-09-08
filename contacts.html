@@ -1,103 +1,84 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Contacts – Immo Hoessen</title>
-  <link rel="stylesheet" href="style.css?v=24">
+  <link rel="stylesheet" href="style.css?v=25">
 
   <style>
-    :root {
-      --green:#0f3d2e;
-      --text:#1e4e3d;
-      --blue:#1a5cff;
-      --brand:#1a5cff;
-      --brand-hover:#003b8a;
-      --terracotta-soft:#f3ece7; /* tom salmão/terracota suave */
+    :root{
+      --green:#0f3d2e; --text:#1e4e3d; --blue:#1a5cff;
+      --brand:#1a5cff; --brand-hover:#003b8a;
+      --terracotta-soft:#f3ece7;           /* fundo salmão */
       --card-bd:#e6e6e6;
       --shadow:0 2px 12px rgba(0,0,0,.06);
       --shadow-lg:0 10px 24px rgba(0,0,0,.08);
       --wrap:1100px;
     }
 
-    /* Fundo da página = terracota suave */
-    body.contacts-page {
-      background: var(--terracotta-soft);
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    /* FUNDO TERRACOTA – com !important para ganhar de qualquer CSS externo */
+    body.contacts-page{ 
+      background: var(--terracotta-soft) !important; 
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
     }
 
-    .container {
-      max-width: var(--wrap);
-      margin: 0 auto;
-      padding: 0 16px;
-    }
+    /* Header fallback (caso seu style.css não carregue) */
+    .header{position:sticky;top:0;background:#fff;border-bottom:1px solid #eee;z-index:50}
+    .header-inner{max-width:var(--wrap);margin:0 auto;padding:.8rem 1rem;display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:.6rem}
+    .brand img{height:32px}
+    .brand-name{font-weight:800;color:var(--text)}
+    .nav{display:flex;gap:.4rem;flex-wrap:wrap;align-items:center}
+    .nav a{display:inline-block;padding:.55rem .8rem;border-radius:.6rem;text-decoration:none;color:var(--text);font-weight:600}
+    .nav a:hover{background:#f3f6f5}
+    .nav a.active{color:#fff;background:var(--green)}
+    .nav .cta-offre{background:var(--brand);color:#fff;padding:.6rem 1rem;border-radius:999px;font-weight:800}
+    .nav .cta-offre:hover{background:var(--brand-hover)}
 
-    .page-title {
-      color: var(--green);
-      margin: 1.2rem 0 .6rem 0;
-    }
+    .container{max-width:var(--wrap);margin:0 auto;padding:0 16px}
+    .section{padding:1.6rem 0 2.2rem}
 
-    /* Card branco */
-    .contact-card, .contact-phones {
-      background: #fff;
-      border: 1px solid var(--card-bd);
-      border-radius: 16px;
-      padding: 1.25rem;
-      box-shadow: var(--shadow);
-    }
+    .page-title{color:var(--green);margin:1.2rem 0 .9rem 0}
+
+    /* CARD BRANCO GENÉRICO */
+    .card{background:#fff;border:1px solid var(--card-bd);border-radius:16px;padding:1.25rem;box-shadow:var(--shadow)}
 
     /* Telefones */
-    .phones-badge {
-      display:inline-block;
-      background:#ffe3a4;
-      color:#5a4300;
-      font-weight:700;
-      padding:.25rem .65rem;
-      border-radius:999px;
-      margin-bottom:.6rem;
-      font-size:.9rem;
-    }
-    .phones-title { color:var(--green); text-align:center; margin:.2rem 0 .6rem; }
-    .phones-sub { color:var(--green); text-align:center; margin:.8rem 0 .2rem; }
-    .phones-row { display:flex; justify-content:center; gap:.6rem; flex-wrap:wrap; }
-    .btn-call {
-      display:inline-block;
-      background:var(--blue);
-      color:#fff;
-      padding:.65rem 1rem;
-      border-radius:999px;
-      font-weight:800;
-      text-decoration:none;
-      box-shadow:var(--shadow);
-    }
-    .btn-call:hover { filter:brightness(.92); }
+    .phones{margin-bottom:1.2rem}
+    .phones-badge{display:inline-block;background:#ffe3a4;color:#5a4300;font-weight:700;padding:.25rem .65rem;border-radius:999px;margin-bottom:.6rem;font-size:.9rem}
+    .phones-title{color:var(--green);text-align:center;margin:.2rem 0 .6rem}
+    .phones-sub{color:var(--green);text-align:center;margin:.8rem 0 .2rem}
+    .row-center{display:flex;justify-content:center;gap:.6rem;flex-wrap:wrap}
+    .btn-call{display:inline-block;background:var(--blue);color:#fff;padding:.65rem 1rem;border-radius:999px;font-weight:800;text-decoration:none;box-shadow:var(--shadow)}
+    .btn-call:hover{filter:brightness(.92)}
 
-    /* Grid dos contatos */
-    .contacts-grid {
-      display:grid;
-      gap:1rem;
+    /* GRID DE CONTATOS (cards brancos) */
+    .contacts-grid{
+      display:grid;gap:1rem;
       grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-      margin:1.5rem 0 2rem;
+      margin-top:1rem;
     }
-    .contact-card {
-      border-left:12px solid var(--green);
+    .contact-card{
+      background:#fff;border:1px solid var(--card-bd);border-left:12px solid var(--green);
+      border-radius:16px;padding:1rem 1.25rem;box-shadow:var(--shadow);
       transition:transform .25s ease, box-shadow .25s ease, border-left-color .25s ease;
     }
-    .contact-card:hover { transform:translateY(-4px); box-shadow:var(--shadow-lg); border-left-color:#0b3326; }
-    .contact-card h3 { margin:0 0 .35rem 0; color:var(--blue); font-weight:800; font-size:1.08rem; }
-    .contact-card p { margin:0 0 .25rem 0; color:var(--text); }
-    .contact-card a { color:var(--blue); font-weight:700; text-decoration:none; }
-    .contact-card a:hover { text-decoration:underline; }
+    .contact-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-left-color:#0b3326}
+    .contact-card h3{margin:0 0 .35rem;color:var(--blue);font-weight:800;font-size:1.08rem}
+    .contact-card p{margin:0 0 .25rem;color:var(--text)}
+    .contact-card a{color:var(--blue);font-weight:700;text-decoration:none}
+    .contact-card a:hover{text-decoration:underline}
     @media (min-width:960px){ .contact-card--wide{grid-column:span 2} }
   </style>
 </head>
 <body class="site contacts-page">
+
   <header class="header">
     <div class="header-inner">
       <div class="brand">
-        <img src="img/logo.svg" alt="Immo Hoessen">
+        <img src="img/logo.svg" alt="Immo Hoessen" onerror="this.style.display='none'">
         <span class="brand-name">Immo Hoessen</span>
       </div>
       <nav class="nav">
@@ -112,31 +93,68 @@
     </div>
   </header>
 
-  <main class="container">
-    <h1 class="page-title">Contacts</h1>
+  <main class="section">
+    <div class="container">
+      <h1 class="page-title">Contacts</h1>
 
-    <!-- Telefones -->
-    <div class="contact-phones">
-      <div class="phones-badge">Téléphones</div>
-      <h2 class="phones-title">Heures du bureau (9h–13h)</h2>
-      <p class="phones-row"><a class="btn-call" href="tel:+3227725175">02 772 51 75</a></p>
-      <h3 class="phones-sub">Urgence – en dehors des heures du bureau</h3>
-      <p class="phones-row">
-        <a class="btn-call" href="tel:0495261683">0495 26 16 83</a>
-        <a class="btn-call" href="tel:0495543808">0495 54 38 08</a>
-      </p>
-    </div>
+      <!-- TELEFONES (card branco) -->
+      <section class="phones card">
+        <div class="phones-badge">Téléphones</div>
+        <h2 class="phones-title">Heures du bureau (9h–13h)</h2>
+        <p class="row-center"><a class="btn-call" href="tel:+3227725175">02 772 51 75</a></p>
+        <h3 class="phones-sub">Urgence – en dehors des heures du bureau</h3>
+        <p class="row-center">
+          <a class="btn-call" href="tel:0495261683">0495 26 16 83</a>
+          <a class="btn-call" href="tel:0495543808">0495 54 38 08</a>
+        </p>
+      </section>
 
-    <!-- Equipe -->
-    <div class="contacts-grid">
-      <article class="contact-card"><h3>Laurent Hoessen</h3><p>Gestionnaire — IPI 150260 (titulaire)</p><a href="mailto:laurent@immohoessen.be">laurent@immohoessen.be</a></article>
-      <article class="contact-card"><h3>André Hoessen</h3><p>Gestionnaire général et RH</p><a href="mailto:andre@immohoessen.be">andre@immohoessen.be</a></article>
-      <article class="contact-card"><h3>Patricia Boniface</h3><p>Gestionnaire de copropriété</p><a href="mailto:gestion@immohoessen.be">gestion@immohoessen.be</a></article>
-      <article class="contact-card"><h3>Viviane Ledieu</h3><p>Gestionnaire de sinistres</p><a href="mailto:admin@immohoessen.be">admin@immohoessen.be</a></article>
-      <article class="contact-card"><h3>Fabiane Menezes</h3><p>Assistante de gestion</p><a href="mailto:syndic@immohoessen.be">syndic@immohoessen.be</a></article>
-      <article class="contact-card"><h3>Mikail Uçarer</h3><p>Stagiaire (en formation IPI)</p><a href="mailto:gestionnaire@immohoessen.be">gestionnaire@immohoessen.be</a></article>
-      <article class="contact-card contact-card--wide"><h3>Facturation</h3><p>Transmettez vos factures à :</p><a href="mailto:factures@immohoessen.be">factures@immohoessen.be</a></article>
+      <!-- CONTATOS (cards brancos) -->
+      <section class="contacts-grid">
+        <article class="contact-card">
+          <h3>Laurent Hoessen</h3>
+          <p>Gestionnaire — IPI 150260 (titulaire)</p>
+          <a href="mailto:laurent@immohoessen.be">laurent@immohoessen.be</a>
+        </article>
+
+        <article class="contact-card">
+          <h3>André Hoessen</h3>
+          <p>Gestionnaire général et RH</p>
+          <a href="mailto:andre@immohoessen.be">andre@immohoessen.be</a>
+        </article>
+
+        <article class="contact-card">
+          <h3>Patricia Boniface</h3>
+          <p>Gestionnaire de copropriété</p>
+          <a href="mailto:gestion@immohoessen.be">gestion@immohoessen.be</a>
+        </article>
+
+        <article class="contact-card">
+          <h3>Viviane Ledieu</h3>
+          <p>Gestionnaire de sinistres</p>
+          <a href="mailto:admin@immohoessen.be">admin@immohoessen.be</a>
+        </article>
+
+        <article class="contact-card">
+          <h3>Fabiane Menezes</h3>
+          <p>Assistante de gestion</p>
+          <a href="mailto:syndic@immohoessen.be">syndic@immohoessen.be</a>
+        </article>
+
+        <article class="contact-card">
+          <h3>Mikail Uçarer</h3>
+          <p>Stagiaire (en formation IPI)</p>
+          <a href="mailto:gestionnaire@immohoessen.be">gestionnaire@immohoessen.be</a>
+        </article>
+
+        <article class="contact-card contact-card--wide">
+          <h3>Facturation</h3>
+          <p>Transmettez vos factures à :</p>
+          <a href="mailto:factures@immohoessen.be">factures@immohoessen.be</a>
+        </article>
+      </section>
     </div>
   </main>
+
 </body>
 </html>
