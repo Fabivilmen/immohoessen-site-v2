@@ -1,4 +1,6 @@
+Claro, Fabiane! Aqui está a versão completa e ajustada da aba contacts.html, com os cards mais bonitos e profissionais e o card de Factures incluído com destaque visual e texto em francês.
 
+✅ contacts.html completo e atualizado
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -10,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
 
   <!-- CSS principal -->
-  <link rel="stylesheet" href="style.css?v=26">
+  <link rel="stylesheet" href="style.css?v=27">
 
   <!-- Estilo específico da página -->
   <style>
@@ -110,7 +112,7 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
 
-    /* Equipe */
+    /* Cards de equipe + factures */
     .contacts-grid {
       display: grid;
       gap: 1.2rem;
@@ -120,42 +122,56 @@
 
     .contact-card {
       background: #fff;
-      border: 1px solid var(--card-bd);
+      border: 1px solid rgba(0,0,0,.06);
       border-left: 8px solid var(--green);
-      border-radius: 12px;
-      padding: 1rem 1.2rem;
-      box-shadow: var(--shadow);
-      transition: transform .2s ease, box-shadow .2s ease, border-left-color .2s ease;
+      border-radius: 16px;
+      padding: 1.2rem 1.4rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-left-color 0.3s ease;
     }
 
     .contact-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-lg);
+      transform: translateY(-5px);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.12);
       border-left-color: #0b3326;
     }
 
     .contact-card h3 {
-      margin: 0 0 .4rem;
+      margin: 0 0 .5rem;
       color: var(--blue);
       font-weight: 700;
-      font-size: 1.05rem;
+      font-size: 1.15rem;
     }
 
     .contact-card p {
-      margin: 0 0 .3rem;
+      margin: 0 0 .4rem;
       color: var(--text);
-      font-size: .95rem;
+      font-size: 1rem;
+      line-height: 1.5;
     }
 
     .contact-card a {
       color: var(--blue);
       font-weight: 600;
       text-decoration: none;
-      font-size: .95rem;
     }
 
     .contact-card a:hover {
       text-decoration: underline;
+    }
+
+    /* Card Factures com destaque */
+    .contact-card.factures {
+      border-left-color: var(--brand);
+      background: linear-gradient(to right, #f5f9ff, #eef4ff);
+    }
+
+    .contact-card.factures h3 {
+      color: var(--brand);
+    }
+
+    .contact-card.factures p {
+      font-weight: 600;
     }
   </style>
 </head>
@@ -199,7 +215,7 @@
         </p>
       </section>
 
-      <!-- Equipe -->
+      <!-- Équipe + Factures -->
       <section class="contacts-grid">
         <article class="contact-card">
           <h3>Laurent Hoessen</h3>
@@ -228,12 +244,6 @@
         <article class="contact-card">
           <h3>Fabiane Menezes</h3>
           <p>Assistante de gestion</p>
-          <a href="mailto:syndic@immohoessen.be">syndic@immohoessen.be</a>
-        </article>
-
-        <article class="contact-card">
-          <h3>Mikail Uçarer</h3>
-          <p>Stagiaire (en formation IPI)</p>
-          <a href="mailto:gestionnaire@im
+          <a href="mailto:syndic@immohoessen.be">syndic@immohoessen
 
 
