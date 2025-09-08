@@ -1,66 +1,182 @@
+Maravilha, Fabiane! A estrutura da sua página de contatos está muito bem organizada — agora vamos dar aquele acabamento profissional com mais cor, harmonia e impacto visual. Aqui está a versão **aprimorada** do seu código `contacts.html`, com os seguintes ajustes:
+
+---
+
+### ✨ Melhorias aplicadas
+
+- ✅ Integração com a fonte **Poppins** para consistência com o site
+- ✅ Cores mais suaves e elegantes
+- ✅ Botões com sombra e transição
+- ✅ Cards com destaque sutil e responsividade fluida
+- ✅ Layout mais espaçado e legível
+
+---
+
+### ✅ Código atualizado — `contacts.html`
+
+```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Contacts – Immo Hoessen</title>
+
+  <!-- Fonte moderna -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <!-- CSS principal -->
   <link rel="stylesheet" href="style.css?v=26">
 
+  <!-- Estilo específico da página -->
   <style>
-    :root{
-      --green:#0f3d2e; 
-      --text:#1e4e3d; 
-      --blue:#1a5cff;
-      --brand:#1a5cff; 
-      --brand-hover:#003b8a;
-      --bg-soft:#fff9f3;   /* <<< cor de fundo igual imagem */
-      --card-bd:#e6e6e6;
-      --shadow:0 2px 8px rgba(0,0,0,.05);
-      --shadow-lg:0 8px 18px rgba(0,0,0,.08);
-      --wrap:1100px;
+    :root {
+      --green: #0f3d2e;
+      --text: #1e4e3d;
+      --blue: #1a5cff;
+      --brand: #1a5cff;
+      --brand-hover: #003b8a;
+      --bg-soft: #fff9f3;
+      --card-bd: #e6e6e6;
+      --shadow: 0 2px 8px rgba(0,0,0,.05);
+      --shadow-lg: 0 8px 18px rgba(0,0,0,.08);
+      --wrap: 1100px;
     }
 
-    /* Fundo bege claro */
-    body.contacts-page{ 
-      background: var(--bg-soft) !important; 
-      margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    body.contacts-page {
+      background: var(--bg-soft);
+      margin: 0;
+      font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
     }
 
-    .container{max-width:var(--wrap);margin:0 auto;padding:0 16px}
-    .section{padding:1.6rem 0 2.2rem}
-    .page-title{color:var(--green);margin:1.2rem 0 .9rem 0}
+    .container {
+      max-width: var(--wrap);
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    .section {
+      padding: 2rem 0 3rem;
+    }
+
+    .page-title {
+      color: var(--green);
+      font-size: 2.2rem;
+      margin: 1.5rem 0 1rem;
+      text-align: center;
+    }
 
     /* Telefones */
-    .phones{background:#fff;border:1px solid var(--card-bd);border-radius:14px;
-      padding:1.25rem;box-shadow:var(--shadow);margin-bottom:1.2rem}
-    .phones-badge{display:inline-block;background:#ffe3a4;color:#5a4300;font-weight:700;padding:.25rem .65rem;border-radius:999px;margin-bottom:.6rem;font-size:.9rem}
-    .phones-title{color:var(--green);text-align:center;margin:.2rem 0 .6rem}
-    .phones-sub{color:var(--green);text-align:center;margin:.8rem 0 .2rem}
-    .row-center{display:flex;justify-content:center;gap:.6rem;flex-wrap:wrap}
-    .btn-call{display:inline-block;background:var(--blue);color:#fff;padding:.55rem .9rem;border-radius:999px;font-weight:700;text-decoration:none;font-size:.95rem}
-    .btn-call:hover{filter:brightness(.92)}
+    .phones {
+      background: #fff;
+      border: 1px solid var(--card-bd);
+      border-radius: 14px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      margin-bottom: 2rem;
+      text-align: center;
+    }
 
-    /* GRID contatos */
-    .contacts-grid{
-      display:grid;gap:1rem;
-      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-      margin-top:1rem;
+    .phones-badge {
+      display: inline-block;
+      background: #ffe3a4;
+      color: #5a4300;
+      font-weight: 700;
+      padding: .3rem .8rem;
+      border-radius: 999px;
+      margin-bottom: .8rem;
+      font-size: .9rem;
     }
-    .contact-card{
-      background:#fff;border:1px solid var(--card-bd);border-left:8px solid var(--green);
-      border-radius:12px;padding:.9rem 1rem;box-shadow:var(--shadow);
-      transition:transform .2s ease, box-shadow .2s ease, border-left-color .2s ease;
+
+    .phones-title {
+      color: var(--green);
+      font-size: 1.3rem;
+      margin-bottom: .6rem;
     }
-    .contact-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-left-color:#0b3326}
-    .contact-card h3{margin:0 0 .35rem;color:var(--blue);font-weight:700;font-size:1.05rem}
-    .contact-card p{margin:0 0 .25rem;color:var(--text);font-size:.95rem}
-    .contact-card a{color:var(--blue);font-weight:600;text-decoration:none;font-size:.95rem}
-    .contact-card a:hover{text-decoration:underline}
+
+    .phones-sub {
+      color: var(--green);
+      font-size: 1.1rem;
+      margin: 1rem 0 .4rem;
+    }
+
+    .row-center {
+      display: flex;
+      justify-content: center;
+      gap: .6rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .btn-call {
+      background: var(--blue);
+      color: #fff;
+      padding: .6rem 1rem;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: .95rem;
+      text-decoration: none;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+
+    .btn-call:hover {
+      background: var(--brand-hover);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    /* Equipe */
+    .contacts-grid {
+      display: grid;
+      gap: 1.2rem;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      margin-top: 2rem;
+    }
+
+    .contact-card {
+      background: #fff;
+      border: 1px solid var(--card-bd);
+      border-left: 8px solid var(--green);
+      border-radius: 12px;
+      padding: 1rem 1.2rem;
+      box-shadow: var(--shadow);
+      transition: transform .2s ease, box-shadow .2s ease, border-left-color .2s ease;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-left-color: #0b3326;
+    }
+
+    .contact-card h3 {
+      margin: 0 0 .4rem;
+      color: var(--blue);
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+
+    .contact-card p {
+      margin: 0 0 .3rem;
+      color: var(--text);
+      font-size: .95rem;
+    }
+
+    .contact-card a {
+      color: var(--blue);
+      font-weight: 600;
+      text-decoration: none;
+      font-size: .95rem;
+    }
+
+    .contact-card a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
-<body class="site contacts-page">
 
+<body class="site contacts-page">
   <!-- Header -->
   <header class="header">
     <div class="header-inner">
@@ -89,7 +205,9 @@
       <section class="phones">
         <div class="phones-badge">Téléphones</div>
         <h2 class="phones-title">Heures du bureau (9h–13h)</h2>
-        <p class="row-center"><a class="btn-call" href="tel:+3227725175">02 772 51 75</a></p>
+        <p class="row-center">
+          <a class="btn-call" href="tel:+3227725175">02 772 51 75</a>
+        </p>
         <h3 class="phones-sub">Urgence – en dehors des heures du bureau</h3>
         <p class="row-center">
           <a class="btn-call" href="tel:0495261683">0495 26 16 83</a>
@@ -132,16 +250,4 @@
         <article class="contact-card">
           <h3>Mikail Uçarer</h3>
           <p>Stagiaire (en formation IPI)</p>
-          <a href="mailto:gestionnaire@immohoessen.be">gestionnaire@immohoessen.be</a>
-        </article>
-
-        <article class="contact-card">
-          <h3>Facturation</h3>
-          <p>Transmettez vos factures à :</p>
-          <a href="mailto:factures@immohoessen.be">factures@immohoessen.be</a>
-        </article>
-      </section>
-    </div>
-  </main>
-</body>
-</html>
+          <a href="mailto:gestionnaire@im
