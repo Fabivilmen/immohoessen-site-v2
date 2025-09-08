@@ -316,3 +316,165 @@ footer {
 
   .footer-map iframe {
     height: 220
+    /* ==========================================================
+   💡 RESPONSIVE CORE – Immo Hoessen
+   Cole este bloco no FINAL do style.css
+   ========================================================== */
+
+/* --------- Vars e tipografia fluida --------- */
+:root{
+  /* Largura útil por breakpoint */
+  --wrap: 1180px;
+}
+@media (min-width: 1400px){ :root{ --wrap: 1320px; } }
+@media (min-width: 1680px){ :root{ --wrap: 1440px; } }
+@media (min-width: 1920px){ :root{ --wrap: 1560px; } }
+
+/* Texto com tamanho “elástico” e alturas de linha confortáveis */
+h1 { font-size: clamp(28px, 4.5vw, 44px); line-height: 1.15; }
+h2 { font-size: clamp(22px, 3.4vw, 32px); line-height: 1.2; }
+h3 { font-size: clamp(18px, 2.4vw, 22px); line-height: 1.25; }
+p, li { font-size: clamp(15px, 1.6vw, 18px); line-height: 1.55; }
+
+/* --------- Containers unificados --------- */
+.header-inner,
+.footer-inner,
+.footer-inner.footer-home,
+.footer-legal,
+.section .intro,
+.container{
+  max-width: var(--wrap);
+  margin-inline: auto;
+  padding-inline: 16px;
+}
+
+/* --------- Header sticky + adaptação mobile --------- */
+.header{
+  position: sticky; top: 0; z-index: 50;
+  background: #fff; border-bottom: 1px solid #eee;
+  transition: box-shadow .25s ease, background .25s ease, padding .2s ease;
+}
+.header-inner{ display:flex; align-items:center; justify-content:space-between; gap:.6rem; padding:.8rem 1rem; }
+.nav{ display:flex; flex-wrap:wrap; gap:.4rem; align-items:center; }
+.nav a{ padding:.55rem .8rem; border-radius:.6rem; }
+@media (max-width: 720px){
+  .brand-name{ display:none; }                   /* só o logo no mobile */
+  .nav{ gap:.3rem; }
+  .nav a{ padding:.5rem .65rem; }
+}
+
+/* --------- Hero (foto) --------- */
+.hero{ position:relative; min-height: 72dvh; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+@media (min-width: 900px){ .hero{ min-height: 80dvh; } }
+@media (min-width: 1600px){ .hero{ min-height: 86vh; } }
+
+.hero .cover{
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+  object-position: 50% 80%;                  /* mostra mais chão/faixa inferior */
+  filter: saturate(1.15) contrast(1.06) brightness(1.04);
+  transform: translateZ(0);
+}
+@media (max-width: 640px){ .hero .cover{ object-position: 50% 60%; } } /* sobe em telas pequenas */
+
+/* Conteúdo em cima da foto */
+.hero .overlay-dark{ display:none !important; } /* garante que não exista película escura */
+.hero-content{
+  position:relative; z-index:2; text-align:center; padding:1rem;
+  text-shadow: 0 2px 10px rgba(0,0,0,.32);
+}
+
+/* --------- Seções e fundos --------- */
+.section{ padding: 2.4rem 0; }
+.section.alt{ background: linear-gradient(180deg, #fff3e5, #fff9f3); } /* salmão suave */
+.hero + .section{ padding-top: 2.6rem; }
+
+/* --------- Grids de cards (home, types, gestion etc.) --------- */
+.cards,
+.types-cards,
+.gest-cards,
+.portail-features{
+  max-width: var(--wrap);
+  margin: 1rem auto 0 auto;
+  display: grid; gap: 1rem;
+  grid-template-columns: repeat(4, minmax(220px, 1fr));
+}
+@media (max-width: 1024px){
+  .cards, .types-cards, .gest-cards, .portail-features{
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+  }
+}
+@media (max-width: 640px){
+  .cards, .types-cards, .gest-cards, .portail-features{
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Cartões – microinterações e acessibilidade */
+.card, .gest-card, .type-card{
+  background:#fff; border:1px solid rgba(0,0,0,.08);
+  border-left:12px solid #c77045; /* terracota */
+  border-radius:14px; padding:1rem 1.25rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,.06);
+  transition: transform .25s ease, box-shadow .25s ease, border-left-color .25s ease;
+}
+.card:hover, .gest-card:hover, .type-card:hover{
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(0,0,0,.14);
+  border-left-color: #d98258;
+}
+
+/* --------- Página de contatos – grid e card “Facturation” --------- */
+.contacts-grid{
+  display:grid; gap:1.25rem; padding-inline: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+.contact-card{
+  background:#fff; border:1px solid #e0e0e0; border-left:6px solid #0f3d2e;
+  border-radius:16px; padding:1.25rem 1.4rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,.04);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.contact-card:hover{ transform:translateY(-6px); box-shadow:0 12px 24px rgba(0,0,0,.08); }
+.contact-card h3{ margin:0 0 .45rem; color:#0f3d2e; }
+
+/* Facturation central, mais retangular */
+.contact-card.factures{
+  grid-column: 1 / -1;                 /* ocupa a linha inteira */
+  text-align:center;
+  background: linear-gradient(to right, #f5f9ff, #eef4ff);
+  border-left-color: #1a5cff;
+  padding: 2rem;
+}
+.contact-card.factures h3{ color:#1a5cff; }
+
+/* Bloco de telefones (contacts) */
+.phones{
+  background:#fff; border:1px solid #e6e6e6; border-radius:14px;
+  padding:1.5rem; box-shadow:0 2px 8px rgba(0,0,0,.05);
+}
+.row-center{ display:flex; justify-content:center; gap:.6rem; flex-wrap:wrap; }
+
+/* --------- Footer responsivo --------- */
+.footer-inner.footer-home{ display:flex; gap:1rem; align-items:stretch; padding:1rem; }
+.footer-col{ flex:1 1 0; }
+.footer-map iframe{ width:100%; height:200px; border:0; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,.08); }
+@media (min-width: 1400px){ .footer-map iframe{ height:240px; } }
+@media (max-width: 900px){
+  .footer-inner.footer-home{ flex-direction:column; }
+  .footer-map iframe{ height:220px; }
+}
+
+/* --------- Botões (CTA e telefone) --------- */
+.btn-blue, .btn-call{
+  display:inline-block; background:#1a5cff; color:#fff;
+  text-decoration:none; padding:.9rem 1.2rem; border-radius:12px; font-weight:800;
+  transition: transform .15s ease, box-shadow .25s ease, background .25s ease;
+}
+.btn-blue:hover, .btn-call:hover{ background:#003b8a; box-shadow:0 8px 20px rgba(0,0,0,.15); }
+.btn-blue:active, .btn-call:active{ transform: translateY(1px) scale(.99); }
+
+/* --------- Preferência do usuário: reduzir movimento --------- */
+@media (prefers-reduced-motion: reduce){
+  *, *::before, *::after{ animation: none !important; transition: none !important; }
+}
+
