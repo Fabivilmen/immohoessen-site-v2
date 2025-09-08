@@ -1,318 +1,192 @@
-<style>
-  /* ===== Paleta unificada (sem dourado/terracota) ===== */
-  :root{
-    --primary:#0f3d2e;         /* verde institucional (títulos/rodapé/acentos) */
-    --text:#253530;            /* texto principal */
-    --muted:#557a68;           /* texto secundário / notas */
-    --bg:#ffffff;              /* fundo geral */
-    --surface:#ffffff;         /* cartões/seções */
-    --line:#e6ebe9;            /* divisórias */
-    --cta:#1a5cff;             /* CTA azul (padrão do projeto) */
-    --cta-h:#003b8a;           /* hover CTA */
-    --badge-bg:#eef6f3;        /* selo suave em verde claro */
-    --badge-border:#d3e6de;
-    --shadow:0 8px 22px rgba(0,0,0,.06);
-    --radius:18px;
-  }
-
-  /* Fundo limpo (remove radial quente) */
-  body.site{ background: var(--bg); color: var(--text); }
-
-  /* ===== Header padronizado (remove gradiente) ===== */
-  .header{position:sticky; top:0; z-index:50; background:#fff; border-bottom:1px solid var(--line);}
-  .header-inner{
-    max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between;
-    padding:.8rem 1rem;
-  }
-  .brand{display:flex; align-items:center; gap:.6rem}
-  .brand img{height:32px}
-  .brand-name{font-weight:800; color:var(--primary)}
-  .nav{display:flex; gap:.4rem; flex-wrap:wrap; align-items:center}
-  .nav a{
-    position:relative; text-decoration:none; display:inline-block; padding:.55rem .8rem; border-radius:.6rem;
-    color:var(--primary); font-weight:600;
-  }
-  .nav a::after{ content:""; position:absolute; left:0; bottom:-6px; height:2px; width:0; background:var(--primary); transition:width .2s ease; }
-  .nav a:hover::after{ width:100%; }
-  .nav a.active{ color:#fff; background:var(--primary); }
-  .nav .cta-offre{ background:var(--cta); color:#fff; border:1px solid transparent; padding:.6rem 1rem; border-radius:999px; font-weight:800; }
-  .nav .cta-offre:hover{ background:var(--cta-h); }
-
-  /* ===== Seções (remove gradientes quentes) ===== */
-  .section{ padding:2.2rem clamp(12px,2vw,32px); }
-  .section .contacts-wrap{ max-width:1100px; margin:0 auto; }
-  .section.alt,
-  .section.alt-strong{ background: var(--surface); }
-
-  /* ===== Bloco Telefones ===== */
-  .urg-box{
-    background:#fff; border:1px solid var(--line);
-    border-radius:var(--radius); box-shadow:var(--shadow);
-    padding:1.2rem; text-align:center;
-    transition: transform .3s ease, box-shadow .3s ease;
-    margin-top:.75rem;
-  }
-  .urg-box:hover{ transform: translateY(-3px); box-shadow:0 10px 26px rgba(0,0,0,.10); }
-  .urg-badge{
-    display:inline-block; margin-bottom:.4rem; font-weight:700; letter-spacing:.3px;
-    background:var(--badge-bg); color:var(--primary); border:1px solid var(--badge-border);
-    padding:.2rem .6rem; border-radius:999px; font-size:.9rem;
-  }
-  .urg-hours{ color:var(--muted); margin:.3rem 0 .6rem; }
-  .urg-buttons{ display:flex; gap:.6rem; justify-content:center; flex-wrap:wrap; }
-  .btn-call{
-    display:inline-block; padding:.75rem 1.05rem; border-radius:14px; font-weight:700;
-    text-decoration:none; line-height:1; transition: background .25s ease, transform .25s ease, box-shadow .25s ease;
-    box-shadow:0 8px 20px rgba(26,92,255,.18);
-    background:var(--cta); color:#fff;
-  }
-  .btn-call:hover{ background:var(--cta-h); transform:scale(1.05); }
-
-  .divider{ height:0; border-top:1px dashed var(--line); margin:1rem auto; max-width:520px; }
-
-  /* ===== Cards equipe (troca terracota/dourado por verde institucional) ===== */
-  .contacts-grid{ display:grid; grid-template-columns:repeat(3, minmax(240px,1fr)); gap:1rem; margin-block:1.25rem 0; }
-  .contact-card{
-    background:#fff; border:1px solid var(--line);
-    border-left:6px solid var(--primary);
-    border-radius:var(--radius); padding:1rem;
-    box-shadow:0 2px 14px rgba(0,0,0,.07);
-    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
-    opacity:0; transform:translateY(15px);
-  }
-  .contact-card.in{ opacity:1; transform:none; }
-  .contact-card:hover{
-    transform: translateY(-4px);
-    border-left-color: #0c3125; /* variação do primary */
-    box-shadow:0 12px 28px rgba(0,0,0,.12);
-  }
-  .contact-card h3{ margin:.1rem 0 .3rem; color:var(--primary); }
-  .contact-card p{ margin:.2rem 0; color:var(--muted); }
-  .contact-card--solo{ grid-column:1 / -1; max-width:520px; justify-self:center; text-align:center; }
-
-  /* ===== Footer padronizado (verde institucional) ===== */
-  .site-footer {
-    background: var(--primary);
-    color: #fff;
-    text-align: center;
-    padding: 18px 12px 22px;
-    margin-top: clamp(32px, 6vh, 80px);
-    font-size: 0.95rem;
-    line-height: 1.6;
-    border-top: 1px solid transparent;
-  }
-  .site-footer__slogan { margin: 0 0 6px 0; font-style: italic; opacity:.95; }
-  .site-footer__legal { margin: 0; }
-  .site-footer a { color: #fff; text-decoration: underline; text-underline-offset: 2px; }
-  .site-footer a:hover { opacity:.85; }
-
-  /* ===== Responsivo ===== */
-  @media (max-width: 900px){
-    .contacts-grid{ grid-template-columns:repeat(2, minmax(240px,1fr)); }
-  }
-  @media (max-width: 640px){
-    .contacts-grid{ grid-template-columns:1fr; }
-    .contact-card--solo{ max-width:100%; }
-  }
-</style>
-/* === Contacts: normalização de paleta e fundos === */
-:root{
-  --primary:#0f3d2e;  /* verde institucional */
-  --text:#253530;     /* texto principal */
-  --muted:#557a68;    /* texto secundário */
-  --surface:#ffffff;  /* cartões/seções */
-  --bg:#ffffff;       /* fundo geral */
-  --line:#e6ebe9;     /* divisórias */
-  --cta:#1a5cff;      /* CTA azul */
-  --cta-h:#003b8a;    /* CTA hover */
-  --shadow:0 8px 22px rgba(0,0,0,.06);
-  --radius:18px;
-}
-
-/* 1) Fundo geral limpo (remove radial/“warm”) */
-body.site{ background: var(--bg) !important; color:var(--text); }
-
-/* 2) Header/nav sem gradiente colorido */
-.header{ background:#fff; border-bottom:1px solid var(--line); }
-.header-inner{
-  border:none;                 /* remove border-image gradiente */
-  max-width:1200px; margin:0 auto;
-  display:flex; align-items:center; justify-content:space-between;
-  padding:.8rem 1rem;
-}
-.brand-name{ color:var(--primary); }
-.nav a{ color:var(--primary); }
-.nav a::after{ background:var(--primary); }   /* sublinhado hover coerente */
-.nav a.active{ background:var(--primary); color:#fff; }
-.nav .cta-offre{ background:var(--cta); }
-.nav .cta-offre:hover{ background:var(--cta-h); }
-
-/* 3) Seções: remover gradientes “alt/alt-strong” */
-.section{ padding:2.2rem clamp(12px,2vw,32px); }
-.section.alt,
-.section.alt-strong{ background: var(--surface) !important; }
-
-/* 4) Bloco de telefones – badge/cores coerentes */
-.urg-box{
-  background:#fff; border:1px solid var(--line);
-  border-radius:var(--radius); box-shadow:var(--shadow);
-}
-.urg-badge{
-  background:#eef6f3; color:var(--primary);
-  border:1px solid #d3e6de;
-}
-.urg-hours{ color:var(--muted); }
-.btn-call{
-  background:var(--cta); color:#fff;
-  box-shadow:0 8px 20px rgba(26,92,255,.18);
-}
-.btn-call:hover{ background:var(--cta-h); }
-
-/* 5) Cards da equipa – borda e hover neutros (sem terracota/dourado) */
-.contact-card{
-  background:#fff; border:1px solid var(--line);
-  border-left:6px solid var(--primary);   /* troca terracota->verde */
-  border-radius:var(--radius); box-shadow:0 2px 14px rgba(0,0,0,.07);
-}
-.contact-card:hover{
-  border-left-color:#0c3125;
-  box-shadow:0 12px 28px rgba(0,0,0,.12);
-}
-.contact-card h3{ color:var(--primary); }
-.contact-card p{ color:var(--muted); }
-
-/* 6) Footer coerente com a marca */
-.site-footer{
-  background:var(--primary) !important; color:#fff !important;
-  border-top:1px solid transparent;
-}
-.site-footer a{ color:#fff; text-decoration:underline; text-underline-offset:2px; }
-.site-footer a:hover{ opacity:.85; }
-/* ====== CAPA: tirar dourado/overlay e deixar a foto viva ====== */
-/* Remove qualquer película/gradiente na capa */
-.hero, .cover, .hero-header, .cover-hero, .site-hero{
-  position: relative;
-  background-blend-mode: normal !important;
-  background-image: var(--hero-bg, none) !important; /* mantém tua imagem, sem camada por cima */
-  filter: none !important;
-}
-
-/* mata overlays em ::before/::after */
-.hero::before, .cover::before, .hero-header::before, .cover-hero::before, .site-hero::before,
-.hero::after,  .cover::after,  .hero-header::after,  .cover-hero::after,  .site-hero::after{
-  content: none !important;
-  background: none !important;
-  opacity: 0 !important;
-  mix-blend-mode: normal !important;
-}
-
-/* ====== Enquadramento: mostrar o prédio completo e o chão ====== */
-/* Se tua capa usa background-image em CSS */
-.hero, .cover, .hero-header, .cover-hero, .site-hero{
-  /* mostra 100% da foto (sem cortar) e ancora no chão */
-  background-repeat: no-repeat !important;
-  background-size: contain !important;      /* mostra o prédio inteiro */
-  background-position: center bottom !important; /* deixa o chão visível */
-  background-color: #fff;                   /* cor atrás das “bordas” se sobrar espaço */
-  min-height: min(88vh, 820px);             /* altura confortável */
-  padding-top: 6vh; padding-bottom: 6vh;    /* respiro para o título */
-}
-
-/* Se tua capa usa <img> dentro (cobrimos os dois casos) */
-.hero img, .cover img, .hero-header img, .cover-hero img, .site-hero img{
-  display:block;
-  width:100%;
-  height:100%;
-  object-fit: contain;               /* mostra a foto inteira */
-  object-position: center bottom;    /* ancora no chão */
-  filter: saturate(1.08) contrast(1.06); /* deixa a imagem mais “viva”, sem exagero */
-  mix-blend-mode: normal !important;
-}
-
-/* Texto da capa legível, sem tinta dourada */
-.hero h1, .cover h1, .hero h2, .cover h2{
-  text-shadow: 0 2px 6px rgba(0,0,0,.28);
-  color: #0f3d2e;      /* verde institucional */
-}
-@media (max-width: 768px){
-  .hero, .cover, .hero-header, .cover-hero, .site-hero{
-    min-height: 72vh;
-    padding-top: 5vh; padding-bottom: 5vh;
-  }
-}
-
-/* ====== (opcional) usar uma capa específica sem editar HTML ======
-   Se quiser trocar a imagem da capa por uma versão sem dourado,
-   basta definir a variável --hero-bg na página, por exemplo:
-
-   :root { --hero-bg: url("img/cover-sem-dourado.jpg"); }
-
-   Se já usa background-image diretamente na classe, não precisa disso.
-*/
-/* ====== Contacts — fundo salmão + cards brancos ====== */
-:root{
+:root {
   --green:#0f3d2e;
-  --blue:#1a5cff;
+  --text:#1e4e3d;
+  --muted:#557a68;
+  --brand:#1a5cff;
+  --brand-hover:#003b8a;
+  --terracotta:#c77045;
+  --terracotta-soft:#fff3e5; /* fundo salmão/bege suave */
   --warm-25:#fff9f3;
   --warm-50:#fff3e5;
-  --card-bd:#e6e6e6;
+  --card-shadow:0 2px 12px rgba(0,0,0,.06);
+  --card-shadow-hover:0 12px 28px rgba(0,0,0,.14);
 }
 
-/* Fundo da página de contacts (segue padrão das internas) */
-body.contacts-page { background: linear-gradient(180deg, var(--warm-50), var(--warm-25)); }
-
-/* Container base usado nas seções */
-.container { max-width:1100px; margin:0 auto; padding:0 16px; }
-
-/* Título da página */
-.page-title{ color:var(--green); margin:0 0 .6rem 0; }
-
-/* Card “limpo” para o bloco de telefones */
-.card-clean{
-  background:#fff; border:1px solid var(--card-bd);
-  border-radius:16px; padding:1.25rem; box-shadow:0 2px 12px rgba(0,0,0,.06);
+body {
+  margin:0;
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  color:var(--text);
+  background:#fff;
 }
 
-/* Telefones */
-.contact-phones{ margin:1rem 0 1.5rem; text-align:center; }
-.phones-badge{
-  display:inline-block; background:#ffe3a4; color:#5a4300; font-weight:700;
-  padding:.25rem .65rem; border-radius:999px; margin-bottom:.5rem; font-size:.9rem;
+/* HEADER */
+.header {
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:#fff;
+  border-bottom:1px solid #eee;
 }
-.phones-title{ margin:.2rem 0 .6rem; color:var(--green); }
-.phones-sub{ margin:.6rem 0 .2rem; color:var(--green); }
-.phones-hint{ margin:.2rem 0 .6rem; color:#365a4d; }
-.phones-row{ display:flex; gap:.6rem; justify-content:center; flex-wrap:wrap; }
-.phones-sep{ border:0; border-top:1px solid #eee; margin:1rem auto; max-width:360px; }
-.btn-call{
-  display:inline-block; background:var(--blue); color:#fff; text-decoration:none;
-  padding:.6rem 1rem; border-radius:999px; font-weight:800; box-shadow:0 2px 10px rgba(0,0,0,.08);
+.header-inner {
+  max-width:1200px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:.8rem 1rem;
 }
-.btn-call:hover{ filter:brightness(0.92); }
+.brand {
+  display:flex;
+  align-items:center;
+  gap:.6rem;
+}
+.brand img {height:32px; width:auto;}
+.brand-name {font-weight:800; color:var(--text);}
+.nav {
+  display:flex;
+  gap:.4rem;
+  flex-wrap:wrap;
+  align-items:center;
+}
+.nav a {
+  display:inline-block;
+  padding:.55rem .8rem;
+  border-radius:.6rem;
+  text-decoration:none;
+  color:var(--text);
+  font-weight:600;
+}
+.nav a:hover {background:#f3f6f5;}
+.nav a.active {color:#fff; background:var(--green);}
+.nav .cta-offre {
+  background:var(--brand);
+  color:#fff;
+  padding:.6rem 1rem;
+  border-radius:999px;
+  font-weight:800;
+}
+.nav .cta-offre:hover {background:var(--brand-hover);}
 
-/* Grid de contatos */
-.contacts-grid{
-  display:grid; gap:1rem; grid-template-columns:repeat(auto-fit, minmax(280px,1fr));
-  margin-bottom:2rem;
+/* HERO */
+.hero {
+  position:relative;
+  min-height:80dvh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+.hero .cover {
+  position:absolute;
+  inset:0;
+  width:100%; height:100%;
+  object-fit:cover;
+  object-position:center 90%;
+  filter: brightness(1.1) contrast(1.1) saturate(1.15);
+}
+.hero-content {
+  position:relative;
+  z-index:2;
+  text-align:center;
+  padding:1rem;
+  text-shadow:0 2px 10px rgba(0,0,0,.35);
+}
+.hero-content h1 {
+  color:#fff;
+  font-size:clamp(28px,5vw,48px);
+  margin-bottom:.25rem;
+}
+.hero-content p {
+  color:#fff;
+  font-size:clamp(16px,2.5vw,22px);
 }
 
-/* Cards brancos com filete verde, texto/link azul */
-.contact-card{
-  background:#fff; border:1px solid var(--card-bd); border-left:12px solid var(--green);
-  border-radius:16px; padding:1rem 1.25rem;
-  box-shadow:0 2px 12px rgba(0,0,0,.05);
+/* SECTIONS */
+.section {
+  padding:2.4rem clamp(12px,2vw,32px);
+}
+.section.alt {
+  background:var(--terracotta-soft);
+}
+.section .intro {
+  max-width:1100px;
+  margin:0 auto;
+}
+.section .intro h2 {color:var(--green);}
+.section .intro p {color:var(--text);}
+.hero + .section {padding-top:2.6rem;}
+
+/* CARDS */
+.cards {
+  max-width:1100px;
+  margin:1rem auto 0 auto;
+  display:grid;
+  gap:1rem;
+  grid-template-columns:repeat(4,minmax(220px,1fr));
+}
+.card {
+  background:#fff;
+  border:1px solid rgba(0,0,0,.08);
+  border-left:12px solid var(--terracotta);
+  border-radius:14px;
+  padding:1rem 1.25rem;
+  box-shadow:var(--card-shadow);
   transition:transform .25s ease, box-shadow .25s ease, border-left-color .25s ease;
 }
-.contact-card:hover{ transform:translateY(-4px); box-shadow:0 10px 24px rgba(0,0,0,.08); border-left-color:#0b3326; }
-.contact-card h3{ margin:0 0 .35rem 0; color:var(--blue); font-weight:800; font-size:1.08rem; }
-.contact-card p{ margin:0 0 .25rem 0; color:var(--blue); }
-.contact-card a{ color:var(--blue); font-weight:700; text-decoration:none; }
-.contact-card a:hover{ text-decoration:underline; }
-
-/* “Facturation” mais largo quando houver espaço */
-@media (min-width: 960px){
-  .contact-card--wide{ grid-column: span 2; }
+.card h3 {color:var(--green); margin:0 0 .4rem;}
+.card p {color:var(--muted); margin:0;}
+.card:hover {
+  transform:translateY(-6px);
+  box-shadow:var(--card-shadow-hover);
+  border-left-color:#d98258;
 }
+@media (max-width:1024px) {.cards{grid-template-columns:repeat(2,minmax(220px,1fr));}}
+@media (max-width:640px) {.cards{grid-template-columns:1fr;}}
 
+/* BOTÃO AZUL */
+.btn-blue {
+  display:inline-block;
+  background:var(--brand);
+  color:#fff;
+  text-decoration:none;
+  padding:.9rem 1.2rem;
+  border-radius:12px;
+  font-weight:800;
+}
+.btn-blue:hover {background:var(--brand-hover);}
 
-
+/* FOOTER */
+footer {
+  background:var(--terracotta-soft);
+  color:var(--text);
+}
+.footer-inner.footer-home {
+  max-width:1200px;
+  margin:0 auto;
+  display:flex;
+  gap:1rem;
+  align-items:stretch;
+  padding:1rem;
+}
+.footer-col {flex:1 1 0;}
+.footer-info a {color:var(--green); text-decoration:underline;}
+.footer-map iframe {
+  width:100%;
+  height:190px;
+  border:0;
+  border-radius:12px;
+  box-shadow:0 2px 10px rgba(0,0,0,.08);
+}
+.footer-legal {
+  max-width:1200px;
+  margin:0 auto;
+  padding:.7rem 1rem;
+  display:flex;
+  justify-content:flex-end;
+  border-top:1px solid rgba(0,0,0,.08);
+}
+.footer-legal a {color:var(--green); text-decoration:underline;}
+@media (max-width:900px){
+  .footer-inner.footer-home{flex-direction:column;}
+  .footer-map iframe{height:220px;}
+}
