@@ -4,10 +4,105 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Contacts – Immo Hoessen</title>
-  <link rel="stylesheet" href="style.css?v=22">
+
+  <!-- seu CSS global, se existir -->
+  <link rel="stylesheet" href="style.css?v=23">
+
+  <!-- Estilos essenciais da página (autossuficiente) -->
+  <style>
+    /* ===== Paleta & helpers ===== */
+    :root{
+      --green:#0f3d2e;
+      --text:#1e4e3d;
+      --blue:#1a5cff;
+      --brand:#1a5cff;
+      --brand-hover:#003b8a;
+      --warm-25:#fff9f3;
+      --warm-50:#fff3e5;
+      --card-bd:#e6e6e6;
+      --shadow:0 2px 12px rgba(0,0,0,.06);
+      --shadow-lg:0 10px 24px rgba(0,0,0,.08);
+      --wrap:1100px;
+    }
+
+    /* ===== Reset mínimo ===== */
+    html,body{margin:0;padding:0}
+    img{max-width:100%;display:block}
+
+    /* ===== Header básico (fallback, caso seu style.css não carregue) ===== */
+    .header{position:sticky;top:0;background:#fff;border-bottom:1px solid #eee;z-index:50}
+    .header-inner{max-width:var(--wrap);margin:0 auto;padding:.8rem 1rem;display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:.6rem}
+    .brand img{height:32px}
+    .brand-name{font-weight:800;color:var(--text)}
+    .nav{display:flex;gap:.4rem;flex-wrap:wrap;align-items:center}
+    .nav a{display:inline-block;padding:.55rem .8rem;border-radius:.6rem;text-decoration:none;color:var(--text);font-weight:600}
+    .nav a:hover{background:#f3f6f5}
+    .nav a.active{color:#fff;background:var(--green)}
+    .nav .cta-offre{background:var(--brand);color:#fff;border:1px solid transparent;padding:.6rem 1rem;border-radius:999px;font-weight:800}
+    .nav .cta-offre:hover{background:var(--brand-hover)}
+
+    /* ===== Fundo salmão/bege da página ===== */
+    body.contacts-page{background:linear-gradient(180deg, var(--warm-50), var(--warm-25));}
+
+    /* ===== Container e títulos ===== */
+    .container{max-width:var(--wrap);margin:0 auto;padding:0 16px}
+    .page-title{color:var(--green);margin:1.2rem 0 .6rem 0}
+
+    /* ===== Card base branco ===== */
+    .card-clean{
+      background:#fff;border:1px solid var(--card-bd);border-radius:16px;
+      padding:1.25rem;box-shadow:var(--shadow)
+    }
+
+    /* ===== Bloco Telefones ===== */
+    .contact-phones{margin:0 0 1.5rem}
+    .phones-badge{
+      display:inline-block;background:#ffe3a4;color:#5a4300;font-weight:700;
+      padding:.25rem .65rem;border-radius:999px;margin-bottom:.6rem;font-size:.9rem
+    }
+    .phones-title{margin:.2rem 0 .6rem;color:var(--green);text-align:center}
+    .phones-sub{margin:.8rem 0 .2rem;color:var(--green);text-align:center}
+    .phones-hint{text-align:center;color:#365a4d;margin:.2rem 0 .6rem}
+    .phones-row{display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap}
+    .phones-sep{border:0;border-top:1px solid #eee;margin:1rem auto;max-width:360px}
+    .btn-call{
+      display:inline-block;background:var(--blue);color:#fff;text-decoration:none;
+      padding:.65rem 1rem;border-radius:999px;font-weight:800;box-shadow:var(--shadow)
+    }
+    .btn-call:hover{filter:brightness(.92)}
+
+    /* ===== Grid de contatos ===== */
+    .contacts-grid{
+      display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      margin:0 0 2rem;
+    }
+    .contact-card{
+      background:#fff;border:1px solid var(--card-bd);border-left:12px solid var(--green);
+      border-radius:16px;padding:1rem 1.25rem;box-shadow:var(--shadow);
+      transition:transform .25s ease, box-shadow .25s ease, border-left-color .25s ease;
+    }
+    .contact-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-left-color:#0b3326}
+    .contact-card h3{margin:0 0 .35rem 0;color:var(--blue);font-weight:800;font-size:1.08rem}
+    .contact-card p{margin:0 0 .25rem 0;color:var(--blue)}
+    .contact-card a{color:var(--blue);font-weight:700;text-decoration:none}
+    .contact-card a:hover{text-decoration:underline}
+    @media (min-width:960px){ .contact-card--wide{grid-column:span 2} }
+
+    /* ===== Footer básico (fallback) ===== */
+    footer{background:#f3ece7}
+    .footer-inner.footer-home{max-width:var(--wrap);margin:0 auto;display:flex;gap:1rem;align-items:stretch;padding:1rem}
+    .footer-col{flex:1 1 0}
+    .footer-info a{color:#0f3d2e;text-decoration:underline}
+    .footer-info p{margin:.25rem 0}
+    .footer-map iframe{width:100%;height:190px;border:0;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.08)}
+    .footer-legal{max-width:var(--wrap);margin:0 auto;padding:.7rem 1rem;display:flex;justify-content:flex-end;border-top:1px solid rgba(0,0,0,.08)}
+    .footer-legal a{color:#0f3d2e;text-decoration:underline}
+    @media (max-width:900px){ .footer-inner.footer-home{flex-direction:column} .footer-map iframe{height:220px} }
+  </style>
 </head>
 <body class="site contacts-page">
-  <!-- Header -->
+  <!-- ===== Header ===== -->
   <header class="header">
     <div class="header-inner">
       <div class="brand">
@@ -26,12 +121,12 @@
     </div>
   </header>
 
-  <!-- Fundo salmão/bege + título -->
-  <section class="section alt">
+  <!-- ===== Conteúdo ===== -->
+  <main class="section alt">
     <div class="container">
       <h1 class="page-title">Contacts</h1>
 
-      <!-- Bloco Telefones (card branco) -->
+      <!-- Telefones (card branco) -->
       <div class="contact-phones card-clean">
         <div class="phones-badge">Téléphones</div>
 
@@ -50,7 +145,7 @@
         </p>
       </div>
 
-      <!-- Grid de cards (brancos) -->
+      <!-- Cards dos contatos (brancos) -->
       <div class="contacts-grid">
         <article class="contact-card">
           <h3>Laurent Hoessen</h3>
@@ -95,9 +190,9 @@
         </article>
       </div>
     </div>
-  </section>
+  </main>
 
-  <!-- Footer (igual às outras páginas) -->
+  <!-- ===== Rodapé ===== -->
   <footer>
     <div class="footer-inner footer-home">
       <div class="footer-col footer-info">
