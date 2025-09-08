@@ -1,3 +1,6 @@
+Claro, Fabiane! Aqui está o código completo e atualizado do index.html, com os ajustes que fizemos para deixar o site mais profissional, elegante e coerente com o novo estilo visual:
+
+✅ index.html — Versão Profissional
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -5,10 +8,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Laurent Hoessen – Gestion immobilière · Syndic BILH – DUHO</title>
 
-  <!-- Google Fonts -->
+  <!-- Fonte moderna -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
 
-  <!-- CSS externo -->
+  <!-- CSS principal -->
   <link rel="stylesheet" href="style.css?v=17">
 
   <!-- SEO -->
@@ -18,277 +21,133 @@
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://fabivilmen.github.io/immohoessen-site-v2/img/cover-plain2.jpg">
   <link rel="icon" href="img/favicon.png">
+</head>
 
-  <!-- Estilo essencial -->
-  <style>
-    :root {
-      --green: #0f3d2e;
-      --text: #1e4e3d;
-      --muted: #557a68;
-      --brand: #1a5cff;
-      --brand-hover: #003b8a;
-      --terracotta: #c77045;
-      --terracotta-soft: #f3ece7;
-      --warm-25: #fff9f3;
-      --warm-50: #fff3e5;
-      --card-shadow: 0 2px 12px rgba(0,0,0,.06);
-      --card-shadow-hover: 0 12px 28px rgba(0,0,0,.14);
-    }
+<body class="site">
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="brand">
+        <img src="img/logo.svg" alt="Immo Hoessen" onerror="this.style.display='none'">
+        <span class="brand-name">Immo Hoessen</span>
+      </div>
+      <nav class="nav">
+        <a class="active" href="index.html">Accueil</a>
+        <a href="types.html">Types de gestion</a>
+        <a href="gestion.html">Gestion</a>
+        <a href="portail.html">Portail</a>
+        <a href="contacts.html">Contacts</a>
+        <a href="apropos.html">À propos</a>
+        <a class="cta-offre" href="offre.html">Demander une offre</a>
+      </nav>
+    </div>
+  </header>
 
-    body.site {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background-color: #fff;
-      color: var(--text);
-    }
+  <!-- CAPA -->
+  <main id="main">
+    <section class="hero">
+      <img class="cover" src="./img/cover-plain2.jpg" alt="Laurent Hoessen" fetchpriority="high" loading="eager" decoding="async">
+      <div class="hero-content">
+        <h1>Laurent Hoessen</h1>
+        <p>Gestion immobilière · Syndic BILH – DUHO</p>
+      </div>
+    </section>
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    <!-- BLOCO 1 – Types de gestion -->
+    <section class="section alt">
+      <div class="intro">
+        <h2>Types de gestion</h2>
+        <p>Des solutions adaptées à chaque copropriété, avec transparence et rigueur.</p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <h3>Gestion de base</h3>
+          <p>Administration, comptabilité et obligations légales.</p>
+        </article>
+        <article class="card">
+          <h3>Gestion technique</h3>
+          <p>Suivi des travaux, ascenseurs, chauffage, sécurité.</p>
+        </article>
+        <article class="card">
+          <h3>Gestion financière</h3>
+          <p>Budgets, appels de fonds, contrôle des dépenses.</p>
+        </article>
+        <article class="card">
+          <h3>Conseil & audit</h3>
+          <p>Optimisations, contrats, conformité et PEB.</p>
+        </article>
+      </div>
+    </section>
 
-    /* HEADER */
-    .header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: #fff;
-      border-bottom: 1px solid #eee;
-    }
+    <!-- BLOCO 2 – Gestion -->
+    <section class="section">
+      <div class="intro">
+        <h2>Gestion</h2>
+        <p>Nous veillons à la bonne tenue des espaces, à la communication claire et à la réactivité en cas d’urgence.</p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <h3>Suivi quotidien</h3>
+          <p>Emails et appels traités par priorité. Tableaux de bord, SLA interne et retour systématique aux copropriétaires.</p>
+        </article>
+        <article class="card">
+          <h3>Conformité légale</h3>
+          <p>Contrôles périodiques (ascenseurs, électricité, incendie), registres, RGPD, assurances et archives disponibles sur le portail.</p>
+        </article>
+        <article class="card">
+          <h3>AG & procès-verbaux</h3>
+          <p>Organisation, quorum, proxies et suivi des décisions.</p>
+        </article>
+        <article class="card">
+          <h3>Urgence</h3>
+          <p>Procédures claires et contacts prioritaires.</p>
+        </article>
+      </div>
+      <div class="intro" style="margin-top:1rem">
+        <a class="btn-blue" href="contacts.html">Nous contacter</a>
+      </div>
+    </section>
+  </main>
 
-    .header-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: .8rem 1rem;
-    }
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner footer-home">
+      <div class="footer-col footer-info">
+        <p><strong>Adresse&nbsp;:</strong> Avenue Heydenberg 14, 1200 Bruxelles</p>
+        <p><strong>Téléphone&nbsp;:</strong> <a href="tel:+3227725175">02 772 51 75</a></p>
+        <p><strong>URGENCE&nbsp;:</strong> <a href="tel:0495261683">0495 26 16 83</a> · <a href="tel:0495543808">0495 54 38 08</a></p>
+        <p><strong>Heures&nbsp;:</strong> 09:00–13:00</p>
+        <p><strong>Email&nbsp;:</strong> <a href="mailto:syndic@immohoessen.be">syndic@immohoessen.be</a></p>
+        <p><strong>Nº d’entreprise&nbsp;:</strong> BE0462920325</p>
+      </div>
+      <div class="footer-col footer-map">
+        <iframe title="Immo Hoessen – Carte" src="https://www.google.com/maps?q=Avenue%20Heydenberg%2014,%201200%20Bruxelles&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <a href="mentions.html">Mentions légales</a>
+    </div>
+  </footer>
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: .6rem;
-    }
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"LocalBusiness",
+    "name":"Immo Hoessen",
+    "image":"https://fabivilmen.github.io/immohoessen-site-v2/img/logo.svg",
+    "url":"https://fabivilmen.github.io/immohoessen-site-v2/",
+    "telephone":"+32 2 772 51 75",
+    "address":{
+      "@type":"PostalAddress",
+      "streetAddress":"Avenue Heydenberg 14",
+      "addressLocality":"Bruxelles",
+      "postalCode":"1200",
+      "addressCountry":"BE"
+    },
+    "openingHours":"Mo-Fr 09:00-13:00"
+  }
+  </script>
+</body>
+</html>
 
-    .brand img {
-      height: 32px;
-    }
-
-    .brand-name {
-      font-weight: 800;
-      color: var(--text);
-      font-size: 1.2rem;
-    }
-
-    .nav {
-      display: flex;
-      gap: .4rem;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-
-    .nav a {
-      padding: .55rem .8rem;
-      border-radius: .6rem;
-      font-weight: 600;
-      transition: background 0.3s ease;
-    }
-
-    .nav a:hover {
-      background: #f3f6f5;
-    }
-
-    .nav a.active {
-      color: #fff;
-      background: var(--green);
-    }
-
-    .nav .cta-offre {
-      background: var(--brand);
-      color: #fff;
-      padding: .6rem 1rem;
-      border-radius: 999px;
-      font-weight: 800;
-    }
-
-    .nav .cta-offre:hover {
-      background: var(--brand-hover);
-    }
-
-    /* HERO */
-    .hero {
-      position: relative;
-      min-height: 80dvh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    .hero .cover {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 78%;
-      filter: brightness(1.25) contrast(1.15) saturate(1.2);
-      transform: translateZ(0);
-      transition: filter .35s ease, transform .6s ease;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,.25) 0%, rgba(0,0,0,.12) 38%, rgba(0,0,0,0) 68%);
-      z-index: 1;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      padding: 1rem;
-      text-shadow: 0 3px 12px rgba(0,0,0,.55);
-    }
-
-    .hero-content h1 {
-      color: #fff;
-      font-size: clamp(28px, 5vw, 48px);
-      margin: .2rem 0 .3rem;
-    }
-
-    .hero-content p {
-      color: #fff;
-      font-size: clamp(16px, 2.4vw, 22px);
-      margin: 0;
-    }
-
-    @media (hover:hover) {
-      .hero:hover .cover {
-        filter: brightness(1.3) contrast(1.18) saturate(1.25);
-        transform: scale(1.012);
-      }
-    }
-
-    /* SECTION */
-    .section {
-      padding: 2.4rem clamp(12px, 2vw, 32px);
-    }
-
-    .section.alt {
-      background: linear-gradient(180deg, var(--warm-50), var(--warm-25));
-    }
-
-    .intro {
-      max-width: 1100px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .intro h2 {
-      color: var(--green);
-      margin-bottom: .5rem;
-      font-size: 2rem;
-    }
-
-    .intro p {
-      color: var(--text);
-      margin: .4rem 0;
-      font-size: 1.1rem;
-    }
-
-    .cards {
-      max-width: 1100px;
-      margin: 1rem auto 0 auto;
-      display: grid;
-      gap: 1rem;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    }
-
-    .card {
-      background: #fff;
-      border: 1px solid rgba(0,0,0,.08);
-      border-left: 12px solid var(--terracotta);
-      border-radius: 14px;
-      padding: 1rem 1.25rem;
-      box-shadow: var(--card-shadow);
-      transition: transform .25s ease, box-shadow .25s ease, border-left-color .25s ease;
-    }
-
-    .card h3 {
-      color: var(--green);
-      margin-bottom: .4rem;
-    }
-
-    .card p {
-      color: var(--muted);
-      margin: 0;
-    }
-
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--card-shadow-hover);
-      border-left-color: #d98258;
-    }
-
-    .btn-blue {
-      display: inline-block;
-      background: var(--brand);
-      color: #fff;
-      padding: .9rem 1.2rem;
-      border-radius: 12px;
-      font-weight: 800;
-      transition: background 0.3s ease;
-    }
-
-    .btn-blue:hover {
-      background: var(--brand-hover);
-    }
-
-    /* FOOTER */
-    footer {
-      background: var(--terracotta-soft);
-      color: var(--text);
-    }
-
-    .footer-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      gap: 1rem;
-      align-items: stretch;
-      padding: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .footer-col {
-      flex: 1 1 300px;
-    }
-
-    .footer-info a {
-      color: var(--green);
-      text-decoration: underline;
-    }
-
-    .footer-info p {
-      margin: .25rem 0;
-    }
-
-    .footer-map iframe {
-      width: 100%;
-      height: 190px;
-      border: 0;
-      border-radius: 12px;
-      box-shadow: 0 2px 10px rgba(0,0,0,.08);
-    }
-
-    .footer-legal {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: .7rem 1rem;
-      display: flex;
-      justify-content: flex-end;
-      border-top:
