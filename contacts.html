@@ -4,106 +4,62 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Contacts – Immo Hoessen</title>
-  <link rel="stylesheet" href="style.css?v=16">
+
+  <!-- CSS global do site -->
+  <link rel="stylesheet" href="style.css?v=17">
+
+  <!-- Estilos específicos da página (não quebram o restante) -->
   <style>
-    /* ===== Estilos específicos para a aba Contacts ===== */
-
-    :root {
-      --blue: #1a5cff;
-      --terracotta-soft: #f3ece7;
-      --header-bg: #fff;
-      --text-color: #1e4e3d;
-      --card-border: #e6e6e6;
-      --card-shadow: rgba(0,0,0,0.05);
-      --card-shadow-hover: rgba(0,0,0,0.08);
+    :root{
+      --green:#0f3d2e;              /* já existe no site; mantive o fallback */
+      --text:#1e4e3d;
+      --blue:#1a5cff;
+      --warm-25:#fff9f3;
+      --warm-50:#fff3e5;
+      --card-bd:#e6e6e6;
     }
 
-    body.contacts-page {
-      background: var(--terracotta-soft);
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    /* Fundo igual às internas (bege/terracota suave) */
+    .section.alt{ background:linear-gradient(180deg, var(--warm-50), var(--warm-25)); }
+
+    /* Grid dos cards */
+    .contacts-grid{
+      max-width:1100px; margin:1rem auto 2rem; padding:0 1rem;
+      display:grid; gap:1rem; grid-template-columns:repeat(auto-fit, minmax(280px,1fr));
     }
 
-    .header, .footer {
-      background: var(--header-bg);
+    /* Card branco + filete verde à esquerda + tipografia azul */
+    .contact-card{
+      position:relative;
+      background:#fff;
+      border:1px solid var(--card-bd);
+      border-left:12px solid var(--green);      /* filete verde estilo do site */
+      border-radius:16px;
+      padding:1rem 1.25rem;
+      box-shadow:0 2px 10px rgba(0,0,0,.05);
+      transition:transform .25s ease, box-shadow .25s ease, border-left-color .25s ease;
     }
+    .contact-card:hover{
+      transform:translateY(-4px);
+      box-shadow:0 10px 24px rgba(0,0,0,.08);
+      border-left-color:#0c3326;               /* leve escurecida no hover */
+    }
+    .contact-card h3{
+      margin:0 0 .35rem 0; font-weight:800; color:var(--blue);
+      font-size:1.1rem;
+    }
+    .contact-card p{ margin:0 0 .25rem 0; color:var(--blue); font-weight:500; }
+    .contact-card a{ color:var(--blue); font-weight:700; text-decoration:none; }
+    .contact-card a:hover{ text-decoration:underline; }
 
-    /* Hero / Intro */
-    .contacts-hero {
-      padding: 2rem 1rem 1rem;
-      text-align: center;
-    }
-    .contacts-hero h1 {
-      margin: 0;
-      color: var(--text-color);
-      font-size: clamp(24px, 5vw, 36px);
-    }
-    .contacts-hero p {
-      margin: .5rem 0 0;
-      color: var(--text-color);
-      font-size: clamp(16px, 3vw, 20px);
-    }
-
-    /* Grid cards */
-    .contacts-wrap {
-      max-width: 1100px;
-      margin: 1rem auto 2rem;
-      padding: 0 1rem;
-      display: grid;
-      gap: 1rem;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    }
-
-    .contact-card {
-      background: #fff;
-      border: 1px solid var(--card-border);
-      border-radius: 14px;
-      padding: 1rem 1.25rem;
-      box-shadow: 0 2px 10px var(--card-shadow);
-      transition: transform .25s ease, box-shadow .25s ease;
-    }
-    .contact-card h3 {
-      margin: 0 0 .3rem;
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--blue);
-    }
-    .contact-card p {
-      margin: 0 0 .25rem;
-      font-size: 1rem;
-      color: var(--blue);
-      font-weight: 500;
-    }
-    .contact-card a {
-      color: var(--blue);
-      text-decoration: none;
-      font-weight: 600;
-    }
-    .contact-card a:hover {
-      text-decoration: underline;
-    }
-    .contact-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px var(--card-shadow-hover);
-    }
-
-    /* Footer simplificado ou mantenha seu footer completo se quiser */
-    .footer-legal {
-      text-align: center;
-      padding: 1rem;
-      background: var(--header-bg);
-    }
-    .footer-legal a {
-      color: var(--text-color);
-      text-decoration: none;
-    }
-    .footer-legal a:hover {
-      text-decoration: underline;
-    }
+    /* Título da página */
+    .contacts-hero{ padding:2rem 1rem 1rem; text-align:center; }
+    .contacts-hero h1{ margin:0; color:var(--green); }
+    .contacts-hero p{ margin:.4rem 0 0; color:var(--text); }
   </style>
 </head>
-<body class="site contacts-page">
-  <!-- Header -->
+<body class="site">
+  <!-- Header (igual às outras páginas) -->
   <header class="header">
     <div class="header-inner">
       <div class="brand">
@@ -122,54 +78,81 @@
     </div>
   </header>
 
-  <!-- Hero / Intro -->
-  <section class="contacts-hero">
-    <h1>Contacts</h1>
-    <p>Notre équipe est à votre service.</p>
+  <!-- Faixa de título + fundo suave -->
+  <section class="section alt">
+    <div class="contacts-hero">
+      <h1>Contacts</h1>
+      <p>Notre équipe à votre service.</p>
+    </div>
+
+    <!-- Cards -->
+    <div class="contacts-grid">
+      <article class="contact-card">
+        <h3>Laurent Hoessen</h3>
+        <p>Gestionnaire — IPI 150260 (titulaire)</p>
+        <a href="mailto:laurent@immohoessen.be">laurent@immohoessen.be</a>
+      </article>
+
+      <article class="contact-card">
+        <h3>André Hoessen</h3>
+        <p>Gestionnaire général et RH</p>
+        <a href="mailto:andre@immohoessen.be">andre@immohoessen.be</a>
+      </article>
+
+      <article class="contact-card">
+        <h3>Patricia Boniface</h3>
+        <p>Gestionnaire de copropriété</p>
+        <a href="mailto:gestion@immohoessen.be">gestion@immohoessen.be</a>
+      </article>
+
+      <article class="contact-card">
+        <h3>Viviane Ledieu</h3>
+        <p>Gestionnaire de sinistres</p>
+        <a href="mailto:admin@immohoessen.be">admin@immohoessen.be</a>
+      </article>
+
+      <article class="contact-card">
+        <h3>Fabiane Menezes</h3>
+        <p>Assistante de gestion</p>
+        <a href="mailto:syndic@immohoessen.be">syndic@immohoessen.be</a>
+      </article>
+
+      <article class="contact-card">
+        <h3>Mikail Uçarer</h3>
+        <p>Stagiaire (en formation IPI)</p>
+        <a href="mailto:gestionnaire@immohoessen.be">gestionnaire@immohoessen.be</a>
+      </article>
+
+      <article class="contact-card">
+        <h3>Facturation</h3>
+        <p>Transmettez vos factures à&nbsp;:</p>
+        <a href="mailto:factures@immohoessen.be">factures@immohoessen.be</a>
+      </article>
+    </div>
   </section>
 
-  <!-- Contato Cards -->
-  <main class="contacts-wrap">
-    <article class="contact-card">
-      <h3>Laurent Hoessen</h3>
-      <p>Gestionnaire — IPI 150260 (titulaire)</p>
-      <a href="mailto:laurent@immohoessen.be">laurent@immohoessen.be</a>
-    </article>
-    <article class="contact-card">
-      <h3>André Hoessen</h3>
-      <p>Gestionnaire général et RH</p>
-      <a href="mailto:andre@immohoessen.be">andre@immohoessen.be</a>
-    </article>
-    <article class="contact-card">
-      <h3>Patricia Boniface</h3>
-      <p>Gestionnaire de copropriété</p>
-      <a href="mailto:gestion@immohoessen.be">gestion@immohoessen.be</a>
-    </article>
-    <article class="contact-card">
-      <h3>Viviane Ledieu</h3>
-      <p>Gestionnaire de sinistres</p>
-      <a href="mailto:admin@immohoessen.be">admin@immohoessen.be</a>
-    </article>
-    <article class="contact-card">
-      <h3>Fabiane Menezes</h3>
-      <p>Assistante de gestion</p>
-      <a href="mailto:syndic@immohoessen.be">syndic@immohoessen.be</a>
-    </article>
-    <article class="contact-card">
-      <h3>Mikail Uçarer</h3>
-      <p>Stagiaire (en formation IPI)</p>
-      <a href="mailto:gestionnaire@immohoessen.be">gestionnaire@immohoessen.be</a>
-    </article>
-    <article class="contact-card">
-      <h3>Facturation</h3>
-      <p>Transmettez vos factures à :</p>
-      <a href="mailto:factures@immohoessen.be">factures@immohoessen.be</a>
-    </article>
-  </main>
-
-  <!-- Footer -->
-  <footer class="footer-legal">
-    <a href="mentions.html">Mentions légales</a>
+  <!-- Rodapé (mesmo da home) -->
+  <footer>
+    <div class="footer-inner footer-home">
+      <div class="footer-col footer-info">
+        <p><strong>Adresse&nbsp;:</strong> Avenue Heydenberg 14, 1200 Bruxelles</p>
+        <p><strong>Téléphone&nbsp;:</strong> <a href="tel:+3227725175">02 772 51 75</a></p>
+        <p><strong>URGENCE&nbsp;:</strong> <a href="tel:0495261683">0495 26 16 83</a> · <a href="tel:0495543808">0495 54 38 08</a></p>
+        <p><strong>Heures&nbsp;:</strong> 09:00–13:00</p>
+        <p><strong>Email&nbsp;:</strong> <a href="mailto:syndic@immohoessen.be">syndic@immohoessen.be</a></p>
+        <p><strong>Nº d’entreprise&nbsp;:</strong> BE0462920325</p>
+      </div>
+      <div class="footer-col footer-map">
+        <iframe
+          title="Immo Hoessen – Carte"
+          src="https://www.google.com/maps?q=Avenue%20Heydenberg%2014,%201200%20Bruxelles&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <a href="mentions.html">Mentions légales</a>
+    </div>
   </footer>
 </body>
 </html>
