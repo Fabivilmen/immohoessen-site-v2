@@ -294,5 +294,14 @@ footer {
 .section.alt {
   background: var(--terracotta-soft) !important;
 }
+/* === Ajuste final: todos os cards com a MESMA altura === */
+.section .cards article.card {
+  background: #ffffff !important;
+  height: 150px !important; /* altura fixa igual aos da capa */
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  overflow: hidden; /* impede que aumentem se o texto for maior */
+}
 
 
