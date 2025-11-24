@@ -1,151 +1,144 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Laurent Hoessen – Gestion immobilière · Syndic BILH – DUHO</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bureau Immobilier Laurent Hoessen SRL</title>
 
-  <!-- Fonte moderna -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f2f2f2;
+            color: #333;
+        }
 
-  <!-- CSS principal -->
-  <link rel="stylesheet" href="style.css?v=17">
+        header {
+            background-image: url("background.jpg"); /* mantenho sua imagem */
+            background-size: cover;
+            background-position: center;
+            height: 55vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
 
-  <!-- SEO -->
-  <meta name="description" content="Syndic de copropriété à Bruxelles. Gestion sérieuse et humaine : AG, budgets, travaux, sinistres, documents en ligne.">
-  <meta property="og:title" content="Immo Hoessen – Syndic & gestion immobilière à Bruxelles">
-  <meta property="og:description" content="Gestion transparente, technique et réactive. Portail 24h/24 pour vos documents.">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="https://fabivilmen.github.io/immohoessen-site-v2/img/cover-plain2.jpg">
-  <link rel="icon" href="img/favicon.png">
+        header::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.55);
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+        }
+
+        .header-content h1 {
+            font-size: 3rem;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+
+        .header-content p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        /* CONTAINER DOS CARDS */
+        .cards-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        /* CARD */
+        .card {
+            background: #ffffffd7;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            min-height: 230px;  /* igual para todos */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: #003E74;
+            font-size: 1.4rem;
+        }
+
+        .card p {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #222;
+            color: #ddd;
+            padding: 25px 0;
+            text-align: center;
+            margin-top: 40px;
+        }
+    </style>
 </head>
 
-<body class="site">
-  <!-- HEADER -->
-  <header class="header">
-    <div class="header-inner">
-      <div class="brand">
-        <img src="img/logo.svg" alt="Immo Hoessen" onerror="this.style.display='none'">
-        <span class="brand-name">Immo Hoessen</span>
-      </div>
-      <nav class="nav">
-        <a class="active" href="index.html">Accueil</a>
-        <a href="types.html">Types de gestion</a>
-        <a href="gestion.html">Gestion</a>
-        <a href="portail.html">Portail</a>
-        <a href="contacts.html">Contacts</a>
-        <a href="apropos.html">À propos</a>
-        <a class="cta-offre" href="offre.html">Demander une offre</a>
-      </nav>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="header-content">
+            <h1>Bureau Immobilier Laurent Hoessen</h1>
+            <p>Gestion immobilière – Syndic professionnel à Bruxelles</p>
+        </div>
+    </header>
+
+    <!-- CARDS -->
+    <div class="cards-container">
+
+        <div class="card">
+            <h3>Gestion de base</h3>
+            <p>Administration, obligations légales, communication, suivi général et archivage officiel.</p>
+        </div>
+
+        <div class="card">
+            <h3>Gestion technique</h3>
+            <p>Suivi des travaux, sécurité, ascenseurs, chauffage, audits techniques et interventions.</p>
+        </div>
+
+        <div class="card">
+            <h3>Gestion financière</h3>
+            <p>Budgets, appels de fonds, paiement fournisseurs, contrôles comptables et transparence totale.</p>
+        </div>
+
+        <div class="card">
+            <h3>Conseil & audit</h3>
+            <p>Optimisation des contrats, audits, expertises, conformité, PEB et accompagnement global.</p>
+        </div>
+
     </div>
-  </header>
 
-  <!-- CAPA -->
-  <main id="main">
-    <section class="hero">
-      <img class="cover" src="./img/cover-plain2.jpg" alt="Laurent Hoessen" fetchpriority="high" loading="eager" decoding="async">
-      <div class="hero-content">
-        <h1>Laurent Hoessen</h1>
-        <p>Gestion immobilière · Syndic BILH – DUHO</p>
-      </div>
-    </section>
+    <!-- FOOTER -->
+    <footer>
+        © Bureau Immobilier Laurent Hoessen SRL – BE 0462 920 325  
+    </footer>
 
-    <!-- BLOCO 1 – Types de gestion -->
-    <section class="section alt">
-      <div class="intro">
-        <h2>Types de gestion</h2>
-        <p>Des solutions adaptées à chaque copropriété, avec transparence et rigueur.</p>
-      </div>
-      <div class="cards">
-        <article class="card">
-          <h3>Gestion de base</h3>
-          <p>Administration, comptabilité et obligations légales.</p>
-        </article>
-        <article class="card">
-          <h3>Gestion technique</h3>
-          <p>Suivi des travaux, ascenseurs, chauffage, sécurité.</p>
-        </article>
-        <article class="card">
-          <h3>Gestion financière</h3>
-          <p>Budgets, appels de fonds, contrôle des dépenses.</p>
-        </article>
-        <article class="card">
-          <h3>Conseil & audit</h3>
-          <p>Optimisations, contrats, conformité et PEB.</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- BLOCO 2 – Gestion -->
-    <section class="section">
-      <div class="intro">
-        <h2>Gestion</h2>
-        <p>Nous veillons à la bonne tenue des espaces, à la communication claire et à la réactivité en cas d’urgence.</p>
-      </div>
-      <div class="cards">
-        <article class="card">
-          <h3>Suivi quotidien</h3>
-          <p>Emails et appels traités par priorité. Tableaux de bord, SLA interne et retour systématique aux copropriétaires.</p>
-        </article>
-        <article class="card">
-          <h3>Conformité légale</h3>
-          <p>Contrôles périodiques (ascenseurs, électricité, incendie), registres, RGPD, assurances et archives disponibles sur le portail.</p>
-        </article>
-        <article class="card">
-          <h3>AG & procès-verbaux</h3>
-          <p>Organisation, quorum, proxies et suivi des décisions.</p>
-        </article>
-        <article class="card">
-          <h3>Urgence</h3>
-          <p>Procédures claires et contacts prioritaires.</p>
-        </article>
-      </div>
-      <div class="intro" style="margin-top:1rem">
-        <a class="btn-blue" href="contacts.html">Nous contacter</a>
-      </div>
-    </section>
-  </main>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-inner footer-home">
-      <div class="footer-col footer-info">
-        <p><strong>Adresse&nbsp;:</strong> Avenue Heydenberg 14, 1200 Bruxelles</p>
-        <p><strong>Téléphone&nbsp;:</strong> <a href="tel:+3227725175">02 772 51 75</a></p>
-        <p><strong>URGENCE&nbsp;:</strong> <a href="tel:0495261683">0495 26 16 83</a> · <a href="tel:0495543808">0495 54 38 08</a></p>
-        <p><strong>Heures&nbsp;:</strong> 09:00–13:00</p>
-        <p><strong>Email&nbsp;:</strong> <a href="mailto:syndic@immohoessen.be">syndic@immohoessen.be</a></p>
-        <p><strong>Nº d’entreprise&nbsp;:</strong> BE0462920325</p>
-      </div>
-      <div class="footer-col footer-map">
-        <iframe title="Immo Hoessen – Carte" src="https://www.google.com/maps?q=Avenue%20Heydenberg%2014,%201200%20Bruxelles&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
-    </div>
-    <div class="footer-legal">
-      <a href="mentions.html">Mentions légales</a>
-    </div>
-  </footer>
-
-  <!-- Schema.org -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"LocalBusiness",
-    "name":"Immo Hoessen",
-    "image":"https://fabivilmen.github.io/immohoessen-site-v2/img/logo.svg",
-    "url":"https://fabivilmen.github.io/immohoessen-site-v2/",
-    "telephone":"+32 2 772 51 75",
-    "address":{
-      "@type":"PostalAddress",
-      "streetAddress":"Avenue Heydenberg 14",
-      "addressLocality":"Bruxelles",
-      "postalCode":"1200",
-      "addressCountry":"BE"
-    },
-    "openingHours":"Mo-Fr 09:00-13:00"
-  }
-  </script>
 </body>
 </html>
+
+
 
