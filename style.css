@@ -498,4 +498,9 @@ p, li { font-size: clamp(15px, 1.6vw, 18px); line-height: 1.55; }
   flex-direction: column !important;
   justify-content: space-between !important;
 }
+/* Forçar altura e fundo para TODOS os artigos .card */
+.section .cards article.card {
+  min-height: 220px !important;
+  background: #ffffff !important;
+}
 
