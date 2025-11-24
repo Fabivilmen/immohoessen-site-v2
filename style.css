@@ -303,5 +303,20 @@ footer {
   justify-content: space-between !important;
   overflow: hidden; /* impede que aumentem se o texto for maior */
 }
+/* === Ajuste final: Cards com fundo branco + altura igual === */
+.section .cards article.card {
+  background: #ffffff !important;            /* fundo branco para todos os cards */
+  height: 160px !important;                  /* define altura fixa igual */
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  overflow: hidden !important;
+}
+
+/* === Ajuste final: Fundo terracota suave nos blocos Types + Gestion === */
+.section,
+.section.alt {
+  background: var(--terracotta-soft) !important;
+}
 
 
