@@ -483,12 +483,4 @@ p, li { font-size: clamp(15px, 1.6vw, 18px); line-height: 1.55; }
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
-/* Forçar mesma altura nos cards dos blocos do site */
-.section .cards > .card {
-    min-height: 220px !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: space-between !important;
-}
 
