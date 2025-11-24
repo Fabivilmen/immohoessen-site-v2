@@ -334,5 +334,22 @@ footer {
 .section.alt {
   background: var(--terracotta-soft) !important;
 }
+/* QUADROS UNIFORMES (Types + Gestion) */
+.section .cards article.card {
+  background: #ffffff !important;
+  min-height: 180px !important;       /* altura igual sem cortar texto */
+  padding: 1rem 1.2rem !important;    /* padroniza o tamanho interno */
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  overflow: visible !important;       /* impede que vire linha */
+}
+
+/* Fundo igual para os 2 blocos */
+.section,
+.section.alt {
+  background: var(--terracotta-soft) !important;
+}
+
 
 
