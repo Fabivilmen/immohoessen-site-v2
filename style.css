@@ -490,4 +490,12 @@ p, li { font-size: clamp(15px, 1.6vw, 18px); line-height: 1.55; }
     flex-direction: column !important;
     justify-content: space-between !important;
 }
+/* === Corrigir altura dos cards + fundo uniforme === */
+.section .cards > .card {
+  min-height: 220px !important;   /* define altura mínima igual */
+  background: #ffffff !important;  /* define fundo branco para todos */
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+}
 
