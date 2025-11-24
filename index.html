@@ -147,30 +147,3 @@
   </script>
 </body>
 </html>
-/* --- Correção dos quadros (cards) para ficarem iguais --- */
-
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-}
-
-/* CARD – altura equalizada e mais elegante */
-.card {
-  background: #ffffffcc; /* mantém seu estilo */
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  min-height: 160px;  /* <- ALTURA IGUAL PARA TODOS */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-/* Títulos dos cards */
-.card h3 {
-  margin-top: 0;
-  color: #003E74;
-  font-size: 1.25rem;
-}
-
