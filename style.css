@@ -477,4 +477,11 @@ p, li { font-size: clamp(15px, 1.6vw, 18px); line-height: 1.55; }
 @media (prefers-reduced-motion: reduce){
   *, *::before, *::after{ animation: none !important; transition: none !important; }
 }
+/* === Correção: igualar altura dos cards (Types de gestion + Gestion) === */
+.cards .card {
+  min-height: 200px;       /* altura mínima igual para todos */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
