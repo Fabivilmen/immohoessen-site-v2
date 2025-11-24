@@ -280,4 +280,13 @@ footer {
   flex-direction: column !important;
   justify-content: space-between !important;
 }
+/* === Ajuste final dos cards (tamanho + fundo uniforme) === */
+.section .cards article.card {
+  min-height: 160px !important;   /* altura MENOR */
+  background: #ffffff !important;  /* fundo BRANCO */
+  border-left: 10px solid var(--terracotta); /* mantém sua identidade */
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+}
 
