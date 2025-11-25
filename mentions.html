@@ -1,87 +1,407 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mentions légales – Bureau Immobilier Laurent Hoessen SRL</title>
-    <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; max-width: 900px; margin: auto; }
-        h1, h2 { color: #2c3e50; }
-        strong { color: #000; }
-        a { color: #0066cc; }
-        footer { margin-top: 40px; font-size: 0.9em; color: #666; }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mentions légales – Immo Hoessen</title>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    :root{
+      --green:#0f3d2e; --text:#1e4e3d; --muted:#557a68;
+      --gold:#e4b100; --terracotta:#c86b4a;
+      --warm-25:#fff9f3; --warm-50:#fff3e5;
+      --card-shadow:0 2px 12px rgba(0,0,0,.06);
+      --card-shadow-hover:0 12px 28px rgba(0,0,0,.14);
+      --radius:16px; --shadow:0 2px 12px rgba(0,0,0,.06);
+      --bg-soft:#fafafa;
+      --e1: cubic-bezier(.22,.61,.36,1);
+    }
+
+    html, body { height:100%; }
+    body.site{
+      min-height:100%;
+      display:flex;
+      flex-direction:column;
+      background: radial-gradient(120% 120% at 50% -10%, var(--warm-25) 0%, #ffffff 45%);
+      margin:0;
+      font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color:var(--text);
+    }
+
+    /* Header (igual às outras páginas) */
+    .header{position:sticky; top:0; z-index:50; background:#fff; border-bottom:1px solid #eee;}
+    .header-inner{max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between;
+      padding:.8rem 1rem; border-image: linear-gradient(90deg, var(--gold), var(--terracotta)) 1; border-bottom:3px solid transparent;}
+    .brand{display:flex; align-items:center; gap:.6rem}
+    .brand img{height:32px}
+    .brand-name{font-weight:800; color:var(--text)}
+    .nav{display:flex; gap:.4rem; flex-wrap:wrap; align-items:center}
+    .nav a{position:relative; padding:.55rem .8rem; border-radius:.6rem; text-decoration:none; color:var(--text); font-weight:600}
+    .nav a:hover{background:#f3f6f5}
+    .nav a.active{color:#fff; background:var(--green)}
+    .nav .cta-offre{background:#1a5cff; color:#fff; padding:.6rem 1rem; border-radius:999px; font-weight:800}
+    .nav .cta-offre:hover{background:#003b8a}
+
+    /* HERO da página de Menções Legais */
+    .legal-hero{
+      padding:3rem 1rem 2rem;
+      background:linear-gradient(180deg, var(--warm-50), var(--warm-25));
+      border-bottom:1px solid rgba(0,0,0,.06);
+    }
+    .legal-hero-inner{
+      max-width:1100px;
+      margin:0 auto;
+      text-align:left;
+    }
+    .legal-hero h1{
+      margin:0 0 .5rem 0;
+      color:var(--green);
+      font-size:clamp(1.9rem, 4vw, 2.4rem);
+    }
+    .legal-hero p{
+      margin:.2rem 0;
+      color:var(--text);
+      max-width:720px;
+      line-height:1.5;
+    }
+    .legal-hero-tag{
+      display:inline-flex;
+      align-items:center;
+      gap:.4rem;
+      padding:.2rem .7rem;
+      border-radius:999px;
+      background:#fff;
+      border:1px solid rgba(0,0,0,.06);
+      font-size:.85rem;
+      color:var(--muted);
+      margin-bottom:.7rem;
+    }
+    .legal-hero-tag span.dot{
+      width:8px;height:8px;border-radius:999px;background:var(--terracotta);
+    }
+
+    /* MAIN */
+    main.legal-main{
+      flex:1;
+      padding:2.2rem 1rem 2.8rem;
+    }
+    .legal-layout{
+      max-width:1100px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:1.8rem;
+      align-items:flex-start;
+    }
+
+    .legal-column{
+      background:#fff;
+      border-radius:var(--radius);
+      border:1px solid rgba(0,0,0,.06);
+      box-shadow:var(--card-shadow);
+      padding:1.5rem 1.6rem;
+    }
+
+    .legal-lang-label{
+      font-size:.85rem;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      color:var(--muted);
+      margin-bottom:.4rem;
+    }
+
+    .legal-column h2{
+      margin:.1rem 0 .8rem 0;
+      font-size:1.4rem;
+      color:var(--green);
+    }
+
+    .legal-block{
+      margin-bottom:1.1rem;
+      padding-bottom:1rem;
+      border-bottom:1px dashed rgba(0,0,0,.08);
+    }
+    .legal-block:last-child{
+      border-bottom:none;
+      margin-bottom:0;
+      padding-bottom:0;
+    }
+    .legal-block h3{
+      margin:0 0 .25rem 0;
+      font-size:1rem;
+      color:var(--text);
+    }
+    .legal-block p{
+      margin:0;
+      font-size:.95rem;
+      line-height:1.5;
+      color:var(--muted);
+    }
+
+    .legal-block ul{
+      margin:.3rem 0 0 0;
+      padding-left:1.1rem;
+      font-size:.95rem;
+      color:var(--muted);
+    }
+    .legal-block ul li{
+      margin:.1rem 0;
+    }
+
+    .legal-note{
+      margin-top:1.3rem;
+      font-size:.85rem;
+      color:var(--muted);
+      font-style:italic;
+    }
+
+    @media (max-width: 880px){
+      .legal-layout{
+        grid-template-columns:1fr;
+      }
+    }
+
+    /* Footer igual ao de types.html */
+    footer{
+      margin-top:1rem;
+      background:linear-gradient(180deg, var(--warm-50), var(--warm-25));
+      text-align:center;
+      padding:1.2rem 1rem;
+      border-top:1px solid rgba(0,0,0,.06);
+    }
+    .footer-quote{font-style:italic; margin:0 0 .4rem 0;}
+    .footer-copy{font-size:.9rem; color:var(--muted);}
+    .footer-copy a{color:var(--muted); text-decoration:underline;}
+  </style>
 </head>
+<body class="site">
 
-<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="brand">
+        <img src="img/logo.svg" alt="Immo Hoessen" onerror="this.style.display='none'">
+        <span class="brand-name">Immo Hoessen</span>
+      </div>
+      <nav class="nav">
+        <a href="index.html">Accueil</a>
+        <a href="types.html">Types de gestion</a>
+        <a href="gestion.html">Gestion</a>
+        <a href="portail.html">Portail</a>
+        <a href="contacts.html">Contacts</a>
+        <a href="apropos.html">À propos</a>
+        <a href="offre.html" class="cta-offre">Demander une offre</a>
+      </nav>
+    </div>
+  </header>
 
-    <h1>Mentions légales</h1>
+  <!-- HERO -->
+  <section class="legal-hero">
+    <div class="legal-hero-inner">
+      <div class="legal-hero-tag">
+        <span class="dot"></span>
+        <span>Informations légales · Wettelijke vermeldingen</span>
+      </div>
+      <h1>Mentions légales</h1>
+      <p>
+        Conformément à la législation belge en matière de services immobiliers et de communication électronique,
+        vous trouverez ci-dessous les informations légales concernant Immo Hoessen.
+      </p>
+      <p>
+        Overeenkomstig de Belgische wetgeving inzake vastgoeddiensten en elektronische communicatie
+        vindt u hieronder de wettelijke vermeldingen met betrekking tot Immo Hoessen.
+      </p>
+    </div>
+  </section>
 
-    <h2>1. Informations générales</h2>
-    <p><strong>Dénomination :</strong> Bureau Immobilier Laurent Hoessen SRL</p>
-    <p><strong>Adresse du siège social :</strong> Avenue Heydenberg 14, 1200 Bruxelles, Belgique</p>
-    <p><strong>Numéro BCE :</strong> BE 0462 920 325</p>
-    <p><strong>Numéro TVA :</strong> BE 0462 920 325</p>
-    <p><strong>Forme juridique :</strong> SRL – Société à Responsabilité Limitée</p>
+  <!-- MAIN -->
+  <main class="legal-main">
+    <div class="legal-layout">
 
-    <h2>2. Identification professionnelle</h2>
-    <p><strong>Agent immobilier – Syndic agréé IPI :</strong> Laurent Hoessen</p>
-    <p><strong>Numéro IPI :</strong> [à insérer]</p>
-    <p><strong>Autorité de contrôle :</strong> Institut Professionnel des Agents Immobiliers (IPI)</p>
-    <p>Rue du Luxembourg 16B, 1000 Bruxelles – <a href="https://www.ipi.be" target="_blank">www.ipi.be</a></p>
+      <!-- COLUNA FRANCÊS -->
+      <section class="legal-column" aria-labelledby="legal-fr">
+        <div class="legal-lang-label">Version française</div>
+        <h2 id="legal-fr">Informations légales</h2>
 
-    <h2>3. Coordonnées</h2>
-    <p><strong>Téléphone :</strong> 02 772 51 75 (de 9h00 à 13h00)</p>
-    <p><strong>E-mail :</strong> syndic@immohoessen.be</p>
-    <p><strong>Site web :</strong> www.immohoessen.be</p>
+        <div class="legal-block">
+          <h3>1. Identité de la société</h3>
+          <p>
+            Dénomination&nbsp;: Immo Hoessen<br>
+            Adresse du siège&nbsp;: [adresse complète]<br>
+            Numéro d’entreprise (BCE)&nbsp;: [BE&nbsp;0xxx.xxx.xxx]<br>
+            Forme juridique&nbsp;: [SRL / SPRL]<br>
+            Adresse e-mail&nbsp;: [adresse e-mail officielle]<br>
+            Téléphone&nbsp;: [numéro de téléphone]
+          </p>
+        </div>
 
-    <h2>4. Propriété intellectuelle</h2>
-    <p>
-        L’ensemble du contenu du site (textes, documents, images, logos, structure) est la propriété exclusive du 
-        Bureau Immobilier Laurent Hoessen SRL, sauf mention contraire.
-        Toute reproduction, distribution ou copie, même partielle, est interdite sans autorisation écrite préalable.
-    </p>
+        <div class="legal-block">
+          <h3>2. Statut professionnel &amp; agréments</h3>
+          <p>
+            Immo Hoessen exerce l’activité de syndic et de gestion immobilière conformément aux dispositions
+            du Code civil et à la réglementation en vigueur applicable aux syndics de copropriété en Belgique.
+          </p>
+        </div>
 
-    <h2>5. Protection des données – RGPD</h2>
-    <p>
-        Les données personnelles traitées via ce site respectent le
-        <strong>Règlement Général sur la Protection des Données (UE 2016/679)</strong>.
-    </p>
+        <div class="legal-block">
+          <h3>3. Hébergement du site</h3>
+          <p>
+            Le site web est hébergé par&nbsp;:<br>
+            [Nom de l’hébergeur, par ex. GitHub Pages]<br>
+            [Adresse ou site web de l’hébergeur]
+          </p>
+        </div>
 
-    <p><strong>Responsable du traitement :</strong> Bureau Immobilier Laurent Hoessen SRL</p>
+        <div class="legal-block">
+          <h3>4. Propriété intellectuelle</h3>
+          <p>
+            L’ensemble des contenus présents sur ce site (textes, images, logos, mise en page, structure)
+            est protégé par le droit d’auteur et, le cas échéant, par d’autres droits de propriété intellectuelle.
+            Toute reproduction, représentation ou diffusion, totale ou partielle, sans autorisation écrite préalable
+            d’Immo Hoessen est strictement interdite.
+          </p>
+        </div>
 
-    <p><strong>Finalités du traitement :</strong></p>
-    <ul>
-        <li>gestion administrative et comptable des copropriétés ;</li>
-        <li>accès à la plateforme destinée aux copropriétaires ;</li>
-        <li>communication (convocations, procès-verbaux, documents officiels) ;</li>
-        <li>gestion des demandes et contacts via le site.</li>
-    </ul>
+        <div class="legal-block">
+          <h3>5. Données personnelles &amp; cookies</h3>
+          <p>
+            Les données éventuellement collectées via ce site (par exemple via un formulaire de contact) sont
+            utilisées uniquement afin de répondre à votre demande ou de gérer la relation contractuelle.
+            Elles ne sont pas communiquées à des tiers, sauf obligation légale ou nécessité liée au service rendu.
+          </p>
+          <p>
+            Le site peut utiliser des cookies techniques nécessaires à son bon fonctionnement. Vous pouvez
+            configurer votre navigateur pour bloquer ou effacer les cookies, ce qui peut cependant affecter
+            certaines fonctionnalités.
+          </p>
+        </div>
 
-    <p><strong>Droits des utilisateurs :</strong> accès, rectification, effacement, opposition, portabilité et limitation du traitement.</p>
+        <div class="legal-block">
+          <h3>6. Limitation de responsabilité</h3>
+          <p>
+            Immo Hoessen veille à la qualité et à la mise à jour des informations publiées sur ce site,
+            mais ne peut garantir leur exactitude exhaustive ni l’absence totale d’erreurs matérielles.
+            Les informations sont fournies à titre indicatif et ne constituent ni une offre contractuelle
+            ni un conseil juridique.
+          </p>
+          <p>
+            Immo Hoessen ne peut être tenue responsable des dommages directs ou indirects résultant
+            de l’accès au site, de son utilisation ou de l’impossibilité d’y accéder.
+          </p>
+        </div>
 
-    <p><strong>Contact RGPD :</strong> syndic@immohoessen.be</p>
+        <div class="legal-block">
+          <h3>7. Droit applicable et tribunaux compétents</h3>
+          <p>
+            Le présent site est régi par le droit belge. En cas de litige, et à défaut de solution amiable,
+            les tribunaux de [ville, par ex. Bruxelles] seront seuls compétents.
+          </p>
+        </div>
 
-    <h2>6. Cookies</h2>
-    <p>
-        Le site peut utiliser des cookies techniques et analytiques afin d’améliorer son fonctionnement.
-        L'utilisateur peut à tout moment configurer son navigateur pour les refuser.
-    </p>
+        <p class="legal-note">
+          Veuillez compléter les champs entre crochets [ ] avec les informations officielles de votre société.
+        </p>
+      </section>
 
-    <h2>7. Responsabilité</h2>
-    <p>
-        Le Bureau Immobilier Laurent Hoessen SRL ne peut être tenu responsable en cas d’erreurs, d’interruptions, 
-        d’indisponibilité temporaire, ou de dommages liés à l’utilisation du site ou de ses informations.
-    </p>
+      <!-- COLUNA NEERLANDÊS -->
+      <section class="legal-column" aria-labelledby="legal-nl">
+        <div class="legal-lang-label">Nederlandse versie</div>
+        <h2 id="legal-nl">Wettelijke vermeldingen</h2>
 
-    <h2>8. Droit applicable</h2>
-    <p>
-        Le présent site est soumis au droit belge. En cas de litige, seuls les tribunaux de Bruxelles sont compétents.
-    </p>
+        <div class="legal-block">
+          <h3>1. Identiteit van de onderneming</h3>
+          <p>
+            Naam&nbsp;: Immo Hoessen<br>
+            Maatschappelijke zetel&nbsp;: [volledig adres]<br>
+            Ondernemingsnummer (KBO)&nbsp;: [BE&nbsp;0xxx.xxx.xxx]<br>
+            Rechtsvorm&nbsp;: [BV / SRL]<br>
+            E-mailadres&nbsp;: [officieel e-mailadres]<br>
+            Telefoon&nbsp;: [telefoonnummer]
+          </p>
+        </div>
 
-    <footer>
-        © Bureau Immobilier Laurent Hoessen SRL – BE 0462 920 325
-    </footer>
+        <div class="legal-block">
+          <h3>2. Beroepsstatuut &amp; erkenning</h3>
+          <p>
+            Immo Hoessen oefent activiteiten uit als syndicus en beheerder van mede-eigendommen,
+            in overeenstemming met het Burgerlijk Wetboek en de toepasselijke Belgische regelgeving
+            inzake syndici van mede-eigendom.
+          </p>
+        </div>
+
+        <div class="legal-block">
+          <h3>3. Hosting van de website</h3>
+          <p>
+            De website wordt gehost door&nbsp;:<br>
+            [Naam van de host, bv. GitHub Pages]<br>
+            [Adres of website van de host]
+          </p>
+        </div>
+
+        <div class="legal-block">
+          <h3>4. Intellectuele eigendom</h3>
+          <p>
+            Alle inhoud op deze website (teksten, afbeeldingen, logo’s, lay-out, structuur)
+            is beschermd door het auteursrecht en, in voorkomend geval, andere rechten van intellectuele eigendom.
+            Elke reproductie, verspreiding of mededeling aan het publiek, geheel of gedeeltelijk,
+            zonder voorafgaande schriftelijke toestemming van Immo Hoessen is strikt verboden.
+          </p>
+        </div>
+
+        <div class="legal-block">
+          <h3>5. Persoonsgegevens &amp; cookies</h3>
+          <p>
+            Gegevens die eventueel via deze website worden verzameld (bijvoorbeeld via een contactformulier)
+            worden uitsluitend gebruikt om uw vraag te beantwoorden of om de contractuele relatie te beheren.
+            Ze worden niet aan derden meegedeeld, behalve wanneer dit wettelijk verplicht is of noodzakelijk
+            is voor de uitvoering van de gevraagde dienst.
+          </p>
+          <p>
+            De website kan technische cookies gebruiken die noodzakelijk zijn voor de goede werking.
+            U kunt uw browser zo instellen dat cookies worden geblokkeerd of verwijderd, al kan dit
+            een invloed hebben op bepaalde functionaliteiten.
+          </p>
+        </div>
+
+        <div class="legal-block">
+          <h3>6. Aansprakelijkheidsbeperking</h3>
+          <p>
+            Immo Hoessen streeft ernaar correcte en actuele informatie op deze website te publiceren,
+            maar kan de volledigheid en foutloosheid ervan niet volledig garanderen.
+            De informatie wordt louter ter indicatieve titel verstrekt en vormt geen bindend aanbod
+            of juridisch advies.
+          </p>
+          <p>
+            Immo Hoessen kan niet aansprakelijk worden gesteld voor rechtstreekse of onrechtstreekse schade
+            voortvloeiend uit de toegang tot of het gebruik van de website, noch uit de onmogelijkheid
+            om toegang te krijgen tot de website.
+          </p>
+        </div>
+
+        <div class="legal-block">
+          <h3>7. Toepasselijk recht en bevoegde rechtbanken</h3>
+          <p>
+            Op deze website is het Belgisch recht van toepassing. In geval van een geschil, en bij gebrek
+            aan een minnelijke regeling, zijn uitsluitend de rechtbanken van [stad, bv. Brussel] bevoegd.
+          </p>
+        </div>
+
+        <p class="legal-note">
+          Vul de velden tussen blokhaken [ ] in met de officiële gegevens van uw onderneming.
+        </p>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p class="footer-quote">« Immo Hoessen – Une gestion complète, de la comptabilité aux travaux. »</p>
+    <div class="footer-copy">
+      © 2025 Immo Hoessen · <a href="mentions.html">Mentions légales · Wettelijke vermeldingen</a>
+    </div>
+  </footer>
 
 </body>
 </html>
