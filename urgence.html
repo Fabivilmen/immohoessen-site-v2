@@ -3,38 +3,68 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mentions légales – Immo Hoessen</title>
+  <title>Urgence – Immo Hoessen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <script src="main.js" defer></script>
+  <meta name="description" content="Numéros d'urgence Immo Hoessen en dehors des heures de bureau : sinistres, dégâts des eaux, pannes techniques.">
+  <link rel="icon" href="img/logo.svg">
 </head>
 <body class="site">
   <header class="header">
     <div class="header-inner">
-      <div class="brand">
-        <img src="img/logo.svg" alt="Immo Hoessen">
-        <span class="brand-name">Immo Hoessen</span>
-      </div>
+      <div class="brand"><img src="img/logo.svg" alt="Immo Hoessen" onerror="this.style.display='none'"><span class="brand-name">Immo Hoessen</span></div>
       <nav class="nav">
         <a href="index.html">Accueil</a>
-        <a href="gestion.html">Types de gestion</a>
+        <a href="types.html">Types de gestion</a>
+        <a href="gestion.html">Gestion</a>
         <a href="portail.html">Portail</a>
         <a href="contacts.html">Contacts</a>
         <a href="apropos.html">À propos</a>
-        <a href="offre.html">Offre</a>
+        <a class="cta-offre" href="offre.html">Demander une offre</a>
       </nav>
     </div>
   </header>
 
-  <main class="container pb-6">
-    <h1>Mentions légales</h1>
-    <p>Immo Hoessen – Avenue Heydenberg 14, 1200 Bruxelles – BE0462920325.</p>
-    <p>Responsable de la publication : Laurent Hoessen.</p>
+  <section class="urgence-hero">
+    <div class="container">
+      <h1>Urgence</h1>
+      <p>En dehors des heures de bureau (9h–13h), pour un sinistre ou une panne technique urgente dans votre immeuble, contactez directement l'un de ces numéros :</p>
+      <div class="urgence-numbers">
+        <a href="tel:0495261683">📞 0495 26 16 83</a>
+        <a href="tel:0495543808">📞 0495 54 38 08</a>
+      </div>
+    </div>
+  </section>
+
+  <main class="urgence-steps">
+    <h2 style="margin-bottom:1rem;">Que faire en cas d'urgence ?</h2>
+    <ol>
+      <li><strong>Sécurisez la situation</strong> — coupez l'eau, le gaz ou l'électricité si cela peut être fait sans danger.</li>
+      <li><strong>Appelez les secours</strong> si la sécurité des personnes est en jeu (112 pompiers/ambulance, police).</li>
+      <li><strong>Contactez immédiatement Immo Hoessen</strong> à l'un des numéros ci-dessus, en précisant l'adresse exacte, l'étage et la nature du problème.</li>
+      <li><strong>Prenez des photos</strong> des dégâts dès que possible, utiles pour la déclaration à l'assurance.</li>
+      <li><strong>Nous coordonnons l'intervention</strong> avec un artisan ou un service d'urgence et assurons le suivi du dossier jusqu'à sa résolution.</li>
+    </ol>
+    <p style="margin-top:1.4rem;">Pour toute demande non urgente, merci de nous contacter aux heures de bureau via la <a href="contacts.html" style="color:var(--primary); font-weight:600; text-decoration:underline;">page Contacts</a>.</p>
   </main>
 
-  <footer>
+  <footer class="site-footer">
     <div class="footer-inner">
-      <div>Avenue Heydenberg 14, 1200 Bruxelles · Tél. <a href="tel:+3227725175">02 772 51 75</a> · BE0462920325</div>
-      <div>Heures: 09:00–13:00 · <a href="mentions.html">Mentions légales</a></div>
+      <div class="footer-col">
+        <p><strong>Adresse :</strong> Avenue Heydenberg 14, 1200 Bruxelles</p>
+        <p><strong>Téléphone :</strong> <a href="tel:+3227725175">02 772 51 75</a></p>
+        <p><strong>Urgence :</strong> <a href="tel:0495261683">0495 26 16 83</a> · <a href="tel:0495543808">0495 54 38 08</a></p>
+        <p><strong>Heures :</strong> 09:00–13:00</p>
+        <p><strong>Email :</strong> <a href="mailto:syndic@immohoessen.be">syndic@immohoessen.be</a></p>
+        <p><strong>N° d'entreprise :</strong> BE0462920325</p>
+      </div>
+      <div class="footer-col footer-map">
+        <iframe title="Immo Hoessen – Carte" src="https://www.google.com/maps?q=Avenue%20Heydenberg%2014,%201200%20Bruxelles&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
     </div>
+    <div class="footer-legal"><a href="mentions.html">Mentions légales</a> · <a href="urgence.html">Urgence</a></div>
   </footer>
 </body>
 </html>

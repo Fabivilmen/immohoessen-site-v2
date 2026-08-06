@@ -4,191 +4,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Contacts – Immo Hoessen</title>
-
-  <!-- Fonte moderna -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
-
-  <!-- CSS principal -->
-  <link rel="stylesheet" href="style.css?v=30">
-
-  <style>
-    :root {
-      --green: #0f3d2e;
-      --text: #1e4e3d;
-      --blue: #1a5cff;
-      --brand: #1a5cff;
-      --brand-hover: #003b8a;
-      --bg-soft: #fff3e5;
-      --card-bd: #e6e6e6;
-      --shadow: 0 2px 8px rgba(0,0,0,.05);
-      --shadow-lg: 0 8px 18px rgba(0,0,0,.08);
-      --wrap: 1100px;
-    }
-
-    body.contacts-page {
-      background: var(--bg-soft);
-      margin: 0;
-      font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      color: var(--text);
-    }
-
-    .container {
-      max-width: var(--wrap);
-      margin: 0 auto;
-      padding: 0 16px;
-    }
-
-    .section {
-      padding: 2rem 0 3rem;
-    }
-
-    .page-title {
-      color: var(--green);
-      font-size: 2.2rem;
-      margin: 1.5rem 0 1rem;
-      text-align: center;
-    }
-
-    /* Telefones */
-    .phones {
-      background: #fff;
-      border: 1px solid var(--card-bd);
-      border-radius: 14px;
-      padding: 1.5rem;
-      box-shadow: var(--shadow);
-      margin-bottom: 2rem;
-      text-align: center;
-    }
-
-    .phones-badge {
-      display: inline-block;
-      background: #ffe3a4;
-      color: #5a4300;
-      font-weight: 700;
-      padding: .3rem .8rem;
-      border-radius: 999px;
-      margin-bottom: .8rem;
-      font-size: .9rem;
-    }
-
-    .phones-title {
-      color: var(--green);
-      font-size: 1.3rem;
-      margin-bottom: .6rem;
-    }
-
-    .phones-sub {
-      color: var(--green);
-      font-size: 1.1rem;
-      margin: 1rem 0 .4rem;
-    }
-
-    .row-center {
-      display: flex;
-      justify-content: center;
-      gap: .6rem;
-      flex-wrap: wrap;
-      margin-bottom: 1rem;
-    }
-
-    .btn-call {
-      background: var(--blue);
-      color: #fff;
-      padding: .6rem 1rem;
-      border-radius: 999px;
-      font-weight: 700;
-      font-size: .95rem;
-      text-decoration: none;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      transition: all 0.3s ease;
-    }
-
-    .btn-call:hover {
-      background: var(--brand-hover);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    }
-
-    /* Grid de contatos */
-    .contacts-grid {
-      display: grid;
-      gap: 1.5rem;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      margin-top: 2rem;
-      padding: 0 1rem;
-    }
-
-    .contact-card {
-      background: #ffffff;
-      border: 1px solid #e0e0e0;
-      border-left: 6px solid var(--green);
-      border-radius: 16px;
-      padding: 1.4rem 1.6rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .contact-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 24px rgba(0,0,0,0.08);
-    }
-
-    .contact-card h3 {
-      margin: 0 0 .5rem;
-      color: var(--green);
-      font-size: 1.2rem;
-      font-weight: 700;
-    }
-
-    .contact-card p {
-      margin: 0 0 .4rem;
-      color: var(--text);
-      font-size: 1rem;
-    }
-
-    .contact-card a {
-      color: var(--blue);
-      font-weight: 600;
-      text-decoration: none;
-    }
-
-    .contact-card a:hover {
-      text-decoration: underline;
-    }
-
-    /* Card Factures destacado */
-    .contact-card.factures {
-      grid-column: 1 / -1;          /* ocupa toda a linha */
-      text-align: center;           /* centraliza conteúdo */
-      border-left-color: var(--brand);
-      background: linear-gradient(to right, #f5f9ff, #eef4ff);
-      padding: 2rem;
-    }
-
-    .contact-card.factures h3 {
-      color: var(--brand);
-      font-size: 1.3rem;
-      margin-bottom: .6rem;
-    }
-
-    .contact-card.factures p {
-      font-weight: 600;
-      margin-bottom: .5rem;
-    }
-
-    .contact-card.factures a {
-      font-size: 1.05rem;
-    }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="main.js" defer></script>
+  <meta name="description" content="Contactez l'équipe Immo Hoessen : gestion, sinistres, facturation et urgences.">
+  <link rel="icon" href="img/logo.svg">
 </head>
-
-<body class="site contacts-page">
-  <!-- Header -->
+<body class="site">
   <header class="header">
     <div class="header-inner">
-      <div class="brand">
-        <img src="img/logo.svg" alt="Immo Hoessen" onerror="this.style.display='none'">
-        <span class="brand-name">Immo Hoessen</span>
-      </div>
+      <div class="brand"><img src="img/logo.svg" alt="Immo Hoessen" onerror="this.style.display='none'"><span class="brand-name">Immo Hoessen</span></div>
       <nav class="nav">
         <a href="index.html">Accueil</a>
         <a href="types.html">Types de gestion</a>
@@ -201,12 +27,15 @@
     </div>
   </header>
 
-  <!-- Conteúdo -->
+  <section class="page-hero">
+    <div class="container">
+      <h1>Contacts</h1>
+      <p>Une équipe joignable et un interlocuteur clair pour chaque type de demande.</p>
+    </div>
+  </section>
+
   <main class="section">
     <div class="container">
-      <h1 class="page-title">Contacts</h1>
-
-      <!-- Telefones -->
       <section class="phones">
         <div class="phones-badge">Téléphones</div>
         <h2 class="phones-title">Heures du bureau (9h–13h)</h2>
@@ -220,7 +49,6 @@
         </p>
       </section>
 
-      <!-- Equipe + Facturation -->
       <section class="contacts-grid">
         <article class="contact-card">
           <h3>Laurent Hoessen</h3>
@@ -246,13 +74,6 @@
           <a href="mailto:admin@immohoessen.be">admin@immohoessen.be</a>
         </article>
 
-        <article class="contact-card">
-          <h3>Fabiane Menezes</h3>
-          <p>Assistante de gestion</p>
-          <a href="mailto:syndic@immohoessen.be">syndic@immohoessen.be</a>
-        </article>
-
-        <!-- Novo card Facturation -->
         <article class="contact-card factures">
           <h3>Facturation</h3>
           <p>Transmettez vos factures à :</p>
@@ -261,5 +82,22 @@
       </section>
     </div>
   </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <p><strong>Adresse :</strong> Avenue Heydenberg 14, 1200 Bruxelles</p>
+        <p><strong>Téléphone :</strong> <a href="tel:+3227725175">02 772 51 75</a></p>
+        <p><strong>Urgence :</strong> <a href="tel:0495261683">0495 26 16 83</a> · <a href="tel:0495543808">0495 54 38 08</a></p>
+        <p><strong>Heures :</strong> 09:00–13:00</p>
+        <p><strong>Email :</strong> <a href="mailto:syndic@immohoessen.be">syndic@immohoessen.be</a></p>
+        <p><strong>N° d'entreprise :</strong> BE0462920325</p>
+      </div>
+      <div class="footer-col footer-map">
+        <iframe title="Immo Hoessen – Carte" src="https://www.google.com/maps?q=Avenue%20Heydenberg%2014,%201200%20Bruxelles&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+    <div class="footer-legal"><a href="mentions.html">Mentions légales</a> · <a href="urgence.html">Urgence</a></div>
+  </footer>
 </body>
 </html>

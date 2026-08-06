@@ -4,149 +4,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Demander une offre – Immo Hoessen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-
-  <style>
-    :root{
-      --green:#0f3d2e; 
-      --text:#1e4e3d; 
-      --muted:#557a68;
-      --gold:#e4b100; 
-      --terracotta:#c86b4a;
-      --warm-25:#fff9f3; 
-      --warm-50:#fff3e5;
-      --brand:#1a5cff; 
-      --brand-hover:#003b8a;
-      --radius:16px; 
-      --shadow:0 2px 12px rgba(0,0,0,.06);
-    }
-
-    body.site{
-      background: radial-gradient(120% 120% at 50% -10%, var(--warm-25) 0%, #ffffff 45%);
-    }
-
-    /* MENU */
-    .header{position:sticky; top:0; z-index:50; background:#fff; border-bottom:1px solid #eee;}
-    .header-inner{
-      border-image:linear-gradient(90deg,var(--gold),var(--terracotta)) 1; 
-      border-bottom:3px solid transparent;
-      max-width:1200px; margin:0 auto; 
-      display:flex; align-items:center; justify-content:space-between; 
-      padding:.8rem 1rem;
-    }
-    .brand{display:flex; align-items:center; gap:.6rem}
-    .brand img{height:32px}
-    .brand-name{font-weight:800; color:var(--text)}
-    .nav{display:flex; gap:.4rem; flex-wrap:wrap; align-items:center}
-    .nav a{
-      padding:.55rem .8rem; border-radius:.6rem; 
-      text-decoration:none; color:var(--text); font-weight:600
-    }
-    .nav a:hover{background:#f3f6f5}
-    .nav a.active{color:#fff; background:var(--green)}
-    .nav .cta-offre{
-      background:var(--brand); color:#fff; 
-      padding:.6rem 1rem; border-radius:999px; font-weight:800
-    }
-
-    /* HERO */
-    .offer-hero{
-      text-align:center; 
-      background:linear-gradient(180deg, var(--warm-50), var(--warm-25));
-      padding:1.6rem 0 .9rem; 
-      border-bottom:1px solid rgba(0,0,0,.06);
-    }
-    .offer-hero h1{color:var(--brand); margin:0;}
-    .offer-hero p{color:var(--text); max-width:900px; margin:.5rem auto 0;}
-
-    .container{max-width:1200px; margin:0 auto; padding:0 16px}
-
-    /* FORM CARD */
-    .offer-card{
-      background:#fff; 
-      border:1px solid rgba(0,0,0,.08); 
-      border-left:12px solid var(--terracotta);
-      border-radius:18px; 
-      padding:2rem; 
-      box-shadow:var(--shadow);
-      margin:2rem auto; 
-      max-width:900px;
-    }
-
-    /* GRID AJUSTADA */
-    .grid, .grid-3, .grid-1 {
-      display:grid;
-      gap:20px;
-    }
-
-    .grid { grid-template-columns:repeat(2, 1fr); }
-    .grid-3 { grid-template-columns:repeat(3, 1fr); }
-    .grid-1 { grid-template-columns:1fr; }
-
-    /* CAMPOS IGUAIS */
-    .field input,
-    .field select,
-    .field textarea {
-      width:100%;
-      padding:14px;
-      border-radius:12px;
-      border:1px solid rgba(0,0,0,.12);
-      font-size:1rem;
-      box-sizing:border-box;
-      background:#fff;
-      color:var(--text);
-    }
-
-    .field textarea {
-      min-height:140px;
-      resize:vertical;
-    }
-
-    .field label {
-      font-weight:700;
-      font-size:1rem;
-      color:var(--green);
-      margin-bottom:6px;
-    }
-
-    .req{color:#c0392b;}
-
-    /* BOTÃO */
-    .actions{
-      display:flex; justify-content:flex-end; margin-top:1rem;
-    }
-
-    .btn-primary{
-      background:var(--brand); color:#fff;
-      padding:1rem 1.4rem;
-      font-weight:800; border-radius:12px; 
-      border:0; cursor:pointer; font-size:1rem;
-    }
-    .btn-primary:hover{background:var(--brand-hover);}
-
-    .hint{
-      text-align:right; 
-      font-size:.9rem; 
-      color:var(--muted); 
-      margin-top:.4rem;
-    }
-
-    @media(max-width:900px){
-      .grid, .grid-3 { grid-template-columns:1fr; }
-    }
-  </style>
-
+  <script src="main.js" defer></script>
+  <meta name="description" content="Demandez une offre de gestion pour votre copropriété à Immo Hoessen.">
+  <link rel="icon" href="img/logo.svg">
 </head>
-
 <body class="site">
-
-  <!-- HEADER -->
   <header class="header">
     <div class="header-inner">
-      <div class="brand">
-        <img src="img/logo.svg" alt="Immo Hoessen">
-        <span class="brand-name">Immo Hoessen</span>
-      </div>
+      <div class="brand"><img src="img/logo.svg" alt="Immo Hoessen" onerror="this.style.display='none'"><span class="brand-name">Immo Hoessen</span></div>
       <nav class="nav">
         <a href="index.html">Accueil</a>
         <a href="types.html">Types de gestion</a>
@@ -159,117 +27,82 @@
     </div>
   </header>
 
-  <!-- HERO -->
-  <section class="offer-hero">
+  <section class="page-hero">
     <div class="container">
       <h1>Demander une offre</h1>
-      <p>Remplissez les informations ci-dessous. Les champs marqués d’une <span class="req">*</span> sont obligatoires.</p>
+      <p>Remplissez les informations ci-dessous. Les champs marqués d'une <span class="req">*</span> sont obligatoires.</p>
     </div>
   </section>
 
-  <!-- FORMULÁRIO BONITO + ALINHADO -->
   <main class="container">
-
     <form action="https://api.web3forms.com/submit" method="POST" class="offer-card">
-
       <input type="hidden" name="access_key" value="2715b787-9245-44e3-b889-a4d44ef68754">
       <input type="hidden" name="subject" value="Nouvelle demande d'offre - Immo Hoessen">
       <input type="hidden" name="redirect" value="https://fabivilmen.github.io/immohoessen-site-v2/success.html">
 
       <div class="grid">
-        <div class="field">
-          <label>Nom <span class="req">*</span></label>
-          <input name="Nom" required>
-        </div>
-        <div class="field">
-          <label>Email <span class="req">*</span></label>
-          <input name="Email" type="email" required>
-        </div>
+        <div class="field"><label>Nom <span class="req">*</span></label><input name="Nom" required></div>
+        <div class="field"><label>Email <span class="req">*</span></label><input name="Email" type="email" required></div>
       </div>
 
       <div class="grid">
-        <div class="field">
-          <label>Téléphone</label>
-          <input name="Téléphone">
-        </div>
-        <div class="field">
-          <label>Adresse de la copropriété <span class="req">*</span></label>
-          <input name="Adresse de la copropriété" required>
-        </div>
+        <div class="field"><label>Téléphone</label><input name="Téléphone"></div>
+        <div class="field"><label>Adresse de la copropriété <span class="req">*</span></label><input name="Adresse de la copropriété" required></div>
       </div>
 
       <div class="grid">
-        <div class="field">
-          <label>Code postal</label>
-          <input name="Code postal">
-        </div>
-        <div class="field">
-          <label>Nombre d’étages <span class="req">*</span></label>
-          <input name="Nombre d’étages" type="number" required>
-        </div>
+        <div class="field"><label>Code postal</label><input name="Code postal"></div>
+        <div class="field"><label>Nombre d'étages <span class="req">*</span></label><input name="Nombre d'étages" type="number" required></div>
       </div>
 
       <div class="grid-3">
         <div class="field">
           <label>Chauffage collectif</label>
-          <select name="Chauffage collectif">
-            <option>Oui</option>
-            <option>Non</option>
-            <option>Je ne sais pas</option>
-          </select>
+          <select name="Chauffage collectif"><option>Oui</option><option>Non</option><option>Je ne sais pas</option></select>
         </div>
         <div class="field">
           <label>Garage</label>
-          <select name="Garage">
-            <option>Oui</option>
-            <option>Non</option>
-            <option>Je ne sais pas</option>
-          </select>
+          <select name="Garage"><option>Oui</option><option>Non</option><option>Je ne sais pas</option></select>
         </div>
         <div class="field">
           <label>Ascenseur <span class="req">*</span></label>
-          <select name="Ascenseur" required>
-            <option>Oui</option>
-            <option>Non</option>
-          </select>
+          <select name="Ascenseur" required><option>Oui</option><option>Non</option></select>
         </div>
       </div>
 
       <div class="grid">
         <div class="field">
           <label>Syndic en place ?</label>
-          <select name="Syndic en place">
-            <option>Oui</option>
-            <option>Non</option>
-            <option>Je ne sais pas</option>
-          </select>
+          <select name="Syndic en place"><option>Oui</option><option>Non</option><option>Je ne sais pas</option></select>
         </div>
-        <div class="field">
-          <label>Nombre d’appartements</label>
-          <input name="Nombre d’appartements" type="number">
-        </div>
+        <div class="field"><label>Nombre d'appartements</label><input name="Nombre d'appartements" type="number"></div>
       </div>
 
       <div class="grid-1">
-        <div class="field">
-          <label>Message</label>
-          <textarea name="Message"></textarea>
-        </div>
+        <div class="field"><label>Message</label><textarea name="Message"></textarea></div>
       </div>
 
-      <div class="actions">
-        <button class="btn-primary" type="submit">Envoyer</button>
-      </div>
-
+      <div class="actions"><button class="btn-primary" type="submit">Envoyer</button></div>
     </form>
 
     <p class="hint">Votre demande sera envoyée directement à <strong>syndic@immohoessen.be</strong>.</p>
-
   </main>
 
-  <footer>
-    © 2025 Immo Hoessen · <a href="mentions.html">Mentions légales</a>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <p><strong>Adresse :</strong> Avenue Heydenberg 14, 1200 Bruxelles</p>
+        <p><strong>Téléphone :</strong> <a href="tel:+3227725175">02 772 51 75</a></p>
+        <p><strong>Urgence :</strong> <a href="tel:0495261683">0495 26 16 83</a> · <a href="tel:0495543808">0495 54 38 08</a></p>
+        <p><strong>Heures :</strong> 09:00–13:00</p>
+        <p><strong>Email :</strong> <a href="mailto:syndic@immohoessen.be">syndic@immohoessen.be</a></p>
+        <p><strong>N° d'entreprise :</strong> BE0462920325</p>
+      </div>
+      <div class="footer-col footer-map">
+        <iframe title="Immo Hoessen – Carte" src="https://www.google.com/maps?q=Avenue%20Heydenberg%2014,%201200%20Bruxelles&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+    <div class="footer-legal"><a href="mentions.html">Mentions légales</a> · <a href="urgence.html">Urgence</a></div>
   </footer>
-
 </body>
 </html>
