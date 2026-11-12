@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Offerte aanvragen – Immo Hoessen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <script src="../main.js" defer></script>
+  <meta name="description" content="Vraag een beheerofferte aan voor uw mede-eigendom bij Immo Hoessen.">
+  <link rel="icon" href="../img/logo.svg">
+  <link rel="alternate" hreflang="fr" href="https://fabivilmen.github.io/immohoessen-site-v2/offre.html">
+  <link rel="alternate" hreflang="nl" href="https://fabivilmen.github.io/immohoessen-site-v2/nl/offre.html">
+  <link rel="alternate" hreflang="x-default" href="https://fabivilmen.github.io/immohoessen-site-v2/offre.html">
+</head>
+<body class="site">
+  <header class="header">
+    <div class="header-inner">
+      <div class="brand"><img src="../img/logo.svg" alt="Immo Hoessen" onerror="this.style.display='none'"><span class="brand-name">Immo Hoessen</span></div>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="types.html">Soorten beheer</a>
+        <a href="gestion.html">Beheer</a>
+        <a href="portail.html">Portaal</a>
+        <a href="contacts.html">Contact</a>
+        <a href="apropos.html">Over ons</a>
+        <a class="active cta-offre" href="offre.html">Offerte aanvragen</a>
+        <span class="lang-switch" role="group" aria-label="Taal"><a href="../offre.html" hreflang="fr" lang="fr" title="Français">FR</a><a class="is-current" href="offre.html" hreflang="nl" lang="nl" aria-current="true">NL</a></span>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>Offerte aanvragen</h1>
+      <p>Vul de onderstaande gegevens in. De velden met een <span class="req">*</span> zijn verplicht.</p>
+    </div>
+  </section>
+
+  <main class="container">
+    <form action="https://api.web3forms.com/submit" method="POST" class="offer-card">
+      <input type="hidden" name="access_key" value="2715b787-9245-44e3-b889-a4d44ef68754">
+      <input type="hidden" name="subject" value="Nouvelle demande d'offre - Immo Hoessen (NL)">
+      <input type="hidden" name="Langue" value="Néerlandais (formulaire du site NL)">
+      <input type="hidden" name="redirect" value="https://fabivilmen.github.io/immohoessen-site-v2/nl/success.html">
+
+      <div class="grid">
+        <div class="field"><label>Naam <span class="req">*</span></label><input name="Nom" required></div>
+        <div class="field"><label>E-mail <span class="req">*</span></label><input name="Email" type="email" required></div>
+      </div>
+
+      <div class="grid">
+        <div class="field"><label>Telefoon</label><input name="Téléphone"></div>
+        <div class="field"><label>Adres van de mede-eigendom <span class="req">*</span></label><input name="Adresse de la copropriété" required></div>
+      </div>
+
+      <div class="grid">
+        <div class="field"><label>Postcode</label><input name="Code postal"></div>
+        <div class="field"><label>Aantal verdiepingen <span class="req">*</span></label><input name="Nombre d'étages" type="number" required></div>
+      </div>
+
+      <div class="grid-3">
+        <div class="field">
+          <label>Centrale verwarming</label>
+          <select name="Chauffage collectif"><option value="Oui">Ja</option><option value="Non">Nee</option><option value="Je ne sais pas">Weet ik niet</option></select>
+        </div>
+        <div class="field">
+          <label>Garage</label>
+          <select name="Garage"><option value="Oui">Ja</option><option value="Non">Nee</option><option value="Je ne sais pas">Weet ik niet</option></select>
+        </div>
+        <div class="field">
+          <label>Lift <span class="req">*</span></label>
+          <select name="Ascenseur" required><option value="Oui">Ja</option><option value="Non">Nee</option></select>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="field">
+          <label>Is er al een syndicus?</label>
+          <select name="Syndic en place"><option value="Oui">Ja</option><option value="Non">Nee</option><option value="Je ne sais pas">Weet ik niet</option></select>
+        </div>
+        <div class="field"><label>Aantal appartementen</label><input name="Nombre d'appartements" type="number"></div>
+      </div>
+
+      <div class="grid-1">
+        <div class="field"><label>Bericht</label><textarea name="Message"></textarea></div>
+      </div>
+
+      <div class="actions"><button class="btn-primary" type="submit">Verzenden</button></div>
+    </form>
+
+    <p class="hint">Uw aanvraag wordt rechtstreeks verzonden naar <strong>syndic@immohoessen.be</strong>.</p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <p><strong>Adres:</strong> Avenue Heydenberg 14, 1200 Brussel</p>
+        <p><strong>Telefoon:</strong> <a href="tel:+3227725175">02 772 51 75</a></p>
+        <p><strong>Noodgeval:</strong> <a href="tel:0495261683">0495 26 16 83</a> · <a href="tel:0495543808">0495 54 38 08</a></p>
+        <p><strong>Openingsuren:</strong> 09:00–13:00</p>
+        <p><strong>E-mail:</strong> <a href="mailto:syndic@immohoessen.be">syndic@immohoessen.be</a></p>
+        <p><strong>Ondernemingsnummer:</strong> BE0462920325</p>
+      </div>
+      <div class="footer-col footer-map">
+        <iframe title="Immo Hoessen – Kaart" src="https://www.google.com/maps?q=Avenue%20Heydenberg%2014,%201200%20Bruxelles&output=embed&hl=nl" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+    <div class="footer-legal"><a href="mentions.html">Wettelijke vermeldingen</a> · <a href="urgence.html">Noodgeval</a></div>
+  </footer>
+</body>
+</html>
