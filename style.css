@@ -118,6 +118,20 @@ p { color: var(--text-light); font-size: 1rem; }
 .nav .cta-offre::after { display: none; }
 .nav .cta-offre:hover { background: var(--primary); color: var(--white); }
 
+/* Sélecteur de langue FR | NL */
+.nav { margin-left: auto; }
+.lang-switch {
+  display: inline-flex; margin-left: 1.5rem; padding: 3px; gap: 2px;
+  border: 1px solid rgba(26,26,46,0.18); border-radius: 999px; background: rgba(255,255,255,0.6);
+}
+.lang-switch a {
+  min-width: 38px; padding: 0.3rem 0.65rem; text-align: center; border-radius: 999px;
+  font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; color: var(--text-light);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+.lang-switch a:hover { color: var(--primary); background: rgba(201,162,39,0.18); }
+.lang-switch a.is-current { background: var(--primary); color: var(--white); pointer-events: none; }
+
 .menu-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 5px; }
 .menu-toggle span { width: 24px; height: 2px; background: var(--primary); transition: var(--transition); }
 .menu-toggle.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
@@ -458,8 +472,9 @@ footer.site-footer { background: var(--primary); color: rgba(255,255,255,0.8); p
 }
 
 /* RESPONSIVE — HEADER/NAV */
-@media (max-width: 1040px) {
+@media (max-width: 1180px) {
   .menu-toggle { display: flex; }
+  .lang-switch { margin-left: auto; margin-right: 0.9rem; }
   .nav {
     position: absolute; top: 100%; left: 0; right: 0; background: var(--white); flex-direction: column;
     padding: 1.5rem; gap: 0.3rem; box-shadow: var(--shadow-lg); transform: translateY(-150%);
@@ -474,6 +489,20 @@ footer.site-footer { background: var(--primary); color: rgba(255,255,255,0.8); p
 @media (max-width: 860px) {
   .section { padding: var(--space-lg) 1.2rem; }
   .split-cards { gap: 0.8rem; }
+}
+/* Petits écrans (téléphones) : en-tête plus compact pour que le nom, FR | NL et le menu tiennent sans se chevaucher */
+@media (max-width: 420px) {
+  .header-inner { padding-left: 1rem; padding-right: 1rem; }
+  .brand { gap: 0.5rem; min-width: 0; }
+  .brand img { height: 28px; }
+  .brand-name { font-size: 1.2rem; letter-spacing: 0.2px; }
+  .lang-switch { margin-right: 0.5rem; padding: 2px; }
+  .lang-switch a { min-width: 32px; padding: 0.28rem 0.5rem; font-size: 0.72rem; }
+}
+@media (max-width: 340px) {
+  .brand img { height: 24px; }
+  .brand-name { font-size: 1.05rem; }
+  .lang-switch a { min-width: 28px; padding: 0.26rem 0.4rem; }
 }
 
 /* Accessibilité : pour les personnes qui désactivent les animations dans leur système,

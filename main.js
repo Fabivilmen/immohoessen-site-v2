@@ -25,6 +25,9 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   if (headerInner && nav) {
+    // Le sélecteur de langue reste toujours visible dans l'en-tête (pas caché dans le menu mobile)
+    const langSwitch = nav.querySelector('.lang-switch') || document.querySelector('.lang-switch');
+    if (langSwitch) headerInner.appendChild(langSwitch);
     headerInner.appendChild(menuToggle);
 
     menuToggle.addEventListener('click', function () {
